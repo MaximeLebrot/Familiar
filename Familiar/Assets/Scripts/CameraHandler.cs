@@ -9,9 +9,10 @@ public class CameraHandler : MonoBehaviour
     public float maxAngleDown = -60.0f;
     public float maxAngleUp = 60.0f;
     public Controller playerController;
-    private Vector3 cameraOffset = new Vector3(0,2,-7);
     public Vector3 offset;
+    public bool firstPerson;
 
+    private Vector3 cameraOffset = new Vector3(0, 2, -7);
     private void Awake()
     {
         CameraVec = new Vector2(0, 0);
@@ -26,6 +27,11 @@ public class CameraHandler : MonoBehaviour
         
         offset = transform.rotation * cameraOffset;
         offset = CheckCollision() + playerController.transform.position;
+
+        if (firstPerson)
+        {
+            offset -= transform.rotation * cameraOffset;
+        }
 
         transform.position = offset;
     }
