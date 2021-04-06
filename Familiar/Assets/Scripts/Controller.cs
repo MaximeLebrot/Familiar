@@ -54,13 +54,7 @@ public class Controller : MonoBehaviour
         }
 
         transform.position += (Vector3)(velocity * Time.deltaTime);
-        transform.rotation = Quaternion.Euler(0, camera.transform.rotation.y, 0);
-    }
-    Vector3 GetMovementInput()
-    {
-        input = Vector3.right * Input.GetAxisRaw("Horizontal") + Vector3.forward * Input.GetAxisRaw("Vertical");
-        input = camera.transform.rotation * input;
-        return input;
+        //transform.rotation = Quaternion.Euler(0, camera.transform.rotation.y, 0); // rotera spelaren enligt cameran
     }
     void GroundCheck()
     {
@@ -80,10 +74,6 @@ public class Controller : MonoBehaviour
     }
     void UpdateVelocity()
     {
-        //float distanceToPoints = col.height / 2 - col.radius;
-        //Vector3 point1 = col.center + Vector3.up * distanceToPoints + transform.position;
-        //Vector3 point2 = col.center + Vector3.down * distanceToPoints + transform.position;
-
         //CastFunction(GetPoint1(), GetPoint2());
         //if (CastFunction != räcker till)
         OverlapFunction(GetPoint1(), GetPoint2());
@@ -112,7 +102,7 @@ public class Controller : MonoBehaviour
         {
             transform.position += Vector3.zero;
         }
-        if (hit) //Raycast hit
+        if (hit)
         {
             CalculateVelocity(hitInfo.normal);
             UpdateVelocity();
@@ -161,5 +151,11 @@ public class Controller : MonoBehaviour
     public Vector3 GetPoint2()
     {
         return col.center + Vector3.down * GetDistanceToPoints() + transform.position;
+    }
+    Vector3 GetMovementInput()
+    {
+        input = Vector3.right * Input.GetAxisRaw("Horizontal") + Vector3.forward * Input.GetAxisRaw("Vertical");
+        input = camera.transform.rotation * input;
+        return input;
     }
 }
