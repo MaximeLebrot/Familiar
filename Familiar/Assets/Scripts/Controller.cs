@@ -16,7 +16,7 @@ public class Controller : MonoBehaviour
     public float skinWidth = 0.01f;
     public float gravity = 20.0f;
     public float groundCheckDistance = 0.1f;
-    public bool grounded = false;
+    public bool grounded;
 
     public LayerMask collisionMask;
     public new Camera camera;
