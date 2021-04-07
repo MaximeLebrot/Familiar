@@ -22,7 +22,8 @@ public class PlayerBaseState : State
     {
         this.owner = (Player)owner;
         this.stateMachine = stateMachine;
-        Debug.Log(owner.GetType());
+        Debug.Log("Initialized owner: " + owner.GetType());
+        Debug.Log("Initialized stateMachine: " + stateMachine.GetType());
     }
 
 }

@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Enemy/EnemyAttackState")]
 public class Enemy1AttackState : Enemy1BaseState
 {
     public override void Enter()

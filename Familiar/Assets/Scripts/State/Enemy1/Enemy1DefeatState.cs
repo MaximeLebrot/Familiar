@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Enemy/EnemyDefeatState")]
 public class Enemy1DefeatState : Enemy1BaseState
 {
     public override void Enter()
@@ -13,7 +12,7 @@ public class Enemy1DefeatState : Enemy1BaseState
 
     public override void HandleUpdate()
     {
-        Debug.Log("enemy Defeated");
+        Debug.Log("enemy defeated");
     }
 
     private void Defeated()

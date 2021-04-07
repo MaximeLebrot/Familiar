@@ -14,7 +14,7 @@ public class Enemy1BaseState : State
     public override void Enter()
     {
         Debug.Log("Enemy Entered Base State");
-        player = owner.player.playerController;
+        player = owner.playerController;
         owner.moveSpeed = moveSpeed;
     }
 
@@ -22,7 +22,8 @@ public class Enemy1BaseState : State
     {
         this.owner = (Enemy1)owner;
         this.stateMachine = stateMachine;
-        Debug.Log(owner.GetType());
+        Debug.Log("Initialized owner: " + owner.GetType());
+        Debug.Log("Initialized stateMachine: " + stateMachine.GetType());
     }
 
 }

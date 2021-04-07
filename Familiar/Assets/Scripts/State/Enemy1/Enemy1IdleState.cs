@@ -1,7 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
+[CreateAssetMenu(menuName = "Enemy/EnemyIdleState")]
 public class Enemy1IdleState : Enemy1BaseState
 {
     public override void Enter()
@@ -14,6 +13,8 @@ public class Enemy1IdleState : Enemy1BaseState
     public override void HandleUpdate()
     {
         Debug.Log("enemy idle");
+        if (true)
+            stateMachine.Transition<Enemy1PatrolState>();
     }
 
     private void Idle()
