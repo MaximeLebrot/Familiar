@@ -5,6 +5,8 @@ public class Enemy1PatrolState : Enemy1BaseState
 {
     private bool turn;
     private float patrolSpeed;
+    private float spottingDistance = 50.0f;
+    public LayerMask collisionMask;
     public override void Enter()
     {
         base.Enter();
@@ -16,7 +18,9 @@ public class Enemy1PatrolState : Enemy1BaseState
     {
         Debug.Log("enemy patrolling");
         Patrol();
-        //if (Vector3.Dot(velocity.normalized, vectorToPlayer) && ray(tillSpelaren))
+        //if (Vector3.Dot(owner.vecToPoint2.normalized, owner.vecToPlayer) > 0 && Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, collisionMask))
+        //    stateMachine.Transition<Enemy1AttackState>();
+        //if (Physics.Raycast(owner.transform.position, owner.vecToPlayer.normalized, spottingDistance, collisionMask))
         //    stateMachine.Transition<Enemy1AttackState>();
     }
 

@@ -13,7 +13,7 @@ public class Enemy1IdleState : Enemy1BaseState
     public override void HandleUpdate()
     {
         Debug.Log("enemy idle");
-        if (true)
+        if (true) //if player nära?
             stateMachine.Transition<Enemy1PatrolState>();
     }
 

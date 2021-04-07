@@ -16,6 +16,10 @@ public class PlayerMovingState : PlayerBaseState
             stateMachine.Transition<PlayerIdleState>();
         if (Input.GetKeyDown(KeyCode.Space) && player.grounded)
             stateMachine.Transition<PlayerJumpState>();
+        if (Input.GetKeyDown(KeyCode.E))
+        {
+            stateMachine.Transition<PlayerHoldingState>();
+        }
     }
 
     private void Moving()

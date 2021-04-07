@@ -1,7 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.AI;
 
 public class Player : MonoBehaviour
 {
@@ -9,7 +8,6 @@ public class Player : MonoBehaviour
     public State[] states;
 
     private StateMachine stateMachine;
-
     protected void Awake()
     {
         Debug.Log("Player Awake");
