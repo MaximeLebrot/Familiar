@@ -7,7 +7,7 @@ public class Controller : MonoBehaviour
     public float deceleration = 40.0f;
     public float turnSpeedModifier = 10.0f;
     public float maxSpeed = 7.0f;
-    public float jumpHeight = 10.0f;
+    public float jumpHeight = 15.0f;
 
     public float staticFrictionCoefficient = 0.65f;
     public float kineticFrictionCoefficient = 0.4f;
@@ -19,7 +19,7 @@ public class Controller : MonoBehaviour
     public bool grounded;
 
     public LayerMask collisionMask;
-    public new Camera camera;
+    public Camera cam;
     public Vector3 velocity;
     public Vector3 input;
 
@@ -28,7 +28,8 @@ public class Controller : MonoBehaviour
     void Awake()
     {
         col = GetComponent<CapsuleCollider>();
-        camera = GetComponentInChildren<Camera>();
+        //cam = GetComponentInChildren<Camera>();
+        cam = Camera.main;
     }
 
     void Update()
@@ -47,11 +48,10 @@ public class Controller : MonoBehaviour
 
         Debug.DrawLine(transform.position, transform.position + (Vector3)velocity, Color.green);
 
-        if (Input.GetKeyDown(KeyCode.Space) && grounded)
-        {
-            velocity += new Vector3(0, jumpHeight, 0);
-            grounded = false;
-        }
+        //if (Input.GetKeyDown(KeyCode.Space) && grounded)
+        //{
+        //    Jump();
+        //}
 
         transform.position += (Vector3)(velocity * Time.deltaTime);
         //transform.rotation = Quaternion.Euler(0, camera.transform.rotation.y, 0); // rotera spelaren enligt cameran
@@ -155,7 +155,11 @@ public class Controller : MonoBehaviour
     Vector3 GetMovementInput()
     {
         input = Vector3.right * Input.GetAxisRaw("Horizontal") + Vector3.forward * Input.GetAxisRaw("Vertical");
-        input = camera.transform.rotation * input;
+        input = cam.transform.rotation * input;
         return input;
+    }
+    public void Jump()
+    {
+        //jump
     }
 }
