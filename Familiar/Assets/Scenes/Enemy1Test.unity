@@ -132,7 +132,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 18376066}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Lamp
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -151,8 +151,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1508101067}
-  - {fileID: 1086761833}
-  - {fileID: 190857180}
+  - {fileID: 1819143631}
   - {fileID: 1401252663}
   - {fileID: 1327538026}
   - {fileID: 1803726098}
@@ -172,7 +171,7 @@ GameObject:
   - component: {fileID: 190857183}
   - component: {fileID: 190857182}
   - component: {fileID: 190857181}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg
   m_TagString: Conductor
   m_Icon: {fileID: 0}
@@ -187,11 +186,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 190857179}
   m_LocalRotation: {x: 0.70710635, y: -0, z: -0, w: 0.7071073}
-  m_LocalPosition: {x: 0.028976917, y: 0.56, z: -0.83}
-  m_LocalScale: {x: 0.32786, y: 0.2881, z: 4.17}
+  m_LocalPosition: {x: 0, y: -7.02296, z: 0.42489552}
+  m_LocalScale: {x: 1, y: 0.12398331, z: 14.474141}
   m_Children: []
-  m_Father: {fileID: 18376066}
-  m_RootOrder: 2
+  m_Father: {fileID: 1819143631}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!65 &190857181
 BoxCollider:
@@ -459,6 +458,7 @@ GameObject:
   - component: {fileID: 482650231}
   - component: {fileID: 482650230}
   - component: {fileID: 482650235}
+  - component: {fileID: 482650236}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -593,6 +593,19 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 604f1747927888548b40d725cb35091e, type: 2}
   - {fileID: 11400000, guid: 4bdfc6d2ddb5b184cb9588aaac47a94a, type: 2}
   - {fileID: 11400000, guid: ba5e4359840153346aa28bd88cd0a8ee, type: 2}
+--- !u!114 &482650236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 482650229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c957fbafa8262ef4ea44d250bdbdb606, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carriedObject: {fileID: 0}
 --- !u!1 &512409913
 GameObject:
   m_ObjectHideFlags: 0
@@ -671,10 +684,9 @@ GameObject:
   - component: {fileID: 572405519}
   - component: {fileID: 572405518}
   - component: {fileID: 572405517}
-  - component: {fileID: 572405516}
-  m_Layer: 0
-  m_Name: Control box (Moveable)
-  m_TagString: Conductor
+  m_Layer: 7
+  m_Name: Moveable connector
+  m_TagString: Connector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -691,24 +703,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 18376066}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &572405516
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 572405514}
-  serializedVersion: 2
-  m_Mass: 1
-  m_Drag: 0
-  m_AngularDrag: 0.05
-  m_UseGravity: 1
-  m_IsKinematic: 0
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
 --- !u!65 &572405517
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -811,13 +807,13 @@ GameObject:
   m_Component:
   - component: {fileID: 781903339}
   - component: {fileID: 781903340}
-  m_Layer: 0
+  m_Layer: 1
   m_Name: Spot Light
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &781903339
 Transform:
   m_ObjectHideFlags: 0
@@ -1030,7 +1026,7 @@ GameObject:
   - component: {fileID: 1086761836}
   - component: {fileID: 1086761835}
   - component: {fileID: 1086761834}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Leg
   m_TagString: Conductor
   m_Icon: {fileID: 0}
@@ -1045,11 +1041,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1086761832}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.028976917, y: 2.5833147, z: -1.8173296}
-  m_LocalScale: {x: 0.32786, y: 0.2881, z: 2.3237}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 18376066}
-  m_RootOrder: 1
+  m_Father: {fileID: 1819143631}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1086761834
 BoxCollider:
@@ -1125,8 +1121,8 @@ GameObject:
   - component: {fileID: 1327538029}
   - component: {fileID: 1327538028}
   - component: {fileID: 1327538027}
-  m_Layer: 0
-  m_Name: Control box
+  m_Layer: 7
+  m_Name: Stand
   m_TagString: Conductor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1144,7 +1140,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 18376066}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1327538027
 BoxCollider:
@@ -1436,8 +1432,8 @@ GameObject:
   - component: {fileID: 1401252666}
   - component: {fileID: 1401252665}
   - component: {fileID: 1401252664}
-  m_Layer: 0
-  m_Name: Lamp
+  m_Layer: 7
+  m_Name: Lamp head
   m_TagString: Conductor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1456,7 +1452,7 @@ Transform:
   m_Children:
   - {fileID: 781903339}
   m_Father: {fileID: 18376066}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1401252664
 BoxCollider:
@@ -1530,9 +1526,9 @@ GameObject:
   m_Component:
   - component: {fileID: 1508101067}
   - component: {fileID: 1508101068}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Connective space
-  m_TagString: Connector
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1562,8 +1558,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 1, y: 1, z: 0.6799091}
+  m_Center: {x: 0, y: 0, z: 0.029483203}
 --- !u!1 &1550613810
 GameObject:
   m_ObjectHideFlags: 0
@@ -1839,8 +1835,8 @@ GameObject:
   - component: {fileID: 1803726101}
   - component: {fileID: 1803726100}
   - component: {fileID: 1803726099}
-  m_Layer: 0
-  m_Name: Control box (1)
+  m_Layer: 7
+  m_Name: Switch
   m_TagString: Conductor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1858,7 +1854,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 18376066}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1803726099
 BoxCollider:
@@ -1892,7 +1888,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 82e60e558c8c0834b8b2a9d2ccb492e0, type: 2}
+  - {fileID: 2100000, guid: fd669c41c79fa5647a467fc8fce22e7e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -1922,3 +1918,35 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1803726097}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1819143630
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1819143631}
+  m_Layer: 7
+  m_Name: Legs
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1819143631
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1819143630}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0.028977871, y: 2.5833147, z: -1.8173296}
+  m_LocalScale: {x: 0.32786, y: 0.2881, z: 2.3237}
+  m_Children:
+  - {fileID: 1086761833}
+  - {fileID: 190857180}
+  m_Father: {fileID: 18376066}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
