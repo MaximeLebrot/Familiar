@@ -16,19 +16,6 @@ public class ShootingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //Collider[] colArray = Physics.OverlapBox(connectiveSpace.transform.position, connectiveSpace.size);
-
-        //foreach (Collider c in colArray)
-        //{
-        //    if (c.CompareTag("Connector"))
-        //    {
-        //        spotlight.SetActive(true);
-        //        break;
-        //    }
-
-        //    spotlight.SetActive(false);
-        //}
-
         if (Input.GetButtonDown("Fire2"))
         {
             Grab();
@@ -47,6 +34,8 @@ public class ShootingScript : MonoBehaviour
     {
 
         Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
+
+        GetComponentInChildren<ParticleSystem>().Play();
 
         if (Physics.Raycast(camRay, out RaycastHit hitPoint, 100.0f/*LayerMask*/))
             if (hitPoint.collider.CompareTag("Switch"))
