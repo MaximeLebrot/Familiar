@@ -32,12 +32,15 @@ public class ShootingScript : MonoBehaviour
 
     void Shoot()
     {
-
         Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
+
+        Physics.Raycast(camRay, out RaycastHit hitPoint, 100.0f/*LayerMask*/);
+        Ray playerRay = new Ray(transform.position, (hitPoint.point - transform.position).normalized);
+        Debug.DrawRay(playerRay.origin, playerRay.direction * 100, Color.yellow, 1f);
 
         GetComponentInChildren<ParticleSystem>().Play();
 
-        if (Physics.Raycast(camRay, out RaycastHit hitPoint, 100.0f/*LayerMask*/))
+        if (Physics.Raycast(playerRay, out hitPoint, 100.0f/*LayerMask*/))
             if (hitPoint.collider.CompareTag("Switch"))
             {
                 Collider[] colArray = Physics.OverlapBox(connectiveSpace.transform.position, connectiveSpace.size);

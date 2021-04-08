@@ -27,8 +27,10 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
+            Ray playerRay = new Ray(transform.position, transform.forward);
             Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
             Debug.DrawRay(camRay.origin, camRay.direction*100, Color.magenta, 1f);
+            Debug.DrawRay(playerRay.origin, camRay.direction * 100, Color.yellow, 1f);
             //Ray ray = new Ray(transform.position, getCrosshairFromCamera());
             //Debug.DrawRay(ray.origin, ray.direction * 100, Color.cyan, 2f);
             //Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.height / 2, Screen.width / 2));
