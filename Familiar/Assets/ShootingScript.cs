@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ShootingScript : MonoBehaviour
@@ -37,7 +35,7 @@ public class ShootingScript : MonoBehaviour
             return;
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButton("Fire1"))
         {
             Shoot();
         }
@@ -49,12 +47,8 @@ public class ShootingScript : MonoBehaviour
     {
 
         Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
-        //Ray ray = new Ray(transform.position, getCrosshairFromCamera());
-        //Debug.DrawRay(ray.origin, ray.direction * 100, Color.cyan, 2f);
-        //Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.height / 2, Screen.width / 2));
-        RaycastHit hitPoint;
 
-        if (Physics.Raycast(camRay, out hitPoint, 100.0f/*LayerMask*/))
+        if (Physics.Raycast(camRay, out RaycastHit hitPoint, 100.0f/*LayerMask*/))
             if (hitPoint.collider.CompareTag("Switch"))
             {
                 Collider[] colArray = Physics.OverlapBox(connectiveSpace.transform.position, connectiveSpace.size);
@@ -63,7 +57,7 @@ public class ShootingScript : MonoBehaviour
                 {
                     if (c.CompareTag("Connector"))
                     {
-                        spotlight.SetActive(!spotlight.activeSelf);
+                        hitPoint.collider.gameObject.GetComponent<ElectricalSwitchScript>().OnZap();
                     }
                 }
             }
@@ -102,7 +96,7 @@ public class ShootingScript : MonoBehaviour
         //if (hit.Value.collider.gameObject.CompareTag("Connector"))
         //{
         //Debug.Log("raycast" + hit.ToString());
-        carriedObject = GameObject.FindGameObjectWithTag("Connector");
+        carriedObject = GameObject.FindGameObjectWithTag("Conductor");
             carriedObject.transform.parent = transform;
         //}
 
