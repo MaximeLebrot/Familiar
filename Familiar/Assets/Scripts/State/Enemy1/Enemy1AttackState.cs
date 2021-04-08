@@ -11,7 +11,7 @@ public class Enemy1AttackState : Enemy1BaseState
 
     public override void HandleUpdate()
     {
-        Debug.Log("enemy attacking");
+        //Debug.Log("enemy attacking");
     }
 
     private void Attack()

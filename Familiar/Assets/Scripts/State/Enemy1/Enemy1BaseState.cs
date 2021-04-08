@@ -11,7 +11,7 @@ public class Enemy1BaseState : State
     // Methods
     public override void Enter()
     {
-        Debug.Log("Enemy Entered Base State");
+        //Debug.Log("Enemy Entered Base State");
         player = owner.playerController;
         owner.moveSpeed = moveSpeed;
     }

@@ -11,7 +11,7 @@ public class PlayerHoldingState : PlayerBaseState
 
     public override void HandleUpdate()
     {
-        Debug.Log("player holding");
+        //Debug.Log("player holding");
         Hold();
     }
 
