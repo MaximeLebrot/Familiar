@@ -12,7 +12,7 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void HandleUpdate()
     {
-        Debug.Log("player jumping");
+        //Debug.Log("player jumping");
         if (player.grounded)
             stateMachine.Transition<PlayerMovingState>();
         //falling state?

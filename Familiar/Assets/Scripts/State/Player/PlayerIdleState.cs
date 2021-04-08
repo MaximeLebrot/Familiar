@@ -12,7 +12,7 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void HandleUpdate()
     {
-        Debug.Log("player idle");
+        //Debug.Log("player idle");
         if (player.input.magnitude > 0 || player.velocity.magnitude > 0.1)
             stateMachine.Transition<PlayerMovingState>();
         if (Input.GetKeyDown(KeyCode.Space) && player.grounded)

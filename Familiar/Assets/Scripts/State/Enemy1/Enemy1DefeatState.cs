@@ -12,7 +12,7 @@ public class Enemy1DefeatState : Enemy1BaseState
 
     public override void HandleUpdate()
     {
-        Debug.Log("enemy defeated");
+        //Debug.Log("enemy defeated");
     }
 
     private void Defeated()
