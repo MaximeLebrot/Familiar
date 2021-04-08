@@ -18,6 +18,19 @@ public class ShootingScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //Collider[] colArray = Physics.OverlapBox(connectiveSpace.transform.position, connectiveSpace.size);
+
+        //foreach (Collider c in colArray)
+        //{
+        //    if (c.CompareTag("Connector"))
+        //    {
+        //        spotlight.SetActive(true);
+        //        break;
+        //    }
+
+        //    spotlight.SetActive(false);
+        //}
+
         if (Input.GetButtonDown("Fire2"))
         {
             Grab();
@@ -64,7 +77,7 @@ public class ShootingScript : MonoBehaviour
             carriedObject = null;
             return;
         }
-        //RaycastHit hit;
+        //RaycastHit? hit = null;
         //RaycastHit[] hitArray = Physics.CapsuleCastAll(
         //    point1: controller.GetPoint1(),
         //    point2: controller.GetPoint2(),
@@ -74,7 +87,7 @@ public class ShootingScript : MonoBehaviour
         //    layerMask: controller.collisionMask
         //    );
         //foreach (RaycastHit r in hitArray)
-        //    {
+        //{
         //    if (r.collider.CompareTag("Connector"))
         //    {
         //        hit = r;
@@ -82,16 +95,15 @@ public class ShootingScript : MonoBehaviour
         //    }
         //}
 
-        //if (hit.collider == null)
+        //if (hit == null)
         //    return;
 
 
-        //if (
-        //    && hit.collider.gameObject.CompareTag("Connector"))
+        //if (hit.Value.collider.gameObject.CompareTag("Connector"))
         //{
-        //    Debug.Log("raycast" + hit.ToString());
+        //Debug.Log("raycast" + hit.ToString());
         carriedObject = GameObject.FindGameObjectWithTag("Connector");
-        carriedObject.transform.parent = transform;
+            carriedObject.transform.parent = transform;
         //}
 
     }
