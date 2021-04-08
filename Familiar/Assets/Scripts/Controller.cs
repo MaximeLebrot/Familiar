@@ -19,7 +19,7 @@ public class Controller : MonoBehaviour
     public bool grounded;
 
     public LayerMask collisionMask;
-    public Camera cam;
+    public CameraHandler cam;
     public Vector3 velocity;
     public Vector3 input;
 
@@ -28,8 +28,8 @@ public class Controller : MonoBehaviour
     void Awake()
     {
         col = GetComponent<CapsuleCollider>();
-        //cam = GetComponentInChildren<Camera>();
-        cam = Camera.main;
+        cam = GetComponentInChildren<CameraHandler>();
+        //cam = Camera.main;
     }
 
     void Update()
