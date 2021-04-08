@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 71019900}
   m_Layer: 0
   m_Name: Lamp
-  m_TagString: Untagged
+  m_TagString: Conductor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,7 +155,7 @@ Transform:
   m_Children:
   - {fileID: 1854003076}
   m_Father: {fileID: 1985506639}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &71019900
 BoxCollider:
@@ -233,7 +233,7 @@ GameObject:
   - component: {fileID: 285618243}
   m_Layer: 0
   m_Name: Control box
-  m_TagString: Untagged
+  m_TagString: Conductor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -250,7 +250,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1985506639}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &285618243
 BoxCollider:
@@ -769,7 +769,7 @@ GameObject:
   - component: {fileID: 1452271047}
   m_Layer: 0
   m_Name: Control box (Moveable)
-  m_TagString: Untagged
+  m_TagString: Conductor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -782,11 +782,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1452271045}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0.028976917, y: -1.48, z: 0.66}
+  m_LocalPosition: {x: 0.028976917, y: -0.72, z: 0.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1985506639}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!54 &1452271047
 Rigidbody:
@@ -975,7 +975,7 @@ GameObject:
   - component: {fileID: 1741915395}
   m_Layer: 0
   m_Name: Control box (1)
-  m_TagString: Untagged
+  m_TagString: Conductor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -992,7 +992,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1985506639}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &1741915395
 BoxCollider:
@@ -1176,6 +1176,7 @@ Transform:
   m_LocalPosition: {x: -5.278087, y: -3.072221, z: 0.61854744}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 2084301382}
   - {fileID: 2030308318}
   - {fileID: 2086837059}
   - {fileID: 71019899}
@@ -1199,7 +1200,7 @@ GameObject:
   - component: {fileID: 2030308319}
   m_Layer: 0
   m_Name: Leg
-  m_TagString: Untagged
+  m_TagString: Conductor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1216,7 +1217,7 @@ Transform:
   m_LocalScale: {x: 0.32786, y: 0.2881, z: 2.3237}
   m_Children: []
   m_Father: {fileID: 1985506639}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!65 &2030308319
 BoxCollider:
@@ -1292,7 +1293,7 @@ GameObject:
   - component: {fileID: 2084301381}
   m_Layer: 0
   m_Name: Connective space
-  m_TagString: Untagged
+  m_TagString: Connector
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1305,7 +1306,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084301380}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -1317,12 +1318,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2084301380}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.0636768, y: 0.97, z: -1.72}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.09858751, y: -1.491575, z: 0.64039946}
   m_LocalScale: {x: 1, y: 1, z: 1.78}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_Father: {fileID: 1985506639}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2086837058
 GameObject:
@@ -1338,7 +1339,7 @@ GameObject:
   - component: {fileID: 2086837060}
   m_Layer: 0
   m_Name: Leg
-  m_TagString: Untagged
+  m_TagString: Conductor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1355,7 +1356,7 @@ Transform:
   m_LocalScale: {x: 0.32786, y: 0.2881, z: 6.3583417}
   m_Children: []
   m_Father: {fileID: 1985506639}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
 --- !u!65 &2086837060
 BoxCollider:
