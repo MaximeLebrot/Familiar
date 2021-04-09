@@ -5,9 +5,8 @@ public class Enemy1PatrolState : Enemy1BaseState
 {
     private bool turn;
     private float patrolSpeed;
-    //private float spottingDistance = 50.0f;
+    private float spottingDistance = 50.0f;
 
-    public LayerMask collisionMask;
     public override void Enter()
     {
         base.Enter();
@@ -19,19 +18,35 @@ public class Enemy1PatrolState : Enemy1BaseState
     {
         //Debug.Log("enemy patrolling");
         Patrol();
+        //RaycastHit hit;
+        //if (Physics.Linecast(owner.transform.position, player.transform.position, out hit, owner.collisionMask))
+        //{
+        //    if (hit.collider.CompareTag("Player"))
+        //    {
+        //        stateMachine.Transition<Enemy1AttackState>();
+        //    }
+        //}
+        //Ray rayToPlayer = new Ray(owner.transform.position, owner.vecToPlayer);
+        //Debug.DrawRay(rayToPlayer.origin, rayToPlayer.direction * 100, Color.red);
+        if (!Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask))
+            stateMachine.Transition<Enemy1AttackState>();
+        //if (!Physics.Linecast(owner.transform.position, owner.vecToPlayer, owner.collisionMask))
+        //stateMachine.Transition<Enemy1AttackState>();
         //if (Vector3.Dot(owner.vecToPoint2.normalized, owner.vecToPlayer) > 0 && Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, collisionMask))
-        //    stateMachine.Transition<Enemy1AttackState>();
-        //if (Physics.Raycast(owner.transform.position, owner.vecToPlayer.normalized, spottingDistance, collisionMask))
         //    stateMachine.Transition<Enemy1AttackState>();
     }
 
     private void Patrol()
     {
+        //owner.navMeshAgent.SetDestination(player.transform.position);
+
         if (!turn)
-            owner.transform.position = Vector3.MoveTowards(owner.transform.position, owner.transform2.position, patrolSpeed);
+            owner.navAgent.SetDestination(owner.patrolPoint1.position);
         else
-            owner.transform.position = Vector3.MoveTowards(owner.transform.position, owner.transform1.position, patrolSpeed);
-        if (owner.transform.position == owner.transform1.position || owner.transform.position == owner.transform2.position)
-            turn = !turn;
+            owner.navAgent.SetDestination(owner.patrolPoint2.position);
+        if (turn && owner.transform.position.z == owner.patrolPoint2.position.z)
+            turn = false;
+        else if (!turn && owner.transform.position.z == owner.patrolPoint1.position.z)
+            turn = true;
     }
 }
