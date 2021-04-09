@@ -42,7 +42,7 @@ public class Controller : MonoBehaviour
 
         velocity += Vector3.down * gravity * Time.deltaTime;
 
-        GroundCheck();
+        //GroundCheck();
 
         UpdateVelocity();
 
