@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 0}
+  m_NavMeshData: {fileID: 23800000, guid: 7b777be9e53c40949b4299f3e1858762, type: 2}
 --- !u!1001 &60778597
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -242,7 +242,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &250897265
 BoxCollider:
@@ -337,7 +337,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &413400106
 BoxCollider:
@@ -1318,7 +1318,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 8
   m_IsActive: 1
 --- !u!65 &1604933138
 BoxCollider:
@@ -1410,6 +1410,7 @@ GameObject:
   - component: {fileID: 1630226952}
   - component: {fileID: 1630226951}
   - component: {fileID: 1630226956}
+  - component: {fileID: 1630226957}
   m_Layer: 8
   m_Name: Enemy1
   m_TagString: Untagged
@@ -1505,7 +1506,7 @@ Transform:
   m_GameObject: {fileID: 1630226950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 3.83, z: 0}
-  m_LocalScale: {x: 3, y: 3, z: 3}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 62174991}
   m_RootOrder: 0
@@ -1524,16 +1525,42 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   moveSpeed: 10
   zapped: 0
+  navAgent: {fileID: 0}
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 128
   playerController: {fileID: 0}
   states:
   - {fileID: 11400000, guid: 38ad32f54a897e746853a611c26eaffc, type: 2}
   - {fileID: 11400000, guid: f8947ac6e7f38ca4a86fc10d6df1e06c, type: 2}
   - {fileID: 11400000, guid: 3f43a19d6bdea124a88789a19c8c1dce, type: 2}
-  transform1: {fileID: 719704773}
-  transform2: {fileID: 1550613811}
+  patrolPoint1: {fileID: 719704773}
+  patrolPoint2: {fileID: 1550613811}
   vecToPoint1: {x: 0, y: 3.83, z: -16.5}
   vecToPoint2: {x: 0, y: 3.83, z: 16.5}
   vecToPlayer: {x: 0, y: 0, z: 0}
+--- !u!195 &1630226957
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1630226950}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.5
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 120
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 2
+  m_BaseOffset: 1
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4
 --- !u!1 &1746140309
 GameObject:
   m_ObjectHideFlags: 0

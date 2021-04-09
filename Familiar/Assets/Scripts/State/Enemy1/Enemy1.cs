@@ -1,5 +1,5 @@
 using UnityEngine;
-using UnityEngine.AI; //Navmesh /*https://docs.unity3d.com/Manual/nav-HowTos.html*/
+using UnityEngine.AI; //Navmesh https://docs.unity3d.com/Manual/nav-HowTos.html
 
 public class Enemy1 : MonoBehaviour
 {

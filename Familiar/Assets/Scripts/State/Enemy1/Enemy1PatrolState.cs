@@ -38,8 +38,6 @@ public class Enemy1PatrolState : Enemy1BaseState
 
     private void Patrol()
     {
-        //owner.navMeshAgent.SetDestination(player.transform.position);
-
         if (!turn)
             owner.navAgent.SetDestination(owner.patrolPoint1.position);
         else
