@@ -1,12 +1,12 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy1/Enemy1DefeatState")]
-public class Enemy1DefeatState : Enemy1BaseState
+[CreateAssetMenu(menuName = "Enemy2/Enemy2DefeatState")]
+public class Enemy2DefeatState : Enemy2BaseState
 {
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enemy1 Entered Defeat State");
+        Debug.Log("Enemy2 Entered Defeat State");
         Defeated();
     }
 
@@ -17,6 +17,6 @@ public class Enemy1DefeatState : Enemy1BaseState
 
     private void Defeated()
     {
-
+        Destroy(owner.gameObject);
     }
 }

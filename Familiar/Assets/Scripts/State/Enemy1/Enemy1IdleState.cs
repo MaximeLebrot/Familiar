@@ -1,12 +1,12 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy/EnemyIdleState")]
+[CreateAssetMenu(menuName = "Enemy1/Enemy1IdleState")]
 public class Enemy1IdleState : Enemy1BaseState
 {
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enemy Entered Idle State");
+        Debug.Log("Enemy1 Entered Idle State");
 
     }
 

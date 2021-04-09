@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    public int health = 10;
     [SerializeField, Range(0f, 100f)]
     public float acceleration = 20.0f;
     public float deceleration = 40.0f;
@@ -42,11 +43,11 @@ public class Controller : MonoBehaviour
 
         velocity += Vector3.down * gravity * Time.deltaTime;
 
-        //GroundCheck();
+        GroundCheck();
 
         UpdateVelocity();
-
-        Debug.DrawLine(transform.position, transform.position + (Vector3)velocity, Color.green);
+        //Debug.DrawLine(transform.position, transform.position + input, Color.black);
+        //Debug.DrawLine(transform.position, transform.position + velocity, Color.green); 
 
         //if (Input.GetKeyDown(KeyCode.Space) && grounded)
         //{
@@ -54,22 +55,37 @@ public class Controller : MonoBehaviour
         //}
 
         transform.position += (Vector3)(velocity * Time.deltaTime);
-        transform.forward = cam.transform.forward;
+        //transform.forward = cam.transform.forward;
         //transform.rotation = Quaternion.Euler(0, camera.transform.rotation.y, 0); // rotera spelaren enligt cameran
     }
     void GroundCheck()
     {
-        RaycastHit hitInfo;
-        if (Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, Vector3.down, out hitInfo, velocity.magnitude * Time.deltaTime + skinWidth, collisionMask))
+        RaycastHit hit;
+        if (Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, Vector3.down, out hit, velocity.magnitude * Time.deltaTime + skinWidth, collisionMask))
         {
             grounded = true;
-            velocity += Vector3.ProjectOnPlane(velocity, hitInfo.normal);
+            //velocity += velocity.magnitude * Vector3.ProjectOnPlane(velocity, hit.normal).normalized;
+            velocity += Vector3.ProjectOnPlane(velocity, hit.normal);
             //CalculateVelocity(hitInfo.normal);
         }
         else
         {
             //grounded = false;
         }
+    }
+    private Vector3 SurfaceProjection(Vector3 movement)
+    {
+        Vector3 dir = movement.normalized;
+        RaycastHit hit;
+        if (Physics.Raycast(transform.position, dir, out hit, 3.0f, collisionMask))
+        {
+            Debug.DrawRay(hit.point, hit.normal, Color.green);
+            Vector3 projected = Vector3.ProjectOnPlane(velocity, hit.normal);
+            Debug.DrawRay(hit.point, projected, Color.blue);
+            return projected;
+        }
+        else
+            return Vector3.zero;
     }
     void UpdateVelocity()
     {
@@ -89,6 +105,7 @@ public class Controller : MonoBehaviour
                 col, transform.position, transform.rotation,
                 colliders[i], colliders[i].gameObject.transform.position, colliders[i].gameObject.transform.rotation,
                 out direction, out distance);
+            //velocity += SurfaceProjection(velocity);
             CalculateVelocity(direction);
         }
     }

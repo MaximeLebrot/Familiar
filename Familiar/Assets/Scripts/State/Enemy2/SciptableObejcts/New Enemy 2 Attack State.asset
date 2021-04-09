@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b22dd5ee13b6095458c86a05d6eecfd3, type: 3}
-  m_Name: New Enemy 1 Attack State
+  m_Script: {fileID: 11500000, guid: e00f1e64f049961458707c6132bf7fb7, type: 3}
+  m_Name: New Enemy 2 Attack State
   m_EditorClassIdentifier: 
   moveSpeed: 5
-  grabDistance: 2
+  hitDistance: 2
+  hitCooldown: 500
+  canHit: 0
+  aggroDistance: 10
+  spottingDistance: 10

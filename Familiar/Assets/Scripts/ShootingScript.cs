@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class ShootingScript : MonoBehaviour
 {
+    private bool canFire = true;
+    //fireCooldown
+
     Controller controller;
     private GameObject carriedObject;
     public GameObject connector;
@@ -22,9 +25,13 @@ public class ShootingScript : MonoBehaviour
             return;
         }
 
-        if (Input.GetButton("Fire1"))
+        if (Input.GetButton("Fire1") && canFire)
         {
             Shoot();
+        }
+        if (Input.GetButtonUp("Fire1"))
+        {
+            canFire = true;
         }
 
 
@@ -32,6 +39,7 @@ public class ShootingScript : MonoBehaviour
 
     void Shoot()
     {
+        canFire = false;
         Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
 
         Physics.Raycast(camRay, out RaycastHit hitPoint, 100.0f/*LayerMask*/);
@@ -41,6 +49,7 @@ public class ShootingScript : MonoBehaviour
         GetComponentInChildren<ParticleSystem>().Play();
 
         if (Physics.Raycast(playerRay, out hitPoint, 100.0f/*LayerMask*/))
+        {
             if (hitPoint.collider.CompareTag("Switch"))
             {
                 Collider[] colArray = Physics.OverlapBox(connectiveSpace.transform.position, connectiveSpace.size);
@@ -53,6 +62,25 @@ public class ShootingScript : MonoBehaviour
                     }
                 }
             }
+            //else if (hitPoint.collider.CompareTag("Enemy2"))
+            //{
+            //    Enemy2 enemy2;
+            //    enemy2 = hitPoint.collider.gameObject.GetComponent<Enemy2>();
+            //    enemy2.zapped = true;
+            //}            
+            else if (hitPoint.collider.CompareTag("Enemy2"))
+            {
+                Enemy2 enemy2;
+                enemy2 = hitPoint.collider.gameObject.GetComponent<Enemy2>();
+                enemy2.health--;
+            }
+            else if (hitPoint.collider.CompareTag("Enemy1"))
+            {
+                Enemy1 enemy1;
+                enemy1 = hitPoint.collider.gameObject.GetComponent<Enemy1>();
+                enemy1.zapped = true;
+            }
+        }
     }
 
     void Grab()

@@ -1,6 +1,6 @@
 using UnityEngine;
 
-[CreateAssetMenu(menuName = "Enemy/EnemyPatrolState")]
+[CreateAssetMenu(menuName = "Enemy1/Enemy1PatrolState")]
 public class Enemy1PatrolState : Enemy1BaseState
 {
     private bool turn;
@@ -10,7 +10,7 @@ public class Enemy1PatrolState : Enemy1BaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enemy Entered Patrol State");
+        Debug.Log("Enemy1 Entered Patrol State");
         patrolSpeed = moveSpeed * Time.deltaTime;
     }
 
@@ -30,6 +30,8 @@ public class Enemy1PatrolState : Enemy1BaseState
         //Debug.DrawRay(rayToPlayer.origin, rayToPlayer.direction * 100, Color.red);
         if (!Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask))
             stateMachine.Transition<Enemy1AttackState>();
+        if (owner.zapped)
+            stateMachine.Transition<Enemy2DefeatState>();
         //if (!Physics.Linecast(owner.transform.position, owner.vecToPlayer, owner.collisionMask))
         //stateMachine.Transition<Enemy1AttackState>();
         //if (Vector3.Dot(owner.vecToPoint2.normalized, owner.vecToPlayer) > 0 && Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, collisionMask))
