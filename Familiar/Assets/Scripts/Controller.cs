@@ -7,7 +7,7 @@ public class Controller : MonoBehaviour
     public float deceleration = 40.0f;
     public float turnSpeedModifier = 10.0f;
     public float maxSpeed = 7.0f;
-    public float jumpHeight = 15.0f;
+    public float jumpHeight = 10.0f;
 
     public float staticFrictionCoefficient = 0.65f;
     public float kineticFrictionCoefficient = 0.4f;
@@ -42,9 +42,9 @@ public class Controller : MonoBehaviour
 
         velocity += Vector3.down * gravity * Time.deltaTime;
 
-        UpdateVelocity();
+        GroundCheck();
 
-        //GroundCheck();
+        UpdateVelocity();
 
         Debug.DrawLine(transform.position, transform.position + (Vector3)velocity, Color.green);
 
@@ -60,17 +60,15 @@ public class Controller : MonoBehaviour
     void GroundCheck()
     {
         RaycastHit hitInfo;
-        bool hit = Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, Vector3.down, out hitInfo, velocity.magnitude * Time.deltaTime + skinWidth, collisionMask);
-        if (hit)
+        if (Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, Vector3.down, out hitInfo, velocity.magnitude * Time.deltaTime + skinWidth, collisionMask))
         {
             grounded = true;
-            Vector3 temp = Vector3.ProjectOnPlane(velocity, hitInfo.normal.normalized)/*.normalized*/;
-            velocity = temp;
-            CalculateVelocity(hitInfo.normal);
+            velocity += Vector3.ProjectOnPlane(velocity, hitInfo.normal);
+            //CalculateVelocity(hitInfo.normal);
         }
         else
         {
-            grounded = false;
+            //grounded = false;
         }
     }
     void UpdateVelocity()
@@ -161,6 +159,7 @@ public class Controller : MonoBehaviour
     }
     public void Jump()
     {
-        //jump
+        velocity += new Vector3(0, jumpHeight, 0);
+        grounded = false;
     }
 }
