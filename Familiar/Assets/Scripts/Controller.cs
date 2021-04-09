@@ -55,8 +55,8 @@ public class Controller : MonoBehaviour
         //}
 
         transform.position += (Vector3)(velocity * Time.deltaTime);
-        //transform.forward = cam.transform.forward;
-        //transform.rotation = Quaternion.Euler(0, camera.transform.rotation.y, 0); // rotera spelaren enligt cameran
+        transform.forward = cam.transform.forward;
+        //transform.rotation = Quaternion.Euler(0, cam.transform.rotation.y, 0); // rotera spelaren enligt cameran
     }
     void GroundCheck()
     {
@@ -90,7 +90,7 @@ public class Controller : MonoBehaviour
     void UpdateVelocity()
     {
         //CastFunction(GetPoint1(), GetPoint2());
-        //if (CastFunction != r‰cker till)
+        //if (CastFunction != r√§cker till)
         OverlapFunction(GetPoint1(), GetPoint2());
     }
     void OverlapFunction(Vector3 point1, Vector3 point2)
