@@ -55,7 +55,7 @@ public class Controller : MonoBehaviour
         //}
 
         transform.position += (Vector3)(velocity * Time.deltaTime);
-        //transform.forward = cam.transform.forward;
+        transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
         //transform.rotation = Quaternion.Euler(0, camera.transform.rotation.y, 0); // rotera spelaren enligt cameran
     }
     void GroundCheck()
