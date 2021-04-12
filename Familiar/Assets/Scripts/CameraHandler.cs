@@ -27,9 +27,7 @@ public class CameraHandler : MonoBehaviour
         offset = CheckCollision() + playerController.transform.position;
 
         if (firstPerson)
-        {
             offset -= transform.rotation * cameraOffset;
-        }
 
         transform.position = offset;
     }

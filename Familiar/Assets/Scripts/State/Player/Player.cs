@@ -25,21 +25,24 @@ public class Player : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            Ray playerRay = new Ray(transform.position, transform.forward);
-            Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
-            Debug.DrawRay(camRay.origin, camRay.direction*100, Color.magenta, 1f);
-            Debug.DrawRay(playerRay.origin, camRay.direction * 100, Color.yellow, 1f);
+            //Ray playerRay = new Ray(transform.position, transform.forward);
+
+            //Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
+            //Debug.DrawRay(camRay.origin, camRay.direction*100, Color.magenta, 1f);
+
+            //Debug.DrawRay(playerRay.origin, camRay.direction * 100, Color.yellow, 1f);
             //Ray ray = new Ray(transform.position, getCrosshairFromCamera());
             //Debug.DrawRay(ray.origin, ray.direction * 100, Color.cyan, 2f);
             //Ray ray = Camera.main.ScreenPointToRay(new Vector2(Screen.height / 2, Screen.width / 2));
-            RaycastHit hitPoint;
+            //RaycastHit hitPoint;
 
-            if (Physics.Raycast(camRay, out hitPoint, 100.0f/*LayerMask*/))
-            {
+            //if (Physics.Raycast(camRay, out hitPoint, 100.0f/*LayerMask*/))
+            //{
 
 
-                //Ray playerRay = new Ray(transform.position, hitPoint.point);
-                //Debug.DrawRay(playerRay.origin, playerRay.direction * 100, Color.green, 1f);
+            //    Ray playerRay = new Ray(transform.position, hitPoint.point);
+            //    Debug.DrawRay(playerRay.origin, playerRay.direction * 100, Color.green, 1f);
+
                 //RaycastHit hit;
                 //if (Physics.Raycast(playerRay, out hit, 100.0f/*LayerMask*/))
                 //{
@@ -48,7 +51,7 @@ public class Player : MonoBehaviour
                 //        Debug.Log("Spelaren har lign of sight");
                 //    }
                 //}
-            }
+            //}
 
             //RaycastHit hit;
             //if (Physics.Raycast(Camera.main.transform.position, Vector3.one * 0.5f, out hit, 50.0f, playerController.collisionMask))

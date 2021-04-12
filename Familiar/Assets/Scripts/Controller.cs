@@ -78,9 +78,7 @@ public class Controller : MonoBehaviour
             //    velocity = Vector3.ProjectOnPlane(velocity, hit.normal);
         }
         else
-        {
             grounded = false;
-        }
     }
     private Vector3 SurfaceProjection(Vector3 movement)
     {
