@@ -61,7 +61,7 @@ public class Controller : MonoBehaviour
     void GroundCheck()
     {
         RaycastHit hit;
-        if (Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, Vector3.down, out hit, velocity.magnitude * Time.deltaTime + skinWidth, collisionMask))
+        if (Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, Vector3.down, out hit, /*velocity.magnitude * Time.deltaTime + */skinWidth + groundCheckDistance, collisionMask))
         {
             grounded = true;
             //velocity += Vector3.ProjectOnPlane(transform.position, hit.normal) + Vector3.Dot(transform.position, hit.normal) * hit.normal;
@@ -71,8 +71,8 @@ public class Controller : MonoBehaviour
             //velocity = Vector3.ProjectOnPlane(velocity, hit.normal);
             //Debug.DrawLine(transform.position, planeProjection, Color.yellow);
             //CalculateVelocity(hitInfo.normal);
-            //float Angle = 90 - Mathf.Abs(Vector3.Angle(transform.position, hit.normal));//by using this you obtain a value which is max 90 degrees and minimum 0.
-            //velocity *= 0.5f + (Angle / 90f) / 2;//then you divide the float Angle by 90 so you obtain values max 1 and min 0, then you divide this by 0.5f to obtain values 0.5 (0.5 + 0 = 0.5 --> the character will walk), or 1 (0.5 + 0.5 = 1 --> run in the third person character animator).
+            //float Angle = 90 - Mathf.Abs(Vector3.Angle(transform.position, hit.normal));
+            //velocity *= 0.5f + (Angle / 90f) / 2;
             //float planeAngle = Vector3.Angle(transform.forward, hit.normal);
             //if (planeAngle > 110)
             //    velocity = Vector3.ProjectOnPlane(velocity, hit.normal);
