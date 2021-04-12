@@ -32,7 +32,7 @@ public class Enemy1AttackState : Enemy1BaseState
     {
         Debug.DrawLine(owner.transform.position, owner.vecToPlayer, Color.red);
 
-        owner.navAgent.SetDestination(player.transform.position);
+        owner.navAgent.SetDestination(/*player.transform.position*/owner.vecToPlayer);
     }
 
     private void GrabPlayer()

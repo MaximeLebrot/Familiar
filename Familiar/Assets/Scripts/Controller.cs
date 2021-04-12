@@ -45,7 +45,7 @@ public class Controller : MonoBehaviour
 
         GroundCheck();
 
-        UpdateVelocity();
+        UpdateVelocity(); 
         //Debug.DrawLine(transform.position, transform.position + input, Color.black);
         //Debug.DrawLine(transform.position, transform.position + velocity, Color.green); 
 
@@ -64,13 +64,22 @@ public class Controller : MonoBehaviour
         if (Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, Vector3.down, out hit, velocity.magnitude * Time.deltaTime + skinWidth, collisionMask))
         {
             grounded = true;
+            //velocity += Vector3.ProjectOnPlane(transform.position, hit.normal) + Vector3.Dot(transform.position, hit.normal) * hit.normal;
             //velocity += velocity.magnitude * Vector3.ProjectOnPlane(velocity, hit.normal).normalized;
-            velocity += Vector3.ProjectOnPlane(velocity, hit.normal);
+            //Vector3 planeProjection = Vector3.ProjectOnPlane(velocity, hit.normal);
+            //velocity += Vector3.ProjectOnPlane(velocity, hit.normal);
+            //velocity = Vector3.ProjectOnPlane(velocity, hit.normal);
+            //Debug.DrawLine(transform.position, planeProjection, Color.yellow);
             //CalculateVelocity(hitInfo.normal);
+            //float Angle = 90 - Mathf.Abs(Vector3.Angle(transform.position, hit.normal));//by using this you obtain a value which is max 90 degrees and minimum 0.
+            //velocity *= 0.5f + (Angle / 90f) / 2;//then you divide the float Angle by 90 so you obtain values max 1 and min 0, then you divide this by 0.5f to obtain values 0.5 (0.5 + 0 = 0.5 --> the character will walk), or 1 (0.5 + 0.5 = 1 --> run in the third person character animator).
+            //float planeAngle = Vector3.Angle(transform.forward, hit.normal);
+            //if (planeAngle > 110)
+            //    velocity = Vector3.ProjectOnPlane(velocity, hit.normal);
         }
         else
         {
-            //grounded = false;
+            grounded = false;
         }
     }
     private Vector3 SurfaceProjection(Vector3 movement)
@@ -89,13 +98,13 @@ public class Controller : MonoBehaviour
     }
     void UpdateVelocity()
     {
-        //CastFunction(GetPoint1(), GetPoint2());
+        CastFunction();
         //if (CastFunction != räcker till)
-        OverlapFunction(GetPoint1(), GetPoint2());
+        //OverlapFunction();
     }
-    void OverlapFunction(Vector3 point1, Vector3 point2)
+    void OverlapFunction()
     {
-        Collider[] colliders = Physics.OverlapCapsule(point1, point2, col.radius, collisionMask);
+        Collider[] colliders = Physics.OverlapCapsule(GetPoint1(), GetPoint2(), col.radius, collisionMask);
         Vector3 direction;
         float distance;
 
@@ -103,16 +112,17 @@ public class Controller : MonoBehaviour
         {
             Physics.ComputePenetration(
                 col, transform.position, transform.rotation,
-                colliders[i], colliders[i].gameObject.transform.position, colliders[i].gameObject.transform.rotation,
+                colliders[i], colliders[i].gameObject.transform.position, 
+                colliders[i].gameObject.transform.rotation,
                 out direction, out distance);
             //velocity += SurfaceProjection(velocity);
             CalculateVelocity(direction);
         }
     }
-    void CastFunction(Vector3 point1, Vector3 point2)
+    void CastFunction()
     {
         RaycastHit hitInfo;
-        bool hit = Physics.CapsuleCast(point1, point2, col.radius, velocity.normalized, out hitInfo, velocity.magnitude * Time.deltaTime + skinWidth, collisionMask);
+        bool hit = Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, velocity.normalized, out hitInfo, velocity.magnitude * Time.deltaTime + skinWidth, collisionMask);
 
         if (velocity.magnitude < 0.001f)
         {
@@ -129,12 +139,12 @@ public class Controller : MonoBehaviour
             //velocity *= Mathf.Pow(airResistance, Time.deltaTime);
         }
     }
-    void Friction(Vector3 normalForce)
+    void CalculateVelocity(Vector3 normal)
     {
-        if (velocity.magnitude < normalForce.magnitude * staticFrictionCoefficient)
-            velocity = Vector3.zero;
-        else
-            velocity -= velocity.normalized * normalForce.magnitude * kineticFrictionCoefficient;
+        Vector3 normalForce = NormalForce(velocity, normal/*.normalized*/);
+        velocity += normalForce;
+        Friction(normalForce);
+        velocity *= Mathf.Pow(airResistance, Time.deltaTime);
     }
     Vector3 NormalForce(Vector3 velocity, Vector3 normal)
     {
@@ -149,12 +159,12 @@ public class Controller : MonoBehaviour
             projection = Vector3.Dot(velocity, normal) * normal;
         return -projection;
     }
-    void CalculateVelocity(Vector3 normal)
+    void Friction(Vector3 normalForce)
     {
-        Vector3 normalForce = NormalForce(velocity, normal/*.normalized*/);
-        velocity += normalForce;
-        Friction(normalForce);
-        velocity *= Mathf.Pow(airResistance, Time.deltaTime);
+        if (velocity.magnitude < normalForce.magnitude * staticFrictionCoefficient)
+            velocity = Vector3.zero;
+        else
+            velocity -= velocity.normalized * normalForce.magnitude * kineticFrictionCoefficient;
     }
     float GetDistanceToPoints()
     {
