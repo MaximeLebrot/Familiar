@@ -9,6 +9,7 @@ public class CameraHandler : MonoBehaviour
     public Controller playerController;
     public Vector3 offset;
     public bool firstPerson;
+    public float noClipCamera = 0.5f;
 
     private Vector3 cameraOffset = new Vector3(0, 2, -7);
     private void Awake()
@@ -38,7 +39,7 @@ public class CameraHandler : MonoBehaviour
         if (hit)
         {
             Debug.DrawLine(playerController.transform.position, offset.normalized * hitInfo.distance, Color.blue);
-            return offset.normalized * hitInfo.distance;
+            return offset.normalized * (hitInfo.distance - noClipCamera);
         }
         else
             return offset;

@@ -13,7 +13,7 @@ public class PlayerBaseState : State
     // Methods
     public override void Enter()
     {
-        Debug.Log("Entered Base State");
+        //Debug.Log("Entered Base State");
         player = owner.playerController;
         player.acceleration = moveSpeed;
     }
@@ -22,8 +22,8 @@ public class PlayerBaseState : State
     {
         this.owner = (Player)owner;
         this.stateMachine = stateMachine;
-        Debug.Log("Initialized owner: " + owner.GetType());
-        Debug.Log("Initialized stateMachine: " + stateMachine.GetType());
+        //Debug.Log("Initialized owner: " + owner.GetType());
+        //Debug.Log("Initialized stateMachine: " + stateMachine.GetType());
     }
 
 }

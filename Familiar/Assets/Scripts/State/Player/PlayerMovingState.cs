@@ -3,10 +3,12 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player/PlayerMovingState")]
 public class PlayerMovingState : PlayerBaseState
 {
+    private float gravity = 20.0f;
     public override void Enter()
     {
         base.Enter();
         Debug.Log("Entered Moving State");
+        player.gravity = gravity;
     }
 
     public override void HandleUpdate()

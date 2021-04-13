@@ -54,16 +54,17 @@ public class Controller : MonoBehaviour
         //    Jump();
         //}
 
-        transform.position += (Vector3)(velocity * Time.deltaTime);
+        transform.position += velocity * Time.deltaTime;
         transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
         //transform.rotation = Quaternion.Euler(0, camera.transform.rotation.y, 0); // rotera spelaren enligt cameran
     }
     void GroundCheck()
     {
         RaycastHit hit;
-        if (Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, Vector3.down, out hit, /*velocity.magnitude * Time.deltaTime + */skinWidth + groundCheckDistance, collisionMask))
+        if (Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, Vector3.down, out hit, /*velocity.magnitude * Time.deltaTime + */groundCheckDistance - skinWidth, collisionMask))
         {
             grounded = true;
+            //Debug.Log(hit.distance);
             //velocity += Vector3.ProjectOnPlane(transform.position, hit.normal) + Vector3.Dot(transform.position, hit.normal) * hit.normal;
             //velocity += velocity.magnitude * Vector3.ProjectOnPlane(velocity, hit.normal).normalized;
             //Vector3 planeProjection = Vector3.ProjectOnPlane(velocity, hit.normal);
@@ -110,7 +111,7 @@ public class Controller : MonoBehaviour
         {
             Physics.ComputePenetration(
                 col, transform.position, transform.rotation,
-                colliders[i], colliders[i].gameObject.transform.position, 
+                colliders[i], colliders[i].gameObject.transform.position,
                 colliders[i].gameObject.transform.rotation,
                 out direction, out distance);
             //velocity += SurfaceProjection(velocity);
