@@ -11,7 +11,7 @@ public class Player : MonoBehaviour
 
     protected void Awake()
     {
-        Debug.Log("Player Awake");
+        //Debug.Log("Player Awake");
         playerController = GetComponent<Controller>();
         stateMachine = new StateMachine(this, states);
     }

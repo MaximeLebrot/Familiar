@@ -15,7 +15,8 @@ public class PlayerJumpState : PlayerBaseState
     public override void HandleUpdate()
     {
         //Debug.Log("player jumping");
-        if (player.grounded && Physics.Raycast(owner.transform.position, Vector3.down, player.skinWidth + player.groundCheckDistance))
+        Debug.Log(player.grounded);
+        if (player.grounded)
             stateMachine.Transition<PlayerMovingState>();
         if (player.grounded && player.input == Vector3.zero) 
             stateMachine.Transition<PlayerIdleState>();
@@ -25,6 +26,5 @@ public class PlayerJumpState : PlayerBaseState
     private void Jump()
     {
         player.Jump();
-        player.grounded = false;
     }
 }
