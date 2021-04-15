@@ -27,7 +27,7 @@ public class ShootingScript : MonoBehaviour
 
         if (Input.GetButton("Fire1") && canFire)
         {
-            Shoot();
+            //Shoot();
         }
         if (Input.GetButtonUp("Fire1"))
         {
@@ -37,7 +37,7 @@ public class ShootingScript : MonoBehaviour
 
     }
 
-    void Shoot()
+    public void Shoot()
     {
         canFire = false;
         Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);

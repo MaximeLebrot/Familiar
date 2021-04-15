@@ -6,7 +6,7 @@ public class PlayerBaseState : State
 {
     [SerializeField] protected float moveSpeed;
 
-    protected Player owner;
+    protected AbilitySystem.Player owner;
     protected Controller player;
     protected StateMachine stateMachine;
 
@@ -20,7 +20,7 @@ public class PlayerBaseState : State
 
     public override void Initialize(StateMachine stateMachine, object owner)
     {
-        this.owner = (Player)owner;
+        this.owner = (AbilitySystem.Player)owner;
         this.stateMachine = stateMachine;
         //Debug.Log("Initialized owner: " + owner.GetType());
         //Debug.Log("Initialized stateMachine: " + stateMachine.GetType());

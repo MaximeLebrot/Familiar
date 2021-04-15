@@ -147,6 +147,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b97dfa33e4b6c4286753f331f3b990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  moveSpeed: 0
+  StartingAbilities:
+  - {fileID: 11400000, guid: 5e8a410668693464692a8a1559dc5371, type: 2}
+  AttributeSet:
+  - Attribute: {fileID: 11400000, guid: 63014a05a18099344ae3e29ffa3faf9d, type: 2}
+    Value: 10
+  - Attribute: {fileID: 11400000, guid: 1a5652777b296ff40a5c825eb42fb612, type: 2}
+    Value: 10
   playerController: {fileID: 0}
   states:
   - {fileID: 11400000, guid: c231c56574eb0a045b6fb4de48ade43e, type: 2}
@@ -290,6 +298,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
   firstPerson: 0
+  noClipCamera: 0.5
 --- !u!1001 &8266650046398247486
 PrefabInstance:
   m_ObjectHideFlags: 0
