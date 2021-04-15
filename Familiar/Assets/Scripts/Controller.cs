@@ -30,7 +30,6 @@ public class Controller : MonoBehaviour
     {
         col = GetComponent<CapsuleCollider>();
         cam = GetComponentInChildren<CameraHandler>();
-        //cam = Camera.main;
     }
 
     void Update()
@@ -49,14 +48,8 @@ public class Controller : MonoBehaviour
         //Debug.DrawLine(transform.position, transform.position + input, Color.black);
         //Debug.DrawLine(transform.position, transform.position + velocity, Color.green); 
 
-        //if (Input.GetKeyDown(KeyCode.Space) && grounded)
-        //{
-        //    Jump();
-        //}
-
         transform.position += velocity * Time.deltaTime;
         transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
-        //transform.rotation = Quaternion.Euler(0, camera.transform.rotation.y, 0); // rotera spelaren enligt cameran
     }
     void GroundCheck()
     {

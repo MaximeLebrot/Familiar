@@ -91,34 +91,34 @@ public class ShootingScript : MonoBehaviour
             carriedObject = null;
             return;
         }
-        //RaycastHit? hit = null;
-        //RaycastHit[] hitArray = Physics.CapsuleCastAll(
-        //    point1: controller.GetPoint1(),
-        //    point2: controller.GetPoint2(),
-        //    radius: GetComponent<CapsuleCollider>().radius,
-        //    direction: transform.forward,
-        //    maxDistance: GetComponent<CapsuleCollider>().radius * 3.0f,
-        //    layerMask: controller.collisionMask
-        //    );
-        //foreach (RaycastHit r in hitArray)
-        //{
-        //    if (r.collider.CompareTag("Connector"))
-        //    {
-        //        hit = r;
-        //        break;
-        //    }
-        //}
 
-        //if (hit == null)
-        //    return;
+        int hitIndex = -1;
 
+        RaycastHit[] hitArray = Physics.CapsuleCastAll(
+            point1: controller.GetPoint1(),
+            point2: controller.GetPoint2(),
+            radius: GetComponent<CapsuleCollider>().radius,
+            direction: transform.forward,
+            maxDistance: GetComponent<CapsuleCollider>().radius * 3.0f,
+            layerMask: controller.collisionMask
+            );
 
-        //if (hit.Value.collider.gameObject.CompareTag("Connector"))
-        //{
-        //Debug.Log("raycast" + hit.ToString());
-        carriedObject = GameObject.FindGameObjectWithTag("Conductor");
-            carriedObject.transform.parent = transform;
-        //}
+        if (hitArray.Length == 0)
+            return;
 
+        for (int i = 0; i < hitArray.Length; i++)
+        {
+            if (hitArray[i].collider.CompareTag("Moveable"))
+            {
+                hitIndex = i;
+                break;
+            }
+        }
+
+        if (hitIndex < 0)
+            return;
+
+        carriedObject = hitArray[hitIndex].collider.gameObject;
+        carriedObject.transform.parent = transform;
     }
 }
