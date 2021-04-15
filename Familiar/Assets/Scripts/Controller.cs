@@ -61,7 +61,8 @@ public class Controller : MonoBehaviour
     void GroundCheck()
     {
         RaycastHit hit;
-        if (Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, Vector3.down, out hit, /*velocity.magnitude * Time.deltaTime + */groundCheckDistance - skinWidth, collisionMask))
+        if (Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, 
+            Vector3.down, out hit, groundCheckDistance - skinWidth, collisionMask))
         {
             grounded = true;
             //Debug.Log(hit.distance);

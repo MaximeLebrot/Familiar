@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy1/Enemy1AttackState")]
 public class Enemy1AttackState : Enemy1BaseState
 {
-    public float grabDistance = 2.0f;
+    public float grabDistance;
     public override void Enter()
     {
         base.Enter();
@@ -30,7 +30,7 @@ public class Enemy1AttackState : Enemy1BaseState
 
     private void Attack()
     {
-        Debug.DrawLine(owner.transform.position, owner.vecToPlayer, Color.red);
+        //Debug.DrawLine(owner.transform.position, owner.vecToPlayer, Color.red);
 
         owner.navAgent.SetDestination(/*player.transform.position*/owner.vecToPlayer);
     }
