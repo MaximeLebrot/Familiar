@@ -4,6 +4,7 @@ using UnityEngine;
 public class Enemy1AttackState : Enemy1BaseState
 {
     public float grabDistance;
+    public float spottingDistance;
     public override void Enter()
     {
         base.Enter();
@@ -13,7 +14,9 @@ public class Enemy1AttackState : Enemy1BaseState
 
     public override void HandleUpdate()
     {
-        if (Physics.Raycast(owner.transform.position, owner.vecToPlayer, 50.0f, owner.collisionMask))
+        //if (Physics.Raycast(owner.transform.position, owner.vecToPlayer, 50.0f, owner.collisionMask))
+        //    stateMachine.Transition<Enemy1PatrolState>();
+        if (Vector3.Distance(owner.transform.position, player.transform.position) > spottingDistance)
             stateMachine.Transition<Enemy1PatrolState>();
         else if (Vector3.Distance(owner.transform.position, player.transform.position) < grabDistance)
         {

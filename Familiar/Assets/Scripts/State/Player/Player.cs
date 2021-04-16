@@ -8,6 +8,7 @@ namespace AbilitySystem
         public float moveSpeed;
 
         public List<GameplayAbility> StartingAbilities;
+        public List<GameplayEffect> StartingEffects;
         public List<GameplayAttributeSetEntry> AttributeSet;
 
         public Controller playerController;
@@ -24,6 +25,8 @@ namespace AbilitySystem
             AbilitySystem = gameObject.AddComponent<GameplayAbilitySystem>();
             AbilitySystem.RegisterAttributeSet(AttributeSet);
             StartingAbilities.ForEach(a => AbilitySystem.GrantAbility(a));
+            AbilitySystem.RegisterAttributeCalculation(GameplayAttributes.PlayerHealth, FireDamageCalculation);
+            StartingEffects.ForEach(e => AbilitySystem.ApplyEffectToSelf(e));
         }
 
         private void Update()
@@ -37,6 +40,18 @@ namespace AbilitySystem
                     Debug.LogWarning("Failed to activate Zap ability");
                 }
             }
+        }
+
+        public float FireDamageCalculation(float value)
+        {
+            float? resistance = AbilitySystem.GetAttributeValue(GameplayAttributes.FireResistance);
+
+            if (resistance.HasValue)
+            {
+                value *= (1.0f - resistance.Value);
+            }
+
+            return value;
         }
     }
 }

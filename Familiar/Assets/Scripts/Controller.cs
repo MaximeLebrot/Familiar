@@ -91,9 +91,9 @@ public class Controller : MonoBehaviour
     }
     void UpdateVelocity()
     {
-        CastFunction();
+        //CastFunction();
         //if (CastFunction != räcker till)
-        //OverlapFunction();
+        OverlapFunction();
     }
     void OverlapFunction()
     {

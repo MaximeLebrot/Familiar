@@ -10,10 +10,11 @@ namespace AbilitySystem
         ShootingScript shoot;
         public override void Activate(GameplayAbilitySystem Owner)
         {
+            //if (CanActivate(Owner))
             Commit(Owner); 
             shoot = player.GetComponent<ShootingScript>();
             shoot.Shoot();
-            Debug.Log(Owner.GetAttributeValue(Cost.Attribute.GetType()));
+            Debug.Log(Owner.GetAttributeValue(Cost.attribute.GetType()));
            
             //doZap
         }

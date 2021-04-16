@@ -26,9 +26,9 @@ public class Enemy1 : MonoBehaviour
 
     private void Update()
     {
-        //vecToPlayer = playerController.transform.position*2 - transform.position;
         vecToPlayer = playerController.transform.position;
         stateMachine.HandleUpdate();
-        Debug.DrawLine(transform.position, vecToPlayer, Color.red);
+        Debug.DrawLine(transform.position + new Vector3(0, 5, 0), vecToPlayer, Color.red);
+        Debug.DrawLine(transform.position + new Vector3(0, 5, 0), navAgent.velocity, Color.cyan);
     }
 }

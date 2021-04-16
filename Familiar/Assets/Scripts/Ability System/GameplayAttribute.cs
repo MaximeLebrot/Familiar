@@ -22,5 +22,8 @@ namespace AbilitySystem
         /* EXAMPLE */
         public static Type PlayerHealth => typeof(PlayerHealthAttribute);
         public static Type PlayerMana => typeof(PlayerManaAttribute);
+        public static Type FireResistance => typeof(FireResistanceAttribute);
     }
+
+    public class FireResistanceAttribute : GameplayAttribute { }
 }
