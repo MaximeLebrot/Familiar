@@ -21,6 +21,8 @@ namespace AbilitySystem
             {
                 Owner.TryApplyAttributeChange(Cost.attribute.GetType(), -Cost.value);
             }
+            else
+                return;
         }
         public bool CanActivate(GameplayAbilitySystem Owner)
         {
