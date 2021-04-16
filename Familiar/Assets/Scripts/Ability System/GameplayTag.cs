@@ -9,10 +9,8 @@ namespace AbilitySystem
     {
         public bool Is(GameplayTag Other) => Other.GetType().IsAssignableFrom(GetType());
     }
-
     public static class GameplayTags
     {
-        /* EXAMPLE */
         public static Type ZapAbilityTag => typeof(ZapAbilityTag);
     }
 }

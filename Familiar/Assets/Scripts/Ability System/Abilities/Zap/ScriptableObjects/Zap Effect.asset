@@ -9,11 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4b014a9159d2c614a99a8cbb25b630a9, type: 3}
+  m_Script: {fileID: 11500000, guid: cdd8c3e69b5dee5439d7033fd622f56b, type: 3}
   m_Name: Zap Effect
   m_EditorClassIdentifier: 
   attribute: {fileID: 11400000, guid: 1a5652777b296ff40a5c825eb42fb612, type: 2}
-  value: 2
-  Duration: 1
-  appliedTags: []
-  blockedByTags: []
+  value: 10
+  duration: 0
+  effectType: 0
+  appliedTags:
+  - {fileID: 11400000, guid: 481de631fbdf5594f83c3c3d685c8faf, type: 2}
+  blockedByTags:
+  - {fileID: 11400000, guid: 1ea219e6a8066d74b8edefea7ea70997, type: 2}

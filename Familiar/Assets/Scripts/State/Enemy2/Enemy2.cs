@@ -19,7 +19,7 @@ public class Enemy2 : MonoBehaviour
 
     protected void Awake()
     {
-        Debug.Log("Enemy2 Awake");
+        idlePosition = transform;
         playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<Controller>(); //get player controller
         navAgent = GetComponent<NavMeshAgent>(); //get nav mesh
         stateMachine = new StateMachine(this, states);
@@ -27,8 +27,8 @@ public class Enemy2 : MonoBehaviour
 
     private void Update()
     {
-        vecToPlayer = playerController.transform.position * 2 - transform.position;
+        vecToPlayer = playerController.transform.position;
         stateMachine.HandleUpdate();
-        //Debug.DrawLine(transform.position, vecToPlayer, Color.red);
+        Debug.DrawLine(transform.position, vecToPlayer, Color.red);
     }
 }

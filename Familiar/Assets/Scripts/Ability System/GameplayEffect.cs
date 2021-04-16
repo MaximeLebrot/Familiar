@@ -16,10 +16,11 @@ namespace AbilitySystem
         public GameplayAttribute attribute;
         public float value;
 
-        public float Duration;
-        EffectDurationType EffectType;
+        public float duration;
+        public EffectDurationType effectType;
 
         public List<GameplayTag> appliedTags;
         public List<GameplayTag> blockedByTags;
+        //public List<GameplayTag> requiredTags;
     }
 }

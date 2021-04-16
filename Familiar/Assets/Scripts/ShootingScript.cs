@@ -27,7 +27,7 @@ public class ShootingScript : MonoBehaviour
 
         if (Input.GetButton("Fire1") && canFire)
         {
-            //Shoot();
+            Shoot();
         }
         if (Input.GetButtonUp("Fire1"))
         {

@@ -20,8 +20,8 @@ public class Enemy2BaseState : State
     {
         this.owner = (Enemy2)owner;
         this.stateMachine = stateMachine;
-        Debug.Log("Initialized owner: " + owner.GetType());
-        Debug.Log("Initialized stateMachine: " + stateMachine.GetType());
+        //Debug.Log("Initialized owner: " + owner.GetType());
+        //Debug.Log("Initialized stateMachine: " + stateMachine.GetType());
     }
 
 }

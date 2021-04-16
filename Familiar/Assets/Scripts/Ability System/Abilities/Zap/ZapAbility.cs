@@ -8,13 +8,17 @@ namespace AbilitySystem
     public class ZapAbility : GameplayAbility
     {
         ShootingScript shoot;
+        GameplayAbilitySystem otherAbilitySystem;
         public override void Activate(GameplayAbilitySystem Owner)
         {
             //if (CanActivate(Owner))
+            //wait for anim
             Commit(Owner); 
             shoot = player.GetComponent<ShootingScript>();
             shoot.Shoot();
-            Debug.Log(Owner.GetAttributeValue(Cost.attribute.GetType()));
+            //otherAbilitySystem = hit.GetComponent<GameplayAbilitySystem>(); ray hit eller liknande
+            otherAbilitySystem.ApplyEffectToSelf(appliedEffect);
+            Debug.Log(Owner.GetAttributeValue(cost.attribute.GetType()));
            
             //doZap
         }

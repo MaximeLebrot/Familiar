@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AbilitySystem
 {
-    [CreateAssetMenu(menuName = "GameplayEffects/Silence")]
-    public class SilenceTag : GameplayTag
+    [CreateAssetMenu(menuName = "GameplayEffects/Electrocuted")]
+    public class ElectrocutedTag : GameplayTag
     { }
 }

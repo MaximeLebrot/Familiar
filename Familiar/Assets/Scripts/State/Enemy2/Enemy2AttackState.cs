@@ -24,8 +24,8 @@ public class Enemy2AttackState : Enemy2BaseState
             hitCooldown = 0;
             canHit = true;
         }
-        if (Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask) 
-            || Vector3.Distance(owner.transform.position, player.transform.position) > aggroDistance)
+        if (/*Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask) 
+            || */Vector3.Distance(owner.transform.position, player.transform.position) > aggroDistance)
             stateMachine.Transition<Enemy2IdleState>();
         else if (Vector3.Distance(owner.transform.position, player.transform.position) < hitDistance)
             hitPlayer();
