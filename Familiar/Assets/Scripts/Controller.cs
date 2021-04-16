@@ -180,6 +180,6 @@ public class Controller : MonoBehaviour
     public void Jump()
     {
         velocity += new Vector3(0, jumpHeight, 0);
-        grounded = false;
+        //grounded = false;
     }
 }

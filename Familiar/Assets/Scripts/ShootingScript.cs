@@ -99,8 +99,7 @@ public class ShootingScript : MonoBehaviour
             point2: controller.GetPoint2(),
             radius: GetComponent<CapsuleCollider>().radius,
             direction: transform.forward,
-            maxDistance: GetComponent<CapsuleCollider>().radius * 3.0f,
-            layerMask: controller.collisionMask
+            maxDistance: GetComponent<CapsuleCollider>().radius * 3.0f
             );
 
         if (hitArray.Length == 0)

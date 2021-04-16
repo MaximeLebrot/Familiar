@@ -4,6 +4,8 @@ using UnityEngine;
 public class PlayerJumpState : PlayerBaseState
 {
     private float gravity = 30.0f;
+    //private bool hasDoubleJumped = false;
+
     public override void Enter()
     {
         Debug.Log("Entered Jump State");
@@ -16,6 +18,7 @@ public class PlayerJumpState : PlayerBaseState
     {
         //Debug.Log("player jumping");
         Debug.Log(player.grounded);
+
         if (player.grounded)
             stateMachine.Transition<PlayerMovingState>();
         if (player.grounded && player.input == Vector3.zero) 
