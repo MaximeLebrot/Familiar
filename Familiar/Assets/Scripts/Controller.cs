@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
+    private const float collisionEpsilon = 0.001f;
     public int health = 10;
     [SerializeField, Range(0f, 100f)]
     public float acceleration = 20.0f;
@@ -16,8 +17,7 @@ public class Controller : MonoBehaviour
 
     public float skinWidth = 0.01f;
     public float gravity = 20.0f;
-    public float groundCheckDistance = 0.1f;
-    public bool grounded;
+    private const float groundCheckDistance = 0.1f;
 
     public LayerMask collisionMask;
     public CameraHandler cam;
@@ -25,6 +25,22 @@ public class Controller : MonoBehaviour
     public Vector3 input;
 
     public CapsuleCollider col;
+
+    //public Vector3 Gravity
+    //{
+    //    get
+    //    {
+    //        return gravity;
+    //    }
+    //}
+
+    public float GroundCheckMargin
+    {
+        get
+        {
+            return skinWidth + groundCheckDistance;
+        }
+    }
 
     void Awake()
     {
@@ -35,46 +51,35 @@ public class Controller : MonoBehaviour
     void Update()
     {
         input = GetMovementInput();
-        if (input.magnitude > 1)
-            velocity += input.normalized * acceleration * Time.deltaTime;
-        else
-            velocity += input * acceleration * Time.deltaTime;
 
+        velocity += input.normalized * acceleration * Time.deltaTime;
         velocity += Vector3.down * gravity * Time.deltaTime;
 
-        GroundCheck();
-
-        UpdateVelocity(); 
+        UpdateVelocity();
         //Debug.DrawLine(transform.position, transform.position + input, Color.black);
         //Debug.DrawLine(transform.position, transform.position + velocity, Color.green); 
 
         transform.position += velocity * Time.deltaTime;
         transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
     }
-    void GroundCheck()
+
+    public bool IsGrounded
     {
-        RaycastHit hit;
-        if (Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, 
-            Vector3.down, out hit, groundCheckDistance - skinWidth, collisionMask))
+        get
         {
-            grounded = true;
-            //Debug.Log(hit.distance);
-            //velocity += Vector3.ProjectOnPlane(transform.position, hit.normal) + Vector3.Dot(transform.position, hit.normal) * hit.normal;
-            //velocity += velocity.magnitude * Vector3.ProjectOnPlane(velocity, hit.normal).normalized;
-            //Vector3 planeProjection = Vector3.ProjectOnPlane(velocity, hit.normal);
-            //velocity += Vector3.ProjectOnPlane(velocity, hit.normal);
-            //velocity = Vector3.ProjectOnPlane(velocity, hit.normal);
-            //Debug.DrawLine(transform.position, planeProjection, Color.yellow);
-            //CalculateVelocity(hitInfo.normal);
-            //float Angle = 90 - Mathf.Abs(Vector3.Angle(transform.position, hit.normal));
-            //velocity *= 0.5f + (Angle / 90f) / 2;
-            //float planeAngle = Vector3.Angle(transform.forward, hit.normal);
-            //if (planeAngle > 110)
-            //    velocity = Vector3.ProjectOnPlane(velocity, hit.normal);
+            return (
+                Physics.CapsuleCast(
+                    point1: GetPoint1(),
+                    point2: GetPoint2(),
+                    radius: col.radius,
+                    direction: Vector3.down,
+                    maxDistance: GroundCheckMargin,
+                    layerMask: collisionMask
+                    )
+                );
         }
-        else
-            grounded = false;
     }
+
     private Vector3 SurfaceProjection(Vector3 movement)
     {
         Vector3 dir = movement.normalized;
@@ -89,38 +94,52 @@ public class Controller : MonoBehaviour
         else
             return Vector3.zero;
     }
+
     void UpdateVelocity()
     {
         //CastFunction();
         //if (CastFunction != räcker till)
         OverlapFunction();
     }
+
     void OverlapFunction()
     {
         Collider[] colliders = Physics.OverlapCapsule(GetPoint1(), GetPoint2(), col.radius, collisionMask);
-        Vector3 direction;
-        float distance;
 
         for (int i = 0; i < colliders.Length; i++)
         {
             Physics.ComputePenetration(
-                col, transform.position, transform.rotation,
-                colliders[i], colliders[i].gameObject.transform.position,
-                colliders[i].gameObject.transform.rotation,
-                out direction, out distance);
+                colliderA: col,
+                positionA: transform.position,
+                rotationA: transform.rotation,
+                colliderB: colliders[i],
+                positionB: colliders[i].transform.position,
+                rotationB: colliders[i].transform.rotation,
+                direction: out Vector3 direction,
+                distance: out float distance);
             //velocity += SurfaceProjection(velocity);
             CalculateVelocity(direction);
         }
     }
+
     void CastFunction()
     {
         RaycastHit hitInfo;
-        bool hit = Physics.CapsuleCast(GetPoint1(), GetPoint2(), col.radius, velocity.normalized, out hitInfo, velocity.magnitude * Time.deltaTime + skinWidth, collisionMask);
+        bool hit = Physics.CapsuleCast(
+            point1: GetPoint1(),
+            point2: GetPoint2(),
+            radius: col.radius,
+            direction: velocity.normalized,
+            hitInfo: out hitInfo,
+            maxDistance: velocity.magnitude * Time.deltaTime + skinWidth,
+            layerMask: collisionMask
+            );
 
-        if (velocity.magnitude < 0.001f)
+        if (velocity.magnitude < collisionEpsilon)
         {
             transform.position += Vector3.zero;
         }
+
         if (hit)
         {
             CalculateVelocity(hitInfo.normal);
@@ -132,6 +151,7 @@ public class Controller : MonoBehaviour
             //velocity *= Mathf.Pow(airResistance, Time.deltaTime);
         }
     }
+
     void CalculateVelocity(Vector3 normal)
     {
         Vector3 normalForce = NormalForce(velocity, normal/*.normalized*/);
@@ -139,6 +159,7 @@ public class Controller : MonoBehaviour
         Friction(normalForce);
         velocity *= Mathf.Pow(airResistance, Time.deltaTime);
     }
+
     Vector3 NormalForce(Vector3 velocity, Vector3 normal)
     {
         Vector3 projection;
@@ -152,6 +173,7 @@ public class Controller : MonoBehaviour
             projection = Vector3.Dot(velocity, normal) * normal;
         return -projection;
     }
+
     void Friction(Vector3 normalForce)
     {
         if (velocity.magnitude < normalForce.magnitude * staticFrictionCoefficient)
@@ -159,27 +181,32 @@ public class Controller : MonoBehaviour
         else
             velocity -= velocity.normalized * normalForce.magnitude * kineticFrictionCoefficient;
     }
+
     float GetDistanceToPoints()
     {
-        return col.height / 2 - col.radius;
+        return col.height * 0.5f - col.radius;
     }
+
     public Vector3 GetPoint1()
     {
         return col.center + Vector3.up * GetDistanceToPoints() + transform.position;
     }
+
     public Vector3 GetPoint2()
     {
         return col.center + Vector3.down * GetDistanceToPoints() + transform.position;
     }
+
     Vector3 GetMovementInput()
     {
         input = Vector3.right * Input.GetAxisRaw("Horizontal") + Vector3.forward * Input.GetAxisRaw("Vertical");
         input = cam.transform.rotation * input;
         return input;
     }
+
     public void Jump()
     {
-        velocity += new Vector3(0, jumpHeight, 0);
+        velocity += new Vector3(0.0f, jumpHeight, 0.0f);
         //grounded = false;
     }
 }
