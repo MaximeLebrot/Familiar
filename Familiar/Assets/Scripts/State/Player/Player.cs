@@ -36,10 +36,10 @@ namespace AbilitySystem
 
             if (Input.GetButtonDown("Fire1"))
             {
-                //if (!abilitySystem.TryActivateAbilityByTag(GameplayTags.ZapAbilityTag))
-                //{
-                //    Debug.LogWarning("Failed to activate Zap ability");
-                //}
+                if (!abilitySystem.TryActivateAbilityByTag(GameplayTags.ZapAbilityTag))
+                {
+                    Debug.LogWarning("Failed to activate Zap ability");
+                }
             }
         }
 

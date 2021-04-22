@@ -17,7 +17,7 @@ namespace AbilitySystem
             shoot = player.GetComponent<ShootingScript>();
             shoot.Shoot();
             //otherAbilitySystem = hit.GetComponent<GameplayAbilitySystem>(); ray hit eller liknande
-            otherAbilitySystem.ApplyEffectToSelf(appliedEffect);
+            //otherAbilitySystem.ApplyEffectToSelf(appliedEffect);
             Debug.Log(Owner.GetAttributeValue(cost.attribute.GetType()));
            
             //doZap

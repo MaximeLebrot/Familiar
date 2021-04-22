@@ -24,8 +24,8 @@ namespace AbilitySystem
                 //owner.TryApplyEffectToSelf();
                 owner.TryApplyAttributeChange(cost.attribute.GetType(), -cost.value);
             }
-            if (cooldown != null)
-                owner.ApplyEffectToSelf(cooldown);
+            //if (cooldown != null)
+                //owner.ApplyEffectToSelf(cooldown);
         }
         public bool CanActivate(GameplayAbilitySystem owner)
         {

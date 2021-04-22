@@ -96,8 +96,10 @@ namespace AbilitySystem
                         value = ((Func<float, float>)Calc)(value);
                     }
                 }
+                //Debug.Log(attributeSet[attribute]);
                 attributeSet[attribute] += value;
-                onAttributeChanged[attribute]?.Invoke(attributeSet[attribute]);
+                Debug.Log(value);
+                //onAttributeChanged[attribute]?.Invoke(attributeSet[attribute]);
             }
         }
 
