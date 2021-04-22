@@ -3,7 +3,7 @@ using System;
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AbilitySystem
+namespace AbilitySystem_V3
 {
     public abstract class GameplayAttribute : ScriptableObject
     {
@@ -14,18 +14,16 @@ namespace AbilitySystem
     [Serializable]
     public struct GameplayAttributeSetEntry
     {
-        public GameplayAttribute attribute;
-        public float value;
+        public GameplayAttribute Attribute;
+        public float Value;
     }
 
     public static class GameplayAttributes
     {
-        /* EXAMPLE */
-        public static Type PlayerHealth => typeof(PlayerHealthAttribute);
-        public static Type PlayerMana => typeof(PlayerManaAttribute);
         public static Type FireResistance => typeof(FireResistanceAttribute);
-        public static Type ShockResistance => typeof(ShockResistanceAttribute);
+        public static Type Health => typeof(HealthAttribute);
     }
-    public class ShockResistanceAttribute : GameplayAttribute { }
+
     public class FireResistanceAttribute : GameplayAttribute { }
+    public class HealthAttribute : GameplayAttribute { }
 }

@@ -6,7 +6,7 @@ namespace AbilitySystem
 {
     public abstract class GameplayAbility : ScriptableObject 
     {
-        public Player player;
+        protected Player player;
         public GameplayTag abilityTag;
         public GameplayEffect appliedEffect;
         public GameplayEffect cost;
@@ -23,6 +23,7 @@ namespace AbilitySystem
             {
                 //owner.TryApplyEffectToSelf();
                 owner.TryApplyAttributeChange(cost.attribute.GetType(), -cost.value);
+                Debug.Log("Applied AttributeChange");
             }
             //if (cooldown != null)
                 //owner.ApplyEffectToSelf(cooldown);

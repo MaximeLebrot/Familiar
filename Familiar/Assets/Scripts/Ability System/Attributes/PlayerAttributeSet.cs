@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -14,7 +15,7 @@ namespace AbilitySystem
             //{
             //    new GameplayAttributeSetEntry
             //    {
-            //        PlayerHealth, value = 10.0f
+            //        PlayerHealthAttribute, value = 10.0f
             //    }
             //};
         }
