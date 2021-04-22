@@ -56,8 +56,6 @@ public class Controller : MonoBehaviour
         velocity += Vector3.down * gravity * Time.deltaTime;
 
         UpdateVelocity();
-        //Debug.DrawLine(transform.position, transform.position + input, Color.black);
-        //Debug.DrawLine(transform.position, transform.position + velocity, Color.green); 
 
         transform.position += velocity * Time.deltaTime;
         transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
