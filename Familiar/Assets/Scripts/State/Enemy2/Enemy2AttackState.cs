@@ -3,7 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy2/Enemy2AttackState")]
 public class Enemy2AttackState : Enemy2BaseState
 {
-    public float hitDistance = 2.0f;
+    public float hitDistance;
     public int hitCooldown;
     public bool canHit;
     public float aggroDistance = 10.0f;

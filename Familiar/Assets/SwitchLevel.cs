@@ -1,14 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public class Door : MonoBehaviour
+public class SwitchLevel : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Moveable")
         {
-            Destroy(gameObject);
+            SceneManager.LoadScene("Level 2");
         }
     }
 }

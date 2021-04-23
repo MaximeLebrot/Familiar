@@ -52,10 +52,10 @@ namespace AbilitySystem
                     Debug.LogWarning("Failed to activate Zap ability");
                 }
             }
-            if (Input.GetButtonDown("Fire2"))
-            {
-                abilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerMana, 10);
-            }
+            //if (Input.GetButtonDown("Fire2"))
+            //{
+            //    abilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerMana, 10);
+            //}
         }
         public float ShockDamageCalculation(float value)
         {
@@ -69,6 +69,7 @@ namespace AbilitySystem
         }
         public void Die()
         {
+            Debug.Log("ded");
             //Destroy(this.gameObject);
         }
         public GameplayAbilitySystem GetAbilitySystem()
