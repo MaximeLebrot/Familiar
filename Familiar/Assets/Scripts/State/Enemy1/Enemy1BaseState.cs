@@ -5,14 +5,16 @@ public class Enemy1BaseState : State
     [SerializeField] protected float moveSpeed;
 
     protected Enemy1 owner;
-    protected Controller player;
+    protected Controller playerController;
+    protected AbilitySystem.Player playerStats;
     protected StateMachine stateMachine;
 
     // Methods
     public override void Enter()
     {
         //Debug.Log("Enemy1 Entered Base State");
-        player = owner.playerController;
+        playerController = owner.player.GetComponent<Controller>();
+        playerStats = owner.player.GetComponent<AbilitySystem.Player>();
         owner.navAgent.speed = moveSpeed;
     }
 

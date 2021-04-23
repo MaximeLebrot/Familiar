@@ -857,6 +857,8 @@ MonoBehaviour:
   points: []
   destPoint: 0
   vecToPlayer: {x: 0, y: 0, z: 0}
+  playerRespawnPoint: {fileID: 1567601251}
+  playerRespawnLocation: {x: 0, y: 0, z: 0}
   navAgent: {fileID: 0}
 --- !u!195 &126852977
 NavMeshAgent:
@@ -1408,6 +1410,8 @@ MonoBehaviour:
   - {fileID: 1323121701}
   destPoint: 0
   vecToPlayer: {x: 0, y: 0, z: 0}
+  playerRespawnPoint: {fileID: 1567601251}
+  playerRespawnLocation: {x: 0, y: 0, z: 0}
   navAgent: {fileID: 0}
 --- !u!195 &194332955
 NavMeshAgent:
@@ -2119,8 +2123,8 @@ Transform:
   m_LocalPosition: {x: -54, y: 0, z: 13}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 612897582}
   - {fileID: 1649828147}
+  - {fileID: 612897582}
   m_Father: {fileID: 1958235708}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -4161,7 +4165,7 @@ Transform:
   - {fileID: 1856564451}
   - {fileID: 1494112234}
   m_Father: {fileID: 285158621}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &619120366
 GameObject:
@@ -11467,6 +11471,36 @@ Transform:
   m_Father: {fileID: 251421194}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
+--- !u!1 &1567601251
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1567601252}
+  m_Layer: 0
+  m_Name: Respawn Point
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1567601252
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1567601251}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -72.59, y: 4.9, z: -35.99}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 17
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1575216634
 GameObject:
   m_ObjectHideFlags: 0
@@ -11955,7 +11989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1543216753092788333, guid: ca014879105e38940824f2aeca60623c, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 1543216753092788333, guid: ca014879105e38940824f2aeca60623c, type: 3}
       propertyPath: m_LocalScale.x
@@ -13339,6 +13373,8 @@ MonoBehaviour:
   - {fileID: 1494112234}
   destPoint: 0
   vecToPlayer: {x: 0, y: 0, z: 0}
+  playerRespawnPoint: {fileID: 1567601251}
+  playerRespawnLocation: {x: 0, y: 0, z: 0}
   navAgent: {fileID: 0}
 --- !u!54 &1757191204
 Rigidbody:
@@ -16982,7 +17018,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3331382728121950262, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
       propertyPath: m_Intensity
-      value: 47.746483
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 3331382728121950262, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
       propertyPath: m_UseColorTemperature

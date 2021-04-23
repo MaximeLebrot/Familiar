@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -17,9 +18,9 @@ public class Enemy1AttackState : Enemy1BaseState
     {
         //if (Physics.Raycast(owner.transform.position, owner.vecToPlayer, 50.0f, owner.collisionMask))
         //    stateMachine.Transition<Enemy1PatrolState>();
-        if (Vector3.Distance(owner.transform.position, player.transform.position) > spottingDistance)
+        if (Vector3.Distance(owner.transform.position, owner.player.transform.position) > spottingDistance)
             stateMachine.Transition<Enemy1PatrolState>();
-        else if (Vector3.Distance(owner.transform.position, player.transform.position) < grabDistance)
+        else if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < grabDistance)
         {
             GrabPlayer();
             owner.navAgent.ResetPath();
@@ -41,8 +42,10 @@ public class Enemy1AttackState : Enemy1BaseState
 
     private void GrabPlayer()
     {
-        player.velocity = Vector3.zero;
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        playerController.velocity = Vector3.zero;
+        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        //player.transform.position = new Vector3(-72.5899963f, 4.9f, -36f);
+        playerStats.Respawn(owner.playerRespawnLocation, 1.0f);
         //load level eller respawn checkpoint
     }
 }

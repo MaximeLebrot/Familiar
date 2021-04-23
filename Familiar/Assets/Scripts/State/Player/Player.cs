@@ -76,5 +76,14 @@ namespace AbilitySystem
         {
             return abilitySystem;
         }
+        public void Respawn(Vector3 target, float delay)
+        {
+            StartCoroutine(WaitForRespawn(target, delay));
+        }
+        public IEnumerator WaitForRespawn(Vector3 target, float delay)
+        {
+            yield return new WaitForSeconds(delay);
+            gameObject.transform.position = target;
+        }
     }
 }
