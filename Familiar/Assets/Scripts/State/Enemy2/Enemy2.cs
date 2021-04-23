@@ -9,7 +9,7 @@ public class Enemy2 : MonoBehaviour
 
     public NavMeshAgent navAgent;
     public LayerMask collisionMask;
-    public Controller playerController;
+    public GameObject player;
     public Transform idlePosition;
     public State[] states;
 
@@ -20,14 +20,14 @@ public class Enemy2 : MonoBehaviour
     protected void Awake()
     {
         idlePosition = transform;
-        playerController = GameObject.FindGameObjectWithTag("Player").GetComponent<Controller>(); //get player controller
-        navAgent = GetComponent<NavMeshAgent>(); //get nav mesh
+        player = GameObject.FindGameObjectWithTag("Player");
+        navAgent = GetComponent<NavMeshAgent>();
         stateMachine = new StateMachine(this, states);
     }
 
     private void Update()
     {
-        vecToPlayer = playerController.transform.position;
+        vecToPlayer = player.transform.position;
         stateMachine.HandleUpdate();
         Debug.DrawLine(transform.position, vecToPlayer, Color.red);
     }

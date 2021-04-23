@@ -67,6 +67,10 @@ namespace AbilitySystem
             }
             return value;
         }
+        public void Die()
+        {
+            //Destroy(this.gameObject);
+        }
         public GameplayAbilitySystem GetAbilitySystem()
         {
             return abilitySystem;

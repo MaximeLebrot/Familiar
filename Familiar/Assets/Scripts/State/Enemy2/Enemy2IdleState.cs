@@ -16,7 +16,7 @@ public class Enemy2IdleState : Enemy2BaseState
     public override void HandleUpdate()
     {
         Idle();
-        if (Vector3.Distance(owner.transform.position, player.transform.position) < aggroDistance 
+        if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < aggroDistance 
             /*&& !Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask)*/)
             stateMachine.Transition<Enemy2AttackState>();
         if (owner.health == 0)

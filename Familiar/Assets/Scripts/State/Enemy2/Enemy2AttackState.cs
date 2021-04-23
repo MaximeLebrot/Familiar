@@ -8,6 +8,7 @@ public class Enemy2AttackState : Enemy2BaseState
     public bool canHit;
     public float aggroDistance = 10.0f;
     public float spottingDistance = 50.0f;
+    public float damage;
     public override void Enter()
     {
         base.Enter();
@@ -25,10 +26,10 @@ public class Enemy2AttackState : Enemy2BaseState
             canHit = true;
         }
         if (/*Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask) 
-            || */Vector3.Distance(owner.transform.position, player.transform.position) > aggroDistance)
+            || */Vector3.Distance(owner.transform.position, owner.player.transform.position) > aggroDistance)
             stateMachine.Transition<Enemy2IdleState>();
-        else if (Vector3.Distance(owner.transform.position, player.transform.position) < hitDistance)
-            hitPlayer();
+        else if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < hitDistance)
+            HitPlayer();
         else
             Attack();
         if (owner.health == 0)
@@ -42,13 +43,23 @@ public class Enemy2AttackState : Enemy2BaseState
     {
         Debug.DrawLine(owner.transform.position, owner.vecToPlayer, Color.red);
 
-        owner.navAgent.SetDestination(player.transform.position);
+        owner.navAgent.SetDestination(owner.player.transform.position);
     }
-    private void hitPlayer()
+    private void HitPlayer()
     {
         owner.navAgent.ResetPath();
         if (canHit)
-            player.health--;
+            DamagePlayer();
+            //owner.player.health--;
         canHit = false;
+    }
+    private void DamagePlayer()
+    {
+        playerStats.GetAbilitySystem().TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, -damage);
+        Debug.Log("Health = " + playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth));
+        if (playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) <= 0)
+        {
+            playerStats.Die();
+        }
     }
 }
