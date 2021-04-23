@@ -10,7 +10,7 @@ public class HealthPickup : PickupItem
         if (other.tag == "Player")
         {
             Debug.Log("Health Collected");
-            playerStats.attributeSet.Find(AbilitySystem.GameplayAttributes.PlayerHealth);
+            //playerStats.attributeSet.Find(AbilitySystem.GameplayAttributes.PlayerHealth);
             refillHealth = -(playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) - 10);
             playerStats.GetAbilitySystem().TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerMana, (float)refillHealth);
             Destroy(this.gameObject);
