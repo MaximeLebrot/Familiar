@@ -96,10 +96,8 @@ namespace AbilitySystem
                         value = ((Func<float, float>)Calc)(value);
                     }
                 }
-                //Debug.Log(attributeSet[attribute]);
                 attributeSet[attribute] += value;
-                Debug.Log(value);
-                //onAttributeChanged[attribute]?.Invoke(attributeSet[attribute]);
+                //onAttributeChanged[attribute]?.Invoke(attributeSet[attribute]); //callback/event system för t.ex ui
             }
         }
 
@@ -122,6 +120,8 @@ namespace AbilitySystem
             GameplayAbility ability;
             if (grantedAbilities.TryGetValue(abilityTag, out ability))
             {
+                if (!ability.CanActivate(this))
+                    return false;
                 if (!ability.blockedByTags.Any(Tag => activeTags.Contains(Tag)))
                     ability.Activate(this);
                 return true;
@@ -136,6 +136,11 @@ namespace AbilitySystem
         {
             yield return new WaitForSeconds(effect.duration);
             // TODO: Remove gameplay tags added by this effect
+            foreach (GameplayTag tag in effect.appliedTags)
+            {
+                if (activeTags.Contains(tag))
+                    activeTags.Remove(tag);
+            }
             activeEffects[effect]--;
             if (activeEffects[effect] <= 0)
             {

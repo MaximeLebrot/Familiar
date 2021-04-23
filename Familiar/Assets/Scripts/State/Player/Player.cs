@@ -52,18 +52,10 @@ namespace AbilitySystem
                     Debug.LogWarning("Failed to activate Zap ability");
                 }
             }
-            Debug.Log(abilitySystem.GetAttributeValue(GameplayAttributes.PlayerMana));
-        }
-
-        public float FireDamageCalculation(float value)
-        {
-            float? resistance = abilitySystem.GetAttributeValue(GameplayAttributes.FireResistance);
-
-            if (resistance.HasValue)
+            if (Input.GetButtonDown("Fire2"))
             {
-                value *= (1.0f - resistance.Value);
+                abilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerMana, 10);
             }
-            return value;
         }
         public float ShockDamageCalculation(float value)
         {
@@ -75,17 +67,9 @@ namespace AbilitySystem
             }
             return value;
         }
-        public float ReloadCalculation(float Value)
+        public GameplayAbilitySystem GetAbilitySystem()
         {
-            float? Ammo = abilitySystem.GetAttributeValue(GameplayAttributes.FireResistance); // 9mmAmmoAttribute
-
-            if (!Ammo.HasValue)
-            {
-                return 0.0f;
-            }
-            Value = Mathf.Min(Value, Ammo.Value);
-
-            return Value;
+            return abilitySystem;
         }
     }
 }

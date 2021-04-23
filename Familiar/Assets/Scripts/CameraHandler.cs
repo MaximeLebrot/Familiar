@@ -23,6 +23,7 @@ public class CameraHandler : MonoBehaviour
         CameraVec.y += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
         CameraVec.x = Mathf.Clamp(CameraVec.x, maxAngleDown, maxAngleUp);
         transform.rotation = Quaternion.Euler(CameraVec.x, CameraVec.y, 0);
+        //transform.rotation = Quaternion.Euler(CameraVec);
         
         offset = transform.rotation * cameraOffset;
         offset = CheckCollision() + playerController.transform.position;

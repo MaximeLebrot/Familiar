@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -10,20 +11,27 @@ public class Controller : MonoBehaviour
     public float turnSpeedModifier = 10.0f;
     public float maxSpeed = 7.0f;
     public float jumpHeight = 10.0f;
+    public bool grounded;
 
+    [Range(0.0f, 1.0f)]
     public float staticFrictionCoefficient = 0.65f;
+    [Range(0.0f, 1.0f)]
     public float kineticFrictionCoefficient = 0.4f;
+    [Range(0.0f, 1.0f)]
     public float airResistance = 0.2f;
 
     public float skinWidth = 0.01f;
     public float gravity = 20.0f;
+    public float collisionMargin;
+    public float slopeAngleFactor;
     private const float groundCheckDistance = 0.1f;
 
     public LayerMask collisionMask;
-    public CameraHandler cam;
     public Vector3 velocity;
     public Vector3 input;
+    public RaycastHit hit;
 
+    public CameraHandler cam;
     public CapsuleCollider col;
 
     //public Vector3 Gravity
@@ -50,15 +58,33 @@ public class Controller : MonoBehaviour
 
     void Update()
     {
-        input = GetMovementInput();
+        hit = GroundCheck();
+        input = GetMovementInput(hit);
 
-        velocity += input.normalized * acceleration * Time.deltaTime;
+        velocity += input * acceleration * Time.deltaTime;
         velocity += Vector3.down * gravity * Time.deltaTime;
+
+        velocity *= Mathf.Pow(airResistance, Time.deltaTime);
 
         UpdateVelocity();
 
         transform.position += velocity * Time.deltaTime;
         transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
+    }
+
+    private RaycastHit GroundCheck()
+    {
+        //RaycastHit hit;
+        grounded = Physics.CapsuleCast(
+            GetPoint1(),
+            GetPoint2(),
+            col.radius,
+            Vector3.down,   
+            out hit,
+            groundCheckDistance + collisionMargin,
+            collisionMask
+        );
+        return hit;
     }
 
     public bool IsGrounded
@@ -155,7 +181,6 @@ public class Controller : MonoBehaviour
         Vector3 normalForce = NormalForce(velocity, normal/*.normalized*/);
         velocity += normalForce;
         Friction(normalForce);
-        velocity *= Mathf.Pow(airResistance, Time.deltaTime);
     }
 
     Vector3 NormalForce(Vector3 velocity, Vector3 normal)
@@ -195,16 +220,27 @@ public class Controller : MonoBehaviour
         return col.center + Vector3.down * GetDistanceToPoints() + transform.position;
     }
 
-    Vector3 GetMovementInput()
+    Vector3 GetMovementInput(RaycastHit hit)
     {
         input = Vector3.right * Input.GetAxisRaw("Horizontal") + Vector3.forward * Input.GetAxisRaw("Vertical");
-        input = cam.transform.rotation * input;
+        
+        if (input.magnitude > 1.0f)
+            input.Normalize();
+
+        float inputMagnitude = input.magnitude;
+
+        Vector3 normal = grounded ? hit.normal : Vector3.up;
+        input = Vector3.ProjectOnPlane(cam.transform.rotation * input, 
+            Vector3.Lerp(Vector3.up, normal, slopeAngleFactor)).normalized * inputMagnitude;
+
+        //input = cam.transform.rotation * input;
         return input;
     }
 
     public void Jump()
     {
         velocity += new Vector3(0.0f, jumpHeight, 0.0f);
+        //velocity += Vector3.up * jumpHeight;
         //grounded = false;
     }
 }

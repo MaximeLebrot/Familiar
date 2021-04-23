@@ -21,7 +21,6 @@ namespace AbilitySystem
             player = FindObjectOfType<Player>();
             if (cost.attribute != null)
             {
-                //owner.TryApplyEffectToSelf();
                 owner.TryApplyAttributeChange(cost.attribute.GetType(), -cost.value);
                 Debug.Log("Applied AttributeChange");
             }
