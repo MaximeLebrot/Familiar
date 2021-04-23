@@ -852,7 +852,7 @@ MonoBehaviour:
   playerController: {fileID: 0}
   states:
   - {fileID: 11400000, guid: 38ad32f54a897e746853a611c26eaffc, type: 2}
-  - {fileID: 11400000, guid: f8947ac6e7f38ca4a86fc10d6df1e06c, type: 2}
+  - {fileID: 11400000, guid: 3a2b69c8940b52246adeea875e0018f3, type: 2}
   - {fileID: 11400000, guid: 3f43a19d6bdea124a88789a19c8c1dce, type: 2}
   points: []
   destPoint: 0
@@ -6132,6 +6132,52 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 760991225}
   m_Mesh: {fileID: 10206, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &803539249 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 59cef3a854bea5e4eac3927c37d46290, type: 3}
+  m_PrefabInstance: {fileID: 1364475892}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &803539252
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803539249}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 756d84da5abf1974e8a3a9a8734dde6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!54 &803539253
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803539249}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &803539254
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 803539249}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.270909, y: 14, z: 1.7412672}
+  m_Center: {x: 0.10215545, y: 0, z: 3.246402e-16}
 --- !u!1 &805176169
 GameObject:
   m_ObjectHideFlags: 0

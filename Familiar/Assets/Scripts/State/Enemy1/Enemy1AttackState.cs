@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "Enemy1/Enemy1AttackState")]
 public class Enemy1AttackState : Enemy1BaseState
@@ -41,6 +42,7 @@ public class Enemy1AttackState : Enemy1BaseState
     private void GrabPlayer()
     {
         player.velocity = Vector3.zero;
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         //load level eller respawn checkpoint
     }
 }
