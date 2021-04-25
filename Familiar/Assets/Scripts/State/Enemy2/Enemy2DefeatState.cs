@@ -17,6 +17,8 @@ public class Enemy2DefeatState : Enemy2BaseState
 
     private void Defeated()
     {
+        owner.drop.SetActive(true);
+        owner.mana.SetPosition(owner.transform.position);
         Destroy(owner.gameObject);
     }
 }

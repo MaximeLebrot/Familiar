@@ -6,6 +6,8 @@ public class Enemy2 : MonoBehaviour
     public float moveSpeed = 10.0f;
     public int health = 4;
     public bool zapped;
+    public GameObject drop;
+    public ManaPickup mana;
 
     public NavMeshAgent navAgent;
     public LayerMask collisionMask;
