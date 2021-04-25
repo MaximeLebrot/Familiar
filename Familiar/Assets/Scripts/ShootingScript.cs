@@ -10,13 +10,12 @@ public class ShootingScript : MonoBehaviour
     public GameObject connector;
     public GameObject spotlight;
     public BoxCollider connectiveSpace;
-    // Start is called before the first frame update
+
     void Start()
     {
         controller = GetComponent<Controller>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetButtonDown("Fire2"))
@@ -42,13 +41,13 @@ public class ShootingScript : MonoBehaviour
         canFire = false;
         Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
 
-        Physics.Raycast(camRay, out RaycastHit hitPoint, 100.0f/*LayerMask*/);
+        Physics.Raycast(camRay, out RaycastHit hitPoint, 20.0f/*LayerMask*/);
         Ray playerRay = new Ray(transform.position, (hitPoint.point - transform.position).normalized);
-        Debug.DrawRay(playerRay.origin, playerRay.direction * 100, Color.yellow, 1f);
+        Debug.DrawRay(playerRay.origin, playerRay.direction * 20.0f, Color.yellow, 1.0f);
 
-        GetComponentInChildren<ParticleSystem>().Play();
+        gameObject.GetComponentInChildren<ParticleSystem>().Play();
 
-        if (Physics.Raycast(playerRay, out hitPoint, 100.0f/*LayerMask*/))
+        if (Physics.Raycast(playerRay, out hitPoint, 20.0f/*LayerMask*/))
         {
             if (hitPoint.collider.CompareTag("Switch"))
             {
@@ -85,7 +84,8 @@ public class ShootingScript : MonoBehaviour
 
     void Grab()
     {
-        if (carriedObject != null && carriedObject.transform.parent == gameObject.transform)
+        if (carriedObject != null 
+            && carriedObject.transform.parent == gameObject.transform)
         {
             carriedObject.transform.parent = null;
             carriedObject = null;

@@ -9,15 +9,16 @@ namespace AbilitySystem
     {
         ShootingScript shoot;
         GameplayAbilitySystem otherAbilitySystem;
-        public override void Activate(GameplayAbilitySystem Owner)
+
+        public override void Activate(GameplayAbilitySystem owner)
         {
             //wait for anim
-            Commit(Owner);
+            Commit(owner);
             shoot = player.GetComponent<ShootingScript>();
             shoot.Shoot();
             //otherAbilitySystem = hit.GetComponent<GameplayAbilitySystem>(); ray hit eller liknande
             //otherAbilitySystem.ApplyEffectToSelf(appliedEffect);
-            Debug.Log(cost.attribute.name + " = " + Owner.GetAttributeValue(cost.attribute.GetType()));
+            Debug.Log(cost.attribute.name + " = " + owner.GetAttributeValue(cost.attribute.GetType()));
 
             //doZap logik bör vara här
         }

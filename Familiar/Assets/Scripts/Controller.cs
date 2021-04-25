@@ -7,7 +7,7 @@ public class Controller : MonoBehaviour
     private const float collisionEpsilon = 0.001f;
     public int health = 10;
     [SerializeField, Range(0f, 100f)]
-    public float acceleration = 20.0f;
+    public float acceleration;
     public float deceleration = 40.0f;
     public float turnSpeedModifier = 10.0f;
     public float maxSpeed = 7.0f;
@@ -79,9 +79,9 @@ public class Controller : MonoBehaviour
         //RaycastHit hit;
         grounded = Physics.CapsuleCast(
             GetPoint1(),
-            GetPoint2() + new Vector3(0,0.1f,0),
+            GetPoint2() + new Vector3(0, 0.1f, 0),
             col.radius,
-            Vector3.down,   
+            Vector3.down,
             out hit,
             groundCheckDistance + collisionMargin,
             collisionMask
@@ -110,15 +110,19 @@ public class Controller : MonoBehaviour
     {
         Vector3 dir = movement.normalized;
         RaycastHit hit;
+
         if (Physics.Raycast(transform.position, dir, out hit, 3.0f, collisionMask))
         {
             Debug.DrawRay(hit.point, hit.normal, Color.green);
             Vector3 projected = Vector3.ProjectOnPlane(velocity, hit.normal);
             Debug.DrawRay(hit.point, projected, Color.blue);
+
             return projected;
         }
         else
+        {
             return Vector3.zero;
+        }
     }
 
     void UpdateVelocity()
@@ -225,14 +229,14 @@ public class Controller : MonoBehaviour
     Vector3 GetMovementInput(RaycastHit hit)
     {
         input = Vector3.right * Input.GetAxisRaw("Horizontal") + Vector3.forward * Input.GetAxisRaw("Vertical");
-        
+
         if (input.magnitude > 1.0f)
             input.Normalize();
 
         float inputMagnitude = input.magnitude;
 
         Vector3 normal = grounded ? hit.normal : Vector3.up;
-        input = Vector3.ProjectOnPlane(cam.transform.rotation * input, 
+        input = Vector3.ProjectOnPlane(cam.transform.rotation * input,
             Vector3.Lerp(Vector3.up, normal, slopeAngleFactor)).normalized * inputMagnitude;
 
         //input = cam.transform.rotation * input;

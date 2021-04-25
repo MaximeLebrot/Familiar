@@ -6,7 +6,7 @@ namespace AbilitySystem
 {
     public class Player : MonoBehaviour
     {
-        //public float moveSpeed;
+        public float moveSpeed;
 
         public List<GameplayAbility> startingAbilities;
         public List<GameplayEffect> startingEffects;
@@ -57,6 +57,7 @@ namespace AbilitySystem
                 abilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerMana, 10);
             }
         }
+
         public float ShockDamageCalculation(float value)
         {
             float? resistance = abilitySystem.GetAttributeValue(GameplayAttributes.ShockResistance);
@@ -67,19 +68,23 @@ namespace AbilitySystem
             }
             return value;
         }
+
         public void Die()
         {
             Debug.Log("ded");
             //Destroy(this.gameObject);
         }
+
         public GameplayAbilitySystem GetAbilitySystem()
         {
             return abilitySystem;
         }
+
         public void Respawn(Vector3 target, float delay)
         {
             StartCoroutine(WaitForRespawn(target, delay));
         }
+
         public IEnumerator WaitForRespawn(Vector3 target, float delay)
         {
             yield return new WaitForSeconds(delay);

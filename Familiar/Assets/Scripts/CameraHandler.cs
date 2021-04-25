@@ -11,7 +11,9 @@ public class CameraHandler : MonoBehaviour
     public bool firstPerson;
     public float noClipCamera = 0.5f;
 
+    [SerializeField]
     private Vector3 cameraOffset = new Vector3(0, 2, -7);
+
     private void Awake()
     {
         CameraVec = new Vector2(0, 0);
