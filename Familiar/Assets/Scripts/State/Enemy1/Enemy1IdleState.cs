@@ -8,7 +8,7 @@ public class Enemy1IdleState : Enemy1BaseState
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("Enemy1 Entered Idle State");
+        Debug.Log("Enemy1 Entered Idle State");
         //owner.transform.position = new Vector3(-54, 0, 0);
     }
 
