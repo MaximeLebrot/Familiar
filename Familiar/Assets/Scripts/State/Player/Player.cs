@@ -25,20 +25,20 @@ namespace AbilitySystem
 
             abilitySystem = gameObject.AddComponent<GameplayAbilitySystem>(); //lägg till en instans av ability systemet
             if (abilitySystem != null)
-                Debug.Log("Ability system found");
+                //Debug.Log("Ability system found");
 
             abilitySystem.RegisterAttributeSet(attributeSet); //sätter attribut som health och mana med ett float värde
-            Debug.Log("Registered Attribute Set");
+            //Debug.Log("Registered Attribute Set");
 
             startingAbilities.ForEach(a => abilitySystem.GrantAbility(a)); //adderar abilities som spelaren ska börja med
-            Debug.Log("Starting Abilities granted");
+            //Debug.Log("Starting Abilities granted");
 
             abilitySystem.RegisterAttributeCalculation(GameplayAttributes.PlayerHealth, ShockDamageCalculation); 
             //abilitySystem.RegisterAttributeCalculation(GameplayAttributes.PlayerStamina, ZappingCalculation);
-            Debug.Log("Registered Attribute Calculations");
+            //Debug.Log("Registered Attribute Calculations");
 
             startingEffects.ForEach(e => abilitySystem.ApplyEffectToSelf(e));
-            Debug.Log("Applied Starting Effects To Self");
+            //Debug.Log("Applied Starting Effects To Self");
         }
 
         private void Update()
