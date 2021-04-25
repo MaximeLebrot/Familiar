@@ -69,15 +69,16 @@ namespace AbilitySystem
             return value;
         }
 
+        public GameplayAbilitySystem GetAbilitySystem()
+        {
+            return abilitySystem;
+        }
+        
+        //TODO: move these to their proper class, they don't have anything to do with abilities
         public void Die()
         {
             Debug.Log("ded");
             //Destroy(this.gameObject);
-        }
-
-        public GameplayAbilitySystem GetAbilitySystem()
-        {
-            return abilitySystem;
         }
 
         public void Respawn(Vector3 target, float delay)

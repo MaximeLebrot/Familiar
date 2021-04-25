@@ -33,4 +33,10 @@ public class Enemy1 : MonoBehaviour
         Debug.DrawLine(transform.position + new Vector3(0, 5, 0), vecToPlayer, Color.red);
         Debug.DrawLine(transform.position + new Vector3(0, 5, 0), navAgent.velocity, Color.cyan);
     }
+
+    public void OnZap()
+    {
+        Debug.Log("Zapping enemy 1");
+        Destroy(this, 1.0f);
+    }
 }

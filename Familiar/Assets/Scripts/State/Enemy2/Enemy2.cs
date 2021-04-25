@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI; //Navmesh https://docs.unity3d.com/Manual/nav-HowTos.html
 
-public class Enemy2 : MonoBehaviour
+public class Enemy2 : MonoBehaviour, IZappable
 {
     public float moveSpeed = 10.0f;
     public int health = 4;
@@ -32,5 +32,10 @@ public class Enemy2 : MonoBehaviour
         vecToPlayer = player.transform.position;
         stateMachine.HandleUpdate();
         Debug.DrawLine(transform.position, vecToPlayer, Color.red);
+    }
+
+    public void OnZap()
+    {
+        Destroy(gameObject);
     }
 }

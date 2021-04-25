@@ -49,8 +49,20 @@ public class ShootingScript : MonoBehaviour
 
         if (Physics.Raycast(playerRay, out hitPoint, 20.0f/*LayerMask*/))
         {
+            if (hitPoint.collider.GetComponent<IZappable>() != null)
+            {
+                foreach (IZappable iz in hitPoint.collider.GetComponents<IZappable>())
+                {
+                    iz.OnZap();
+                }
+
+                return;
+            }
+
             if (hitPoint.collider.CompareTag("Switch"))
             {
+                
+
                 Collider[] colArray = Physics.OverlapBox(connectiveSpace.transform.position, connectiveSpace.size);
 
                 foreach (Collider c in colArray)
@@ -84,7 +96,7 @@ public class ShootingScript : MonoBehaviour
 
     void Grab()
     {
-        if (carriedObject != null 
+        if (carriedObject != null
             && carriedObject.transform.parent == gameObject.transform)
         {
             carriedObject.transform.parent = null;
