@@ -8,7 +8,7 @@ public class Enemy1PatrolState : Enemy1BaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enemy1 Entered Patrol State");
+        //Debug.Log("Enemy1 Entered Patrol State");
         owner.navAgent.autoBraking = false;
         Patrol();
     }
