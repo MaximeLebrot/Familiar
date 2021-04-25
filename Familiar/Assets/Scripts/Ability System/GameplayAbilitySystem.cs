@@ -128,10 +128,12 @@ namespace AbilitySystem
             }
             return false;
         }
+
         public bool TryActivateAbilityByTag(GameplayTag abilityTag)
         {
             return TryActivateAbilityByTag(abilityTag.GetType());
         }
+
         public IEnumerator RemoveAfterTime(GameplayEffect effect)
         {
             yield return new WaitForSeconds(effect.duration);

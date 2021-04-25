@@ -50,7 +50,6 @@ public class Enemy2AttackState : Enemy2BaseState
         owner.navAgent.ResetPath();
         if (canHit)
             DamagePlayer();
-            //owner.player.health--;
         canHit = false;
     }
     private void DamagePlayer()

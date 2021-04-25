@@ -43,9 +43,8 @@ public class Enemy1AttackState : Enemy1BaseState
     private void GrabPlayer()
     {
         playerController.velocity = Vector3.zero;
-        //SceneManager.LoadScene(SceneManager.GetActiveScene().name);
-        //player.transform.position = new Vector3(-72.5899963f, 4.9f, -36f);
+
         playerStats.Respawn(owner.playerRespawnLocation, 1.0f);
-        //load level eller respawn checkpoint
+
     }
 }
