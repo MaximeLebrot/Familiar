@@ -5,8 +5,7 @@ using UnityEngine;
 public class PlayerJumpState : PlayerBaseState
 {
     //private float gravity = 30.0f;
-    //private bool hasDoubleJumped = false;
-    private bool jumping;
+    private bool hasDoubleJumped;
 
     public override void Enter()
     {
@@ -19,24 +18,31 @@ public class PlayerJumpState : PlayerBaseState
     public override void HandleUpdate()
     {
         //Debug.Log("player jumping");
-        Debug.Log(player.IsGrounded);
+        if (!player.IsGrounded && !hasDoubleJumped && Input.GetKeyDown(KeyCode.Space))
+        {
+            player.Jump();
+            hasDoubleJumped = true;
+            return;
+        }
 
-        if (player.IsGrounded && !jumping)
+        if (player.IsGrounded)
+        {
+            hasDoubleJumped = false;
+        }
+        if (player.IsGrounded && !player.jumping)
             stateMachine.Transition<PlayerMovingState>();
-        if (player.IsGrounded && player.input == Vector3.zero) 
+        if (player.IsGrounded && player.input.magnitude == 0 && player.velocity.magnitude < 0.1) 
             stateMachine.Transition<PlayerIdleState>();
         //falling state?
     }
 
     private void Jump()
     {
-        jumping = true;
+        player.jumping = true;
         player.Jump();
-        resetJumping();
     }
-    public IEnumerator resetJumping()
+    public override void Exit()
     {
-        yield return new WaitForSeconds(0.1f);
-        jumping = false;
+        hasDoubleJumped = false;
     }
 }

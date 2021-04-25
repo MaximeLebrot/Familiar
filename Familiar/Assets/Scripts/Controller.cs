@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
@@ -11,6 +12,7 @@ public class Controller : MonoBehaviour
     public float turnSpeedModifier = 10.0f;
     public float maxSpeed = 7.0f;
     public float jumpHeight = 10.0f;
+    public bool jumping;
     public bool grounded;
 
     [Range(0.0f, 1.0f)]
@@ -77,7 +79,7 @@ public class Controller : MonoBehaviour
         //RaycastHit hit;
         grounded = Physics.CapsuleCast(
             GetPoint1(),
-            GetPoint2(),
+            GetPoint2() + new Vector3(0,0.1f,0),
             col.radius,
             Vector3.down,   
             out hit,
@@ -94,7 +96,7 @@ public class Controller : MonoBehaviour
             return (
                 Physics.CapsuleCast(
                     point1: GetPoint1(),
-                    point2: GetPoint2(),
+                    point2: GetPoint2() + new Vector3(0, 0.1f, 0), //min teori är att overlapFunction (computepenetration) tar oss för nära marken för att casten ska se något. Den här offseten set till att den castar från en högre punkt.
                     radius: col.radius,
                     direction: Vector3.down,
                     maxDistance: GroundCheckMargin,
@@ -121,9 +123,9 @@ public class Controller : MonoBehaviour
 
     void UpdateVelocity()
     {
-        //CastFunction();
+        CastFunction();
         //if (CastFunction != räcker till)
-        OverlapFunction();
+        //OverlapFunction();
     }
 
     void OverlapFunction()
@@ -240,7 +242,11 @@ public class Controller : MonoBehaviour
     public void Jump()
     {
         velocity += new Vector3(0.0f, jumpHeight, 0.0f);
-        //velocity += Vector3.up * jumpHeight;
-        //grounded = false;
+        StartCoroutine(resetJumping());
+    }
+    public IEnumerator resetJumping()
+    {
+        yield return new WaitForSeconds(0.1f);
+        jumping = false;
     }
 }
