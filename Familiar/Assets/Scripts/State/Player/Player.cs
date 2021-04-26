@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AbilitySystem
 {
-    public class Player : MonoBehaviour
+    public class Player : MonoBehaviour, IZappable
     {
         public float moveSpeed;
 
@@ -74,7 +74,6 @@ namespace AbilitySystem
             return abilitySystem;
         }
         
-        //TODO: move these to their proper class, they don't have anything to do with abilities
         public void Die()
         {
             Debug.Log("ded");
@@ -90,6 +89,12 @@ namespace AbilitySystem
         {
             yield return new WaitForSeconds(delay);
             gameObject.transform.position = target;
+        }
+
+        public void OnZap()
+        {
+            Die();
+            Respawn(GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position, 1.0f);
         }
     }
 }

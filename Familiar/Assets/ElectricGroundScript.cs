@@ -29,6 +29,9 @@ public class ElectricGroundScript : MonoBehaviour, IZappable
     {
         foreach (GameObject go in listOfContacts)
         {
+            if (go == null)
+                continue; 
+
             foreach (IZappable iz in go.GetComponents<IZappable>())
                 iz.OnZap();
         }

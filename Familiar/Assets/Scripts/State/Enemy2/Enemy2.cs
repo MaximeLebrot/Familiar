@@ -36,6 +36,7 @@ public class Enemy2 : MonoBehaviour, IZappable
 
     public void OnZap()
     {
-        Destroy(gameObject);
+        health--;
+        //Destroy(gameObject);
     }
 }
