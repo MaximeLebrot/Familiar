@@ -18,6 +18,17 @@ namespace AbilitySystem
         GameplayAbilitySystem abilitySystem;
         StateMachine stateMachine;
 
+        public bool IsZapped
+        {
+            get
+            {
+                return false;
+            }
+            set
+            {
+            }
+        }
+
         protected void Awake()
         {
             playerController = GetComponent<Controller>();

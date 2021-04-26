@@ -6,6 +6,13 @@ public class TextButtonScript : MonoBehaviour, IZappable
 {
     private bool isPowered = false;
     private TextMesh text;
+
+    public bool IsZapped
+    {
+        get;
+        set;
+    }
+
     // Start is called before the first frame update
     void Start()
     {

@@ -34,6 +34,18 @@ public class Enemy2 : MonoBehaviour, IZappable
         Debug.DrawLine(transform.position, vecToPlayer, Color.red);
     }
 
+    public bool IsZapped
+    {
+        get
+        {
+            return false;
+        }
+
+        set
+        {
+        }
+    }
+
     public void OnZap()
     {
         health--;

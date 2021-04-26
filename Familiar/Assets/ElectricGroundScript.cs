@@ -6,10 +6,21 @@ public class ElectricGroundScript : MonoBehaviour, IZappable
 {
     private List<GameObject> listOfContacts;
 
+    public bool IsZapped
+    {
+        get;
+        set;
+    }
+
     // Start is called before the first frame update
     void Start()
     {
         listOfContacts = new List<GameObject>();
+    }
+
+    void LateUpdate()
+    {
+        IsZapped = false;
     }
 
     private void OnCollisionEnter(Collision collision)
@@ -30,10 +41,15 @@ public class ElectricGroundScript : MonoBehaviour, IZappable
         foreach (GameObject go in listOfContacts)
         {
             if (go == null)
-                continue; 
+                continue;
 
             foreach (IZappable iz in go.GetComponents<IZappable>())
+            {
+                if (iz.IsZapped)
+                    continue;
+
                 iz.OnZap();
+            }
         }
     }
 }

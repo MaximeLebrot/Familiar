@@ -18,6 +18,9 @@ public class CameraHandler : MonoBehaviour
     {
         CameraVec = new Vector2(0, 0);
         playerController = GetComponentInParent<Controller>();
+
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
     }
     void LateUpdate()
     {

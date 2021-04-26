@@ -1,7 +1,7 @@
 using UnityEngine;
 using UnityEngine.AI; //Navmesh https://docs.unity3d.com/Manual/nav-HowTos.html
 
-public class Enemy1 : MonoBehaviour
+public class Enemy1 : MonoBehaviour, IZappable
 {
     public bool zapped;
 
@@ -17,6 +17,12 @@ public class Enemy1 : MonoBehaviour
 
     public NavMeshAgent navAgent;
     private StateMachine stateMachine;
+
+    public bool IsZapped
+    {
+        get;
+        set;
+    }
 
     protected void Awake()
     {
