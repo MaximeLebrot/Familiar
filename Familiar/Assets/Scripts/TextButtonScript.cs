@@ -6,6 +6,7 @@ public class TextButtonScript : MonoBehaviour, IZappable
 {
     private bool isPowered = false;
     private TextMesh text;
+    private KeyCodeCombination keypad;
 
     public bool IsZapped
     {
@@ -17,6 +18,7 @@ public class TextButtonScript : MonoBehaviour, IZappable
     void Start()
     {
         text = GetComponent<TextMesh>();
+        keypad = GetComponent<KeyCodeCombination>();
     }
 
     // Update is called once per frame
@@ -28,7 +30,7 @@ public class TextButtonScript : MonoBehaviour, IZappable
     public void OnZap()
     {
         isPowered = !isPowered;
-
         text.color = isPowered ? Color.white : Color.black;
+        keypad.Activate();
     }
 }

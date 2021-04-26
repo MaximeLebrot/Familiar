@@ -35,22 +35,6 @@ public class Code : MonoBehaviour
     private void Update()
     {
         SuperSmidigtJagLovar();
-        //if (Input.GetKeyDown(KeyCode.Alpha1))
-        //{
-        //    KeyCodeGenerated[0].Activate();
-        //    if (KeyCodeGenerated[0].number != currentNumber)
-        //        ResetInput();
-        //    else
-        //        currentNumber = correctCode[1];
-        //}
-        //if (Input.GetKeyDown(KeyCode.Alpha2))
-        //{
-        //    KeyCodeGenerated[1].Activate();
-        //    if (KeyCodeGenerated[1].number != currentNumber)
-        //        ResetInput();
-        //    else
-        //        currentNumber = correctCode[2];
-        //}
     }
 
     public void GenerateCode()
@@ -74,7 +58,7 @@ public class Code : MonoBehaviour
     {
         correctCode.Reverse();
         int temp = correctCode[0];
-        correctCode[correctCode.Count] = temp;
+        //correctCode[correctCode.Count] = temp;
         //huller om buller
     }
 
@@ -84,6 +68,19 @@ public class Code : MonoBehaviour
         //if (correctCodeIterator != 0)
         //correctCodeIterator--;
         correctCodeIterator = 0;
+        foreach (KeyCodeCombination keycode in KeyCodeGenerated)
+        {
+            keycode.ResetAll();
+        }
+    }
+
+    private void Success()
+    {
+        door.SetActive(false); 
+        foreach (KeyCodeCombination keycode in KeyCodeGenerated)
+        {
+            keycode.setGreen();
+        }
     }
 
     private void SuperSmidigtJagLovar()
@@ -124,9 +121,11 @@ public class Code : MonoBehaviour
         if (KeyCodeGenerated[temp].number != currentNumber)
             ResetInput();
         //else if (KeyCodeGenerated[temp].number != input)
-            //ResetInput();
-        else if (correctCode[correctCode.Count-1] == input && correctCode[correctCode.Count-1] == currentNumber)
-            door.SetActive(false);
+        //ResetInput();
+        else if (correctCode[correctCode.Count - 1] == input && correctCode[correctCode.Count - 1] == currentNumber)
+        {
+            Success();
+        }
         else
         {
             correctCodeIterator++;
