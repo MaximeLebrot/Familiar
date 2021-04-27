@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.AI; //Navmesh https://docs.unity3d.com/Manual/nav-HowTos.html
+using UnityEngine.UI;
 
 public class Enemy2 : MonoBehaviour, IZappable
 {
@@ -19,12 +20,16 @@ public class Enemy2 : MonoBehaviour, IZappable
 
     private StateMachine stateMachine;
 
+    public Slider slider;
+
     protected void Awake()
     {
         idlePosition = transform;
         player = GameObject.FindGameObjectWithTag("Player");
         navAgent = GetComponent<NavMeshAgent>();
         stateMachine = new StateMachine(this, states);
+
+        slider.value = 1.0f;
     }
 
     private void Update()
@@ -49,6 +54,7 @@ public class Enemy2 : MonoBehaviour, IZappable
     public void OnZap()
     {
         health--;
+        slider.value -= 0.25f;
         //Destroy(gameObject);
     }
 }
