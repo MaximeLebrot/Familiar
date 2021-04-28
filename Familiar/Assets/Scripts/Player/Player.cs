@@ -8,6 +8,7 @@ namespace AbilitySystem
     public class Player : MonoBehaviour, IZappable
     {
         public float moveSpeed;
+        private int stoneCounter;
 
         public List<GameplayAbility> startingAbilities;
         public List<GameplayEffect> startingEffects;
@@ -31,6 +32,11 @@ namespace AbilitySystem
             set
             {
             }
+        }
+
+        public int GetStones()
+        {
+            return stoneCounter;
         }
 
         protected void Awake()
@@ -58,6 +64,7 @@ namespace AbilitySystem
             //Debug.Log("Applied Starting Effects To Self");
 
             healthBar.value = 1;
+            stoneCounter = 0;
         }
 
         private void Update()
@@ -77,6 +84,14 @@ namespace AbilitySystem
             }
 
             HealthBarUpdate();
+        }
+
+        public void OnTriggerEnter(Collider other)
+        {
+            if (other.tag == "MoonStone")
+            {
+                stoneCounter++;
+            }
         }
 
         public float ShockDamageCalculation(float value)
