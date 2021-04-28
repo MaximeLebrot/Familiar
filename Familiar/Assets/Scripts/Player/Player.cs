@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace AbilitySystem
 {
@@ -19,6 +20,8 @@ namespace AbilitySystem
         GameplayAbilitySystem abilitySystem;
         StateMachine stateMachine;
 
+        public Slider healthBar;        
+
         public bool IsZapped
         {
             get
@@ -36,6 +39,7 @@ namespace AbilitySystem
             stateMachine = new StateMachine(this, states);
             audioHandler = GetComponent<AudioHandler>();
 
+
             abilitySystem = gameObject.AddComponent<GameplayAbilitySystem>(); //lägg till en instans av ability systemet
             if (abilitySystem != null)
                 //Debug.Log("Ability system found");
@@ -52,6 +56,8 @@ namespace AbilitySystem
 
             startingEffects.ForEach(e => abilitySystem.ApplyEffectToSelf(e));
             //Debug.Log("Applied Starting Effects To Self");
+
+            healthBar.value = 1;
         }
 
         private void Update()
@@ -69,6 +75,8 @@ namespace AbilitySystem
             {
                 abilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerMana, 10);
             }
+
+            HealthBarUpdate();
         }
 
         public float ShockDamageCalculation(float value)
@@ -89,25 +97,38 @@ namespace AbilitySystem
         
         public void Die()
         {
+            healthBar.value = 0;
+
             Debug.Log("ded");
             //Destroy(this.gameObject);
+                       
         }
 
         public void Respawn(Vector3 target, float delay)
         {
             StartCoroutine(WaitForRespawn(target, delay));
+
+            
         }
 
         public IEnumerator WaitForRespawn(Vector3 target, float delay)
         {
             yield return new WaitForSeconds(delay);
             gameObject.transform.position = target;
+            healthBar.value = 1;
         }
 
         public void OnZap()
         {
             Die();
             Respawn(GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position, 1.0f);
+        }
+
+        public void HealthBarUpdate()
+        {
+            healthBar.value = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth)/10;
+
+            
         }
     }
 }
