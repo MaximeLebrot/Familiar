@@ -14,6 +14,7 @@ namespace AbilitySystem
 
         public Controller playerController;
         public State[] states;
+        public AudioHandler audioHandler;
 
         GameplayAbilitySystem abilitySystem;
         StateMachine stateMachine;
@@ -33,6 +34,7 @@ namespace AbilitySystem
         {
             playerController = GetComponent<Controller>();
             stateMachine = new StateMachine(this, states);
+            audioHandler = GetComponent<AudioHandler>();
 
             abilitySystem = gameObject.AddComponent<GameplayAbilitySystem>(); //lägg till en instans av ability systemet
             if (abilitySystem != null)

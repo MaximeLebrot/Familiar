@@ -16,6 +16,7 @@ namespace AbilitySystem
             Commit(owner);
             shoot = player.GetComponent<ShootingScript>();
             shoot.Shoot();
+            player.audioHandler.PlayZappingSound();
             //otherAbilitySystem = hit.GetComponent<GameplayAbilitySystem>(); ray hit eller liknande
             //otherAbilitySystem.ApplyEffectToSelf(appliedEffect);
             Debug.Log(cost.attribute.name + " = " + owner.GetAttributeValue(cost.attribute.GetType()));

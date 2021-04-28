@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace AbilitySystem
 {
-    public abstract class GameplayAbility : ScriptableObject 
+    public abstract class GameplayAbility : ScriptableObject
     {
         protected Player player;
         public GameplayTag abilityTag;
