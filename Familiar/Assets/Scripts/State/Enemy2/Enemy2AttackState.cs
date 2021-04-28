@@ -60,7 +60,6 @@ public class Enemy2AttackState : Enemy2BaseState
         if (playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) <= 0)
         {
             playerStats.Die();
-            playerStats.Respawn(GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position, 1.0f);
         }
     }
 }

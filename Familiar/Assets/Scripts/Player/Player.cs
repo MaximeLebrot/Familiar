@@ -57,6 +57,7 @@ namespace AbilitySystem
             startingEffects.ForEach(e => abilitySystem.ApplyEffectToSelf(e));
             //Debug.Log("Applied Starting Effects To Self");
 
+            healthBar.value = 1;
         }
 
         private void Update()
@@ -95,7 +96,9 @@ namespace AbilitySystem
         }
         
         public void Die()
-        {            
+        {
+            healthBar.value = 0;
+
             Debug.Log("ded");
             //Destroy(this.gameObject);
                        
@@ -104,6 +107,7 @@ namespace AbilitySystem
         public void Respawn(Vector3 target, float delay)
         {
             StartCoroutine(WaitForRespawn(target, delay));
+
             
         }
 
@@ -122,7 +126,9 @@ namespace AbilitySystem
 
         public void HealthBarUpdate()
         {
-            healthBar.value = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth)/10;            
+            healthBar.value = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth)/10;
+
+            
         }
     }
 }
