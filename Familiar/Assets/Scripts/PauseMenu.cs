@@ -39,6 +39,8 @@ public class PauseMenu : MonoBehaviour
     public void Resume()
     {
         pauseMenuUI.SetActive(false);
+        optionsMenuUI.SetActive(false);
+
         Time.timeScale = 1;
         GameIsPaused = false;
         Cursor.visible = false;
@@ -87,5 +89,5 @@ public class PauseMenu : MonoBehaviour
     {
         optionsMenuUI.SetActive(false);
         pauseMenuUI.SetActive(true);
-    }
+    }    
 }
