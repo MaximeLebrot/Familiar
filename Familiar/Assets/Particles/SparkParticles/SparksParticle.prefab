@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 1696416168425586239}
   - component: {fileID: 1696416168425586238}
   m_Layer: 0
-  m_Name: Particle System
+  m_Name: SparksParticle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4102,7 +4102,7 @@ ParticleSystem:
   LightsModule:
     enabled: 1
     ratio: 0.25
-    light: {fileID: 0}
+    light: {fileID: 1071035242229805410, guid: ab5809266cf2b254c8f5c9a5c92d70ca, type: 3}
     randomDistribution: 1
     color: 1
     range: 1
@@ -4163,7 +4163,7 @@ ParticleSystem:
     intensityCurve:
       serializedVersion: 2
       minMaxState: 0
-      scalar: 2
+      scalar: 1
       minScalar: 1
       maxCurve:
         serializedVersion: 2
