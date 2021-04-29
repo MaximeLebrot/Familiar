@@ -1997,7 +1997,7 @@ GameObject:
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &173058713
 Transform:
@@ -3002,7 +3002,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5d41ef3a2cf9a748b19d624cb71a813, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 36.929367
+      value: 36.86
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: d5d41ef3a2cf9a748b19d624cb71a813, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3047,6 +3047,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: d5d41ef3a2cf9a748b19d624cb71a813, type: 3}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: d5d41ef3a2cf9a748b19d624cb71a813, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5d41ef3a2cf9a748b19d624cb71a813, type: 3}
@@ -10677,7 +10681,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 844644307}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
@@ -22551,6 +22555,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 59cef3a854bea5e4eac3927c37d46290, type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 39b3a6095c9cad046bd5fb220ae2e6af, type: 2}
     - target: {fileID: 919132149155446097, guid: 59cef3a854bea5e4eac3927c37d46290, type: 3}
       propertyPath: m_Name
       value: Exit (2)
@@ -22558,6 +22566,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 59cef3a854bea5e4eac3927c37d46290, type: 3}
       propertyPath: m_Layer
       value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 59cef3a854bea5e4eac3927c37d46290, type: 3}
+      propertyPath: m_StaticEditorFlags
+      value: 4294967295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 59cef3a854bea5e4eac3927c37d46290, type: 3}
@@ -23845,7 +23857,7 @@ MeshRenderer:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1656324126}
-  m_Enabled: 0
+  m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
