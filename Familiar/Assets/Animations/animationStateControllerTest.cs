@@ -8,6 +8,7 @@ public class animationStateControllerTest : MonoBehaviour
     Animator animator;
     int isWalkingHash;
     int isRunningHash;
+    int isAttackingHash; // :)
 
     // Start is called before the first frame update
     void Start()
@@ -15,6 +16,7 @@ public class animationStateControllerTest : MonoBehaviour
         animator = GetComponent<Animator>();
         isWalkingHash = Animator.StringToHash("isWalking");
         isRunningHash = Animator.StringToHash("isRunning");
+        isAttackingHash = Animator.StringToHash("isAttacking"); // :)
     }
 
     // Update is called once per frame
@@ -22,8 +24,10 @@ public class animationStateControllerTest : MonoBehaviour
     {
         bool isrunning = animator.GetBool(isRunningHash);
         bool isWalking = animator.GetBool(isWalkingHash);
+        bool isAttacking = animator.GetBool(isAttackingHash); // :)
         bool forwardPressed = Input.GetKey("w");
         bool runPressed = Input.GetKey("left shift");
+        bool attackPressed = Input.GetKey("e"); // :)
 
         //if player presses w key
         if (!isWalking && forwardPressed)
@@ -52,5 +56,14 @@ public class animationStateControllerTest : MonoBehaviour
             //then set isRunning boolean to be false
             animator.SetBool(isRunningHash, false);
         }
+
+        if(attackPressed) // :)
+        { // :)
+            animator.SetBool(isAttackingHash, true); // :)
+        } // :)
+        else
+        {   //:)
+            animator.SetBool(isAttackingHash, false); //:)
+        } // :)
     }
 }
