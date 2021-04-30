@@ -10,10 +10,12 @@ public class PressurePlate : MonoBehaviour
 
     public GameObject door;
 
+    private Animator anim;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        anim = gameObject.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -26,6 +28,7 @@ public class PressurePlate : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Moveable"))
         {
+            anim.SetTrigger("Click");
             door.SetActive(false);
         }
     }
