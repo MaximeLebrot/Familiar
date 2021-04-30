@@ -62,26 +62,6 @@ public class Code : MonoBehaviour
         //huller om buller
     }
 
-    private void ResetInput()
-    {
-        currentNumber = correctCode[0];
-        //if (correctCodeIterator != 0)
-        //correctCodeIterator--;
-        correctCodeIterator = 0;
-        foreach (KeyCodeCombination keycode in KeyCodeGenerated)
-        {
-            keycode.ResetAll();
-        }
-    }
-
-    private void Success()
-    {
-        door.SetActive(false); 
-        foreach (KeyCodeCombination keycode in KeyCodeGenerated)
-        {
-            keycode.setGreen();
-        }
-    }
 
     private void SuperSmidigtJagLovar()
     {
@@ -104,6 +84,11 @@ public class Code : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha9))
             TryingInput(9);
     }
+    public void TryInput(int input)
+    {
+        TryingInput(input);
+        Debug.Log("Input " + input);
+    }
 
     private void TryingInput(int input)
     {
@@ -117,19 +102,55 @@ public class Code : MonoBehaviour
         //    currentNumber = correctCode[input];
 
         int temp = input - 1;
-        KeyCodeGenerated[temp].Activate();
-        if (KeyCodeGenerated[temp].number != currentNumber)
-            ResetInput();
-        //else if (KeyCodeGenerated[temp].number != input)
-        //ResetInput();
-        else if (correctCode[correctCode.Count - 1] == input && correctCode[correctCode.Count - 1] == currentNumber)
+        if (correctCode[correctCode.Count - 1] == input && correctCode[correctCode.Count - 1] == currentNumber)
         {
             Success();
         }
+        if (KeyCodeGenerated[temp].isCorrect && KeyCodeGenerated[temp].number == currentNumber)
+        {
+            KeyCodeGenerated[temp].setGreen();
+        }
+        if (!KeyCodeGenerated[temp].isCorrect || KeyCodeGenerated[temp].number != currentNumber)
+        {
+            ResetInput();
+        }        
         else
         {
             correctCodeIterator++;
             currentNumber = correctCode[correctCodeIterator]; //correctCode.stepNext;
         }
+    }
+    private void ResetInput()
+    {
+        //if (correctCodeIterator != 0)
+        //correctCodeIterator--;
+        foreach (KeyCodeCombination keycode in KeyCodeGenerated)
+        {
+            keycode.setRed();
+        }
+        Debug.Log("hallo");
+        StartCoroutine(ResetTimer());
+        Debug.Log("out");
+        
+    }
+
+    private void Success()
+    {
+        door.SetActive(false);
+        foreach (KeyCodeCombination keycode in KeyCodeGenerated)
+        {
+            keycode.setGreen();
+        }
+    }
+
+    public IEnumerator ResetTimer()
+    {
+        yield return new WaitForSeconds(1.0f);
+        foreach (KeyCodeCombination keycode in KeyCodeGenerated)
+        {
+            keycode.ResetAll();
+        }
+        currentNumber = correctCode[0];
+        correctCodeIterator = 0;
     }
 }

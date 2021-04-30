@@ -18,7 +18,7 @@ public class KeyCodeCombination : MonoBehaviour
         {
             correct.SetActive(true);
         }
-        else
+        if (!isCorrect)
         {
             incorrect.SetActive(true);
         }
@@ -30,6 +30,12 @@ public class KeyCodeCombination : MonoBehaviour
     {
         correct.SetActive(true);
         incorrect.SetActive(false);
+    }
+
+    public void setRed()
+    {
+        correct.SetActive(false);
+        incorrect.SetActive(true);
     }
 
     public void ResetAll()

@@ -10,6 +10,9 @@ namespace AbilitySystem
         public float moveSpeed;
         private int stoneCounter;
 
+        public bool canSeeCodePanel;
+        public bool isInCodePanelArea;
+
         public List<GameplayAbility> startingAbilities;
         public List<GameplayEffect> startingEffects;
         public List<GameplayAttributeSetEntry> attributeSet;
@@ -122,8 +125,6 @@ namespace AbilitySystem
         public void Respawn(Vector3 target, float delay)
         {
             StartCoroutine(WaitForRespawn(target, delay));
-
-            
         }
 
         public IEnumerator WaitForRespawn(Vector3 target, float delay)
