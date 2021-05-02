@@ -92,15 +92,6 @@ public class Code : MonoBehaviour
 
     private void TryingInput(int input)
     {
-        //int temp = input - 1;
-        //KeyCodeGenerated[temp].Activate();
-        //if (KeyCodeGenerated[temp].number != currentNumber)
-        //    ResetInput();
-        //else if (KeyCodeGenerated.Count == input)
-        //    door.SetActive(false);
-        //else
-        //    currentNumber = correctCode[input];
-
         int temp = input - 1;
         if (correctCode[correctCode.Count - 1] == input && correctCode[correctCode.Count - 1] == currentNumber)
         {
@@ -123,8 +114,6 @@ public class Code : MonoBehaviour
     }
     private void ResetInput()
     {
-        //if (correctCodeIterator != 0)
-        //correctCodeIterator--;
         foreach (KeyCodeCombination keycode in KeyCodeGenerated)
         {
             keycode.setRed();

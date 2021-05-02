@@ -22,8 +22,6 @@ public class KeyCodeCombination : MonoBehaviour
         {
             incorrect.SetActive(true);
         }
-        //if true sätt grön färg 
-        //else röd
     }
 
     public void setGreen()
