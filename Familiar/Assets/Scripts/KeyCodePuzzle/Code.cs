@@ -87,7 +87,7 @@ public class Code : MonoBehaviour
     public void TryInput(int input)
     {
         TryingInput(input);
-        Debug.Log("Input " + input);
+        //Debug.Log("Input " + input);
     }
 
     private void TryingInput(int input)
@@ -105,6 +105,7 @@ public class Code : MonoBehaviour
         if (correctCode[correctCode.Count - 1] == input && correctCode[correctCode.Count - 1] == currentNumber)
         {
             Success();
+            return;
         }
         if (KeyCodeGenerated[temp].isCorrect && KeyCodeGenerated[temp].number == currentNumber)
         {
@@ -128,9 +129,7 @@ public class Code : MonoBehaviour
         {
             keycode.setRed();
         }
-        Debug.Log("hallo");
         StartCoroutine(ResetTimer());
-        Debug.Log("out");
         
     }
 
@@ -150,6 +149,11 @@ public class Code : MonoBehaviour
         {
             keycode.ResetAll();
         }
+        restartCurrentCodeCounter();
+    }
+
+    public void restartCurrentCodeCounter()
+    {
         currentNumber = correctCode[0];
         correctCodeIterator = 0;
     }

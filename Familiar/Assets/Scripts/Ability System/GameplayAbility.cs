@@ -22,7 +22,7 @@ namespace AbilitySystem
             if (cost.attribute != null)
             {
                 owner.TryApplyAttributeChange(cost.attribute.GetType(), -cost.value);
-                Debug.Log("Applied AttributeChange");
+                //Debug.Log("Applied AttributeChange");
             }
             //if (cooldown != null)
                 //owner.ApplyEffectToSelf(cooldown);

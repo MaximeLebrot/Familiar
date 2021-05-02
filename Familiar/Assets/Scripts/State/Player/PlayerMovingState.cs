@@ -9,7 +9,7 @@ public class PlayerMovingState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Entered Moving State");
+        //Debug.Log("Entered Moving State");
         //player.gravity = gravity;
     }
 

@@ -6,7 +6,7 @@ public class PlayerIdleState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Entered Idle State");
+        //Debug.Log("Entered Idle State");
         player.grounded = true;
     }
 

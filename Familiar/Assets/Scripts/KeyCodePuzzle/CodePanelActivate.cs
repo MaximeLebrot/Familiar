@@ -21,22 +21,33 @@ public class CodePanelActivate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!player.isInCodePanelArea)
+        //if (!player.isInCodePanelArea)
+        //{
+        //    HideCodePanel();
+        //}
+        //else if (player.canSeeCodePanel)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.C))
+        //    {
+        //        if (!active)
+        //        {
+        //            ShowCodePanel();
+        //        }
+        //        else
+        //        {
+        //            HideCodePanel();
+        //        }
+        //    }
+        //}
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            HideCodePanel();
-        }
-        else if (player.canSeeCodePanel)
-        {
-            if (Input.GetKeyDown(KeyCode.C))
+            if (!active)
             {
-                if (!active)
-                {
-                    ShowCodePanel();
-                }
-                else
-                {
-                    HideCodePanel();
-                }
+                ShowCodePanel();
+            }
+            else
+            {
+                HideCodePanel();
             }
         }
     }
