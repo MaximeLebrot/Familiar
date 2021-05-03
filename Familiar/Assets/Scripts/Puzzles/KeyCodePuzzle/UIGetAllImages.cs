@@ -8,6 +8,7 @@ public class UIGetAllImages : MonoBehaviour
     public Image[] images;
 
     public GameObject UICoverPanel;
+
     void Start()
     {
         images = GetComponentsInChildren<Image>();
