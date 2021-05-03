@@ -12,7 +12,7 @@ public class Enemy2AttackState : Enemy2BaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enemy2 Entered Attack State");
+        //Debug.Log("Enemy2 Entered Attack State");
         Attack();
     }
 
