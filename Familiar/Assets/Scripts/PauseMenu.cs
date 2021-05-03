@@ -81,8 +81,7 @@ public class PauseMenu : MonoBehaviour
     }
 
     public void Options()
-    {
-        Debug.Log("Loading options...");
+    {        
         optionsMenuUI.SetActive(true);
         pauseMenuUI.SetActive(false);
     }
