@@ -32,6 +32,7 @@ namespace AbilitySystem
             {
                 return false;
             }
+
             set
             {
             }
@@ -81,6 +82,7 @@ namespace AbilitySystem
                     Debug.LogWarning("Failed to activate Zap ability");
                 }
             }
+
             if (Input.GetButtonDown("Fire2"))
             {
                 abilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerMana, 10);

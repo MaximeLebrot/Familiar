@@ -4,17 +4,23 @@ using UnityEngine;
 
 public class Controller : MonoBehaviour
 {
-    private const float collisionEpsilon = 0.001f;
     public int health = 10;
+
+    [Header("Movement")]
+    private const float collisionEpsilon = 0.001f;
     [SerializeField, Range(0f, 100f)]
     public float acceleration;
     public float deceleration = 40.0f;
     public float turnSpeedModifier = 10.0f;
     public float maxSpeed = 7.0f;
-    public float jumpHeight = 10.0f;
-    public bool jumping;
-    public bool grounded;
+    [SerializeField]
+    private float jumpHeight;
+    public float lowJumpCoefficient = 1.0f;
+    private readonly float highJumpCoefficient = 2.0f;
+    public bool isJumping;
+    public bool isGrounded = true;
 
+    [Header("Physics")]
     [Range(0.0f, 1.0f)]
     public float staticFrictionCoefficient = 0.65f;
     [Range(0.0f, 1.0f)]
@@ -28,6 +34,7 @@ public class Controller : MonoBehaviour
     public float slopeAngleFactor;
     private const float groundCheckDistance = 0.1f;
 
+    [Header("Other stuff")]
     public LayerMask collisionMask;
     public Vector3 velocity;
     public Vector3 input;
@@ -74,10 +81,14 @@ public class Controller : MonoBehaviour
         transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
     }
 
+    private void LateUpdate()
+    {
+    }
+
     private RaycastHit GroundCheck()
     {
         //RaycastHit hit;
-        grounded = Physics.CapsuleCast(
+        isGrounded = Physics.CapsuleCast(
             GetPoint1(),
             GetPoint2() + new Vector3(0, 0.1f, 0),
             col.radius,
@@ -93,16 +104,16 @@ public class Controller : MonoBehaviour
     {
         get
         {
-            return (
-                Physics.CapsuleCast(
+            isGrounded = Physics.CapsuleCast(
                     point1: GetPoint1(),
-                    point2: GetPoint2() + new Vector3(0, 0.1f, 0), //min teori är att overlapFunction (computepenetration) tar oss för nära marken för att casten ska se något. Den här offseten set till att den castar från en högre punkt.
+                    point2: GetPoint2() + new Vector3(0, 0.0f, 0), //min teori är att overlapFunction (computepenetration) tar oss för nära marken för att casten ska se något. Den här offseten set till att den castar från en högre punkt.
                     radius: col.radius,
                     direction: Vector3.down,
                     maxDistance: GroundCheckMargin,
                     layerMask: collisionMask
-                    )
-                );
+                    );
+
+            return isGrounded;
         }
     }
 
@@ -186,7 +197,7 @@ public class Controller : MonoBehaviour
     {
         Vector3 normalForce = NormalForce(velocity, normal/*.normalized*/);
         velocity += normalForce;
-        Friction(normalForce);
+        CalculateFriction(normalForce);
     }
 
     Vector3 NormalForce(Vector3 velocity, Vector3 normal)
@@ -203,7 +214,7 @@ public class Controller : MonoBehaviour
         return -projection;
     }
 
-    void Friction(Vector3 normalForce)
+    void CalculateFriction(Vector3 normalForce)
     {
         if (velocity.magnitude < normalForce.magnitude * staticFrictionCoefficient)
             velocity = Vector3.zero;
@@ -235,9 +246,11 @@ public class Controller : MonoBehaviour
 
         float inputMagnitude = input.magnitude;
 
-        Vector3 normal = grounded ? hit.normal : Vector3.up;
-        input = Vector3.ProjectOnPlane(cam.transform.rotation * input,
-            Vector3.Lerp(Vector3.up, normal, slopeAngleFactor)).normalized * inputMagnitude;
+        Vector3 normal = isGrounded ? hit.normal : Vector3.up;
+        input = Vector3.ProjectOnPlane(
+            cam.transform.rotation * input,
+            Vector3.Lerp(Vector3.up, normal, slopeAngleFactor)
+            ).normalized * inputMagnitude;
 
         //input = cam.transform.rotation * input;
         return input;
@@ -246,11 +259,12 @@ public class Controller : MonoBehaviour
     public void Jump()
     {
         velocity += new Vector3(0.0f, jumpHeight, 0.0f);
-        StartCoroutine(resetJumping());
+        //StartCoroutine(resetJumping());
     }
+
     public IEnumerator resetJumping()
     {
         yield return new WaitForSeconds(0.1f);
-        jumping = false;
+        isJumping = false;
     }
 }
