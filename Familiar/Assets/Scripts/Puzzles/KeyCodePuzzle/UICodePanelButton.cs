@@ -39,9 +39,11 @@ public class UICodePanelButton : MonoBehaviour
         }
         else
         {
+            Debug.Log("Wrong!");
             allImages.SetAllToColor(Color.red);
-            //set "incorrect code panel" to active?
-            code.RestartCurrentCodeCounter();
+            //set "incorrect code" panel to active?
+            //code.RestartCurrentCodeCounter();
+            StartCoroutine(code.RestartCodeCounterAfterDelay());
             StartCoroutine(allImages.ResetAll());
         }
 
