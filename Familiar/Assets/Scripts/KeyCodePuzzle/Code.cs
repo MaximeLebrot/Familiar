@@ -34,7 +34,7 @@ public class Code : MonoBehaviour
     }
     private void Update()
     {
-        SuperSmidigtJagLovar();
+        //SuperSmidigtJagLovar();
     }
 
     public void GenerateCode()

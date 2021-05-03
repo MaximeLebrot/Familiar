@@ -8,6 +8,7 @@ public class CodePanelActivate : MonoBehaviour
     public Animator anim;
 
     private AbilitySystem.Player player;
+    public CameraHandler cam;
 
     // Bool to toggle if code panel is active or not.
     private bool active = false;
@@ -16,6 +17,7 @@ public class CodePanelActivate : MonoBehaviour
     {
         anim = gameObject.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilitySystem.Player>();
+        cam = player.GetComponentInChildren<CameraHandler>();
     }
 
     // Update is called once per frame
@@ -58,6 +60,7 @@ public class CodePanelActivate : MonoBehaviour
         active = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
+        cam.freezeCamera = false;
     }
     private void ShowCodePanel()
     {
@@ -65,5 +68,6 @@ public class CodePanelActivate : MonoBehaviour
         active = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        cam.freezeCamera = true;
     }
 }

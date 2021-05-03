@@ -10,6 +10,8 @@ public class CameraHandler : MonoBehaviour
     public Vector3 offset;
     public bool firstPerson;
     public float noClipCamera = 0.5f;
+    public bool freezeCamera;
+    public bool isInNierCam;
 
     [SerializeField]
     private Vector3 cameraOffset = new Vector3(0, 2, -7);
@@ -24,8 +26,11 @@ public class CameraHandler : MonoBehaviour
     }
     void LateUpdate()
     {
-        CameraVec.x -= Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
-        CameraVec.y += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
+        if (!freezeCamera)
+        {
+            CameraVec.x -= Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
+            CameraVec.y += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
+        }
         CameraVec.x = Mathf.Clamp(CameraVec.x, maxAngleDown, maxAngleUp);
         transform.rotation = Quaternion.Euler(CameraVec.x, CameraVec.y, 0);
         //transform.rotation = Quaternion.Euler(CameraVec);
@@ -36,7 +41,8 @@ public class CameraHandler : MonoBehaviour
         if (firstPerson)
             offset -= transform.rotation * cameraOffset;
 
-        transform.position = offset;
+        if (!isInNierCam)
+            transform.position = offset;
     }
     Vector3 CheckCollision()
     {
