@@ -49,6 +49,7 @@ public class PauseMenu : MonoBehaviour
 
         playerHandler.GetComponent<Controller>().enabled = true;
         playerHandler.GetComponent<ShootingScript>().enabled = true;
+        playerHandler.GetComponent<AbilitySystem.Player>().enabled = true;
         camHandler.GetComponent<CameraHandler>().enabled = true;
     }
 
@@ -63,6 +64,7 @@ public class PauseMenu : MonoBehaviour
 
         playerHandler.GetComponent<Controller>().enabled = false;
         playerHandler.GetComponent<ShootingScript>().enabled = false;
+        playerHandler.GetComponent<AbilitySystem.Player>().enabled = false;
         camHandler.GetComponent<CameraHandler>().enabled = false;
     }
 
