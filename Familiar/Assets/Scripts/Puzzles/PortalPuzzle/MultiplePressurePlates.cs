@@ -31,6 +31,7 @@ public class MultiplePressurePlates : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Moveable"))
         {
+            anim.SetTrigger("Unclick");
             active = false;
             parent.UpdatePuzzle();
         }
