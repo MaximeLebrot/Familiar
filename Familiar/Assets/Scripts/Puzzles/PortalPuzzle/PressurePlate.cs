@@ -4,24 +4,15 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-
-    // Opens doors when a box with tag movable is on it's trigger. Could be prettier.
-    public BoxCollider boxTrigger;
-
-    public GameObject door;
-
+    private PressurePlateOneOrBoth parent;
+    public bool active;
     private Animator anim;
 
     // Start is called before the first frame update
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        parent = GetComponentInParent<PressurePlateOneOrBoth>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -29,7 +20,16 @@ public class PressurePlate : MonoBehaviour
         if (other.gameObject.CompareTag("Moveable"))
         {
             anim.SetTrigger("Click");
-            door.SetActive(false);
+            active = true;
+            parent.UpdatePuzzle();
+        }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.gameObject.CompareTag("Moveable"))
+        {
+            active = false;
+            parent.UpdatePuzzle();
         }
     }
 }

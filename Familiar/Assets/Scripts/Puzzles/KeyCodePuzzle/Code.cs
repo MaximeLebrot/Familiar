@@ -12,6 +12,8 @@ public class Code : MonoBehaviour
     public int currentNumber;
     private int correctCodeIterator;
 
+    public bool isFinnished;
+
     private void Awake()
     {
         //KeyCodes.ForEach(Entry => correctCode.Add(Entry, RandomBool()));
