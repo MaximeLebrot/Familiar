@@ -6,7 +6,7 @@ public class Enemy2DefeatState : Enemy2BaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enemy2 Entered Defeat State");
+        //Debug.Log("Enemy2 Entered Defeat State");
         Defeated();
     }
 

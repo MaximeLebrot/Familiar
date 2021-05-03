@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -20,19 +21,37 @@ public class ElectricGroundScript : MonoBehaviour, IZappable
 
     void LateUpdate()
     {
+        ValidateContacts();
+
         IsZapped = false;
+    }
+
+    private void ValidateContacts()
+    {
+        List<GameObject> tempList = new List<GameObject>();
+
+        foreach (GameObject go in listOfContacts)
+        {
+            if (go == null)
+                tempList.Add(go);
+        }
+
+        foreach (GameObject go in tempList)
+            listOfContacts.Remove(go);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        //Debug.Log("collider added");
+        Debug.Log("collider added");
+
         if (collision.gameObject.GetComponent<IZappable>() != null)
             listOfContacts.Add(collision.gameObject);
     }
 
     private void OnCollisionExit(Collision collision)
     {
-        //Debug.Log("collider removed");
+        Debug.Log("collider removed");
+
         listOfContacts.Remove(collision.gameObject);
     }
 
