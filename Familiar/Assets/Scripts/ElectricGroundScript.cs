@@ -25,7 +25,7 @@ public class ElectricGroundScript : MonoBehaviour, IZappable
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collider added");
+        //Debug.Log("collider added");
         if (collision.gameObject.GetComponent<IZappable>() != null)
             listOfContacts.Add(collision.gameObject);
     }
