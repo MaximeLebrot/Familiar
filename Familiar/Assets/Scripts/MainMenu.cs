@@ -5,17 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class MainMenu : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
+    public GameObject mainMenuUI;
+    public GameObject optionsMenuUI;
 
     public void StartGame()
     {
@@ -25,11 +16,19 @@ public class MainMenu : MonoBehaviour
     public void Options()
     {
         Debug.Log("Loading options...");
+        optionsMenuUI.SetActive(true);
+        mainMenuUI.SetActive(false);
     }
 
     public void QuitGame()
     {
         Application.Quit();
         UnityEditor.EditorApplication.isPlaying = false;
+    }
+
+    public void BackToMenu()
+    {
+        optionsMenuUI.SetActive(false);
+        mainMenuUI.SetActive(true);
     }
 }
