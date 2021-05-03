@@ -105,12 +105,15 @@ public class Code : MonoBehaviour
         if (!KeyCodeGenerated[temp].isCorrect || KeyCodeGenerated[temp].number != currentNumber)
         {
             ResetInput();
-        }        
-        else
-        {
-            correctCodeIterator++;
-            currentNumber = correctCode[correctCodeIterator]; //correctCode.stepNext;
+            return;
         }
+        StepNext();
+    }
+
+    private void StepNext()
+    {
+        correctCodeIterator++;
+        currentNumber = correctCode[correctCodeIterator]; //correctCode.stepNext;
     }
     private void ResetInput()
     {
@@ -133,17 +136,24 @@ public class Code : MonoBehaviour
 
     public IEnumerator ResetTimer()
     {
+        RestartCurrentCodeCounter();
         yield return new WaitForSeconds(1.0f);
         foreach (KeyCodeCombination keycode in KeyCodeGenerated)
         {
             keycode.ResetAll();
         }
-        restartCurrentCodeCounter();
     }
 
-    public void restartCurrentCodeCounter()
+    public void RestartCurrentCodeCounter()
     {
+        Debug.Log("Restartnig current code counter");
         currentNumber = correctCode[0];
         correctCodeIterator = 0;
+    }
+
+    public IEnumerator RestartCodeCounterAfterDelay()
+    {
+        yield return new WaitForSeconds(0.2f);
+        RestartCurrentCodeCounter();
     }
 }

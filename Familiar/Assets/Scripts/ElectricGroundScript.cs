@@ -32,7 +32,7 @@ public class ElectricGroundScript : MonoBehaviour, IZappable
 
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log("collider removed");
+        //Debug.Log("collider removed");
         listOfContacts.Remove(collision.gameObject);
     }
 
