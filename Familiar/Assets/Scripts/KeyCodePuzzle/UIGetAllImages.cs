@@ -22,10 +22,12 @@ public class UIGetAllImages : MonoBehaviour
 
     public IEnumerator ResetAll()
     {
+        Debug.Log("started ien");
         yield return new WaitForSeconds(1.0f);
         foreach (Image image in images)
         {
             image.color = Color.white;
         }
+        Debug.Log("out of ien");
     }
 }
