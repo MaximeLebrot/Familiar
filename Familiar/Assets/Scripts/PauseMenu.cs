@@ -12,6 +12,7 @@ public class PauseMenu : MonoBehaviour
     public GameObject optionsMenuUI;
         
     public Slider volumeSlider;
+    public Slider sensitivitySlider;
 
     private GameObject playerHandler;
     private GameObject camHandler;
@@ -96,5 +97,10 @@ public class PauseMenu : MonoBehaviour
     public void SetVolume()
     {
         AudioListener.volume = volumeSlider.value;
+    }
+
+    public void SetSensitivity()
+    {
+        camHandler.GetComponent<CameraHandler>().mouseSensitivity = sensitivitySlider.value * 10;
     }
 }

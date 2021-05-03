@@ -13,6 +13,7 @@ public class StateMachine
     public StateMachine(object owner, State[] states)
     {
         Debug.Assert(states.Length > 0);
+
         foreach (State state in states)
         {
             State instantiated = UnityEngine.Object.Instantiate(state);
@@ -21,6 +22,7 @@ public class StateMachine
             if (!currentState)
                 currentState = instantiated;
         }
+
         currentState?.Enter();
     }
     // Methods

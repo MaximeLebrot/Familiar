@@ -16,11 +16,15 @@ public class PlayerMovingState : PlayerBaseState
     public override void HandleUpdate()
     {
         //Debug.Log("player moving");
-        if (player.input.magnitude == 0 && player.velocity.magnitude < 0.1)
-            stateMachine.Transition<PlayerIdleState>();
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGrounded)
             stateMachine.Transition<PlayerJumpState>();
-        if (Input.GetKeyDown(KeyCode.E))
+
+        if (player.input.magnitude == 0 && player.velocity.magnitude < 0.1)
+            stateMachine.Transition<PlayerIdleState>();
+
+        
+
+        if (Input.GetButtonDown("Fire2"))
             stateMachine.Transition<PlayerHoldingState>();
     }
 
