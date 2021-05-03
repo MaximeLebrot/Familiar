@@ -46,9 +46,20 @@ public class CodePanelActivate : MonoBehaviour
                 }
             }
         }
+        //if (Input.GetKeyDown(KeyCode.C))
+        //{
+        //    if (!active)
+        //    {
+        //        ShowCodePanel();
+        //    }
+        //    else
+        //    {
+        //        HideCodePanel();
+        //    }
+        //}
     }
 
-    private void HideCodePanel()
+        private void HideCodePanel()
     {
         anim.SetBool("Active", false);
         active = false;

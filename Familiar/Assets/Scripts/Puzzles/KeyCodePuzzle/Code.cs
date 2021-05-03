@@ -24,7 +24,7 @@ public class Code : MonoBehaviour
         }
         if (correctCode.Count > 0)
         {
-            //RandomizeOrder();
+            RandomizeOrder();
         }
         else if (correctCode.Count == 0)
         {
@@ -57,7 +57,19 @@ public class Code : MonoBehaviour
     private void RandomizeOrder()
     {
         correctCode.Reverse();
-        int temp = correctCode[0];
+        if (correctCode.Count >= 3)
+        {
+            int temp = correctCode[0];
+            correctCode[0] = correctCode[correctCode.Count - 2];
+            correctCode[correctCode.Count - 2] = temp;
+        }
+        if (correctCode.Count >= 4)
+        {
+            int temp = correctCode[3];
+            correctCode[3] = correctCode[correctCode.Count - 3];
+            correctCode[correctCode.Count - 3] = temp;
+        }
+
         //correctCode[correctCode.Count] = temp;
         //huller om buller
     }

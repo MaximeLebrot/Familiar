@@ -17,11 +17,18 @@ public class DisplayedCode : MonoBehaviour
     {
         foreach (CorrectCodeDisplay display in codeDisplay)
         {
-            foreach (int number in code.correctCode)
+            //foreach (int number in code.correctCode)
+            //{
+            //    if (number == display.number)
+            //    {
+            //        display.Activate();
+            //    }
+            //}
+            for (int i = 0; i < code.correctCode.Count; i++)
             {
-                if (number == display.number)
+                if (code.correctCode[i] == display.number)
                 {
-                    display.Activate();
+                    display.Activate(i);
                 }
             }
         }
