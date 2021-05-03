@@ -2,11 +2,14 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
     public GameObject mainMenuUI;
     public GameObject optionsMenuUI;
+
+    public Slider volumeSlider;
 
     public void StartGame()
     {
@@ -30,5 +33,10 @@ public class MainMenu : MonoBehaviour
     {
         optionsMenuUI.SetActive(false);
         mainMenuUI.SetActive(true);
+    }
+
+    public void SetVolume()
+    {
+        AudioListener.volume = volumeSlider.value;
     }
 }

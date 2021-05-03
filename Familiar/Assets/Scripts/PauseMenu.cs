@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class PauseMenu : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class PauseMenu : MonoBehaviour
 
     public GameObject pauseMenuUI;
     public GameObject optionsMenuUI;
+        
+    public Slider volumeSlider;
 
     private GameObject playerHandler;
     private GameObject camHandler;
@@ -45,7 +48,6 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
-        AudioListener.volume = 1;
 
         playerHandler.GetComponent<Controller>().enabled = true;
         playerHandler.GetComponent<ShootingScript>().enabled = true;
@@ -60,7 +62,6 @@ public class PauseMenu : MonoBehaviour
         GameIsPaused = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        AudioListener.volume = 0;
 
         playerHandler.GetComponent<Controller>().enabled = false;
         playerHandler.GetComponent<ShootingScript>().enabled = false;
@@ -90,5 +91,10 @@ public class PauseMenu : MonoBehaviour
     {
         optionsMenuUI.SetActive(false);
         pauseMenuUI.SetActive(true);
-    }    
+    }
+
+    public void SetVolume()
+    {
+        AudioListener.volume = volumeSlider.value;
+    }
 }
