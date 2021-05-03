@@ -24,8 +24,8 @@ public class PlayerMovingState : PlayerBaseState
 
         
 
-        if (Input.GetButtonDown("Fire2"))
-            stateMachine.Transition<PlayerHoldingState>();
+        //if (Input.GetButtonDown("Fire2"))
+           // stateMachine.Transition<PlayerHoldingState>();
     }
 
     public override void Exit()
