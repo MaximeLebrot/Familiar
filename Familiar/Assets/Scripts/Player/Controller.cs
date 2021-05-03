@@ -83,6 +83,9 @@ public class Controller : MonoBehaviour
         if (velocity.y < 0)
             velocity += Vector3.down * gravity * fastFallCoefficient * Time.deltaTime;
 
+        if (velocity.y > 0.0f && !Input.GetKey(KeyCode.Space))
+            velocity += Vector3.down * gravity * lowJumpCoefficient * Time.deltaTime;
+
         UpdateVelocity();
 
 
