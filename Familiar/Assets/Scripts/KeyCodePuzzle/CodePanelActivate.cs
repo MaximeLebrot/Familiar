@@ -9,10 +9,9 @@ public class CodePanelActivate : MonoBehaviour
 
     private AbilitySystem.Player player;
     public CameraHandler cam;
-    public GameObject UICoverPanel;
+
     // Bool to toggle if code panel is active or not.
     private bool active = false;
-    private bool puzzleDone;
 
     void Start()
     {
@@ -24,38 +23,35 @@ public class CodePanelActivate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!puzzleDone)
+        //if (!player.isInCodePanelArea)
+        //{
+        //    HideCodePanel();
+        //}
+        //else if (player.canSeeCodePanel)
+        //{
+        //    if (Input.GetKeyDown(KeyCode.C))
+        //    {
+        //        if (!active)
+        //        {
+        //            ShowCodePanel();
+        //        }
+        //        else
+        //        {
+        //            HideCodePanel();
+        //        }
+        //    }
+        //}
+        if (Input.GetKeyDown(KeyCode.C))
         {
-            if (!player.isInCodePanelArea)
+            if (!active)
+            {
+                ShowCodePanel();
+            }
+            else
             {
                 HideCodePanel();
             }
-            else if (player.canSeeCodePanel)
-            {
-                if (Input.GetKeyDown(KeyCode.C))
-                {
-                    if (!active)
-                    {
-                        ShowCodePanel();
-                    }
-                    else
-                    {
-                        HideCodePanel();
-                    }
-                }
-            }
         }
-        //if (Input.GetKeyDown(KeyCode.C))
-        //{
-        //    if (!active)
-        //    {
-        //        ShowCodePanel();
-        //    }
-        //    else
-        //    {
-        //        HideCodePanel();
-        //    }
-        //}
     }
 
     private void HideCodePanel()
@@ -64,7 +60,6 @@ public class CodePanelActivate : MonoBehaviour
         active = false;
         Cursor.visible = false;
         Cursor.lockState = CursorLockMode.Confined;
-        //Cursor.lockState = CursorLockMode.Locked;
         cam.freezeCamera = false;
     }
     private void ShowCodePanel()
@@ -74,12 +69,5 @@ public class CodePanelActivate : MonoBehaviour
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
         cam.freezeCamera = true;
-    }
-    public IEnumerator PuzzleComplete()
-    {
-        puzzleDone = true;
-        UICoverPanel.SetActive(true);
-        yield return new WaitForSeconds(1.0f);
-        HideCodePanel();
     }
 }

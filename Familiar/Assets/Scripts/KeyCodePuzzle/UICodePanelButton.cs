@@ -1,5 +1,3 @@
-using System.Collections.Generic;
-using System.Collections;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +9,6 @@ public class UICodePanelButton : MonoBehaviour
     private Code code;
     private Text text;
 
-    public CodePanelActivate codePanelActivate;
     public UIGetAllImages allImages;
 
     private void Start()
@@ -21,16 +18,14 @@ public class UICodePanelButton : MonoBehaviour
         image = GetComponent<Image>();
         code = GameObject.FindGameObjectWithTag("CodePanel").GetComponent<Code>();
         allImages = GetComponentInParent<UIGetAllImages>();
-        codePanelActivate = GetComponentInParent<CodePanelActivate>();
     }
 
     public void ButtonClicked()
     {
-        if (code.correctCode[code.correctCode.Count - 1] == number && number == code.currentNumber)
+        if (code.correctCode[code.correctCode.Count - 1] == number)
         {
             allImages.SetAllToColor(Color.green);
             //Deactivate ui? deactivate buttons iaf .. allButtons?
-            StartCoroutine(codePanelActivate.PuzzleComplete());
             return;
         }
         if (code.currentNumber == number)
