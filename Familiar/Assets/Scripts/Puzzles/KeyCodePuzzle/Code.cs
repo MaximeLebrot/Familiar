@@ -133,16 +133,17 @@ public class Code : MonoBehaviour
 
     public IEnumerator ResetTimer()
     {
+        RestartCurrentCodeCounter();
         yield return new WaitForSeconds(1.0f);
         foreach (KeyCodeCombination keycode in KeyCodeGenerated)
         {
             keycode.ResetAll();
         }
-        restartCurrentCodeCounter();
     }
 
-    public void restartCurrentCodeCounter()
+    public void RestartCurrentCodeCounter()
     {
+        Debug.Log("Restartnig current code counter");
         currentNumber = correctCode[0];
         correctCodeIterator = 0;
     }

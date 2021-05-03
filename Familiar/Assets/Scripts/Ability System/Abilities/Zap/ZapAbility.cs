@@ -19,7 +19,7 @@ namespace AbilitySystem
             player.audioHandler.PlayZappingSound();
             //otherAbilitySystem = hit.GetComponent<GameplayAbilitySystem>(); ray hit eller liknande
             //otherAbilitySystem.ApplyEffectToSelf(appliedEffect);
-            Debug.Log(cost.attribute.name + " = " + owner.GetAttributeValue(cost.attribute.GetType()));
+            //Debug.Log(cost.attribute.name + " = " + owner.GetAttributeValue(cost.attribute.GetType()));
 
             //doZap logik bör vara här
         }
