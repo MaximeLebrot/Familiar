@@ -39,4 +39,9 @@ public class MainMenu : MonoBehaviour
     {
         AudioListener.volume = volumeSlider.value;
     }
+
+    public void LoadGame()
+    {
+        Debug.Log("Loading game...");
+    }
 }

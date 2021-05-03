@@ -23,7 +23,6 @@ public class PauseMenu : MonoBehaviour
         camHandler = GameObject.Find("Main Camera");
     }
 
-    // Update is called once per frame
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
@@ -59,6 +58,7 @@ public class PauseMenu : MonoBehaviour
     void Pause()
     {
         pauseMenuUI.SetActive(true);
+
         Time.timeScale = 0;
         GameIsPaused = true;
         Cursor.visible = true;
@@ -102,5 +102,10 @@ public class PauseMenu : MonoBehaviour
     public void SetSensitivity()
     {
         camHandler.GetComponent<CameraHandler>().mouseSensitivity = sensitivitySlider.value * 10;
+    }
+
+    public void SaveGame()
+    {
+        Debug.Log("Saving game...");
     }
 }
