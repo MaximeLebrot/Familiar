@@ -22,7 +22,7 @@ public class PlayerJumpState : PlayerBaseState
 
         //adjusts jump velocity
         if (player.velocity.y > 0.0f && !Input.GetKey(KeyCode.Space))
-            player.velocity += Vector3.down * player.gravity * player.LowJumpCoefficient * Time.deltaTime;
+            player.velocity += Vector3.down * player.Gravity * player.LowJumpCoefficient * Time.deltaTime;
         //Debug.Log("player jumping");
         //if (!player.IsGrounded && !hasDoubleJumped && Input.GetKeyDown(KeyCode.Space))
         //{

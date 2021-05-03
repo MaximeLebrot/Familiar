@@ -13,14 +13,18 @@ public class Controller : MonoBehaviour
     public float deceleration = 40.0f;
     public float turnSpeedModifier = 10.0f;
     public float maxSpeed = 7.0f;
-    [SerializeField]
-    private float jumpHeight;
-    [SerializeField]
-    private float lowJumpCoefficient = 1.0f;
-    [SerializeField]
-    private float fastFallCoefficient = 2.0f;
     public bool isJumping;
     public bool isGrounded = true;
+
+    [Header("Jump settings")]
+    [SerializeField]
+    private float gravity = 20.0f;
+    [SerializeField]
+    private float jumpHeight = 20.0f;
+    [SerializeField, Tooltip("The amount of extra gravity applied while doing a short jump. Keep in mind that gravity is already being applied once.")]
+    private float lowJumpCoefficient = 1.0f;
+    [SerializeField, Tooltip("The amount of extra gravity applied while falling. Keep in mind that gravity is already being applied once.")]
+    private float fastFallCoefficient = 2.0f;
 
     [Header("Physics")]
     [Range(0.0f, 1.0f)]
@@ -31,7 +35,6 @@ public class Controller : MonoBehaviour
     public float airResistance = 0.2f;
 
     public float skinWidth = 0.01f;
-    public float gravity = 20.0f;
     public float collisionMargin;
     public float slopeAngleFactor;
     private const float groundCheckDistance = 0.1f;
@@ -128,6 +131,14 @@ public class Controller : MonoBehaviour
         get
         {
             return lowJumpCoefficient;
+        }
+    }
+
+    public float Gravity
+    {
+        get
+        {
+            return gravity;
         }
     }
 
