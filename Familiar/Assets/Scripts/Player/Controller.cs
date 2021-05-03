@@ -15,8 +15,10 @@ public class Controller : MonoBehaviour
     public float maxSpeed = 7.0f;
     [SerializeField]
     private float jumpHeight;
-    public float lowJumpCoefficient = 1.0f;
-    private readonly float highJumpCoefficient = 2.0f;
+    [SerializeField]
+    private float lowJumpCoefficient = 1.0f;
+    [SerializeField]
+    private float fastFallCoefficient = 2.0f;
     public bool isJumping;
     public bool isGrounded = true;
 
@@ -75,7 +77,11 @@ public class Controller : MonoBehaviour
 
         velocity *= Mathf.Pow(airResistance, Time.deltaTime);
 
+        if (velocity.y < 0)
+            velocity += Vector3.down * gravity * fastFallCoefficient * Time.deltaTime;
+
         UpdateVelocity();
+
 
         transform.position += velocity * Time.deltaTime;
         transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
@@ -114,6 +120,14 @@ public class Controller : MonoBehaviour
                     );
 
             return isGrounded;
+        }
+    }
+
+    public float LowJumpCoefficient
+    {
+        get
+        {
+            return lowJumpCoefficient;
         }
     }
 
