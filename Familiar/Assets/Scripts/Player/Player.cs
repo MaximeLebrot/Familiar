@@ -178,5 +178,10 @@ namespace AbilitySystem
 
             
         }
+
+        public void ResetTakeDmgTrigger()
+        {
+            anim.ResetTrigger("takeDmg");
+        }
     }
 }
