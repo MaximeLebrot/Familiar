@@ -8,7 +8,8 @@ public class Door : MonoBehaviour
     {
         if (other.tag == "Moveable")
         {
-            Destroy(gameObject);
+            gameObject.SetActive(false);
+            //Destroy(gameObject);
         }
     }
 }
