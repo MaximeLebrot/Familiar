@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Author: Simon Canbäck
 public class ElectricGroundScript : MonoBehaviour, IZappable
 {
     private List<GameObject> listOfContacts;
