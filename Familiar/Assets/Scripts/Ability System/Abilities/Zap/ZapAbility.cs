@@ -16,10 +16,10 @@ namespace AbilitySystem
             Commit(owner);
             shoot = player.GetComponent<ShootingScript>();
 
-            if (shoot.canFire)
+            if (shoot.CanFire)
             {
                 //shoot.Shoot();
-                shoot.canFire = false;
+                shoot.CanFire = false;
                 shoot.StartCoroutine(shoot.ResetCanFire());
                 player.anim.SetTrigger("attack");
                 //player.audioHandler.PlayZappingSound();

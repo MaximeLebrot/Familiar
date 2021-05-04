@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,13 +7,19 @@ using UnityEngine.Events;
 //Secondary author: Maxime Lebrot
 public class ShootingScript : MonoBehaviour
 {
-    private bool canFire = true;
+    //private bool canFire = true;
     //fireCooldown
 
     Controller controller;
     public GameObject connector;
     public GameObject spotlight;
     public BoxCollider connectiveSpace;
+
+    public bool CanFire
+    {
+        get; 
+        set;
+    }
 
     void Start()
     {
@@ -21,14 +28,14 @@ public class ShootingScript : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetButton("Fire1") && canFire)
+        if (Input.GetButton("Fire1") && CanFire)
         {
             //Shoot();
         }
 
         if (Input.GetButtonUp("Fire1"))
         {
-            canFire = true;
+            CanFire = true;
         }
 
 
@@ -36,7 +43,7 @@ public class ShootingScript : MonoBehaviour
 
     public void Shoot()
     {
-        canFire = false;
+        CanFire = false;
         Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
 
         Physics.Raycast(camRay, out RaycastHit hitPoint, 20.0f/*LayerMask*/);
@@ -89,5 +96,10 @@ public class ShootingScript : MonoBehaviour
             }
         }
     }
-
+    public IEnumerator ResetCanFire()
+    {
+        //canFire = false;
+        yield return new WaitForSeconds(1.0f);
+        CanFire = true;
+    }
 }
