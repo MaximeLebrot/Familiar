@@ -9,6 +9,7 @@ public class HelpTextTrigger : MonoBehaviour
     public Text helpText;
     public string instructions;
     public float waitTime;
+    public bool deactiveTrigger;
 
     // Start is called before the first frame update
     void Start()
@@ -21,14 +22,31 @@ public class HelpTextTrigger : MonoBehaviour
         if (other.tag == "Player")
         {
             helpText.text = instructions;
-            StartCoroutine(WaitAndDestroy());
+            if (deactiveTrigger)
+            {
+                StartCoroutine(WaitAndDestroy());
+            }
+        }
+    }
+
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag == "Player")
+        {
+            if (helpText.text == instructions)
+            {
+                helpText.text = "";
+            }
         }
     }
 
     private IEnumerator WaitAndDestroy()
     {
         yield return new WaitForSeconds(waitTime);
-        helpText.text = "";
+        if (helpText.text == instructions)
+        {
+            helpText.text = "";
+        }
         gameObject.SetActive(false);
     }
 }
