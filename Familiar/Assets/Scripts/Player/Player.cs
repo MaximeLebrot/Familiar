@@ -29,6 +29,8 @@ namespace AbilitySystem
 
         public UnityEvent PlayerDied;
 
+        public GameObject[] moonstones;
+
         public bool IsZapped
         {
             get
@@ -98,6 +100,7 @@ namespace AbilitySystem
         {
             if (other.tag == "MoonStone")
             {
+                moonstones[stoneCounter].SetActive(true);
                 stoneCounter++;
             }
         }
