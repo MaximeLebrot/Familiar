@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -6,7 +8,7 @@ using UnityEngine.Events;
 //Secondary author: Maxime Lebrot
 public class ShootingScript : MonoBehaviour
 {
-    private bool canFire = true;
+    public bool canFire = true;
     //fireCooldown
 
     Controller controller;
@@ -41,16 +43,13 @@ public class ShootingScript : MonoBehaviour
             //Shoot();
         }
 
-        if (Input.GetButtonUp("Fire1"))
-        {
-            canFire = true;
-        }
 
 
     }
 
     public void Shoot()
     {
+
         canFire = false;
         Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
 
@@ -103,8 +102,13 @@ public class ShootingScript : MonoBehaviour
                 enemy1.zapped = true;
             }
         }
+        StartCoroutine(ResetCanFire());
     }
-
+    public IEnumerator ResetCanFire()
+    {
+        yield return new WaitForSeconds(0.5f);
+        canFire = true;
+    }
     void GrabObject()
     {
         int hitIndex = -1;

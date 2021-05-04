@@ -8,6 +8,7 @@ namespace AbilitySystem
 {
     public class Player : MonoBehaviour, IZappable
     {
+        public Animator anim;
         public float moveSpeed;
         private int stoneCounter;
 
@@ -50,6 +51,7 @@ namespace AbilitySystem
 
         protected void Awake()
         {
+            anim = GetComponent<Animator>();
             playerController = GetComponent<Controller>();
             stateMachine = new StateMachine(this, states);
             audioHandler = GetComponent<AudioHandler>();
@@ -125,12 +127,18 @@ namespace AbilitySystem
         {
             healthBar.value = 0;
             PlayerDied.Invoke();
+            anim.SetTrigger("die");
 
             Debug.Log("ded");
             //anim.PlayAnim("death");
             //restart / menu
             //Destroy(this.gameObject);
                        
+        }
+
+        public void FadeToBlack()
+        {
+            Debug.Log("FadedToBlack");
         }
 
         public void Respawn(Vector3 target, float delay)
