@@ -166,8 +166,8 @@ public class ShootingScript : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.gameObject.CompareTag("Enemy")
-            || collision.gameObject.CompareTag("Enemy1")
+        if (/*collision.gameObject.CompareTag("Enemy")
+            ||*/ collision.gameObject.CompareTag("Enemy1")
             || collision.gameObject.CompareTag("Enemy2"))
             DropObject();
     }
