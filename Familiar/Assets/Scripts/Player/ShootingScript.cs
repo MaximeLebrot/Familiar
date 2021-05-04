@@ -49,8 +49,7 @@ public class ShootingScript : MonoBehaviour
 
     public void Shoot()
     {
-
-        canFire = false;
+        StartCoroutine(ResetCanFire());
         Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
 
         Physics.Raycast(camRay, out RaycastHit hitPoint, 20.0f/*LayerMask*/);
@@ -102,11 +101,11 @@ public class ShootingScript : MonoBehaviour
                 enemy1.zapped = true;
             }
         }
-        StartCoroutine(ResetCanFire());
     }
     public IEnumerator ResetCanFire()
     {
-        yield return new WaitForSeconds(0.5f);
+        canFire = false;
+        yield return new WaitForSeconds(1.0f);
         canFire = true;
     }
     void GrabObject()

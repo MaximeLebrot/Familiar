@@ -9,7 +9,7 @@ public class Enemy2IdleState : Enemy2BaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enemy2 Entered Idle State");
+        //Debug.Log("Enemy2 Entered Idle State");
     }
 
     public override void HandleUpdate()
