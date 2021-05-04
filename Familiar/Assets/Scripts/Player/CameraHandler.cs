@@ -11,6 +11,7 @@ public class CameraHandler : MonoBehaviour
     public bool firstPerson;
     public float noClipCamera = 0.5f;
     public bool freezeCamera;
+    public bool cannotMoveCam;
     public bool isInNierCam;
 
     [SerializeField]
@@ -26,7 +27,7 @@ public class CameraHandler : MonoBehaviour
     }
     void LateUpdate()
     {
-        if (!freezeCamera)
+        if (!freezeCamera && !cannotMoveCam)
         {
             CameraVec.x -= Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
             CameraVec.y += Input.GetAxisRaw("Mouse X") * mouseSensitivity;

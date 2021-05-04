@@ -136,7 +136,7 @@ namespace AbilitySystem
         {
             ded = true;
             playerController.dedNowDontMove = true;
-            playerController.cam.freezeCamera = true;
+            playerController.cam.cannotMoveCam = true;
             healthBar.value = 0;
             PlayerDied.Invoke();
             anim.SetTrigger("die");
