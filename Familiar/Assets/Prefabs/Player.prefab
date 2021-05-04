@@ -102,7 +102,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b97dfa33e4b6c4286753f331f3b990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  anim: {fileID: 0}
   moveSpeed: 0
+  ded: 0
   canSeeCodePanel: 0
   isInCodePanelArea: 0
   startingAbilities:
@@ -123,6 +125,10 @@ MonoBehaviour:
   - {fileID: 11400000, guid: ba5e4359840153346aa28bd88cd0a8ee, type: 2}
   audioHandler: {fileID: 0}
   healthBar: {fileID: 0}
+  PlayerDied:
+    m_PersistentCalls:
+      m_Calls: []
+  moonstones: []
 --- !u!114 &8266650046587695655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,9 +141,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c957fbafa8262ef4ea44d250bdbdb606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  canFire: 1
+  carriedObject: {fileID: 0}
   connector: {fileID: 0}
   spotlight: {fileID: 0}
   connectiveSpace: {fileID: 0}
+  heldObjectPoint: {fileID: 0}
 --- !u!82 &8544236797534047952
 AudioSource:
   m_ObjectHideFlags: 0
@@ -250,8 +259,15 @@ MonoBehaviour:
   jumpSounds: []
   runSounds: []
   damageSounds: []
-  deathSounds: []
-  movingSounds: []
+  deathSounds:
+  - {fileID: 8300000, guid: 2c0ac9daae754ac459729c2dc6a32633, type: 3}
+  movingSounds:
+  - {fileID: 8300000, guid: 15289c280b6e5754a943386682ee43d3, type: 3}
+  - {fileID: 8300000, guid: 03e8d9fbfb088ad42a6414d15e14869c, type: 3}
+  - {fileID: 8300000, guid: cc189fb4c63e0c94db54e6c9647136ca, type: 3}
+  - {fileID: 8300000, guid: 622c3fba7ab35a74486667288593f83b, type: 3}
+  - {fileID: 8300000, guid: ae5d18f370841214db85ea3c3b3ff451, type: 3}
+  - {fileID: 8300000, guid: f097637bfb1eb194aa8bd272b9e62ef9, type: 3}
   zappingSounds:
   - {fileID: 8300000, guid: f1d809a40d7551a47a565cfe722f4f80, type: 3}
   - {fileID: 8300000, guid: 7ce7648f10f030c4ea14a84437ae59c9, type: 3}
