@@ -12,6 +12,8 @@ namespace AbilitySystem
         public float moveSpeed;
         private int stoneCounter;
 
+        public bool ded;
+
         public bool canSeeCodePanel;
         public bool isInCodePanelArea;
 
@@ -125,6 +127,7 @@ namespace AbilitySystem
         
         public void Die()
         {
+            ded = true;
             healthBar.value = 0;
             PlayerDied.Invoke();
             anim.SetTrigger("die");

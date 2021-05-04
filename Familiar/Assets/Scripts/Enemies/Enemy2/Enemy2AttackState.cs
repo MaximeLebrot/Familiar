@@ -57,6 +57,7 @@ public class Enemy2AttackState : Enemy2BaseState
         if (playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) <= 0)
         {
             playerStats.Die();
+            stateMachine.Transition<Enemy2IdleState>();
         }
     }
 }
