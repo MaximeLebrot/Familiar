@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.Events;
 
 namespace AbilitySystem
 {
@@ -24,7 +25,9 @@ namespace AbilitySystem
         GameplayAbilitySystem abilitySystem;
         StateMachine stateMachine;
 
-        public Slider healthBar;        
+        public Slider healthBar;
+
+        public UnityEvent PlayerDied;
 
         public bool IsZapped
         {
@@ -118,6 +121,7 @@ namespace AbilitySystem
         public void Die()
         {
             healthBar.value = 0;
+            PlayerDied.Invoke();
 
             Debug.Log("ded");
             //Destroy(this.gameObject);

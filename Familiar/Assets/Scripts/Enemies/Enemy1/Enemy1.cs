@@ -40,6 +40,20 @@ public class Enemy1 : MonoBehaviour, IZappable
         Debug.DrawLine(transform.position + new Vector3(0, 5, 0), navAgent.velocity, Color.cyan);
     }
 
+    public void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Moveable"))
+        {
+            if (collision.gameObject.transform.parent != null)
+            {
+                GameObject go = collision.gameObject.transform.parent.gameObject;
+
+                if (go.TryGetComponent(out ShootingScript ss))
+                    ss.DropObject();
+            }
+        }
+    }
+
     public void OnZap()
     {
         Debug.Log("Zapping enemy 1");

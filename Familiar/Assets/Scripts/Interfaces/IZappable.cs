@@ -1,5 +1,5 @@
 ﻿
-
+//Author: Simon Canbäck
 public interface IZappable
 {
     /// <summary>

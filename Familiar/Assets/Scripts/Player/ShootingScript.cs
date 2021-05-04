@@ -1,26 +1,38 @@
+using System;
 using UnityEngine;
+using UnityEngine.Events;
 
+//Primary author: Simon Canbäck
+//Secondary author: Maxime Lebrot
 public class ShootingScript : MonoBehaviour
 {
     private bool canFire = true;
     //fireCooldown
 
     Controller controller;
+    [SerializeField]
     private GameObject carriedObject;
     public GameObject connector;
     public GameObject spotlight;
     public BoxCollider connectiveSpace;
+    public Transform heldObjectPoint;
 
     void Start()
     {
         controller = GetComponent<Controller>();
+
+        if (heldObjectPoint == null)
+            heldObjectPoint = GameObject.FindGameObjectWithTag("HOLP").transform;
     }
 
     void Update()
     {
         if (Input.GetButtonDown("Fire2"))
         {
-            Grab();
+            if (carriedObject == null)
+                GrabObject();
+            else
+                DropObject();
             return;
         }
 
@@ -28,6 +40,7 @@ public class ShootingScript : MonoBehaviour
         {
             //Shoot();
         }
+
         if (Input.GetButtonUp("Fire1"))
         {
             canFire = true;
@@ -61,8 +74,6 @@ public class ShootingScript : MonoBehaviour
 
             if (hitPoint.collider.CompareTag("Switch"))
             {
-                
-
                 Collider[] colArray = Physics.OverlapBox(connectiveSpace.transform.position, connectiveSpace.size);
 
                 foreach (Collider c in colArray)
@@ -94,16 +105,8 @@ public class ShootingScript : MonoBehaviour
         }
     }
 
-    void Grab()
+    void GrabObject()
     {
-        if (carriedObject != null
-            && carriedObject.transform.parent == gameObject.transform)
-        {
-            carriedObject.transform.parent = null;
-            carriedObject = null;
-            return;
-        }
-
         int hitIndex = -1;
 
         RaycastHit[] hitArray = Physics.CapsuleCastAll(
@@ -131,5 +134,37 @@ public class ShootingScript : MonoBehaviour
 
         carriedObject = hitArray[hitIndex].collider.gameObject;
         carriedObject.transform.parent = transform;
+        carriedObject.transform.localPosition = heldObjectPoint.localPosition;
+        carriedObject.transform.rotation = carriedObject.transform.parent.rotation;
+        carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+    }
+
+    public void DropObject()
+    {
+        try
+        {
+            carriedObject.transform.parent = null;
+            carriedObject = null;
+            carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
+            carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
+        }
+        catch (NullReferenceException) { };
+
+        return;
+    }
+
+    public void OnPlayerDeath()
+    {
+        //Debug.Log("In OnPlayerDeath()");
+
+        DropObject();
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        if (collision.gameObject.CompareTag("Enemy")
+            || collision.gameObject.CompareTag("Enemy1")
+            || collision.gameObject.CompareTag("Enemy2"))
+            DropObject();
     }
 }

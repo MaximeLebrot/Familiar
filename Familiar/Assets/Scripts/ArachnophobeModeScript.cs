@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+//Author: Simon Canbäck
 public class ArachnophobeModeScript : MonoBehaviour
 {
     [SerializeField]
