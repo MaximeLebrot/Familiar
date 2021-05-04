@@ -8,11 +8,8 @@ namespace AbilitySystem
 {
     public class Player : MonoBehaviour, IZappable
     {
-        public Animator anim;
         public float moveSpeed;
         private int stoneCounter;
-
-        public bool ded;
 
         public bool canSeeCodePanel;
         public bool isInCodePanelArea;
@@ -31,8 +28,6 @@ namespace AbilitySystem
         public Slider healthBar;
 
         public UnityEvent PlayerDied;
-
-        public GameObject[] moonstones;
 
         public bool IsZapped
         {
@@ -53,7 +48,6 @@ namespace AbilitySystem
 
         protected void Awake()
         {
-            anim = GetComponent<Animator>();
             playerController = GetComponent<Controller>();
             stateMachine = new StateMachine(this, states);
             audioHandler = GetComponent<AudioHandler>();
@@ -83,21 +77,20 @@ namespace AbilitySystem
         private void Update()
         {
             stateMachine.HandleUpdate();
-            if (!ded)
-            {
-                if (Input.GetButtonDown("Fire1"))
-                {
-                    if (!abilitySystem.TryActivateAbilityByTag(GameplayTags.ZapAbilityTag))
-                    {
-                        Debug.LogWarning("Failed to activate Zap ability");
-                    }
-                }
 
-                if (Input.GetButtonDown("Fire2"))
+            if (Input.GetButtonDown("Fire1"))
+            {
+                if (!abilitySystem.TryActivateAbilityByTag(GameplayTags.ZapAbilityTag))
                 {
-                    abilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerMana, 10);
+                    Debug.LogWarning("Failed to activate Zap ability");
                 }
             }
+
+            if (Input.GetButtonDown("Fire2"))
+            {
+                abilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerMana, 10);
+            }
+
             HealthBarUpdate();
         }
 
@@ -105,7 +98,6 @@ namespace AbilitySystem
         {
             if (other.tag == "MoonStone")
             {
-                moonstones[stoneCounter].SetActive(true);
                 stoneCounter++;
             }
         }
@@ -125,33 +117,17 @@ namespace AbilitySystem
         {
             return abilitySystem;
         }
-
-        public void TakeDamage(float damage)
-        {
-            GetAbilitySystem().TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, -damage);
-            Debug.Log("Health = " + GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth));
-            anim.SetTrigger("takeDmg");
-        }
-
+        
         public void Die()
         {
-            ded = true;
-            playerController.dedNowDontMove = true;
-            playerController.cam.cannotMoveCam = true;
             healthBar.value = 0;
             PlayerDied.Invoke();
-            //anim.SetTrigger("die");
 
             Debug.Log("ded");
             //anim.PlayAnim("death");
             //restart / menu
             //Destroy(this.gameObject);
                        
-        }
-
-        public void FadeToBlack()
-        {
-            Debug.Log("FadedToBlack");
         }
 
         public void Respawn(Vector3 target, float delay)
@@ -177,11 +153,6 @@ namespace AbilitySystem
             healthBar.value = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth)/10;
 
             
-        }
-
-        public void ResetTakeDmgTrigger()
-        {
-            anim.ResetTrigger("takeDmg");
         }
     }
 }

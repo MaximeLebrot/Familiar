@@ -13,32 +13,16 @@ public class DoorConsole : MonoBehaviour
 
     private void Start()
     {
-        for (int i = 0; i < doors.Length; i++)
-        {
-            //first element put in is going to be active
-            if (i % 2 == 0)
-            {
-                doors[i].SetActive(true);
-            }
-            else
-            {
-                doors[i].SetActive(false);
-            }
-        }
-        //if (doors.Length > 0)
-        //doors[0].SetActive(true);
-        //if (doors.Length > 1)
-        //doors[1].SetActive(false);
+        if (doors.Length > 0)
+            doors[0].SetActive(true);
+        if (doors.Length > 1)
+            doors[1].SetActive(false);
     }
 
     private void Update()
     {
         if (canUseConsole)
         {
-            //if (Input.GetButton("Fire1"))
-            //{
-            //    DoorSwap();
-            //}
             if (Input.GetKeyDown(KeyCode.E))
             {
                 DoorSwap();
@@ -65,16 +49,11 @@ public class DoorConsole : MonoBehaviour
 
     private void DoorSwap()
     {
-        for (int i = 0; i<doors.Length; i++)
-        {
-            doors[i].SetActive(!doors[i].activeInHierarchy);
-        }
-        //if (doors.Length > 0)
-        //{
-            //doors[0].SetActive(!doors[0].activeInHierarchy);
-            //if (doors.Length > 1)
-                //doors[1].SetActive(!doors[1].activeInHierarchy);
-        //}
+        if (doors.Length > 0)
+            doors[0].SetActive(!doors[0].activeInHierarchy);
+        if (doors.Length > 1)
+            doors[1].SetActive(!doors[1].activeInHierarchy);
+
         if (allDoors.Length > 0)
         {
             foreach (GameObject door in allDoors)

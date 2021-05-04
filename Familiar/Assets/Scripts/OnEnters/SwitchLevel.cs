@@ -6,7 +6,6 @@ using UnityEngine.UI;
 
 public class SwitchLevel : MonoBehaviour
 {
-    public GameObject prisonDoor;
     public Image black;
     public Animator anim;
 
@@ -14,8 +13,7 @@ public class SwitchLevel : MonoBehaviour
     {
         if (other.tag == "Moveable")
         {
-            if (!prisonDoor.activeInHierarchy)
-                StartCoroutine(Fading());
+            StartCoroutine(Fading());
         }
     }
 

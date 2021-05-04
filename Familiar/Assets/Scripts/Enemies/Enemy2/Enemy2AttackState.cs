@@ -50,15 +50,12 @@ public class Enemy2AttackState : Enemy2BaseState
     }
     private void DamagePlayer()
     {
-        playerStats.TakeDamage(damage);
-        //playerStats.GetAbilitySystem().TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, -damage);
-        //Debug.Log("Health = " + playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth));
-        //playerStats.anim.SetTrigger("takeDmg");
+        playerStats.GetAbilitySystem().TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, -damage);
+        Debug.Log("Health = " + playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth));
         //eventsystem ska kalla till UI att uppdatera (samma ska gälla för mana)
         if (playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) <= 0)
         {
             playerStats.Die();
-            stateMachine.Transition<Enemy2IdleState>();
         }
     }
 }

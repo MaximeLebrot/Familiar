@@ -15,7 +15,6 @@ public class Fin : MonoBehaviour
     protected void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        
     }
     private void OnTriggerEnter(Collider other)
     {

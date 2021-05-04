@@ -43,6 +43,6 @@ public class AudioHandler : MonoBehaviour
     }
     public void PlayZappingSound()
     {
-        audioSource.PlayOneShot(zappingSounds[Random.Range(0, zappingSounds.Length)], volume);
+        audioSource.PlayOneShot(zappingSounds[Random.Range(0, movingSounds.Length)], volume);
     }
 }
