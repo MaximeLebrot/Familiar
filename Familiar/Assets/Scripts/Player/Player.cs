@@ -83,20 +83,21 @@ namespace AbilitySystem
         private void Update()
         {
             stateMachine.HandleUpdate();
-
-            if (Input.GetButtonDown("Fire1"))
+            if (!ded)
             {
-                if (!abilitySystem.TryActivateAbilityByTag(GameplayTags.ZapAbilityTag))
+                if (Input.GetButtonDown("Fire1"))
                 {
-                    Debug.LogWarning("Failed to activate Zap ability");
+                    if (!abilitySystem.TryActivateAbilityByTag(GameplayTags.ZapAbilityTag))
+                    {
+                        Debug.LogWarning("Failed to activate Zap ability");
+                    }
+                }
+
+                if (Input.GetButtonDown("Fire2"))
+                {
+                    abilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerMana, 10);
                 }
             }
-
-            if (Input.GetButtonDown("Fire2"))
-            {
-                abilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerMana, 10);
-            }
-
             HealthBarUpdate();
         }
 
@@ -139,7 +140,7 @@ namespace AbilitySystem
             playerController.cam.cannotMoveCam = true;
             healthBar.value = 0;
             PlayerDied.Invoke();
-            anim.SetTrigger("die");
+            //anim.SetTrigger("die");
 
             Debug.Log("ded");
             //anim.PlayAnim("death");

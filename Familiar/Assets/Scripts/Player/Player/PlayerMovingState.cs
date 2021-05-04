@@ -17,6 +17,8 @@ public class PlayerMovingState : PlayerBaseState
     public override void HandleUpdate()
     {
         //Debug.Log("player moving");
+        if (owner.ded)
+            stateMachine.Transition<PlayerDeathState>();
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGrounded)
             stateMachine.Transition<PlayerJumpState>();
 

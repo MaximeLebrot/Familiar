@@ -13,6 +13,8 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void HandleUpdate()
     {
+        if (owner.ded)
+            stateMachine.Transition<PlayerDeathState>();
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGrounded)
             stateMachine.Transition<PlayerJumpState>();
 

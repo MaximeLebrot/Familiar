@@ -90,6 +90,7 @@ MonoBehaviour:
   input: {x: 0, y: 0, z: 0}
   cam: {fileID: 0}
   col: {fileID: 0}
+  dedNowDontMove: 0
 --- !u!114 &8266650046587695648
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -123,6 +124,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 604f1747927888548b40d725cb35091e, type: 2}
   - {fileID: 11400000, guid: 4bdfc6d2ddb5b184cb9588aaac47a94a, type: 2}
   - {fileID: 11400000, guid: ba5e4359840153346aa28bd88cd0a8ee, type: 2}
+  - {fileID: 11400000, guid: eb33425a7d760144b882a3b695040221, type: 2}
   audioHandler: {fileID: 0}
   healthBar: {fileID: 0}
   PlayerDied:
@@ -400,6 +402,7 @@ MonoBehaviour:
   firstPerson: 0
   noClipCamera: 0.5
   freezeCamera: 0
+  cannotMoveCam: 0
   isInNierCam: 0
   cameraOffset: {x: 0, y: 2, z: -7}
 --- !u!114 &6645680780004362317

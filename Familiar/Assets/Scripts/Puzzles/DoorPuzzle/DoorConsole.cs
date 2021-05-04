@@ -23,7 +23,11 @@ public class DoorConsole : MonoBehaviour
     {
         if (canUseConsole)
         {
-            if (Input.GetButton("Fire1"))
+            //if (Input.GetButton("Fire1"))
+            //{
+            //    DoorSwap();
+            //}
+            if (Input.GetKeyDown(KeyCode.E))
             {
                 DoorSwap();
             }

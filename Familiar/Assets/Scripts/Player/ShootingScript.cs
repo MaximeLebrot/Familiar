@@ -49,7 +49,7 @@ public class ShootingScript : MonoBehaviour
 
     public void Shoot()
     {
-        StartCoroutine(ResetCanFire());
+        //StartCoroutine(ResetCanFire());
         Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
 
         Physics.Raycast(camRay, out RaycastHit hitPoint, 20.0f/*LayerMask*/);
@@ -104,7 +104,7 @@ public class ShootingScript : MonoBehaviour
     }
     public IEnumerator ResetCanFire()
     {
-        canFire = false;
+        //canFire = false;
         yield return new WaitForSeconds(1.0f);
         canFire = true;
     }
