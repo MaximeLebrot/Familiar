@@ -19,7 +19,10 @@ public class Enemy2AttackState : Enemy2BaseState
     {
         //Chase();
         if (owner.health == 0)
+        {
             stateMachine.Transition<Enemy2DefeatState>();
+            return;
+        }
         if (/*Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask) 
             || */Vector3.Distance(owner.transform.position, owner.player.transform.position) > aggroLossDistance)
             stateMachine.Transition<Enemy2IdleState>();
