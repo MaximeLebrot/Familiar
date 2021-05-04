@@ -4,53 +4,49 @@ using UnityEngine;
 public class Enemy2AttackState : Enemy2BaseState
 {
     public float hitDistance;
-    public int hitCooldown;
-    public bool canHit;
-    public float aggroDistance = 10.0f;
-    public float spottingDistance = 50.0f;
+    public float attackCooldown;
+    public float aggroLossDistance;
     public float damage;
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("Enemy2 Entered Attack State");
-        Attack();
+        Debug.Log("Enemy2 Entered Attack State");
+        owner.canAttack = true;
+        owner.navAgent.SetDestination(owner.player.transform.position);
     }
 
     public override void HandleUpdate()
     {
-        if (hitCooldown < 500)
-            hitCooldown++;
-        if (hitCooldown >= 500)
+        //Chase();
+        if (owner.health == 0)
         {
-            hitCooldown = 0;
-            canHit = true;
+            stateMachine.Transition<Enemy2DefeatState>();
+            return;
         }
         if (/*Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask) 
-            || */Vector3.Distance(owner.transform.position, owner.player.transform.position) > aggroDistance)
+            || */Vector3.Distance(owner.transform.position, owner.player.transform.position) > aggroLossDistance)
             stateMachine.Transition<Enemy2IdleState>();
-        else if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < hitDistance)
+        else if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < hitDistance && owner.canAttack)
             HitPlayer();
         else
-            Attack();
-        if (owner.health == 0)
-            stateMachine.Transition<Enemy2DefeatState>();
+            Chase();
         //if (Physics.Linecast(owner.transform.position, owner.vecToPlayer, owner.collisionMask))
         //stateMachine.Transition<Enemy2PatrolState>();
         //if (owner.zapped)
         //stateMachine.Transition<Enemy2DefeatState>();
     }
-    private void Attack()
+    private void Chase()
     {
-        Debug.DrawLine(owner.transform.position, owner.vecToPlayer, Color.red);
-
-        owner.navAgent.SetDestination(owner.player.transform.position);
+        //Debug.DrawLine(owner.transform.position, owner.vecToPlayer, Color.red);
+        if(owner.navAgent.remainingDistance > 0.5f)
+            owner.navAgent.SetDestination(owner.player.transform.position);
     }
     private void HitPlayer()
     {
-        owner.navAgent.ResetPath();
-        if (canHit)
-            DamagePlayer();
-        canHit = false;
+        //canHit = false;
+        owner.StartCoroutine(owner.AttackCooldown(attackCooldown));
+        //owner.navAgent.ResetPath();
+        DamagePlayer();
     }
     private void DamagePlayer()
     {

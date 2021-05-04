@@ -124,6 +124,8 @@ namespace AbilitySystem
             PlayerDied.Invoke();
 
             Debug.Log("ded");
+            //anim.PlayAnim("death");
+            //restart / menu
             //Destroy(this.gameObject);
                        
         }

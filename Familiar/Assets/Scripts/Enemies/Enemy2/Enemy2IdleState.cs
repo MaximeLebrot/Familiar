@@ -9,8 +9,7 @@ public class Enemy2IdleState : Enemy2BaseState
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("Enemy2 Entered Idle State");
-
+        Debug.Log("Enemy2 Entered Idle State");
     }
 
     public override void HandleUpdate()
@@ -28,6 +27,6 @@ public class Enemy2IdleState : Enemy2BaseState
     private void Idle()
     {
         if (owner.navAgent.remainingDistance > 0.1f)
-            owner.navAgent.SetDestination(owner.idlePosition.position);
+            owner.navAgent.SetDestination(owner.idlePosition);
     }
 }

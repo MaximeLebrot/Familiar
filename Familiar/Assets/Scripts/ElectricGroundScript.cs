@@ -43,7 +43,7 @@ public class ElectricGroundScript : MonoBehaviour, IZappable
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collider added");
+        //Debug.Log("collider added");
 
         if (collision.gameObject.GetComponent<IZappable>() != null)
             listOfContacts.Add(collision.gameObject);
@@ -51,7 +51,7 @@ public class ElectricGroundScript : MonoBehaviour, IZappable
 
     private void OnCollisionExit(Collision collision)
     {
-        Debug.Log("collider removed");
+        //Debug.Log("collider removed");
 
         listOfContacts.Remove(collision.gameObject);
     }
