@@ -48,8 +48,8 @@ public class Enemy1 : MonoBehaviour, IZappable
             {
                 GameObject go = collision.gameObject.transform.parent.gameObject;
 
-                if (go.TryGetComponent(out ShootingScript ss))
-                    ss.DropObject();
+                if (go.TryGetComponent(out GrabObjectScript phs))
+                    phs.DropObject();
             }
         }
     }

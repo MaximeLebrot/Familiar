@@ -3,6 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player/PlayerIdleState")]
 public class PlayerIdleState : PlayerBaseState
 {
+    private static readonly float playerVelocityIdleTolerance = 0.1f;
+
     public override void Enter()
     {
         base.Enter();
@@ -12,6 +14,9 @@ public class PlayerIdleState : PlayerBaseState
 
     public override void HandleUpdate()
     {
+        if (Input.GetButtonDown("Fire2") && PlayerHoldingState.CanGrabObject(player.GetComponent<Controller>()))
+            stateMachine.Transition<PlayerHoldingState>();
+
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGrounded)
             stateMachine.Transition<PlayerJumpState>();
 
@@ -22,5 +27,10 @@ public class PlayerIdleState : PlayerBaseState
     private void Idle()
     {
 
+    }
+
+    public static bool IsPlayerIdle(Controller controller)
+    {
+        return (controller.input.magnitude == 0.0f && controller.velocity.magnitude <= playerVelocityIdleTolerance);
     }
 }

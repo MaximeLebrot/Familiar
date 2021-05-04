@@ -10,32 +10,17 @@ public class ShootingScript : MonoBehaviour
     //fireCooldown
 
     Controller controller;
-    [SerializeField]
-    private GameObject carriedObject;
     public GameObject connector;
     public GameObject spotlight;
     public BoxCollider connectiveSpace;
-    public Transform heldObjectPoint;
 
     void Start()
     {
         controller = GetComponent<Controller>();
-
-        if (heldObjectPoint == null)
-            heldObjectPoint = GameObject.FindGameObjectWithTag("HOLP").transform;
     }
 
     void Update()
     {
-        if (Input.GetButtonDown("Fire2"))
-        {
-            if (carriedObject == null)
-                GrabObject();
-            else
-                DropObject();
-            return;
-        }
-
         if (Input.GetButton("Fire1") && canFire)
         {
             //Shoot();
@@ -105,66 +90,4 @@ public class ShootingScript : MonoBehaviour
         }
     }
 
-    void GrabObject()
-    {
-        int hitIndex = -1;
-
-        RaycastHit[] hitArray = Physics.CapsuleCastAll(
-            point1: controller.GetPoint1(),
-            point2: controller.GetPoint2(),
-            radius: GetComponent<CapsuleCollider>().radius,
-            direction: transform.forward,
-            maxDistance: GetComponent<CapsuleCollider>().radius * 3.0f
-            );
-
-        if (hitArray.Length == 0)
-            return;
-
-        for (int i = 0; i < hitArray.Length; i++)
-        {
-            if (hitArray[i].collider.CompareTag("Moveable"))
-            {
-                hitIndex = i;
-                break;
-            }
-        }
-
-        if (hitIndex < 0)
-            return;
-
-        carriedObject = hitArray[hitIndex].collider.gameObject;
-        carriedObject.transform.parent = transform;
-        carriedObject.transform.localPosition = heldObjectPoint.localPosition;
-        carriedObject.transform.rotation = carriedObject.transform.parent.rotation;
-        carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
-    }
-
-    public void DropObject()
-    {
-        try
-        {
-            carriedObject.transform.parent = null;
-            carriedObject = null;
-            carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
-            carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
-        }
-        catch (NullReferenceException) { };
-
-        return;
-    }
-
-    public void OnPlayerDeath()
-    {
-        //Debug.Log("In OnPlayerDeath()");
-
-        DropObject();
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-        if (collision.gameObject.CompareTag("Enemy")
-            || collision.gameObject.CompareTag("Enemy1")
-            || collision.gameObject.CompareTag("Enemy2"))
-            DropObject();
-    }
 }
