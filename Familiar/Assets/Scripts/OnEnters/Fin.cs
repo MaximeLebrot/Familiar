@@ -15,8 +15,7 @@ public class Fin : MonoBehaviour
     protected void Awake()
     {
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
-        Cursor.visible = true;
-        Cursor.lockState = CursorLockMode.None;
+        
     }
     private void OnTriggerEnter(Collider other)
     {
