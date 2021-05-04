@@ -120,6 +120,8 @@ namespace AbilitySystem
             healthBar.value = 0;
 
             Debug.Log("ded");
+            //anim.PlayAnim("death");
+            //restart / menu
             //Destroy(this.gameObject);
                        
         }

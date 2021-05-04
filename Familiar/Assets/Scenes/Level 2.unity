@@ -3012,7 +3012,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09bc3919201025340853b8f89eca0cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 0.025
+  volume: 0.05
   jumpSounds: []
   runSounds: []
   damageSounds: []
@@ -3036,7 +3036,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -3046,9 +3046,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 150
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -3056,23 +3056,23 @@ AudioSource:
     serializedVersion: 2
     m_Curve:
     - serializedVersion: 3
-      time: 0
+      time: 0.002
       value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     - serializedVersion: 3
-      time: 1
-      value: 0
-      inSlope: 0
-      outSlope: 0
+      time: 0.59768677
+      value: 0.0042419434
+      inSlope: -1.002004
+      outSlope: -1.002004
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -3081,7 +3081,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -19138,6 +19138,10 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8266650046587695655, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
+      propertyPath: crossHair
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 8266650046587695661, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
       propertyPath: jumpHeight
       value: 20
@@ -19809,7 +19813,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09bc3919201025340853b8f89eca0cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 0.025
+  volume: 0.05
   jumpSounds: []
   runSounds: []
   damageSounds: []
@@ -19833,7 +19837,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -19843,9 +19847,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 150
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -19878,7 +19882,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -20235,7 +20239,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09bc3919201025340853b8f89eca0cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 0.025
+  volume: 0.05
   jumpSounds: []
   runSounds: []
   damageSounds: []
@@ -20259,7 +20263,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -20269,9 +20273,9 @@ AudioSource:
   Priority: 128
   DopplerLevel: 1
   MinDistance: 1
-  MaxDistance: 500
+  MaxDistance: 150
   Pan2D: 0
-  rolloffMode: 0
+  rolloffMode: 1
   BypassEffects: 0
   BypassListenerEffects: 0
   BypassReverbZones: 0
@@ -20304,7 +20308,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
