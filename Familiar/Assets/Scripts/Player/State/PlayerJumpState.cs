@@ -17,6 +17,8 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void HandleUpdate()
     {
+        if (owner.ded)
+            stateMachine.Transition<PlayerDeathState>();
         if (!Input.GetKey(KeyCode.Space))
             player.isJumping = false;
 
