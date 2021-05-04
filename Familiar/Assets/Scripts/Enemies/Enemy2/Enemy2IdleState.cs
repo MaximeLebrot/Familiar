@@ -9,13 +9,13 @@ public class Enemy2IdleState : Enemy2BaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enemy2 Entered Idle State");
+        //Debug.Log("Enemy2 Entered Idle State");
     }
 
     public override void HandleUpdate()
     {
         Idle();
-        if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < aggroDistance 
+        if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < aggroDistance && !playerStats.ded
             /*&& !Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask)*/)
             stateMachine.Transition<Enemy2AttackState>();
         if (owner.health == 0)

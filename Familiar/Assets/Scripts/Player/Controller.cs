@@ -48,6 +48,7 @@ public class Controller : MonoBehaviour
     public CameraHandler cam;
     public CapsuleCollider col;
 
+    public bool dedNowDontMove;
     //public Vector3 Gravity
     //{
     //    get
@@ -88,8 +89,8 @@ public class Controller : MonoBehaviour
 
         UpdateVelocity();
 
-
-        transform.position += velocity * Time.deltaTime;
+        if (!dedNowDontMove)
+            transform.position += velocity * Time.deltaTime;
         transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
     }
 
