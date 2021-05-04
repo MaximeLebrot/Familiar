@@ -833,7 +833,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100066, guid: fd457e7fc98f5e34c9643be36b9bfbba, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: fd457e7fc98f5e34c9643be36b9bfbba, type: 3}
       propertyPath: m_RootOrder
@@ -849,7 +849,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: fd457e7fc98f5e34c9643be36b9bfbba, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 16.440136
+      value: 17.18
       objectReference: {fileID: 0}
     - target: {fileID: 400066, guid: fd457e7fc98f5e34c9643be36b9bfbba, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3868,7 +3868,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 100016, guid: bdb8de0c468a17147b4f7d2b5185a85d, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: bdb8de0c468a17147b4f7d2b5185a85d, type: 3}
       propertyPath: m_RootOrder
@@ -4523,13 +4523,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1929475960}
-  m_LocalRotation: {x: -0, y: -0.9997, z: -0, w: -0.024495216}
-  m_LocalPosition: {x: -34.456, y: 1.95, z: 20.481}
+  m_LocalRotation: {x: 0.00400155, y: -0.9862704, z: 0.16331163, w: -0.024166156}
+  m_LocalPosition: {x: -34.456, y: 2.28, z: 19.54}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: -182.807, z: 0}
+  m_LocalEulerAnglesHint: {x: 18.781, y: -182.965, z: -0.955}
 --- !u!1 &1958151446
 GameObject:
   m_ObjectHideFlags: 0
@@ -4895,6 +4895,7 @@ MonoBehaviour:
   moveSpeed: 10
   health: 4
   zapped: 0
+  canAttack: 0
   drop: {fileID: 0}
   mana: {fileID: 0}
   navAgent: {fileID: 0}
@@ -4902,7 +4903,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 128
   player: {fileID: 0}
-  idlePosition: {fileID: 497059953}
+  idlePosition: {x: 0, y: 0, z: 0}
   states:
   - {fileID: 11400000, guid: 4a8e71d57c85b614a9e94c3898e43623, type: 2}
   - {fileID: 11400000, guid: 8595af7ccfef29342adba897dc6d9bb4, type: 2}
