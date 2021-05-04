@@ -16,11 +16,12 @@ namespace AbilitySystem
             Commit(owner);
             shoot = player.GetComponent<ShootingScript>();
 
-            if(shoot.canFire)
+            if (shoot.canFire)
             {
-                shoot.Shoot();
+                //shoot.Shoot();
+                shoot.canFire = false;
                 player.anim.SetTrigger("attack");
-                player.audioHandler.PlayZappingSound();
+                //player.audioHandler.PlayZappingSound();
             }
            
             //otherAbilitySystem = hit.GetComponent<GameplayAbilitySystem>(); ray hit eller liknande
