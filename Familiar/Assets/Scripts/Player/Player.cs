@@ -124,10 +124,18 @@ namespace AbilitySystem
         {
             return abilitySystem;
         }
-        
+
+        public void TakeDamage(float damage)
+        {
+            GetAbilitySystem().TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, -damage);
+            Debug.Log("Health = " + GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth));
+            anim.SetTrigger("takeDmg");
+        }
+
         public void Die()
         {
             ded = true;
+            playerController.dedNowDontMove = true;
             healthBar.value = 0;
             PlayerDied.Invoke();
             anim.SetTrigger("die");

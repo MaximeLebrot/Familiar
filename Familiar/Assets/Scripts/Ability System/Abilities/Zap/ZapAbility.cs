@@ -20,6 +20,7 @@ namespace AbilitySystem
             {
                 //shoot.Shoot();
                 shoot.canFire = false;
+                shoot.StartCoroutine(shoot.ResetCanFire());
                 player.anim.SetTrigger("attack");
                 //player.audioHandler.PlayZappingSound();
             }
