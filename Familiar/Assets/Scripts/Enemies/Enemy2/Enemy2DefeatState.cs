@@ -17,7 +17,8 @@ public class Enemy2DefeatState : Enemy2BaseState
 
     private void Defeated()
     {
-        owner.anim.SetTrigger("spiderDie");
+        if(ArachnophobeModeScript.IsSpiderModeOn)
+            owner.anim.SetTrigger("spiderDie");
         owner.StartCoroutine(owner.KillAfterAnim());
     }
 }

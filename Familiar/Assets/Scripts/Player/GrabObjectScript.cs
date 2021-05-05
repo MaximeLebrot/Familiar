@@ -47,6 +47,14 @@ public class GrabObjectScript : MonoBehaviour
 
     }
 
+    private void FixedUpdate()
+    {
+        if (carriedObject == null)
+            return;
+
+        carriedObject.transform.position = heldObjectPoint.position;
+    }
+
     public void ToggleGrab()
     {
         if (carriedObject == null)
@@ -79,6 +87,8 @@ public class GrabObjectScript : MonoBehaviour
         carriedObject.transform.localPosition = heldObjectPoint.localPosition;
         carriedObject.transform.rotation = carriedObject.transform.parent.rotation;
         //carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
+
+        carriedObject.GetComponent<Rigidbody>().useGravity = false;
     }
 
     public void GrabObject()
@@ -98,6 +108,7 @@ public class GrabObjectScript : MonoBehaviour
     {
         try
         {
+            carriedObject.GetComponent<Rigidbody>().useGravity = true;
             carriedObject.transform.parent = null;
             carriedObject = null;
             //carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
