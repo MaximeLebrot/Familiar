@@ -7,7 +7,6 @@ public class Enemy1AttackState : Enemy1BaseState
 {
     public float grabDistance;
     public float spottingDistance;
-    public float animSpeed = 3;
     public override void Enter()
     {
         base.Enter();

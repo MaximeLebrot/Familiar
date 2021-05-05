@@ -851,6 +851,7 @@ GameObject:
   - component: {fileID: 1256233829626103434}
   - component: {fileID: 8914390864893944978}
   - component: {fileID: 8636442628284517659}
+  - component: {fileID: 124249133523557573}
   m_Layer: 0
   m_Name: PT_Medieval_Plague_Doctor
   m_TagString: Untagged
@@ -1053,7 +1054,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 09bc3919201025340853b8f89eca0cd0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  volume: 0.05
+  volume: 0.1
   jumpSounds: []
   runSounds: []
   damageSounds: []
@@ -1066,6 +1067,37 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 39bf8d9d92101f345a79314003f6ff28, type: 3}
   - {fileID: 8300000, guid: c25d40fbe2b6aec46b521a0f50e9f5f6, type: 3}
   zappingSounds: []
+--- !u!114 &124249133523557573
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1543216753092369487}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30dfd34c25a2f2f42ba02d9004771b19, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  anim: {fileID: 0}
+  zapped: 0
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 128
+  player: {fileID: 0}
+  states:
+  - {fileID: 11400000, guid: 38ad32f54a897e746853a611c26eaffc, type: 2}
+  - {fileID: 11400000, guid: f8947ac6e7f38ca4a86fc10d6df1e06c, type: 2}
+  - {fileID: 11400000, guid: 3f43a19d6bdea124a88789a19c8c1dce, type: 2}
+  - {fileID: 11400000, guid: 0c6b33dafcd4c8b4ebc9a479ce9e03b4, type: 2}
+  points:
+  - {fileID: 0}
+  - {fileID: 0}
+  destPoint: 0
+  vecToPlayer: {x: 0, y: 0, z: 0}
+  playerRespawnPoint: {fileID: 0}
+  playerRespawnLocation: {x: 0, y: 0, z: 0}
+  navAgent: {fileID: 0}
 --- !u!1 &1543216753092369489
 GameObject:
   m_ObjectHideFlags: 0

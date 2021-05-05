@@ -14,7 +14,10 @@ public class Enemy2IdleState : Enemy2BaseState
 
     public override void HandleUpdate()
     {
-        Idle();
+        if (owner.navAgent.remainingDistance > 0.2f)
+            Idle();
+        if (owner.navAgent.remainingDistance < 0.15f && owner.anim.GetBool("spiderWalk"))
+            SetWalkAnim(false);
         if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < aggroDistance && !playerStats.ded
             /*&& !Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask)*/)
             stateMachine.Transition<Enemy2AttackState>();
@@ -26,7 +29,10 @@ public class Enemy2IdleState : Enemy2BaseState
 
     private void Idle()
     {
-        if (owner.navAgent.remainingDistance > 0.1f)
-            owner.navAgent.SetDestination(owner.idlePosition);
+        owner.navAgent.SetDestination(owner.idlePosition);
+    }
+    private void SetWalkAnim(bool set)
+    {
+        owner.anim.SetBool("spiderWalk", set);
     }
 }

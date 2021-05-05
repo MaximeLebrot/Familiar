@@ -76,7 +76,7 @@ public class ShootingScript : MonoBehaviour
             {
                 Enemy2 enemy2;
                 enemy2 = hitPoint.collider.gameObject.GetComponent<Enemy2>();
-                enemy2.health--;
+                //enemy2.TakeDamage(1);
             }
             else if (hitPoint.collider.CompareTag("Enemy1"))
             {

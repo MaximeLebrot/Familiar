@@ -11,6 +11,7 @@ public class Enemy2AttackState : Enemy2BaseState
     {
         base.Enter();
         Debug.Log("Enemy2 Entered Attack State");
+        owner.anim.SetBool("spiderWalk", true);
         owner.canAttack = true;
         owner.navAgent.SetDestination(owner.player.transform.position);
     }
@@ -43,6 +44,7 @@ public class Enemy2AttackState : Enemy2BaseState
     }
     private void HitPlayer()
     {
+        owner.anim.SetTrigger("spiderAttack");
         //canHit = false;
         owner.StartCoroutine(owner.AttackCooldown(attackCooldown));
         //owner.navAgent.ResetPath();
@@ -50,6 +52,7 @@ public class Enemy2AttackState : Enemy2BaseState
     }
     private void DamagePlayer()
     {
+
         playerStats.TakeDamage(damage);
         //playerStats.GetAbilitySystem().TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, -damage);
         //Debug.Log("Health = " + playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth));

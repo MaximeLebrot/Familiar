@@ -7,12 +7,14 @@ using UnityEngine.UI;
 public class Enemy2 : MonoBehaviour, IZappable
 {
     public float moveSpeed = 10.0f;
-    public int health = 4;
+    private static float maxHealth = 4.0f;
+    public float health = 4;
     public bool zapped;
     public bool canAttack;
     public GameObject drop;
     public ManaPickup mana;
 
+    public Animator anim;
     public NavMeshAgent navAgent;
     public LayerMask collisionMask;
     public GameObject player;
@@ -27,8 +29,8 @@ public class Enemy2 : MonoBehaviour, IZappable
 
     protected void Awake()
     {
-        //idlePosition = GetComponentInParent<Transform>().position;
-        idlePosition = transform.localPosition;
+        anim = GetComponent<Animator>();
+        idlePosition = transform.position;
         player = GameObject.FindGameObjectWithTag("Player");
         navAgent = GetComponent<NavMeshAgent>();
         stateMachine = new StateMachine(this, states);
@@ -57,9 +59,18 @@ public class Enemy2 : MonoBehaviour, IZappable
 
     public void OnZap()
     {
-        health--;
-        slider.value -= 0.25f;
+        TakeDamage(1.0f);
         //Destroy(gameObject);
+    }
+
+    public void TakeDamage(float damage)
+    {
+        Debug.Log("Spider took " + damage + " damage");
+
+        slider.value -= (damage / maxHealth);
+
+        health -= damage;
+        anim.SetTrigger("spiderDmg");
     }
 
     public IEnumerator AttackCooldown(float cooldown)
@@ -69,4 +80,11 @@ public class Enemy2 : MonoBehaviour, IZappable
         canAttack = true;
     }
 
+    public IEnumerator KillAfterAnim()
+    {
+        yield return new WaitForSeconds(1.0f);
+        drop.SetActive(true);
+        mana.SetPosition(transform.position);
+        Destroy(gameObject);
+    }
 }
