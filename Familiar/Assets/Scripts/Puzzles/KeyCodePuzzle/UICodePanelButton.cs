@@ -29,7 +29,6 @@ public class UICodePanelButton : MonoBehaviour
         if (code.correctCode[code.correctCode.Count - 1] == number && number == code.currentNumber)
         {
             allImages.SetAllToColor(Color.green);
-            //Deactivate ui? deactivate buttons iaf .. allButtons?
             StartCoroutine(codePanelActivate.PuzzleComplete());
             return;
         }
@@ -41,8 +40,6 @@ public class UICodePanelButton : MonoBehaviour
         {
             Debug.Log("Wrong!");
             allImages.SetAllToColor(Color.red);
-            //set "incorrect code" panel to active?
-            //code.RestartCurrentCodeCounter();
             StartCoroutine(code.RestartCodeCounterAfterDelay());
             StartCoroutine(allImages.ResetAll());
         }

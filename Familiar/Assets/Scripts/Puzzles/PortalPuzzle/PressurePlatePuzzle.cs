@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class PressurePlatePuzzle : MonoBehaviour
 {
-    public GameObject door;
     public bool shouldOpen;
+    public GameObject door;
     public MultiplePressurePlates[] childPressurePlates;
 
     private void Start()

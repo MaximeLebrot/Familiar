@@ -5,16 +5,14 @@ using UnityEngine;
 public class Code : MonoBehaviour
 {
     public GameObject door; // to open
-
-    private List<KeyCodeCombination> KeyCodeGenerated = new List<KeyCodeCombination>();
-
     public List<int> correctCode;
     public int currentNumber;
+
+    private List<KeyCodeCombination> KeyCodeGenerated = new List<KeyCodeCombination>();
     private int correctCodeIterator;
 
     private void Awake()
     {
-        //KeyCodes.ForEach(Entry => correctCode.Add(Entry, RandomBool()));
         KeyCodeGenerated.AddRange(GetComponentsInChildren<KeyCodeCombination>());
         GenerateCode();
         foreach (KeyCodeCombination key in KeyCodeGenerated)
@@ -23,18 +21,13 @@ public class Code : MonoBehaviour
                 correctCode.Add(key.number);
         }
         if (correctCode.Count > 0)
-        {
             RandomizeOrder();
-        }
         else if (correctCode.Count == 0)
-        {
             correctCode[0] = 1;
-        }
         currentNumber = correctCode[0];
     }
     private void Update()
     {
-        //SuperSmidigtJagLovar();
     }
 
     public void GenerateCode()
@@ -69,13 +62,11 @@ public class Code : MonoBehaviour
             correctCode[3] = correctCode[correctCode.Count - 3];
             correctCode[correctCode.Count - 3] = temp;
         }
-
-        //correctCode[correctCode.Count] = temp;
-        //huller om buller
+        //huller om buller, finns säker ett riktigt sätt att göra på
     }
 
 
-    private void SuperSmidigtJagLovar()
+    private void SuperSmidigtJagLovar() //tidigare stadie när vi använde siffror för input på Kod panel
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
             TryingInput(1);
@@ -96,10 +87,10 @@ public class Code : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.Alpha9))
             TryingInput(9);
     }
+
     public void TryInput(int input)
     {
         TryingInput(input);
-        //Debug.Log("Input " + input);
     }
 
     private void TryingInput(int input)
@@ -165,7 +156,7 @@ public class Code : MonoBehaviour
 
     public IEnumerator RestartCodeCounterAfterDelay()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.2f); //plåster för någon update ordning som skakar slottet
         RestartCurrentCodeCounter();
     }
 }

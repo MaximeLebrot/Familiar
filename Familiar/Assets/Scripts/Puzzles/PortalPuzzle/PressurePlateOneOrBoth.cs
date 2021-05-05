@@ -4,9 +4,10 @@ using UnityEngine;
 
 public class PressurePlateOneOrBoth : MonoBehaviour
 {
+    public bool shouldOpen;
+
     public PressurePlate[] pressurePlates;
     public GameObject door;
-    public bool shouldOpen;
 
     void Start()
     {

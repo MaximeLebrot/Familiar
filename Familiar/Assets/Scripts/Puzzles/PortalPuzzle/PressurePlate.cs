@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PressurePlate : MonoBehaviour
 {
-    private PressurePlateOneOrBoth parent;
     public bool active;
 
+    private PressurePlateOneOrBoth parent;
     private Animator anim;
 
     void Start()

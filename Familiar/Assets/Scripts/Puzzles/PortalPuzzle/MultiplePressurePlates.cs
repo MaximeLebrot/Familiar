@@ -4,13 +4,12 @@ using UnityEngine;
 
 public class MultiplePressurePlates : MonoBehaviour
 {
-    public PressurePlatePuzzle parent;
     public bool active;
-    private Animator anim;
-    public MeshRenderer meshRenderer;
+    public PressurePlatePuzzle parent;
     public Material newMat;
+    private MeshRenderer meshRenderer;
+    private Animator anim;
 
-    // Start is called before the first frame update
     void Start()
     {
         anim = gameObject.GetComponent<Animator>();

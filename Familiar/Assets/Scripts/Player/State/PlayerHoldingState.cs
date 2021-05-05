@@ -9,6 +9,7 @@ public class PlayerHoldingState : PlayerBaseState
     {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Controller>();
+        //owner.playerController
 
         gos = player.gameObject.GetComponent<GrabObjectScript>();
     }
