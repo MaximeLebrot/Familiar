@@ -18,20 +18,32 @@ public class HelpTextTrigger : MonoBehaviour
     // A little safety bool so the player doesn't trigger stuff it shouldn't without the key.
     public bool needKey;
 
+    // Typing stuff
     public float typeSpeed;
+    public bool useTyping;
 
     // Start is called before the first frame update
     void Start()
     {
         helpText.text = "";
+
+        // Change once issues are fixed
+        useTyping = false;
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && !needKey)
         {
-            //StartCoroutine(TypeText());
-            helpText.text = instructions;
+            if (useTyping)
+            {
+                StartCoroutine(TypeText());
+            }
+            else
+            {
+                helpText.text = instructions;
+            }
+
             if (deactiveTrigger)
             {
                 StartCoroutine(WaitAndDestroy());
@@ -39,12 +51,18 @@ public class HelpTextTrigger : MonoBehaviour
         }
         else if (other.tag == "Key" && needKey)
         {
-            //StartCoroutine(TypeText());
-            helpText.text = instructions;
+            if (useTyping)
+            {
+               StartCoroutine(TypeText());
+            }
+            else
+            {
+                helpText.text = instructions;
+            }
         }
     }
 
-    // Added so the letters type out one after another. Not in use!
+    // Added so the letters type out one after another. Has some issues so not used yet
     private IEnumerator TypeText()
     {
         helpText.text = "";
