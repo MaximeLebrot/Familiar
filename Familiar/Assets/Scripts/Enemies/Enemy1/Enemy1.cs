@@ -3,6 +3,7 @@ using UnityEngine.AI; //Navmesh https://docs.unity3d.com/Manual/nav-HowTos.html
 
 public class Enemy1 : MonoBehaviour, IZappable
 {
+    public Animator anim;
     public bool zapped;
 
     public LayerMask collisionMask;
@@ -26,6 +27,7 @@ public class Enemy1 : MonoBehaviour, IZappable
 
     protected void Awake()
     {
+        anim = GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player");
         navAgent = GetComponent<NavMeshAgent>();
         playerRespawnLocation = playerRespawnPoint.transform.position;
@@ -63,5 +65,7 @@ public class Enemy1 : MonoBehaviour, IZappable
     public void RemoveNavMesh()
     {
         Destroy(navAgent);
+        Rigidbody RB = GetComponent<Rigidbody>();
+        Destroy(RB);
     }
 }

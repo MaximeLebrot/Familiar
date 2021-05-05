@@ -7,9 +7,12 @@ public class Enemy1AttackState : Enemy1BaseState
 {
     public float grabDistance;
     public float spottingDistance;
+    public float animSpeed = 3;
     public override void Enter()
     {
         base.Enter();
+        owner.anim.SetTrigger("roar");
+        owner.anim.speed = animSpeed;
         //Debug.Log("Enemy1 Entered Attack State");
         Attack();
     }

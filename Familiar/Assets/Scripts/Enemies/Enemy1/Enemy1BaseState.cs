@@ -3,6 +3,8 @@ using UnityEngine;
 public class Enemy1BaseState : State
 {
     [SerializeField] protected float moveSpeed;
+    [SerializeField] protected float animSpeed;
+
 
     protected Enemy1 owner;
     protected Controller playerController;
@@ -16,6 +18,7 @@ public class Enemy1BaseState : State
         playerController = owner.player.GetComponent<Controller>();
         playerStats = owner.player.GetComponent<AbilitySystem.Player>();
         owner.navAgent.speed = moveSpeed;
+        owner.anim.speed = animSpeed;
     }
 
     public override void Initialize(StateMachine stateMachine, object owner)
