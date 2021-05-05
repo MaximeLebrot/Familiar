@@ -592,6 +592,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c3abf4f3ade0f545b89aa40b54265ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  component: {fileID: 0}
 --- !u!1 &37412922
 GameObject:
   m_ObjectHideFlags: 0
@@ -15689,6 +15690,10 @@ PrefabInstance:
     - target: {fileID: 4780144783269439400, guid: 70c1e9796d8c3974e89eca3ca0a53048, type: 3}
       propertyPath: m_Name
       value: PauseMenuCanvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4780144783269439404, guid: 70c1e9796d8c3974e89eca3ca0a53048, type: 3}
+      propertyPath: m_SortingOrder
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4780144783269439407, guid: 70c1e9796d8c3974e89eca3ca0a53048, type: 3}
       propertyPath: Player
