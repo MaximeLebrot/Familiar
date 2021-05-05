@@ -19,7 +19,7 @@ public class SwitchLevel : MonoBehaviour
         }
     }
 
-   IEnumerator Fading()
+    IEnumerator Fading()
     {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => black.color.a == 1);

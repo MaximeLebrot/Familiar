@@ -33,6 +33,8 @@ namespace AbilitySystem
         public UnityEvent PlayerDied;
 
         public GameObject[] moonstones;
+        public Animator fadeToBlack;
+        public Image blackImage;
 
         public bool IsZapped
         {
@@ -127,8 +129,8 @@ namespace AbilitySystem
 
         public void TakeDamage(float damage)
         {
-            GetAbilitySystem().TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, -damage);
-            Debug.Log("Health = " + GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth));
+            GetAbilitySystem().TryApplyAttributeChange(GameplayAttributes.PlayerHealth, -damage);
+            Debug.Log("Health = " + GetAbilitySystem().GetAttributeValue(GameplayAttributes.PlayerHealth));
             anim.SetTrigger("takeDmg");
         }
 
@@ -138,10 +140,11 @@ namespace AbilitySystem
             playerController.dedNowDontMove = true;
             playerController.cam.cannotMoveCam = true;
             healthBar.value = 0;
+
             PlayerDied.Invoke();
             anim.SetTrigger("die");
-
-            Debug.Log("ded");
+            Respawn(GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position, 2.5f);
+            //Debug.Log("ded");
             //anim.PlayAnim("death");
             //restart / menu
             //Destroy(this.gameObject);
@@ -151,6 +154,20 @@ namespace AbilitySystem
         public void FadeToBlack()
         {
             Debug.Log("FadedToBlack");
+            StartCoroutine(FadeOut());
+        }
+
+        IEnumerator FadeOut()
+        {
+            fadeToBlack.SetBool("Fade", true);
+            yield return new WaitUntil(() => blackImage.color.a == 1);
+            StartCoroutine(FadeIn());
+        }
+
+        IEnumerator FadeIn()
+        {
+            fadeToBlack.SetBool("Fade", false);
+            yield return new WaitUntil(() => blackImage.color.a == 0);
         }
 
         public void Respawn(Vector3 target, float delay)
@@ -162,6 +179,13 @@ namespace AbilitySystem
         {
             yield return new WaitForSeconds(delay);
             gameObject.transform.position = target;
+
+            ded = false;
+            playerController.dedNowDontMove = false;
+            playerController.cam.cannotMoveCam = false;
+            float? refillHealth;
+            refillHealth = -(GetAbilitySystem().GetAttributeValue(GameplayAttributes.PlayerHealth) - 10);
+            GetAbilitySystem().TryApplyAttributeChange(GameplayAttributes.PlayerHealth, (float)refillHealth);
             healthBar.value = 1;
         }
 
