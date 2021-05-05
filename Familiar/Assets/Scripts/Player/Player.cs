@@ -174,8 +174,6 @@ namespace AbilitySystem
         public void HealthBarUpdate()
         {
             healthBar.value = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth)/10;
-
-            
         }
 
         public void ResetTakeDmgTrigger()

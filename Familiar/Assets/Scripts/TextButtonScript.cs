@@ -29,8 +29,8 @@ public class TextButtonScript : MonoBehaviour, IZappable
 
     public void OnZap()
     {
-        isPowered = !isPowered;
-        text.color = isPowered ? Color.white : Color.black;
-        keypad.Activate();
+        //isPowered = !isPowered;
+        //text.color = isPowered ? Color.white : Color.black;
+        //keypad.Activate();
     }
 }
