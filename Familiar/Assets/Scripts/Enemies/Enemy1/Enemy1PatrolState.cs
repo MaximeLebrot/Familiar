@@ -23,7 +23,7 @@ public class Enemy1PatrolState : Enemy1BaseState
             /*&& Vector3.Dot(owner.navAgent.velocity, player.transform.position) > 0*/)
             stateMachine.Transition<Enemy1AttackState>();
         if (owner.zapped)
-            stateMachine.Transition<Enemy2DefeatState>(); //zappedstate
+            stateMachine.Transition<Enemy1DefeatState>(); //zappedstate
         //if (!Physics.Linecast(owner.transform.position, owner.vecToPlayer, owner.collisionMask))
         //stateMachine.Transition<Enemy1AttackState>();
         //if (Vector3.Dot(owner.vecToPoint2.normalized, owner.vecToPlayer) > 0 && Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, collisionMask))

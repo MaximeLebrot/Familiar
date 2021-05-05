@@ -37,7 +37,7 @@ public class Enemy1 : MonoBehaviour, IZappable
         vecToPlayer = player.transform.position;
         stateMachine.HandleUpdate();
         Debug.DrawLine(transform.position + new Vector3(0, 5, 0), vecToPlayer, Color.red);
-        Debug.DrawLine(transform.position + new Vector3(0, 5, 0), navAgent.velocity, Color.cyan);
+        //Debug.DrawLine(transform.position + new Vector3(0, 5, 0), navAgent.velocity, Color.cyan);
     }
 
     public void OnCollisionEnter(Collision collision)
@@ -58,5 +58,10 @@ public class Enemy1 : MonoBehaviour, IZappable
     {
         Debug.Log("Zapping enemy 1");
         Destroy(this, 1.0f);
+    }
+
+    public void RemoveNavMesh()
+    {
+        Destroy(navAgent);
     }
 }

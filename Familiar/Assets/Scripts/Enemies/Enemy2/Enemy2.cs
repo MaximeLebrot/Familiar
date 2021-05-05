@@ -27,7 +27,8 @@ public class Enemy2 : MonoBehaviour, IZappable
 
     protected void Awake()
     {
-        idlePosition = GetComponentInParent<Transform>().position;
+        //idlePosition = GetComponentInParent<Transform>().position;
+        idlePosition = transform.localPosition;
         player = GameObject.FindGameObjectWithTag("Player");
         navAgent = GetComponent<NavMeshAgent>();
         stateMachine = new StateMachine(this, states);

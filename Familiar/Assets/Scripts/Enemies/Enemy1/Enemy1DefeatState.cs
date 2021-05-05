@@ -12,11 +12,12 @@ public class Enemy1DefeatState : Enemy1BaseState
 
     public override void HandleUpdate()
     {
-        //Debug.Log("enemy defeated");
+
     }
 
     private void Defeated()
     {
-
+        owner.navAgent.isStopped = true;
+        owner.RemoveNavMesh();
     }
 }
