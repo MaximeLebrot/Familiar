@@ -9,6 +9,7 @@ public class PlayerMovingState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
+        owner.anim.SetBool("isWalking", true);
         //Debug.Log("Entered Moving State");
         //player.gravity = gravity;
     }

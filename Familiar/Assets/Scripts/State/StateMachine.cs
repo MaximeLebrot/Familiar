@@ -5,9 +5,6 @@ using System;
 
 public class StateMachine
 {
-    // Attributes
-    //[SerializeField] private State[] states;
-
     private Dictionary<Type, State> stateDictionary = new Dictionary<Type, State>();
     private State currentState;
     public StateMachine(object owner, State[] states)
@@ -25,19 +22,6 @@ public class StateMachine
 
         currentState?.Enter();
     }
-    // Methods
-    //protected virtual void Awake()
-    //{
-    //    foreach (State state in states)
-    //    {
-    //        State instance = Instantiate(state);
-    //        instance.Initialize(this);
-    //        stateDictionary.Add(instance.GetType(), instance);
-    //        if (currentState == null)
-    //            currentState = instance;
-    //    }
-    //    currentState.Enter();
-    //}
 
     public void Transition<T>() where T : State
     {
@@ -48,21 +32,6 @@ public class StateMachine
 
     public void HandleUpdate()
     {
-        //currentState?.EvaluateTransitions();
         currentState.HandleUpdate();
     }
-
-
-    
-
-    //public void ChangeState<T>() where T : State
-    //{
-    //    if (stateDictionary.ContainsKey(typeof(T)))
-    //    {
-    //        State instance = stateDictionary[typeof(T)];
-    //        currentState?.Exit();
-    //        currentState = instance;
-    //        currentState.Enter();
-    //    }
-    //}
 }

@@ -140,7 +140,7 @@ namespace AbilitySystem
             playerController.cam.cannotMoveCam = true;
             healthBar.value = 0;
             PlayerDied.Invoke();
-            //anim.SetTrigger("die");
+            anim.SetTrigger("die");
 
             Debug.Log("ded");
             //anim.PlayAnim("death");

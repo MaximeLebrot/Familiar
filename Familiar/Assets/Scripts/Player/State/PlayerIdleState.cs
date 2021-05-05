@@ -9,6 +9,7 @@ public class PlayerIdleState : PlayerBaseState
     {
         base.Enter();
         //Debug.Log("Entered Idle State");
+        owner.anim.SetBool("isWalking", false);
         player.isGrounded = true;
     }
 
