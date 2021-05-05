@@ -59,14 +59,21 @@ public class CodePanelActivate : MonoBehaviour
         //}
     }
 
-        private void HideCodePanel()
+    private void HideCodePanel()
     {
-        anim.SetBool("Active", false);
-        active = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
-        //Cursor.lockState = CursorLockMode.Locked;
-        cam.freezeCamera = false;
+        if(PauseMenu.GameIsPaused == true)
+        {
+            return;
+        }
+        else
+        {
+            anim.SetBool("Active", false);
+            active = false;
+            Cursor.visible = false;
+            Cursor.lockState = CursorLockMode.Confined;
+            //Cursor.lockState = CursorLockMode.Locked;
+            cam.freezeCamera = false;
+        }        
     }
     private void ShowCodePanel()
     {
