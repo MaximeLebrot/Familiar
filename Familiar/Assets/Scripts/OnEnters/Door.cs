@@ -6,7 +6,7 @@ public class Door : MonoBehaviour
 {
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Moveable")
+        if (other.tag == "Key")
         {
             gameObject.SetActive(false);
             //Destroy(gameObject);

@@ -67,7 +67,7 @@ public class GrabObjectScript : MonoBehaviour
 
         for (int i = 0; i < hitArray.Length; i++)
         {
-            if (hitArray[i].collider.CompareTag("Moveable"))
+            if (hitArray[i].collider.CompareTag("Moveable") || hitArray[i].collider.CompareTag("Key")) //Emils dumma ändringar
             {
                 hitIndex = i;
                 break;
