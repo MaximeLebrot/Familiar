@@ -24,26 +24,16 @@ public class ShootingScript : MonoBehaviour
     void Start()
     {
         controller = GetComponent<Controller>();
+        CanFire = true;
     }
 
     void Update()
     {
-        if (Input.GetButton("Fire1") && CanFire)
-        {
-            //Shoot();
-        }
-
-        if (Input.GetButtonUp("Fire1"))
-        {
-            CanFire = true;
-        }
-
 
     }
 
     public void Shoot()
     {
-        CanFire = false;
         Ray camRay = Camera.main.ViewportPointToRay(Vector3.one * 0.5f);
 
         Physics.Raycast(camRay, out RaycastHit hitPoint, 20.0f/*LayerMask*/);
@@ -98,7 +88,7 @@ public class ShootingScript : MonoBehaviour
     }
     public IEnumerator ResetCanFire()
     {
-        //canFire = false;
+        CanFire = false;
         yield return new WaitForSeconds(1.0f);
         CanFire = true;
     }

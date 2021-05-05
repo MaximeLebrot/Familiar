@@ -19,7 +19,7 @@ namespace AbilitySystem
             if (shoot.CanFire)
             {
                 //shoot.Shoot();
-                shoot.CanFire = false;
+                //shoot.CanFire = false;
                 shoot.StartCoroutine(shoot.ResetCanFire());
                 player.anim.SetTrigger("attack");
                 //player.audioHandler.PlayZappingSound();
