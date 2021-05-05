@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 8544236797534047952}
   - component: {fileID: 2299107766689332594}
   - component: {fileID: 1156517806}
+  - component: {fileID: 2276491648659785331}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -143,12 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c957fbafa8262ef4ea44d250bdbdb606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  canFire: 1
-  carriedObject: {fileID: 0}
   connector: {fileID: 0}
   spotlight: {fileID: 0}
   connectiveSpace: {fileID: 0}
-  heldObjectPoint: {fileID: 0}
 --- !u!82 &8544236797534047952
 AudioSource:
   m_ObjectHideFlags: 0
@@ -294,6 +292,20 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!114 &2276491648659785331
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8266650046587695662}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56ccdefc70ce87c4697cca3a5612eedd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  carriedObject: {fileID: 0}
+  heldObjectPoint: {fileID: 0}
 --- !u!1 &8266650047405726558
 GameObject:
   m_ObjectHideFlags: 0

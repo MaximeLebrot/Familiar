@@ -13,6 +13,7 @@ public class GrabObjectScript : MonoBehaviour
     private GameObject carriedObject;
     [SerializeField]
     private Transform heldObjectPoint;
+    private Vector3 HopPos;
 
     public static float GrabRange
     {
@@ -37,9 +38,10 @@ public class GrabObjectScript : MonoBehaviour
 
     private void Awake()
     {
+        HopPos = new Vector3(0, 0, 3);
         if (heldObjectPoint == null)
             heldObjectPoint = GameObject.FindGameObjectWithTag("HOLP").transform;
-
+        heldObjectPoint.transform.localPosition = HopPos;
         controller = GetComponent<Controller>();
     }
 
