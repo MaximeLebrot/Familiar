@@ -34,16 +34,17 @@ public class DoorConsole : MonoBehaviour
     private void Update()
     {
         if (canUseConsole)
-        {
-            //if (Input.GetButton("Fire1"))
-            //{
-            //    DoorSwap();
-            //}
+            {
+                //if (Input.GetButton("Fire1"))
+                //{
+                //    DoorSwap();
+                //}
             if (Input.GetKeyDown(KeyCode.E))
             {
                 DoorSwap();
             }
-        }        
+        }
+
     }
 
     private void OnTriggerEnter(Collider other)
