@@ -7,6 +7,15 @@ public class StateMachine
 {
     private Dictionary<Type, State> stateDictionary = new Dictionary<Type, State>();
     private State currentState;
+
+    public State CurrentState
+    {
+        get
+        {
+            return currentState;
+        }
+    }
+
     public StateMachine(object owner, State[] states)
     {
         Debug.Assert(states.Length > 0);

@@ -1,3 +1,4 @@
+using AbilitySystem;
 using System;
 using System.Collections;
 using UnityEngine;
@@ -27,12 +28,28 @@ public class Controller : MonoBehaviour
     private float fastFallCoefficient = 2.0f;
 
     [Header("Physics")]
-    [Range(0.0f, 1.0f)]
-    public float staticFrictionCoefficient = 0.65f;
-    [Range(0.0f, 1.0f)]
-    public float kineticFrictionCoefficient = 0.4f;
+    [SerializeField, Range(0.0f, 1.0f)]
+    private float staticFrictionCoefficient = 0.65f;
+    [SerializeField, Range(0.0f, 1.0f)]
+    private float kineticFrictionCoefficient = 0.4f;
     [Range(0.0f, 1.0f)]
     public float airResistance = 0.2f;
+
+    public float AdjustedStaticFrictionCoefficient
+    {
+        get
+        {
+            if (GetComponent<Player>().CurrentState is PlayerJumpState)
+                return 0.0f;
+            else
+                return staticFrictionCoefficient;
+
+            //if (HorizontalInput.magnitude < horizontalInputDeadzone)
+            //    return 1.0f;
+            //else
+            //    return 0.0f;//staticFrictionCoefficient;
+        }
+    }
 
     public float skinWidth = 0.01f;
     public float collisionMargin;
@@ -43,8 +60,25 @@ public class Controller : MonoBehaviour
     public LayerMask collisionMask;
     public Vector3 velocity;
     public Vector3 input;
-    public RaycastHit hit;
+    public readonly float horizontalInputDeadzone = 0.1f;
 
+    public Vector3 HorizontalVelocity
+    {
+        get
+        {
+            return new Vector3(velocity.x, 0.0f, velocity.z);
+        }
+    }
+
+    public Vector3 HorizontalInput
+    {
+        get
+        {
+            return new Vector3(input.x, 0.0f, input.z);
+        }
+    }
+
+    public RaycastHit hit;
     public CameraHandler cam;
     public CapsuleCollider col;
 
@@ -75,27 +109,39 @@ public class Controller : MonoBehaviour
     {
         hit = GroundCheck();
         input = GetMovementInput(hit);
+    }
 
-        velocity += input * acceleration * Time.deltaTime;
-        velocity += Vector3.down * gravity * Time.deltaTime;
+    private void FixedUpdate()
+    {
 
-        velocity *= Mathf.Pow(airResistance, Time.deltaTime);
+        if (HorizontalVelocity.magnitude > maxSpeed)
+        {
+            Vector3 clampedVelocity = HorizontalVelocity.normalized * maxSpeed;
+            velocity.x = clampedVelocity.x;
+            velocity.z = clampedVelocity.z;
+        }
+
+        velocity += input * acceleration * Time.fixedDeltaTime;
+        velocity += Vector3.down * gravity * Time.fixedDeltaTime;
+
+        velocity *= Mathf.Pow(airResistance, Time.fixedDeltaTime);
 
         if (velocity.y < 0)
-            velocity += Vector3.down * gravity * fastFallCoefficient * Time.deltaTime;
+            velocity += Vector3.down * gravity * fastFallCoefficient * Time.fixedDeltaTime;
 
         if (velocity.y > 0.0f && !Input.GetKey(KeyCode.Space))
-            velocity += Vector3.down * gravity * lowJumpCoefficient * Time.deltaTime;
+            velocity += Vector3.down * gravity * lowJumpCoefficient * Time.fixedDeltaTime;
 
         UpdateVelocity();
 
         if (!dedNowDontMove)
-            transform.position += velocity * Time.deltaTime;
-        transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
+            transform.position += velocity * Time.fixedDeltaTime;
+
     }
 
     private void LateUpdate()
     {
+        transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
     }
 
     private RaycastHit GroundCheck()
@@ -195,13 +241,14 @@ public class Controller : MonoBehaviour
     void CastFunction()
     {
         RaycastHit hitInfo;
+
         bool hit = Physics.CapsuleCast(
             point1: GetPoint1(),
             point2: GetPoint2(),
-            radius: col.radius,
+            radius: col.radius + skinWidth,
             direction: velocity.normalized,
             hitInfo: out hitInfo,
-            maxDistance: velocity.magnitude * Time.deltaTime + skinWidth,
+            maxDistance: velocity.magnitude * Time.fixedDeltaTime,
             layerMask: collisionMask
             );
 
@@ -212,11 +259,12 @@ public class Controller : MonoBehaviour
 
         if (hit)
         {
-            CalculateVelocity(hitInfo.normal);
+            CalculateVelocity(hitInfo.normal.normalized);
             UpdateVelocity();
         }
         else
         {
+            return;
             //velocity += input * acceleration * Time.deltaTime;
             //velocity *= Mathf.Pow(airResistance, Time.deltaTime);
         }
@@ -224,31 +272,36 @@ public class Controller : MonoBehaviour
 
     void CalculateVelocity(Vector3 normal)
     {
-        Vector3 normalForce = NormalForce(velocity, normal/*.normalized*/);
+        Vector3 normalForce = CalculateNormalForce(velocity, normal/*.normalized*/);
         velocity += normalForce;
+
         CalculateFriction(normalForce);
     }
 
-    Vector3 NormalForce(Vector3 velocity, Vector3 normal)
+    Vector3 CalculateNormalForce(Vector3 velocity, Vector3 normal)
     {
         Vector3 projection;
         float dot = Vector3.Dot(velocity, normal);
-        if (dot > 0)
+
+        if (dot >= 0)
         {
             projection = Vector3.zero;
             //velocity = (velocity - normal * dot).normalized * velocity.magnitude;
         }
         else
+        {
             projection = Vector3.Dot(velocity, normal) * normal;
+        }
+
         return -projection;
     }
 
     void CalculateFriction(Vector3 normalForce)
     {
-        if (velocity.magnitude < normalForce.magnitude * staticFrictionCoefficient)
+        if (velocity.magnitude < normalForce.magnitude * AdjustedStaticFrictionCoefficient)
             velocity = Vector3.zero;
         else
-            velocity -= velocity.normalized * normalForce.magnitude * kineticFrictionCoefficient;
+            velocity += (-1.0f) * velocity.normalized * normalForce.magnitude * kineticFrictionCoefficient;
     }
 
     float GetDistanceToPoints()
@@ -276,6 +329,7 @@ public class Controller : MonoBehaviour
         float inputMagnitude = input.magnitude;
 
         Vector3 normal = isGrounded ? hit.normal : Vector3.up;
+
         input = Vector3.ProjectOnPlane(
             cam.transform.rotation * input,
             Vector3.Lerp(Vector3.up, normal, slopeAngleFactor)

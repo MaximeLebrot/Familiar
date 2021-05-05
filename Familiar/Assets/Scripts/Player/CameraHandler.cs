@@ -25,6 +25,7 @@ public class CameraHandler : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
     void LateUpdate()
     {
         if (!freezeCamera && !cannotMoveCam)
@@ -32,6 +33,7 @@ public class CameraHandler : MonoBehaviour
             CameraVec.x -= Input.GetAxisRaw("Mouse Y") * mouseSensitivity;
             CameraVec.y += Input.GetAxisRaw("Mouse X") * mouseSensitivity;
         }
+
         CameraVec.x = Mathf.Clamp(CameraVec.x, maxAngleDown, maxAngleUp);
         transform.rotation = Quaternion.Euler(CameraVec.x, CameraVec.y, 0);
         //transform.rotation = Quaternion.Euler(CameraVec);
@@ -45,6 +47,7 @@ public class CameraHandler : MonoBehaviour
         if (!isInNierCam)
             transform.position = offset;
     }
+
     Vector3 CheckCollision()
     {
         RaycastHit hitInfo;

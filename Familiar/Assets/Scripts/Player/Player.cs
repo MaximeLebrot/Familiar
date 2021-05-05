@@ -36,6 +36,14 @@ namespace AbilitySystem
         public Animator fadeToBlack;
         public Image blackImage;
 
+        public State CurrentState
+        {
+            get
+            {
+                return stateMachine.CurrentState;
+            }
+        }
+
         public bool IsZapped
         {
             get
@@ -84,6 +92,7 @@ namespace AbilitySystem
         private void Update()
         {
             stateMachine.HandleUpdate();
+
             if (!ded)
             {
                 if (Input.GetButtonDown("Fire1"))

@@ -13,8 +13,6 @@ public class PlayerJumpState : PlayerBaseState
         Debug.Log("Entered Jump State");
         base.Enter();
         //player.gravity = gravity;
-        previousPlayerKineticFriction = player.kineticFrictionCoefficient;
-        player.kineticFrictionCoefficient = 0.0f;
         Jump();
     }
 
@@ -43,7 +41,6 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void Exit()
     {
-        player.kineticFrictionCoefficient = previousPlayerKineticFriction;
         player.isJumping = false;
         //hasDoubleJumped = false;
     }
