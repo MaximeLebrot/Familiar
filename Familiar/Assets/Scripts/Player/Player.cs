@@ -58,7 +58,6 @@ namespace AbilitySystem
             stateMachine = new StateMachine(this, states);
             audioHandler = GetComponent<AudioHandler>();
 
-
             abilitySystem = gameObject.AddComponent<GameplayAbilitySystem>(); //lägg till en instans av ability systemet
             if (abilitySystem != null)
                 //Debug.Log("Ability system found");

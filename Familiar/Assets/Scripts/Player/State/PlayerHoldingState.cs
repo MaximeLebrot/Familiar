@@ -5,15 +5,6 @@ public class PlayerHoldingState : PlayerBaseState
 {
     private GrabObjectScript gos;
 
-    private void Awake()
-    {
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Controller>();
-        //owner.playerController
-
-        gos = player.gameObject.GetComponent<GrabObjectScript>();
-    }
-
     public override void Enter()
     {
         base.Enter();
