@@ -10,7 +10,7 @@ public class ShootingScript : MonoBehaviour
     [SerializeField]
     private float attackRadius = 1.0f;
     [SerializeField]
-    private float attackRange = 2.0f;
+    private float attackRange = 3.0f;
 
     [SerializeField]
     private Transform attackOrigin;
