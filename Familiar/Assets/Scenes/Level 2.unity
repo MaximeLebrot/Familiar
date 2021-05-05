@@ -20558,6 +20558,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1099446513, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 1334032777, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
       propertyPath: m_Enabled
       value: 1
@@ -21822,6 +21826,14 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
+      propertyPath: blackImage
+      value: 
+      objectReference: {fileID: 2063301522}
+    - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
+      propertyPath: fadeToBlack
+      value: 
+      objectReference: {fileID: 2063301521}
     - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
       propertyPath: moonstones.Array.size
       value: 5
@@ -27792,8 +27804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0c66fa88177394baa51162977a906d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 326772835}
   shouldOpen: 0
+  door: {fileID: 326772835}
   childPressurePlates: []
 --- !u!1001 &1234703686
 PrefabInstance:
@@ -33999,9 +34011,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ab92dc23e6a8a49a0364fed01d9ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   active: 0
-  meshRenderer: {fileID: 0}
+  parent: {fileID: 0}
   newMat: {fileID: 2100000, guid: 0e77717fc695883489f59000f5fb9855, type: 2}
 --- !u!95 &1440845901
 Animator:
@@ -37243,9 +37254,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76ab92dc23e6a8a49a0364fed01d9ff6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  parent: {fileID: 0}
   active: 0
-  meshRenderer: {fileID: 0}
+  parent: {fileID: 0}
   newMat: {fileID: 2100000, guid: 0e77717fc695883489f59000f5fb9855, type: 2}
 --- !u!95 &1620183139
 Animator:
@@ -44703,9 +44713,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4441f45263eee942abe7b66344b6197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  shouldOpen: 0
   pressurePlates: []
   door: {fileID: 877218968}
-  shouldOpen: 0
 --- !u!1 &2009098703
 GameObject:
   m_ObjectHideFlags: 0
