@@ -4,7 +4,6 @@ using UnityEngine.AI; //Navmesh https://docs.unity3d.com/Manual/nav-HowTos.html
 public class Enemy1 : MonoBehaviour, IZappable
 {
     public Animator anim;
-    public bool zapped;
 
     public LayerMask collisionMask;
     public GameObject player;

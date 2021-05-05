@@ -22,7 +22,7 @@ public class Enemy1PatrolState : Enemy1BaseState
         if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < spottingDistance
             /*&& Vector3.Dot(owner.navAgent.velocity, player.transform.position) > 0*/)
             stateMachine.Transition<Enemy1AttackState>();
-        if (owner.zapped)
+        if (owner.IsZapped)
             stateMachine.Transition<Enemy1DefeatState>(); //zappedstate
         //if (!Physics.Linecast(owner.transform.position, owner.vecToPlayer, owner.collisionMask))
         //stateMachine.Transition<Enemy1AttackState>();

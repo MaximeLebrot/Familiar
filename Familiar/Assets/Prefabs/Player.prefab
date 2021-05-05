@@ -30,6 +30,50 @@ Transform:
   m_Father: {fileID: 8266650046587695649}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &3392178984069751717
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4787620225183339415}
+  - component: {fileID: 6784465702731436512}
+  m_Layer: 6
+  m_Name: Attack Origin
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4787620225183339415
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392178984069751717}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 2}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 8266650046587695649}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &6784465702731436512
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3392178984069751717}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 1
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8266650046587695662
 GameObject:
   m_ObjectHideFlags: 0
@@ -69,6 +113,7 @@ Transform:
   - {fileID: 8266650046398638254}
   - {fileID: 3930465672963647582}
   - {fileID: 1099446513}
+  - {fileID: 4787620225183339415}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -161,7 +206,19 @@ MonoBehaviour:
   healthBar: {fileID: 0}
   PlayerDied:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 2276491648659785331}
+        m_TargetAssemblyTypeName: GrabObjectScript, Assembly-CSharp
+        m_MethodName: OnPlayerDeath
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
   moonstones:
   - {fileID: 0}
   - {fileID: 0}
@@ -180,9 +237,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c957fbafa8262ef4ea44d250bdbdb606, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  connector: {fileID: 0}
-  spotlight: {fileID: 0}
-  connectiveSpace: {fileID: 0}
+  attackRadius: 3
+  attackRange: 2
+  attackOrigin: {fileID: 4787620225183339415}
 --- !u!82 &8544236797534047952
 AudioSource:
   m_ObjectHideFlags: 0
