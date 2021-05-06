@@ -9,6 +9,7 @@ public class Enemy1BaseState : State
     protected Controller playerController;
     protected AbilitySystem.Player playerStats;
     protected StateMachine stateMachine;
+    protected bool canSeePlayer = true;
 
     // Methods
     public override void Enter()
@@ -28,5 +29,4 @@ public class Enemy1BaseState : State
         //Debug.Log("Initialized owner: " + owner.GetType());
         //Debug.Log("Initialized stateMachine: " + stateMachine.GetType());
     }
-
 }

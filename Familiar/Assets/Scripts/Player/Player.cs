@@ -201,7 +201,7 @@ namespace AbilitySystem
         public void OnZap()
         {
             Die();
-            Respawn(GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position, 1.0f);
+            //Respawn(GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position, 2.5f);
         }
 
         public void HealthBarUpdate()
