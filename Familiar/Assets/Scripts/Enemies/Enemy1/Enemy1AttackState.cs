@@ -22,7 +22,7 @@ public class Enemy1AttackState : Enemy1BaseState
         //    stateMachine.Transition<Enemy1PatrolState>();
         if (Vector3.Distance(owner.transform.position, owner.player.transform.position) > spottingDistance)
             stateMachine.Transition<Enemy1PatrolState>();
-        else if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < grabDistance && canSeePlayer)
+        else if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < grabDistance)
         {
             GrabPlayer();
             owner.navAgent.ResetPath();
@@ -44,8 +44,9 @@ public class Enemy1AttackState : Enemy1BaseState
 
     private void GrabPlayer()
     {
-        owner.player.GetComponent<AbilitySystem.Player>().Die();
-        canSeePlayer = false;
-        stateMachine.Transition<Enemy1PatrolState>();
+        playerController.velocity = Vector3.zero;
+
+        playerStats.Respawn(owner.playerRespawnLocation, 1.0f);
+
     }
 }
