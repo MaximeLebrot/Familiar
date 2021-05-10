@@ -44,12 +44,9 @@ public class Enemy1AttackState : Enemy1BaseState
     }
     private void GrabPlayer()
     {
-<<<<<<< Updated upstream
-        owner.player.GetComponent<AbilitySystem.Player>().Die();
+        playerStats.Die();
         canSeePlayer = false;
         stateMachine.Transition<Enemy1PatrolState>();
-=======
-        playerStats.Die();
         //kanske teleport tillbaka?
         //owner.navAgent.acceleration = 0;
         //owner.navAgent.speed = 0;
@@ -59,6 +56,5 @@ public class Enemy1AttackState : Enemy1BaseState
         //owner.StartCoroutine(stillensec());
         //playerController.velocity = Vector3.zero;
         //playerStats.Respawn(owner.playerRespawnLocation, 1.0f);
->>>>>>> Stashed changes
     }
 }

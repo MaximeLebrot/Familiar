@@ -20,13 +20,10 @@ public class Enemy1PatrolState : Enemy1BaseState
             Patrol();
         //if (!Physics.Raycast(owner.transform.position/* + new Vector3(0, 5, 0)*/, owner.vecToPlayer, spottingDistance, owner.collisionMask))
         //    stateMachine.Transition<Enemy1AttackState>();
-<<<<<<< Updated upstream
-        if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < spottingDistance
-            /*&& Vector3.Dot(owner.navAgent.velocity, player.transform.position) > 0*/ && canSeePlayer)
-=======
+        //if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < spottingDistance && canSeePlayer)
+
         if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < spottingDistance/*&& Vector3.Dot(owner.navAgent.velocity, player.transform.position) > 0*/ 
             && !Physics.Raycast(owner.transform.position, owner.vecToPlayer, out hit, spottingDistance, owner.collisionMask) && !playerStats.ded)
->>>>>>> Stashed changes
             stateMachine.Transition<Enemy1AttackState>();
         if (owner.IsZapped)
             stateMachine.Transition<Enemy1DefeatState>(); //zappedstate
