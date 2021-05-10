@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class TextButtonScript : MonoBehaviour, IZappable 
 {
-    private bool isPowered = false;
+    //private bool isPowered = false;
     private TextMesh text;
     private KeyCodeCombination keypad;
 

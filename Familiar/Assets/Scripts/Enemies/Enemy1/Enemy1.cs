@@ -58,7 +58,10 @@ public class Enemy1 : MonoBehaviour, IZappable
     public void OnZap()
     {
         Debug.Log("Zapping enemy 1");
-        Destroy(this, 1.0f);
+        //Destroy(this, 1.0f);
+        //"this" här refererar till enemy1 scriptet. Det innebär att en zapp på en enemy1 effektivt gör dem handikappade
+        //kanske ville använda this.gameObject?
+        //egentligen ska det vara anim.setTrigger("dead") och ha ett event i den istället.
     }
 
     public void RemoveNavMesh()
