@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -22,7 +20,7 @@ public class CodePanelArea : MonoBehaviour
         {
             player.isInCodePanelArea = true;
 
-            if (player.canSeeCodePanel)
+            if (player.canSeeCodePanel == true)
             {
                 helpText.text = instructions;
             }

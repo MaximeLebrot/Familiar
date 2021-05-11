@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PressurePlatePuzzle : MonoBehaviour
 {
-    public bool shouldOpen;
-    public GameObject door;
-    public MultiplePressurePlates[] childPressurePlates;
+    [SerializeField] private GameObject door;
+    private bool shouldOpen;
+    private MultiplePressurePlates[] childPressurePlates;
 
     private void Start()
     {
@@ -22,7 +20,6 @@ public class PressurePlatePuzzle : MonoBehaviour
             else
             {
                 shouldOpen = false;
-                //CheckIfShouldOpen();
                 return;
             }
         }
@@ -30,13 +27,15 @@ public class PressurePlatePuzzle : MonoBehaviour
     }
     private void CheckIfShouldOpen()
     {
-        if (shouldOpen)
-            door.SetActive(false);
-        foreach (MultiplePressurePlates pressurePlate in childPressurePlates)
+        if (shouldOpen == true)
         {
-            pressurePlate.ChangeMaterial();
+            door.SetActive(false);
+            foreach (MultiplePressurePlates pressurePlate in childPressurePlates)
+            {
+                pressurePlate.ChangeMaterial();
+            }
+            return;
         }
-        if (!shouldOpen)
-            door.SetActive(true);
+        door.SetActive(true);
     }
 }

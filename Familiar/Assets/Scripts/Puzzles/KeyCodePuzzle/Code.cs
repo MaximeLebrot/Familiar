@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Code : MonoBehaviour
 {
-    public GameObject door; // to open
+    [SerializeField] private GameObject door; // to open
     public List<int> correctCode;
     public int currentNumber;
 
@@ -15,19 +15,13 @@ public class Code : MonoBehaviour
     {
         KeyCodeGenerated.AddRange(GetComponentsInChildren<KeyCodeCombination>());
         GenerateCode();
-        foreach (KeyCodeCombination key in KeyCodeGenerated)
-        {
-            if (key.isCorrect)
-                correctCode.Add(key.number);
-        }
+
         if (correctCode.Count > 0)
             RandomizeOrder();
-        else if (correctCode.Count == 0)
+        else
             correctCode[0] = 1;
+
         currentNumber = correctCode[0];
-    }
-    private void Update()
-    {
     }
 
     public void GenerateCode()
@@ -35,6 +29,8 @@ public class Code : MonoBehaviour
         foreach (KeyCodeCombination key in KeyCodeGenerated)
         {
             key.isCorrect = RandomBool();
+            if (key.isCorrect)
+                correctCode.Add(key.number);
         }
     }
 
@@ -65,29 +61,6 @@ public class Code : MonoBehaviour
         //huller om buller, finns säker ett riktigt sätt att göra på
     }
 
-
-    private void SuperSmidigtJagLovar() //tidigare stadie när vi använde siffror för input på Kod panel
-    {
-        if (Input.GetKeyDown(KeyCode.Alpha1))
-            TryingInput(1);
-        if (Input.GetKeyDown(KeyCode.Alpha2))
-            TryingInput(2);
-        if (Input.GetKeyDown(KeyCode.Alpha3))
-            TryingInput(3);
-        if (Input.GetKeyDown(KeyCode.Alpha4))
-            TryingInput(4);
-        if (Input.GetKeyDown(KeyCode.Alpha5))
-            TryingInput(5);
-        if (Input.GetKeyDown(KeyCode.Alpha6))
-            TryingInput(6);
-        if (Input.GetKeyDown(KeyCode.Alpha7))
-            TryingInput(7);
-        if (Input.GetKeyDown(KeyCode.Alpha8))
-            TryingInput(8);
-        if (Input.GetKeyDown(KeyCode.Alpha9))
-            TryingInput(9);
-    }
-
     public void TryInput(int input)
     {
         TryingInput(input);
@@ -116,8 +89,9 @@ public class Code : MonoBehaviour
     private void StepNext()
     {
         correctCodeIterator++;
-        currentNumber = correctCode[correctCodeIterator]; //correctCode.stepNext;
+        currentNumber = correctCode[correctCodeIterator];
     }
+
     private void ResetInput()
     {
         foreach (KeyCodeCombination keycode in KeyCodeGenerated)

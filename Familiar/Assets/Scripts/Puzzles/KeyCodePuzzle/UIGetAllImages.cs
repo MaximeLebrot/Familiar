@@ -1,13 +1,12 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class UIGetAllImages : MonoBehaviour
 {
-    public Image[] images;
+    private Image[] images;
 
-    public GameObject UICoverPanel;
+    [SerializeField] private GameObject UICoverPanel;
 
     void Start()
     {

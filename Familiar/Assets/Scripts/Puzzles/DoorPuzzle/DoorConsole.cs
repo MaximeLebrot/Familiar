@@ -1,15 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DoorConsole : MonoBehaviour
 {
+    [Tooltip("Fill array with doors that this console should open. Handles opening in alternating order")]
+    [SerializeField] private GameObject[] doors;
 
-    public GameObject[] doors;
+    [Tooltip("Fill array with doors that on activation should open simultaneously, should be left empty unless on last console")]
+    [SerializeField] private GameObject[] allDoors; //fill array if activation should open them all, else leave empty
 
-    public GameObject[] allDoors;
-
-    public bool canUseConsole;
+    private bool canUseConsole;
 
     private void Start()
     {
@@ -25,26 +24,12 @@ public class DoorConsole : MonoBehaviour
                 doors[i].SetActive(false);
             }
         }
-        //if (doors.Length > 0)
-        //doors[0].SetActive(true);
-        //if (doors.Length > 1)
-        //doors[1].SetActive(false);
     }
 
     private void Update()
     {
-        if (canUseConsole)
-            {
-                //if (Input.GetButton("Fire1"))
-                //{
-                //    DoorSwap();
-                //}
-            if (Input.GetKeyDown(KeyCode.E))
-            {
-                DoorSwap();
-            }
-        }
-
+        if (canUseConsole == true && Input.GetKeyDown(KeyCode.E))
+            DoorSwap();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -70,12 +55,6 @@ public class DoorConsole : MonoBehaviour
         {
             doors[i].SetActive(!doors[i].activeInHierarchy);
         }
-        //if (doors.Length > 0)
-        //{
-            //doors[0].SetActive(!doors[0].activeInHierarchy);
-            //if (doors.Length > 1)
-                //doors[1].SetActive(!doors[1].activeInHierarchy);
-        //}
         if (allDoors.Length > 0)
         {
             foreach (GameObject door in allDoors)

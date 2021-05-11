@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class KeyCodeCombination : MonoBehaviour
@@ -7,21 +5,17 @@ public class KeyCodeCombination : MonoBehaviour
     public int number;
     public bool isCorrect;
 
-    public GameObject correct;
-    public GameObject incorrect;
+    [SerializeField] private GameObject correct;
+    [SerializeField] private GameObject incorrect;
 
 
     public void Activate()
     {
         Debug.Log("Activated");
-        if (isCorrect)
-        {
+        if (isCorrect == true)
             correct.SetActive(true);
-        }
-        if (!isCorrect)
-        {
+        else
             incorrect.SetActive(true);
-        }
     }
 
     public void setGreen()

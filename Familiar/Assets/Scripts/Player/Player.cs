@@ -8,33 +8,40 @@ namespace AbilitySystem
 {
     public class Player : MonoBehaviour, IZappable
     {
-        public Animator anim;
-        public float moveSpeed;
         private int stoneCounter;
+        private GameplayAbilitySystem abilitySystem;
+        private StateMachine stateMachine;
 
-        public bool ded;
+        [Header("Public variables")]
+        [Tooltip("The animator connected to this game object")] public Animator anim;
+        [Tooltip("The controller of the player connected to this game object")] public Controller playerController;
 
-        public bool canSeeCodePanel;
-        public bool isInCodePanelArea;
+        [Header("Booleans")]
+        [Tooltip("Is the player dead?")] public bool ded;
+        [Tooltip("Can the player see the code panel")] public bool canSeeCodePanel;
+        [Tooltip("Is the player in the code panel area?")] public bool isInCodePanelArea;
 
-        public List<GameplayAbility> startingAbilities;
-        public List<GameplayEffect> startingEffects;
-        public List<GameplayAttributeSetEntry> attributeSet;
+        [Header("Hierarky input")]
+        [Tooltip("List of starting abilities the player has access to")]
+        [SerializeField] private List<GameplayAbility> startingAbilities;
+        [Tooltip("List of starting effects the player has access to")]
+        [SerializeField] private List<GameplayEffect> startingEffects;
+        [Tooltip("List of attributes the player has access to")]
+        [SerializeField] private List<GameplayAttributeSetEntry> attributeSet;
+        [Tooltip("Array of all possible states the player can enter")]
+        [SerializeField] private State[] states;
+        [Tooltip("Array of moonstones")]
+        [SerializeField] private GameObject[] moonstones;
+        [Tooltip("The player health UI slider")]
+        [SerializeField] private Slider healthBar;
+        [Tooltip("The animator tied to the F2B object")]
+        [SerializeField] private Animator fadeToBlack;
+        [Tooltip("The image tied to the F2B object")]
+        [SerializeField] private Image blackImage;
 
-        public Controller playerController;
-        public State[] states;
-        public AudioHandler audioHandler;
-
-        GameplayAbilitySystem abilitySystem;
-        StateMachine stateMachine;
-
-        public Slider healthBar;
-
-        public UnityEvent PlayerDied;
-
-        public GameObject[] moonstones;
-        public Animator fadeToBlack;
-        public Image blackImage;
+        [Header("Events")]
+        [Tooltip("The event in which the player dies")]
+        [SerializeField] private UnityEvent PlayerDied;
 
         public State CurrentState
         {
@@ -66,7 +73,6 @@ namespace AbilitySystem
             anim = GetComponent<Animator>();
             playerController = GetComponent<Controller>();
             stateMachine = new StateMachine(this, states);
-            audioHandler = GetComponent<AudioHandler>();
 
             abilitySystem = gameObject.AddComponent<GameplayAbilitySystem>(); //lägg till en instans av ability systemet
             if (abilitySystem != null)

@@ -1,12 +1,10 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class MultiplePressurePlates : MonoBehaviour
 {
     public bool active;
-    public PressurePlatePuzzle parent;
-    public Material newMat;
+    private PressurePlatePuzzle parent;
+    private Material newMat;
     private MeshRenderer meshRenderer;
     private Animator anim;
 

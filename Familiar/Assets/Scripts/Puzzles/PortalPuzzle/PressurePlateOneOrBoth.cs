@@ -1,13 +1,9 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class PressurePlateOneOrBoth : MonoBehaviour
 {
-    public bool shouldOpen;
-
-    public PressurePlate[] pressurePlates;
-    public GameObject door;
+    [SerializeField] private GameObject door;
+    private PressurePlate[] pressurePlates;
 
     void Start()
     {
@@ -20,21 +16,10 @@ public class PressurePlateOneOrBoth : MonoBehaviour
         {
             if (pressurePlate.active)
             {
-                shouldOpen = true;
-                CheckIfShouldOpen();
+                door.SetActive(false);
                 return;
             }
-            else
-                shouldOpen = false;
-        }
-        CheckIfShouldOpen();
-    }
-
-    private void CheckIfShouldOpen()
-    {
-        if (shouldOpen)
-            door.SetActive(false);
-        if (!shouldOpen)
             door.SetActive(true);
+        }
     }
 }

@@ -1,10 +1,9 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
 public class DisplayedCode : MonoBehaviour
 {
-    public GameObject codeGenerator;
+    [SerializeField] private GameObject codeGenerator;
     private Code code;
 
     public List<CorrectCodeDisplay> codeDisplay = new List<CorrectCodeDisplay>();

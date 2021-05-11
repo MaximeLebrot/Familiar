@@ -7307,7 +7307,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   anim: {fileID: 316358690}
-  cam: {fileID: 0}
   UICoverPanel: {fileID: 1391949600}
 --- !u!1 &318506825
 GameObject:
@@ -19180,7 +19179,6 @@ MonoBehaviour:
   - {fileID: 1756362493}
   - {fileID: 791391578}
   allDoors: []
-  canUseConsole: 0
 --- !u!54 &865306016
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -22499,7 +22497,6 @@ MonoBehaviour:
   - {fileID: 791391578}
   - {fileID: 1713468636}
   - {fileID: 254394236}
-  canUseConsole: 0
 --- !u!1001 &1077672791
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -22607,7 +22604,6 @@ MonoBehaviour:
   - {fileID: 248977311}
   - {fileID: 522395055}
   allDoors: []
-  canUseConsole: 0
 --- !u!1001 &1082684842
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -26527,9 +26523,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6f0c66fa88177394baa51162977a906d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldOpen: 0
   door: {fileID: 326772835}
-  childPressurePlates: []
 --- !u!1001 &1234703686
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -32620,8 +32614,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  parent: {fileID: 0}
-  newMat: {fileID: 2100000, guid: 0e77717fc695883489f59000f5fb9855, type: 2}
 --- !u!95 &1440845901
 Animator:
   serializedVersion: 3
@@ -35867,8 +35859,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   active: 0
-  parent: {fileID: 0}
-  newMat: {fileID: 2100000, guid: 0e77717fc695883489f59000f5fb9855, type: 2}
 --- !u!95 &1620183139
 Animator:
   serializedVersion: 3
@@ -36419,7 +36409,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1656324127
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38334,7 +38324,6 @@ MonoBehaviour:
   doors:
   - {fileID: 1713468636}
   allDoors: []
-  canUseConsole: 0
 --- !u!65 &1759499953
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -38811,7 +38800,6 @@ MonoBehaviour:
   - {fileID: 248977311}
   - {fileID: 522395055}
   allDoors: []
-  canUseConsole: 0
 --- !u!54 &1772635240
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -42505,6 +42493,10 @@ PrefabInstance:
       propertyPath: m_Text
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 530760283512053597, guid: 7c6aeed478545a14a8cf89918bd38159, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1418752876191012320, guid: 7c6aeed478545a14a8cf89918bd38159, type: 3}
       propertyPath: m_RootOrder
       value: 1
@@ -43447,8 +43439,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4441f45263eee942abe7b66344b6197, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shouldOpen: 0
-  pressurePlates: []
   door: {fileID: 877218968}
 --- !u!1 &2009098703
 GameObject:
@@ -44556,7 +44546,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7df542569c1a71244a20ce1d42401b72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  images: []
   UICoverPanel: {fileID: 1391949600}
 --- !u!1 &2048866281
 GameObject:
@@ -46317,7 +46306,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 4, y: -19.000366}
+  m_AnchoredPosition: {x: 4, y: -19.000427}
   m_SizeDelta: {x: 160, y: 20}
   m_Pivot: {x: 0, y: 0}
 --- !u!114 &2132913770

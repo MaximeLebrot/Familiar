@@ -1,16 +1,15 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class CodePanelActivate : MonoBehaviour
 {
     // this is a little test script to check the animations for the code panel
-    public Animator anim;
+    [SerializeField] private Animator anim;
 
     private AbilitySystem.Player player;
-    public CameraHandler cam;
+    private CameraHandler cam;
 
-    public GameObject UICoverPanel;
+    [SerializeField] private GameObject UICoverPanel;
     // Bool to toggle if code panel is active or not.
     private bool active = false;
     private bool puzzleDone;
@@ -25,17 +24,17 @@ public class CodePanelActivate : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (!puzzleDone)
+        if (puzzleDone != true)
         {
-            if (!player.isInCodePanelArea)
+            if (player.isInCodePanelArea != true)
             {
                 HideCodePanel();
             }
-            else if (player.canSeeCodePanel)
+            else if (player.canSeeCodePanel == true)
             {
                 if (Input.GetKeyDown(KeyCode.C))
                 {
-                    if (!active)
+                    if (active != true)
                     {
                         ShowCodePanel();
                     }
@@ -46,17 +45,6 @@ public class CodePanelActivate : MonoBehaviour
                 }
             }
         }
-        //if (Input.GetKeyDown(KeyCode.C))
-        //{
-        //    if (!active)
-        //    {
-        //        ShowCodePanel();
-        //    }
-        //    else
-        //    {
-        //        HideCodePanel();
-        //    }
-        //}
     }
 
     private void HideCodePanel()
