@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 3.369049, g: 3.5453644, b: 3.2021074, a: 1}
+  m_IndirectSpecularColor: {r: 0.21056557, g: 0.22158527, b: 0.20013171, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -2552,7 +2552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &271147193
 Transform:
   m_ObjectHideFlags: 0
@@ -3357,6 +3357,7 @@ GameObject:
   - component: {fileID: 403758036}
   - component: {fileID: 403758035}
   - component: {fileID: 403758034}
+  - component: {fileID: 403758037}
   m_Layer: 0
   m_Name: LastMission_Trigger
   m_TagString: Untagged
@@ -3385,7 +3386,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 403758032}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -3427,6 +3428,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25, y: 25, z: 25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &403758037
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 403758032}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 656618147}
+  mission: 'Mission: Take the Key to the Locked Door'
+  needKey: 1
 --- !u!1001 &405126582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5302,6 +5318,7 @@ GameObject:
   - component: {fileID: 600333522}
   - component: {fileID: 600333521}
   - component: {fileID: 600333520}
+  - component: {fileID: 600333523}
   m_Layer: 0
   m_Name: StartMission_Trigger
   m_TagString: Untagged
@@ -5330,7 +5347,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 600333518}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -5372,6 +5389,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25, y: 25, z: 25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &600333523
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 600333518}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 656618147}
+  mission: 'Mission: Find the Key'
+  needKey: 0
 --- !u!1001 &605992113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9900,7 +9932,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1051579266}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64616abbed584b14bb51f2a4599989a5, type: 3}
   m_Name: 
@@ -12719,6 +12751,7 @@ GameObject:
   - component: {fileID: 1350857451}
   - component: {fileID: 1350857450}
   - component: {fileID: 1350857449}
+  - component: {fileID: 1350857452}
   m_Layer: 0
   m_Name: WizardKeyComment_Trigger
   m_TagString: Untagged
@@ -12747,7 +12780,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1350857447}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -12790,6 +12823,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25, y: 25, z: 25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1350857452
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1350857447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1764345994}
+  dialogueText: {fileID: 453392152}
+  dialogue: You got the key! I knew you'd do it. This is why you're my favorite Imp.
+    Now let's get out of here, open the big gate out of here!
+  activeTime: 15
+  needKey: 1
 --- !u!1001 &1364475892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -13644,6 +13695,7 @@ GameObject:
   - component: {fileID: 1496452758}
   - component: {fileID: 1496452757}
   - component: {fileID: 1496452756}
+  - component: {fileID: 1496452759}
   m_Layer: 0
   m_Name: KeyMission_Trigger
   m_TagString: Untagged
@@ -13672,7 +13724,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1496452754}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -13714,6 +13766,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25, y: 25, z: 25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1496452759
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1496452754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 656618147}
+  mission: 'Mission: Bring the Key to the Wizard'
+  needKey: 0
 --- !u!1 &1507944171
 GameObject:
   m_ObjectHideFlags: 0
@@ -16021,6 +16088,7 @@ GameObject:
   - component: {fileID: 1752208825}
   - component: {fileID: 1752208824}
   - component: {fileID: 1752208823}
+  - component: {fileID: 1752208826}
   m_Layer: 0
   m_Name: WizardComment_Trigger
   m_TagString: Untagged
@@ -16049,7 +16117,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1752208821}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -16092,6 +16160,24 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25, y: 25, z: 25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1752208826
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1752208821}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1764345994}
+  dialogueText: {fileID: 453392152}
+  dialogue: I finally managed to summon you! You should be big enough to fit through
+    the prison bars... go find the key! Make it hasty.
+  activeTime: 15
+  needKey: 0
 --- !u!1 &1757191201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543216753092369487, guid: ca014879105e38940824f2aeca60623c, type: 3}
@@ -20223,6 +20309,7 @@ GameObject:
   - component: {fileID: 2081313524}
   - component: {fileID: 2081313523}
   - component: {fileID: 2081313522}
+  - component: {fileID: 2081313525}
   m_Layer: 0
   m_Name: GuardUpdateMission_Trigger
   m_TagString: Untagged
@@ -20251,7 +20338,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2081313520}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -20293,6 +20380,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 20, y: 25, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &2081313525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2081313520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 656618147}
+  mission: 'Mission: Find the Key and avoid the Guards'
+  needKey: 0
 --- !u!1 &2104876747
 GameObject:
   m_ObjectHideFlags: 0
@@ -20818,7 +20920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5630991147229851972, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6138465588845835309, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
       propertyPath: m_Name
