@@ -20,7 +20,7 @@ public class Enemy1AttackState : Enemy1BaseState
         if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) > aggroLossDistance 
             || CheckIfPlayerAlive() == false)
             stateMachine.Transition<Enemy1PatrolState>();
-        else if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) < grabDistance && canSeePlayer)
+        else if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) < grabDistance)
         {
             //feedback
             //start timer?
@@ -45,7 +45,6 @@ public class Enemy1AttackState : Enemy1BaseState
     {
         owner.navAgent.isStopped = true;
         owner.playerStats.Die();
-        canSeePlayer = false;
         stateMachine.Transition<Enemy1PatrolState>();
         //kanske teleport tillbaka?
         //owner.navAgent.acceleration = 0;

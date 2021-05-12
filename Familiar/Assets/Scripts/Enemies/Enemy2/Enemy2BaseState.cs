@@ -2,20 +2,18 @@ using UnityEngine;
 
 public class Enemy2BaseState : State
 {
+    [Tooltip("The move speed controls the nav agents speed and the animation speed: animSpeed = moveSpeed / 10;")]
     [SerializeField] protected float moveSpeed;
     protected float animSpeed;
 
+    private static int CollisionLayer = 7; //the collision layer
+
     protected Enemy2 owner;
-    protected Controller playerController;
-    protected AbilitySystem.Player playerStats;
     protected StateMachine stateMachine;
 
     // Methods
     public override void Enter()
     {
-        //Debug.Log("Enemy2 Entered Base State");
-        playerController = owner.player.GetComponent<Controller>();
-        playerStats = owner.player.GetComponent<AbilitySystem.Player>();
         owner.navAgent.speed = moveSpeed;
         animSpeed = moveSpeed / 10;
         owner.anim.speed = animSpeed;
@@ -25,8 +23,16 @@ public class Enemy2BaseState : State
     {
         this.owner = (Enemy2)owner;
         this.stateMachine = stateMachine;
-        //Debug.Log("Initialized owner: " + owner.GetType());
-        //Debug.Log("Initialized stateMachine: " + stateMachine.GetType());
+    }
+    protected bool CheckForLOS()
+    {
+        RaycastHit hit;
+        if (Physics.Raycast(owner.transform.position, owner.vecToPlayer, out hit, 50.0f))
+        {
+            if (hit.collider.gameObject.layer == CollisionLayer)
+                return false;
+        }
+        return true;
     }
 
 }

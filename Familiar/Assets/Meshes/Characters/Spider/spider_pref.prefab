@@ -1142,7 +1142,7 @@ NavMeshAgent:
   m_Speed: 3.5
   m_Acceleration: 8
   avoidancePriority: 50
-  m_AngularSpeed: 180
+  m_AngularSpeed: 360
   m_StoppingDistance: 0
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
@@ -1163,23 +1163,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e5e4e42fea56ea1449a64f692e33127a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveSpeed: 10
-  health: 4
-  zapped: 0
-  canAttack: 0
-  drop: {fileID: 0}
-  mana: {fileID: 0}
-  anim: {fileID: 0}
-  navAgent: {fileID: 0}
-  collisionMask:
-    serializedVersion: 2
-    m_Bits: 128
-  player: {fileID: 0}
-  idlePosition: {x: 0, y: 0, z: 0}
   states:
   - {fileID: 11400000, guid: 4a8e71d57c85b614a9e94c3898e43623, type: 2}
   - {fileID: 11400000, guid: 8595af7ccfef29342adba897dc6d9bb4, type: 2}
   - {fileID: 11400000, guid: 95bff807dd4d5f041b00d9ee4bd4959e, type: 2}
+  maxHealth: 4
+  drop: {fileID: 0}
+  mana: {fileID: 0}
+  navAgent: {fileID: 906721566836043486}
+  anim: {fileID: 95681433750800818}
+  transform: {fileID: 4251409082942358}
+  player: {fileID: 0}
+  playerStats: {fileID: 0}
+  playerTransform: {fileID: 0}
   vecToPlayer: {x: 0, y: 0, z: 0}
   slider: {fileID: 0}
 --- !u!1 &1719841372004032

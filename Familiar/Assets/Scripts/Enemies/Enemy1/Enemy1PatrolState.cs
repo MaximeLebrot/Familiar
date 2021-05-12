@@ -3,8 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy1/Enemy1PatrolState")]
 public class Enemy1PatrolState : Enemy1BaseState
 {
-    public bool canSeeDebug;
-    private bool checkRaycastPlayer;
+    [SerializeField] private bool canSeeDebug;
 
     private float time = 1.0f;
     private float timer;
@@ -12,7 +11,6 @@ public class Enemy1PatrolState : Enemy1BaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enemy1 Entered Patrol State");
         owner.navAgent.autoBraking = false;
         Patrol();
     }
@@ -30,22 +28,25 @@ public class Enemy1PatrolState : Enemy1BaseState
         if (owner.IsZapped)
             stateMachine.Transition<Enemy1DefeatState>(); 
         if (canSeeDebug)
-        {
-            if (CheckForLOS() == true)
-                Debug.DrawRay(owner.transform.position, owner.vecToPlayer, Color.red);
-            if (timer <= 0)
-            {
-                Debug.Log("Distance: " + CheckForDistance());
-                Debug.Log("Raycast: " + CheckForLOS());
-                Debug.Log("Alive: " + CheckIfPlayerAlive());
-                Debug.Log("In front: " + CheckIfPlayerInFront());
-                timer = time;
-            }
-            else
-                timer -= Time.deltaTime;
-        }
+            DebugTransitionToAttackState();
 
     }
+    private void DebugTransitionToAttackState()
+    {
+        if (CheckForLOS() == true)
+            Debug.DrawRay(owner.transform.position, owner.vecToPlayer, Color.red);
+        if (timer <= 0)
+        {
+            Debug.Log("Distance: " + CheckForDistance());
+            Debug.Log("Raycast: " + CheckForLOS());
+            Debug.Log("Alive: " + CheckIfPlayerAlive());
+            Debug.Log("In front: " + CheckIfPlayerInFront());
+            timer = time;
+        }
+        else
+            timer -= Time.deltaTime;
+    }
+
     private void Patrol()
     {
         if (owner.points.Length == 0)

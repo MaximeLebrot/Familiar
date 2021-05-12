@@ -3,44 +3,42 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy2/Enemy2AttackState")]
 public class Enemy2AttackState : Enemy2BaseState
 {
-    public float hitDistance;
-    public float attackCooldown;
-    public float aggroLossDistance;
-    public float damage;
+    [Tooltip("The distance from which the enemy can hit the player")]
+    [SerializeField] private float hitDistance;
+    [Tooltip("The cooldown between attacks")]
+    [SerializeField] private float attackCooldown;
+    [Tooltip("The distance from which the enemy loses aggro")]
+    [SerializeField] private float aggroLossDistance;
+    [Tooltip("The damage dealt by the enemy")]
+    [SerializeField] private float damage;
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Enemy2 Entered Attack State");
         owner.anim.SetBool("spiderWalk", true);
-        owner.canAttack = true;
-        owner.navAgent.SetDestination(owner.player.transform.position);
+        owner.SetCanAttack(true);
+        owner.navAgent.SetDestination(owner.playerTransform.position);
     }
 
     public override void HandleUpdate()
     {
         //Chase();
-        if (owner.health == 0)
+        if (owner.GetHealth() == 0)
         {
             stateMachine.Transition<Enemy2DefeatState>();
             return;
         }
-        if (/*Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask) 
-            || */Vector3.Distance(owner.transform.position, owner.player.transform.position) > aggroLossDistance)
+        if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) > aggroLossDistance /* vector3distance from idle pos*/)
             stateMachine.Transition<Enemy2IdleState>();
-        else if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < hitDistance && owner.canAttack)
+        else if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) < hitDistance && owner.GetCanAttack())
             HitPlayer();
         else
             Chase();
-        //if (Physics.Linecast(owner.transform.position, owner.vecToPlayer, owner.collisionMask))
-        //stateMachine.Transition<Enemy2PatrolState>();
-        //if (owner.zapped)
-        //stateMachine.Transition<Enemy2DefeatState>();
     }
     private void Chase()
     {
         //Debug.DrawLine(owner.transform.position, owner.vecToPlayer, Color.red);
         if(owner.navAgent.remainingDistance > 0.5f)
-            owner.navAgent.SetDestination(owner.player.transform.position);
+            owner.navAgent.SetDestination(owner.playerTransform.position);
     }
     private void HitPlayer()
     {
@@ -52,15 +50,10 @@ public class Enemy2AttackState : Enemy2BaseState
     }
     private void DamagePlayer()
     {
-
-        playerStats.TakeDamage(damage);
-        //playerStats.GetAbilitySystem().TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, -damage);
-        //Debug.Log("Health = " + playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth));
-        //playerStats.anim.SetTrigger("takeDmg");
-        //eventsystem ska kalla till UI att uppdatera (samma ska gälla för mana)
-        if (playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) <= 0)
+        owner.playerStats.TakeDamage(damage);
+        if (owner.playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) <= 0)
         {
-            playerStats.Die();
+            owner.playerStats.Die();
             stateMachine.Transition<Enemy2IdleState>();
         }
     }
