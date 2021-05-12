@@ -2552,7 +2552,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &271147193
 Transform:
   m_ObjectHideFlags: 0
@@ -7449,6 +7449,7 @@ GameObject:
   - component: {fileID: 773042593}
   - component: {fileID: 773042592}
   - component: {fileID: 773042591}
+  - component: {fileID: 773042595}
   m_Layer: 0
   m_Name: PullTutorial_Trigger
   m_TagString: Untagged
@@ -7463,7 +7464,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 773042590}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -7520,6 +7521,22 @@ Transform:
   m_Father: {fileID: 271147193}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &773042595
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 773042590}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12725e498262444468afe9471ced6446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialText: {fileID: 1991818522}
+  tutorial: Press 'RMB' on boxes to move them. Click 'RMB' again to release.
+  activeTime: 15
+  permanent: 0
 --- !u!1001 &789186070
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -9901,6 +9918,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1051579267}
   - component: {fileID: 1051579268}
+  - component: {fileID: 1051579269}
   m_Layer: 0
   m_Name: TextTriggers_Parent
   m_TagString: Untagged
@@ -9938,6 +9956,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueParent: {fileID: 1764345994}
+  dialogueText: {fileID: 453392152}
+--- !u!114 &1051579269
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1051579266}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e83c91827f015e428ee04572e3985aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialText: {fileID: 1991818522}
+  missionText: {fileID: 656618147}
   dialogueText: {fileID: 453392152}
 --- !u!1001 &1060543754
 PrefabInstance:
@@ -12837,9 +12870,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueParent: {fileID: 1764345994}
   dialogueText: {fileID: 453392152}
-  dialogue: You got the key! I knew you'd do it. This is why you're my favorite Imp.
-    Now let's get out of here, open the big gate out of here!
-  activeTime: 15
+  dialogue: You got the key! I knew you'd do it. Now let's get out of here, open
+    that locked door over there so we can get out of here!
+  activeTime: 10
   needKey: 1
 --- !u!1001 &1364475892
 PrefabInstance:
@@ -13956,6 +13989,7 @@ GameObject:
   - component: {fileID: 1518029206}
   - component: {fileID: 1518029205}
   - component: {fileID: 1518029204}
+  - component: {fileID: 1518029207}
   m_Layer: 0
   m_Name: EnemyTutorial_Trigger
   m_TagString: Untagged
@@ -13984,7 +14018,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1518029202}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -14026,6 +14060,22 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 25, y: 25, z: 25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1518029207
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1518029202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12725e498262444468afe9471ced6446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialText: {fileID: 1991818522}
+  tutorial: Be careful around the guards! They'll harm you.
+  activeTime: 10
+  permanent: 0
 --- !u!1001 &1526088183
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16176,7 +16226,7 @@ MonoBehaviour:
   dialogueText: {fileID: 453392152}
   dialogue: I finally managed to summon you! You should be big enough to fit through
     the prison bars... go find the key! Make it hasty.
-  activeTime: 15
+  activeTime: 10
   needKey: 0
 --- !u!1 &1757191201 stripped
 GameObject:

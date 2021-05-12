@@ -16,7 +16,6 @@ public class WizardDialogueTrigger : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        dialogueText.text = "";
         anim = dialogueParent.GetComponent<Animator>();
     }
 
@@ -24,6 +23,7 @@ public class WizardDialogueTrigger : MonoBehaviour
     {
         if (other.tag == "Player" && !needKey || other.tag == "Key" && needKey)
         {
+            // Sound effect here
             dialogueText.text = dialogue;
             anim.SetBool("inUse", true);
             // Start a coroutine to count down how long the text should be up.
@@ -32,6 +32,7 @@ public class WizardDialogueTrigger : MonoBehaviour
         }
     }
 
+    // The text resets to blank if the player leaves the trigger without OnTriggerExit.
     private void OnTriggerExit(Collider other)
     {
         if (other.tag == "Player" && !needKey || other.tag == "Key" && needKey)

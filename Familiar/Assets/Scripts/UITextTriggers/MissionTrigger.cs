@@ -11,17 +11,11 @@ public class MissionTrigger : MonoBehaviour
     // The mission texts animator?
     //public Animator anim;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        missionText.text = "";
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && !needKey || other.tag == "Key" && needKey)
         {
-            missionText.text = mission;
+            missionText.text = mission; // maybe add typing effect instead?
             gameObject.SetActive(false);
         }
     }
