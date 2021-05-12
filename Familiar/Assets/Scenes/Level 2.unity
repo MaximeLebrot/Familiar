@@ -4827,6 +4827,7 @@ GameObject:
   - component: {fileID: 122033959}
   - component: {fileID: 122033958}
   - component: {fileID: 122033957}
+  - component: {fileID: 122033960}
   m_Layer: 0
   m_Name: WizardPuzzleComment2_Trigger
   m_TagString: Untagged
@@ -4855,7 +4856,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122033955}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -4898,6 +4899,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &122033960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122033955}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+  dialogue: Oh... was half expecting another key. This is... a switch, maybe it opens
+    the last door?
+  activeTime: 8
+  needKey: 0
 --- !u!1001 &122123175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5019,6 +5038,7 @@ GameObject:
   - component: {fileID: 122223137}
   - component: {fileID: 122223136}
   - component: {fileID: 122223135}
+  - component: {fileID: 122223138}
   m_Layer: 0
   m_Name: PressurePlateMission_Trigger (1)
   m_TagString: Untagged
@@ -5047,7 +5067,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 122223133}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -5089,6 +5109,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &122223138
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 122223133}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 1495077187}
+  mission: 'Mission: Remember the combination to the Codepanel'
+  needKey: 0
+  typeSpeed: 0.025
 --- !u!4 &123448715 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6808287335540403863, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
@@ -6433,6 +6469,7 @@ GameObject:
   - component: {fileID: 181136346}
   - component: {fileID: 181136345}
   - component: {fileID: 181136344}
+  - component: {fileID: 181136348}
   m_Layer: 0
   m_Name: WizardPuzzleComment_Trigger
   m_TagString: Untagged
@@ -6447,7 +6484,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 181136343}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -6504,6 +6541,24 @@ Transform:
   m_Father: {fileID: 1277575948}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &181136348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 181136343}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+  dialogue: More machinery. I do wonder who made all of these... contraptions. And
+    for what purpose.
+  activeTime: 15
+  needKey: 0
 --- !u!1 &187499296
 GameObject:
   m_ObjectHideFlags: 0
@@ -10531,6 +10586,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1289a7847093e24e9f7ba98253c653e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  listOfContacts: []
 --- !u!1001 &421867872
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11814,13 +11870,14 @@ GameObject:
   - component: {fileID: 536490346}
   - component: {fileID: 536490345}
   - component: {fileID: 536490344}
+  - component: {fileID: 536490347}
   m_Layer: 0
   m_Name: CollectablesMission_Trigger (1)
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &536490343
 Transform:
   m_ObjectHideFlags: 0
@@ -11842,7 +11899,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 536490342}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -11884,6 +11941,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &536490347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 536490342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 1495077187}
+  mission: 
+  needKey: 0
+  typeSpeed: 0.025
 --- !u!1001 &552183369
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14661,13 +14734,14 @@ GameObject:
   - component: {fileID: 620272074}
   - component: {fileID: 620272073}
   - component: {fileID: 620272072}
+  - component: {fileID: 620272075}
   m_Layer: 0
   m_Name: ExitDoorMission_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &620272071
 Transform:
   m_ObjectHideFlags: 0
@@ -14689,7 +14763,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 620272070}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -14731,6 +14805,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &620272075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 620272070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 1495077187}
+  mission: 
+  needKey: 0
+  typeSpeed: 0.025
 --- !u!1 &624552418
 GameObject:
   m_ObjectHideFlags: 0
@@ -15737,6 +15827,7 @@ GameObject:
   m_Component:
   - component: {fileID: 700499922}
   - component: {fileID: 700499923}
+  - component: {fileID: 700499924}
   m_Layer: 0
   m_Name: DialogueTriggers_Parent
   m_TagString: Untagged
@@ -15768,12 +15859,27 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 700499921}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 64616abbed584b14bb51f2a4599989a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+--- !u!114 &700499924
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 700499921}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0e83c91827f015e428ee04572e3985aa, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialText: {fileID: 1410712124}
+  missionText: {fileID: 1495077187}
   dialogueText: {fileID: 18161357}
 --- !u!1 &701720059
 GameObject:
@@ -15915,6 +16021,7 @@ GameObject:
   - component: {fileID: 703885074}
   - component: {fileID: 703885073}
   - component: {fileID: 703885072}
+  - component: {fileID: 703885075}
   m_Layer: 0
   m_Name: ZapTutorial_Trigger (1)
   m_TagString: Untagged
@@ -15930,7 +16037,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703885070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 40.6, y: 8, z: 28.9}
+  m_LocalPosition: {x: 42.25, y: 8, z: 28.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1420645089}
@@ -15943,7 +16050,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703885070}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -15985,6 +16092,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &703885075
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 703885070}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12725e498262444468afe9471ced6446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialText: {fileID: 1410712124}
+  tutorial: This ability can damage spiders and affects water...
+  activeTime: 15
+  permanent: 0
 --- !u!1001 &707032774
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16930,6 +17053,7 @@ GameObject:
   - component: {fileID: 751369728}
   - component: {fileID: 751369727}
   - component: {fileID: 751369726}
+  - component: {fileID: 751369729}
   m_Layer: 0
   m_Name: ZapTutorial_Trigger
   m_TagString: Untagged
@@ -16945,7 +17069,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751369724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 46.9, y: 8, z: 28.9}
+  m_LocalPosition: {x: 47.39, y: 8, z: 28.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1420645089}
@@ -16958,7 +17082,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751369724}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -17000,6 +17124,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &751369729
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 751369724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12725e498262444468afe9471ced6446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialText: {fileID: 1410712124}
+  tutorial: Press 'LMB' to use Zap Ability.
+  activeTime: 15
+  permanent: 0
 --- !u!1 &755998329
 GameObject:
   m_ObjectHideFlags: 0
@@ -18999,6 +19139,7 @@ GameObject:
   - component: {fileID: 798252823}
   - component: {fileID: 798252822}
   - component: {fileID: 798252821}
+  - component: {fileID: 798252824}
   m_Layer: 0
   m_Name: WizardComment_Trigger
   m_TagString: Untagged
@@ -19027,7 +19168,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798252819}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -19070,6 +19211,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &798252824
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 798252819}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+  dialogue: It would seem escaping isn't going to be as easy as I'd hoped... I'll
+    lend you some of my powers, get us out of here!!
+  activeTime: 8
+  needKey: 0
 --- !u!1001 &800489891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27103,8 +27262,9 @@ GameObject:
   - component: {fileID: 1184218316}
   - component: {fileID: 1184218315}
   - component: {fileID: 1184218314}
+  - component: {fileID: 1184218317}
   m_Layer: 0
-  m_Name: WizardPressurePlateComment_Trigger
+  m_Name: WizardCodePanelComment_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -27131,7 +27291,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1184218312}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -27174,6 +27334,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1184218317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1184218312}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+  dialogue: Hmm... this mechanism doesn't seem to be working. Let's come back later.
+  activeTime: 8
+  needKey: 0
 --- !u!1 &1187091244
 GameObject:
   m_ObjectHideFlags: 0
@@ -29894,6 +30071,7 @@ GameObject:
   - component: {fileID: 1245199855}
   - component: {fileID: 1245199854}
   - component: {fileID: 1245199853}
+  - component: {fileID: 1245199856}
   m_Layer: 0
   m_Name: WizardBoxComment2_Trigger
   m_TagString: Untagged
@@ -29922,7 +30100,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1245199851}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -29965,6 +30143,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1245199856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1245199851}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+  dialogue: You know Familiar, I kind of like boxes. It's just something about them.
+    Something... nice.
+  activeTime: 8
+  needKey: 0
 --- !u!4 &1248595601 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6808287335540403863, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
@@ -32056,6 +32252,7 @@ GameObject:
   - component: {fileID: 1357132612}
   - component: {fileID: 1357132611}
   - component: {fileID: 1357132610}
+  - component: {fileID: 1357132613}
   m_Layer: 0
   m_Name: ZapTutorial_Trigger (2)
   m_TagString: Untagged
@@ -32071,7 +32268,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357132608}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 31.8, y: 8, z: 28.9}
+  m_LocalPosition: {x: 31.99, y: 8, z: 28.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1420645089}
@@ -32084,7 +32281,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1357132608}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -32126,6 +32323,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1357132613
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1357132608}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12725e498262444468afe9471ced6446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialText: {fileID: 1410712124}
+  tutorial: Water affected by lightning hurts you... a lot :(
+  activeTime: 15
+  permanent: 0
 --- !u!1 &1363086819
 GameObject:
   m_ObjectHideFlags: 0
@@ -37525,6 +37738,7 @@ GameObject:
   - component: {fileID: 1513079374}
   - component: {fileID: 1513079373}
   - component: {fileID: 1513079372}
+  - component: {fileID: 1513079376}
   m_Layer: 0
   m_Name: WizardSpiderComment_Trigger
   m_TagString: Untagged
@@ -37539,7 +37753,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513079371}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -37596,6 +37810,23 @@ Transform:
   m_Father: {fileID: 1277575948}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1513079376
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513079371}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+  dialogue: I'VE HAD IT WITH THESE MOTHERF*CKING SPIDER IN THIS MOTHERF*CKING CASTLE
+  activeTime: 8
+  needKey: 0
 --- !u!1 &1517924343
 GameObject:
   m_ObjectHideFlags: 0
@@ -39633,6 +39864,7 @@ GameObject:
   - component: {fileID: 1647581143}
   - component: {fileID: 1647581142}
   - component: {fileID: 1647581141}
+  - component: {fileID: 1647581144}
   m_Layer: 0
   m_Name: WizardBigRoomComment_Trigger
   m_TagString: Untagged
@@ -39661,7 +39893,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647581139}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -39703,6 +39935,23 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1647581144
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1647581139}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+  dialogue: Our exit has been located! Finally.
+  activeTime: 5
+  needKey: 0
 --- !u!4 &1651072940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6808287335540403863, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
@@ -40341,6 +40590,7 @@ GameObject:
   - component: {fileID: 1683083215}
   - component: {fileID: 1683083214}
   - component: {fileID: 1683083213}
+  - component: {fileID: 1683083216}
   m_Layer: 0
   m_Name: GoToDoorMission_Trigger
   m_TagString: Untagged
@@ -40369,7 +40619,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1683083211}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -40411,6 +40661,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1683083216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1683083211}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 1495077187}
+  mission: 'Mission: Go try the last door..?'
+  needKey: 0
+  typeSpeed: 0.025
 --- !u!1001 &1684873740
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -42224,6 +42490,7 @@ GameObject:
   - component: {fileID: 1772068439}
   - component: {fileID: 1772068438}
   - component: {fileID: 1772068437}
+  - component: {fileID: 1772068440}
   m_Layer: 0
   m_Name: WizardBoxComment1_Trigger
   m_TagString: Untagged
@@ -42252,7 +42519,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1772068435}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -42295,6 +42562,24 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1772068440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1772068435}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+  dialogue: This doesn't seem so bad, just a lonely box with it's pressure plate
+    friend.
+  activeTime: 8
+  needKey: 0
 --- !u!1 &1772635238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1365ab675fbc827498daff1efaee0195, type: 3}
@@ -45268,6 +45553,7 @@ GameObject:
   - component: {fileID: 1930717647}
   - component: {fileID: 1930717646}
   - component: {fileID: 1930717645}
+  - component: {fileID: 1930717648}
   m_Layer: 0
   m_Name: BigRoomMission_Trigger
   m_TagString: Untagged
@@ -45296,7 +45582,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930717643}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -45338,6 +45624,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1930717648
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930717643}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 1495077187}
+  mission: 'Mission: Escape'
+  needKey: 0
+  typeSpeed: 0.025
 --- !u!1 &1937394486
 GameObject:
   m_ObjectHideFlags: 0
@@ -45667,6 +45969,7 @@ GameObject:
   - component: {fileID: 1949158598}
   - component: {fileID: 1949158597}
   - component: {fileID: 1949158596}
+  - component: {fileID: 1949158600}
   m_Layer: 0
   m_Name: StartMission_Trigger
   m_TagString: Untagged
@@ -45681,13 +45984,13 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1949158595}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   helpText: {fileID: 1495077187}
-  instructions: 'Mission: Escape the Castle... somehow.'
+  instructions: 'Mission: Escape the Castle, somehow.'
   waitTime: 1
   deactiveTrigger: 1
   permanentText: 1
@@ -45737,6 +46040,22 @@ Transform:
   m_Father: {fileID: 904399705}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1949158600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1949158595}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 1495077187}
+  mission: 'Mission: Escape the Castle, somehow.'
+  needKey: 0
+  typeSpeed: 0.025
 --- !u!1001 &1949392683
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -48201,6 +48520,7 @@ GameObject:
   - component: {fileID: 2012628231}
   - component: {fileID: 2012628230}
   - component: {fileID: 2012628229}
+  - component: {fileID: 2012628232}
   m_Layer: 0
   m_Name: MechanicTutorial_Trigger
   m_TagString: Untagged
@@ -48216,7 +48536,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012628227}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 36.55, y: 8, z: 45.49}
+  m_LocalPosition: {x: 36.55, y: 8, z: 45.72}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1420645089}
@@ -48229,7 +48549,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2012628227}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -48253,7 +48573,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 10, y: 20, z: 10}
+  m_Size: {x: 4, y: 20, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &2012628231
 Rigidbody:
@@ -48271,6 +48591,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2012628232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2012628227}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 12725e498262444468afe9471ced6446, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tutorialText: {fileID: 1410712124}
+  tutorial: Press 'E' to interact
+  activeTime: 0
+  permanent: 1
 --- !u!1 &2013638510
 GameObject:
   m_ObjectHideFlags: 0
@@ -49743,13 +50079,14 @@ GameObject:
   - component: {fileID: 2083970015}
   - component: {fileID: 2083970014}
   - component: {fileID: 2083970013}
+  - component: {fileID: 2083970016}
   m_Layer: 0
   m_Name: CollectablesMission_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &2083970012
 Transform:
   m_ObjectHideFlags: 0
@@ -49771,7 +50108,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2083970011}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -49813,6 +50150,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2083970016
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2083970011}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 1495077187}
+  mission: 
+  needKey: 0
+  typeSpeed: 0.025
 --- !u!4 &2087145964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6808287335540403863, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
@@ -49840,6 +50193,7 @@ GameObject:
   - component: {fileID: 2094350346}
   - component: {fileID: 2094350345}
   - component: {fileID: 2094350344}
+  - component: {fileID: 2094350347}
   m_Layer: 0
   m_Name: PressurePlateMission_Trigger
   m_TagString: Untagged
@@ -49868,7 +50222,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2094350342}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
   m_Name: 
@@ -49910,6 +50264,22 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2094350347
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2094350342}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 1495077187}
+  mission: 'Mission: Find a way to activate the strange mechanic.'
+  needKey: 0
+  typeSpeed: 0.025
 --- !u!1 &2099728000
 GameObject:
   m_ObjectHideFlags: 0

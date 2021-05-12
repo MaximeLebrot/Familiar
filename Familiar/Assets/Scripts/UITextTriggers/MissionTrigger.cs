@@ -16,8 +16,8 @@ public class MissionTrigger : MonoBehaviour
     {
         if (other.tag == "Player" && !needKey || other.tag == "Key" && needKey)
         {
-            //missionText.text = mission; // maybe add typing effect instead?
-            StartCoroutine(TypeText());
+            missionText.text = mission; // maybe add typing effect instead?
+            //StartCoroutine(TypeText());
         }
     }
 
