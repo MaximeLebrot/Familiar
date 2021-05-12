@@ -1,50 +1,50 @@
-using System.Collections;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [CreateAssetMenu(menuName = "Enemy1/Enemy1AttackState")]
 public class Enemy1AttackState : Enemy1BaseState
 {
-    public float grabDistance;
-    public float aggroLossDistance;
-    private RaycastHit hit;
+    [SerializeField] private float grabDistance;
+    [SerializeField] private float aggroLossDistance;
+    [SerializeField] private float chaseSpeed;
+
+    //timer och time som reguleras utav en difficulty level? hur länge man stannar i ljuset
+
     public override void Enter()
     {
         base.Enter();
         owner.anim.SetTrigger("roar");
-        owner.anim.speed = animSpeed;
-        Debug.Log("Enemy1 Entered Attack State");
-        //FoundPlayer(); //
-        //ChasePlayer();
     }
 
     public override void HandleUpdate()
     {
-        //if (Physics.Raycast(owner.transform.position, owner.vecToPlayer, 50.0f, owner.collisionMask))
-        //    stateMachine.Transition<Enemy1PatrolState>();
-        if (Vector3.Distance(owner.transform.position, owner.player.transform.position) > aggroLossDistance || playerStats.ded/*|| !Physics.Raycast(owner.transform.position, owner.vecToPlayer, out hit, spottingDistance, owner.collisionMask)*/)
+        if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) > aggroLossDistance 
+            || CheckIfPlayerAlive() == false)
             stateMachine.Transition<Enemy1PatrolState>();
-        else if (Vector3.Distance(owner.transform.position, owner.player.transform.position) < grabDistance && canSeePlayer)
+        else if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) < grabDistance && canSeePlayer)
         {
+            //feedback
+            //start timer?
+            //anim
+
             GrabPlayer();
         }
         else
         {
-            ChasePlayer();
+            GrabPlayer();
+            //ChasePlayer();
         }
-        //if (Physics.Linecast(owner.transform.position, owner.vecToPlayer, owner.collisionMask))
-        //stateMachine.Transition<Enemy1PatrolState>();
     }
 
     private void ChasePlayer()
     {
-        //Debug.DrawLine(owner.transform.position, owner.vecToPlayer, Color.red);
-
-        owner.navAgent.SetDestination(/*player.transform.position*/owner.vecToPlayer);
+        //owner.transform.LookAt(owner.vecToPlayer);
+        owner.navAgent.speed = chaseSpeed;
+        owner.navAgent.SetDestination(owner.vecToPlayer);
     }
     private void GrabPlayer()
     {
-        playerStats.Die();
+        owner.navAgent.isStopped = true;
+        owner.playerStats.Die();
         canSeePlayer = false;
         stateMachine.Transition<Enemy1PatrolState>();
         //kanske teleport tillbaka?

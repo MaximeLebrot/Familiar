@@ -1,21 +1,23 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI; //Navmesh https://docs.unity3d.com/Manual/nav-HowTos.html
 
 public class Enemy1 : MonoBehaviour, IZappable
 {
-    public Animator anim;
+    [SerializeField] private State[] states;
 
+    public Animator anim;
     public LayerMask collisionMask;
     public GameObject player;
-    public State[] states;
+    public AbilitySystem.Player playerStats;
 
-    public Transform[] points; 
+    public Transform[] points;
     public int destPoint = 0;
-    public Vector3 vecToPlayer;
-    public GameObject playerRespawnPoint;
-    public Vector3 playerRespawnLocation;
-
     public NavMeshAgent navAgent;
+    new public Transform transform;
+    public Transform playerTransform;
+    public Vector3 vecToPlayer;
+
     private StateMachine stateMachine;
 
     public bool IsZapped
@@ -27,18 +29,34 @@ public class Enemy1 : MonoBehaviour, IZappable
     protected void Awake()
     {
         anim = GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player");
+        GetPlayerGameObject();
+        GetPlayerScript();
+        GetTransforms();
         navAgent = GetComponent<NavMeshAgent>();
-        playerRespawnLocation = playerRespawnPoint.transform.position;
         stateMachine = new StateMachine(this, states);
+    }
+
+    private void GetTransforms()
+    {
+        this.transform = gameObject.transform;
+        playerTransform = player.transform;
+    }
+
+    private void GetPlayerGameObject()
+    {
+        if (player == null) //det är mer effektivt att mata in i inspektorn. Annars -> find object
+            player = GameObject.FindGameObjectWithTag("Player");
+    }
+    private void GetPlayerScript()
+    {
+        if (playerStats == null)
+            playerStats = player.GetComponent<AbilitySystem.Player>();
     }
 
     private void Update()
     {
-        vecToPlayer = player.transform.position;
+        vecToPlayer = playerTransform.position - transform.position;
         stateMachine.HandleUpdate();
-        Debug.DrawLine(transform.position + new Vector3(0, 5, 0), vecToPlayer, Color.red);
-        //Debug.DrawLine(transform.position + new Vector3(0, 5, 0), navAgent.velocity, Color.cyan);
     }
 
     public void OnCollisionEnter(Collision collision)

@@ -6,7 +6,7 @@ using UnityEngine;
 //Author: Simon Canbäck
 public class ElectricGroundScript : MonoBehaviour, IZappable
 {
-    private List<GameObject> listOfContacts;
+    [SerializeField] private List<GameObject> listOfContacts;
 
     public bool IsZapped
     {
@@ -22,7 +22,7 @@ public class ElectricGroundScript : MonoBehaviour, IZappable
 
     void LateUpdate()
     {
-        ValidateContacts();
+        //ValidateContacts();
 
         IsZapped = false;
     }

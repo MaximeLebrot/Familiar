@@ -3,8 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy1/Enemy1IdleState")]
 public class Enemy1IdleState : Enemy1BaseState
 {
-    private float spottingDistance = 50.0f;
-    public bool shouldJustIdle;
+    [SerializeField] private bool shouldJustIdle;
     public override void Enter()
     {
         base.Enter();
@@ -15,14 +14,12 @@ public class Enemy1IdleState : Enemy1BaseState
     public override void HandleUpdate()
     {
         //Debug.Log("enemy idle");
-        if (!shouldJustIdle) //if player nära?
+        if (shouldJustIdle != true)
             stateMachine.Transition<Enemy1PatrolState>();
-        if (!Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask))
-            stateMachine.Transition<Enemy1AttackState>();
-    }
-
-    private void Idle()
-    {
-
+        if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) < spottingDistance
+            && CheckForLOS()
+            && CheckIfPlayerAlive()
+            && CheckIfPlayerInFront())
+                stateMachine.Transition<Enemy1AttackState>();
     }
 }

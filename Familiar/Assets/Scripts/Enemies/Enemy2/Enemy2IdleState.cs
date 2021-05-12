@@ -3,8 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy2/Enemy2IdleState")]
 public class Enemy2IdleState : Enemy2BaseState
 {
-    public float aggroDistance;
-    public float spottingDistance;
+    [SerializeField] private float aggroDistance;
+    [SerializeField] private float spottingDistance;
 
     public override void Enter()
     {
