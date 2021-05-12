@@ -10,25 +10,17 @@ public class TutorialTrigger : MonoBehaviour
     public float activeTime;
     public bool permanent;
 
-    private Animator anim;
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        // get animator here
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
+            tutorialText.text = "";
             // Sound effect here?
             tutorialText.text = tutorial;
             if (!permanent)
             {
                 StartCoroutine(WaitAndDeactivate());
             }
-            //gameObject.SetActive(false);
         }
     }
 
@@ -37,24 +29,16 @@ public class TutorialTrigger : MonoBehaviour
         yield return new WaitForSeconds(activeTime);
         if (tutorialText.text == tutorial)
         {
-            // Animate so the text fades out?
             tutorialText.text = "";
-            
         }
         gameObject.SetActive(false);
     }
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player" && tutorialText.text == tutorial && !permanent)
+        if (other.tag == "Player" && tutorialText.text == tutorial)
         {
-            // Animate out?
             tutorialText.text = "";
-            //gameObject.SetActive(false);
-        }
-        else if (other.tag == "Player")
-        {
-            tutorialText.text = tutorial;
         }
     }
 }
