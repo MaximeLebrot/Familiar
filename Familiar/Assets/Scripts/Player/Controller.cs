@@ -169,8 +169,9 @@ public class Controller : MonoBehaviour
     private void CastFunction()
     {
         RaycastHit hitInfo;
+        bool hit;
 
-        bool hit = Physics.CapsuleCast(
+        hit = Physics.CapsuleCast(
             point1: GetPoint1(),
             point2: GetPoint2(),
             radius: col.radius + skinWidth,
