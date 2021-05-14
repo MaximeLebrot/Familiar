@@ -7,21 +7,21 @@ public class Enemy1BaseState : State
     [Tooltip("The distance from which the enemy can sense the player")]
     [SerializeField] protected float spottingDistance;
     [Tooltip("The angle in which the enemy can see the player. Calculation: dot > visionAngle = can see player. 0.707 = 90°")]
-    [SerializeField] private float visionAngle; //vilken vinkel enemy kan se spelaren, 0.707 = 90 grader
+    [SerializeField] private float visionAngle;
     protected float animSpeed;
 
     private Vector3 direction;
     private float dot;
-    private static int CollisionLayer = 7; //the collision layer
+    private static int CollisionLayer = 7;
 
     protected Enemy1 owner;
     protected StateMachine stateMachine;
 
     public override void Enter()
     {
-        owner.navAgent.speed = moveSpeed;
+        owner.NavAgent.speed = moveSpeed;
         animSpeed = moveSpeed / 10;
-        owner.anim.speed = animSpeed;
+        owner.Anim.speed = animSpeed;
     }
 
     public override void Initialize(StateMachine stateMachine, object owner)
@@ -32,7 +32,7 @@ public class Enemy1BaseState : State
 
     protected bool CheckIfPlayerInFront()
     {
-        direction = owner.vecToPlayer.normalized;
+        direction = owner.VecToPlayer.normalized;
         dot = Vector3.Dot(direction, owner.transform.forward);
         if (dot > visionAngle)
             return true;
@@ -42,12 +42,18 @@ public class Enemy1BaseState : State
     protected bool CheckForLOS()
     {
         RaycastHit hit;
-        if (Physics.Raycast(owner.transform.position, owner.vecToPlayer, out hit, 50.0f))
+        if (Physics.Raycast(owner.transform.position, owner.VecToPlayer, out hit, 50.0f))
         {
             if (hit.collider.gameObject.layer == CollisionLayer)
+            {
+                Debug.DrawRay(owner.transform.position, owner.VecToPlayer, Color.red);
                 return false;
+            }
+            Debug.DrawRay(owner.transform.position, owner.VecToPlayer, Color.cyan);
+            return true;
         }
-        return true;
+        Debug.DrawRay(owner.transform.position, owner.VecToPlayer, Color.red);
+        return false;
         //!Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask) //old old way
         //if (Physics.Raycast(owner.transform.position, owner.vecToPlayer, out hit, 50.0f)) //old way
         //{
@@ -61,14 +67,14 @@ public class Enemy1BaseState : State
 
     protected bool CheckForDistance()
     {
-        if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) < spottingDistance)
+        if (Vector3.Distance(owner.transform.position, owner.PlayerTransform.position) < spottingDistance)
             return true;
         return false;
     }
 
     protected bool CheckIfPlayerAlive()
     {
-        if (owner.playerStats.ded != true)
+        if (owner.PlayerStats.ded != true)
             return true;
         return false;
     }

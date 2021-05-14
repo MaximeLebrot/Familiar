@@ -11,13 +11,13 @@ public class Enemy1PatrolState : Enemy1BaseState
     public override void Enter()
     {
         base.Enter();
-        owner.navAgent.autoBraking = false;
+        owner.NavAgent.autoBraking = false;
         Patrol();
     }
 
     public override void HandleUpdate()
     {
-        if (!owner.navAgent.pathPending && owner.navAgent.remainingDistance < 0.5f)
+        if (!owner.NavAgent.pathPending && owner.NavAgent.remainingDistance < 0.5f)
             Patrol();
 
         if (CheckForDistance()
@@ -34,7 +34,7 @@ public class Enemy1PatrolState : Enemy1BaseState
     private void DebugTransitionToAttackState()
     {
         if (CheckForLOS() == true)
-            Debug.DrawRay(owner.transform.position, owner.vecToPlayer, Color.red);
+            Debug.DrawRay(owner.transform.position, owner.VecToPlayer, Color.red);
         if (timer <= 0)
         {
             Debug.Log("Distance: " + CheckForDistance());
@@ -49,11 +49,14 @@ public class Enemy1PatrolState : Enemy1BaseState
 
     private void Patrol()
     {
-        if (owner.points.Length == 0)
+        if (owner.Points.Length == 0)
+        {
+            stateMachine.Transition<Enemy1IdleState>();
             return;
+        }
 
-        owner.navAgent.destination = owner.points[owner.destPoint].position;
+        owner.NavAgent.destination = owner.Points[owner.DestPoint].position;
 
-        owner.destPoint = (owner.destPoint + 1) % owner.points.Length;
+        owner.DestPoint = (owner.DestPoint + 1) % owner.Points.Length;
     }
 }
