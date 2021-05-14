@@ -43,7 +43,6 @@ public class Enemy1AttackState : Enemy1BaseState
     }
     private void GrabPlayer()
     {
-        owner.navAgent.isStopped = true;
         owner.playerStats.Die();
         stateMachine.Transition<Enemy1PatrolState>();
         //kanske teleport tillbaka?

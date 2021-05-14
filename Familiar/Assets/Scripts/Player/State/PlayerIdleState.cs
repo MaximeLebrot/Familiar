@@ -21,7 +21,7 @@ public class PlayerIdleState : PlayerBaseState
         if (Input.GetKeyDown(KeyCode.Space) && player.IsGrounded)
             stateMachine.Transition<PlayerJumpState>();
 
-        if (player.input.magnitude > 0 || player.velocity.magnitude > 0.1)
+        if (player.InputVector.magnitude > 0 || player.Velocity.magnitude > 0.1)
             stateMachine.Transition<PlayerMovingState>();
     }
 
@@ -32,6 +32,6 @@ public class PlayerIdleState : PlayerBaseState
 
     public static bool IsPlayerIdle(Controller controller)
     {
-        return (controller.input.magnitude == 0.0f && controller.velocity.magnitude <= playerVelocityIdleTolerance);
+        return (controller.InputVector.magnitude == 0.0f && controller.Velocity.magnitude <= playerVelocityIdleTolerance);
     }
 }

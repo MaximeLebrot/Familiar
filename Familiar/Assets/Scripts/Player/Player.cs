@@ -152,8 +152,8 @@ namespace AbilitySystem
         public void Die()
         {
             ded = true;
-            playerController.dedNowDontMove = true;
-            playerController.cam.cannotMoveCam = true;
+            playerController.StopController = true;
+            playerController.Camera.cannotMoveCam = true;
             healthBar.value = 0;
 
             PlayerDied.Invoke();
@@ -196,8 +196,8 @@ namespace AbilitySystem
             gameObject.transform.position = target;
 
             ded = false;
-            playerController.dedNowDontMove = false;
-            playerController.cam.cannotMoveCam = false;
+            playerController.StopController = false;
+            playerController.Camera.cannotMoveCam = false;
             float? refillHealth;
             refillHealth = -(GetAbilitySystem().GetAttributeValue(GameplayAttributes.PlayerHealth) - 10);
             GetAbilitySystem().TryApplyAttributeChange(GameplayAttributes.PlayerHealth, (float)refillHealth);

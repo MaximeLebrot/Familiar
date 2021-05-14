@@ -51,7 +51,7 @@ public class CameraHandler : MonoBehaviour
     Vector3 CheckCollision()
     {
         RaycastHit hitInfo;
-        bool hit = Physics.Raycast(playerController.transform.position, offset.normalized, out hitInfo, offset.magnitude, playerController.collisionMask);
+        bool hit = Physics.Raycast(playerController.transform.position, offset.normalized, out hitInfo, offset.magnitude, playerController.CollisionMask);
         if (hit)
         {
             Debug.DrawLine(playerController.transform.position, offset.normalized * hitInfo.distance, Color.blue);
