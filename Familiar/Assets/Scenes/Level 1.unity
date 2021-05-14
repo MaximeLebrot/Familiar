@@ -3341,6 +3341,7 @@ MonoBehaviour:
   mission: 'Mission: Take the Key to the Locked Door'
   needKey: 1
   typeSpeed: 0.025
+  anim: {fileID: 1902547973}
 --- !u!1001 &405126582
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5433,6 +5434,7 @@ MonoBehaviour:
   mission: 'Mission: Find the Key'
   needKey: 0
   typeSpeed: 0.025
+  anim: {fileID: 1902547973}
 --- !u!1001 &605992113
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14009,6 +14011,7 @@ MonoBehaviour:
   mission: 'Mission: Bring the Key to the Wizard'
   needKey: 0
   typeSpeed: 0.025
+  anim: {fileID: 1902547973}
 --- !u!1 &1507944171
 GameObject:
   m_ObjectHideFlags: 0
@@ -18485,6 +18488,7 @@ GameObject:
   - component: {fileID: 1902547972}
   - component: {fileID: 1902547971}
   - component: {fileID: 1902547970}
+  - component: {fileID: 1902547973}
   m_Layer: 5
   m_Name: Mission_Panel
   m_TagString: Untagged
@@ -18564,6 +18568,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1902547968}
   m_CullTransparentMesh: 1
+--- !u!95 &1902547973
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1902547968}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f6422de83855475439e044a0ad65b7eb, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1910772271
 GameObject:
   m_ObjectHideFlags: 0
@@ -20525,6 +20548,7 @@ MonoBehaviour:
   mission: 'Mission: Find the Key and avoid the Guards'
   needKey: 0
   typeSpeed: 0.025
+  anim: {fileID: 1902547973}
 --- !u!1 &2104876747
 GameObject:
   m_ObjectHideFlags: 0
