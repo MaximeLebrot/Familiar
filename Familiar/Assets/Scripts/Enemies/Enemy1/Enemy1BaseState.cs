@@ -2,26 +2,30 @@ using UnityEngine;
 
 public class Enemy1BaseState : State
 {
-    [Tooltip("The move speed controls the nav agents speed and the animation speed: animSpeed = moveSpeed / 10;")]
-    [SerializeField] protected float moveSpeed;
-    [Tooltip("The distance from which the enemy can sense the player")]
-    [SerializeField] protected float spottingDistance;
-    [Tooltip("The angle in which the enemy can see the player. Calculation: dot > visionAngle = can see player. 0.707 = 90°")]
-    [SerializeField] private float visionAngle; //vilken vinkel enemy kan se spelaren, 0.707 = 90 grader
-    protected float animSpeed;
+    [SerializeField, Tooltip("The move speed controls the nav agents speed and the animation speed: animSpeed = moveSpeed / 10;")]
+    protected float moveSpeed;
+    [SerializeField, Tooltip("The distance from which the enemy can sense the player. Starts from the \"Eyes\" component")]
+    protected float spottingDistance;
+    [SerializeField, Tooltip("This distance from which the player is considered to be colliding with the enemy. Default value = 3.0f")]
+    protected float collisionDistance;
+    [SerializeField, Tooltip("The angle in which the enemy can see the player. Calculation: dot > visionAngle = can see player. 0.707 = 90°")]
+    private float visionAngle;
+    [SerializeField, Tooltip("The playback speed of the animator. Default value = moveSpeed / 10")]
+    private float animSpeed;
 
-    private Vector3 direction;
-    private float dot;
-    private static int CollisionLayer = 7; //the collision layer
+    [Tooltip("The direction of the vector to the player")]
+    private Vector3 directionToPlayer;
+    [Tooltip("The layer of collision")]
+    private static int CollisionLayer = 7;
 
+    [Tooltip("A reference to the owner of this state")]
     protected Enemy1 owner;
+    [Tooltip("A reference to the state machine instace tied to this object")]
     protected StateMachine stateMachine;
 
     public override void Enter()
     {
-        owner.navAgent.speed = moveSpeed;
-        animSpeed = moveSpeed / 10;
-        owner.anim.speed = animSpeed;
+        SetDefaultValues();
     }
 
     public override void Initialize(StateMachine stateMachine, object owner)
@@ -30,24 +34,33 @@ public class Enemy1BaseState : State
         this.stateMachine = stateMachine;
     }
 
+    private void SetDefaultValues()
+    {
+        owner.NavAgent.speed = moveSpeed;
+        if (animSpeed == 0)
+            animSpeed = moveSpeed / 10;
+        owner.Anim.speed = animSpeed;
+        if (collisionDistance == 0)
+            collisionDistance = 3.0f;
+    }
     protected bool CheckIfPlayerInFront()
     {
-        direction = owner.vecToPlayer.normalized;
-        dot = Vector3.Dot(direction, owner.transform.forward);
-        if (dot > visionAngle)
-            return true;
-        return false;
+        directionToPlayer = owner.VecToPlayer.normalized;
+        directionToPlayer.y = 0;
+        Debug.DrawRay(owner.Transform.position, directionToPlayer.normalized * 5f, Color.yellow, 1.0f);
+        return Vector3.Dot(directionToPlayer.normalized, owner.Transform.forward) > visionAngle;
     }
 
     protected bool CheckForLOS()
     {
         RaycastHit hit;
-        if (Physics.Raycast(owner.transform.position, owner.vecToPlayer, out hit, 50.0f))
+        if (Physics.Raycast(owner.VisionOrigin.position, owner.VecToPlayer - owner.HeightOffset, out hit, 50.0f))
         {
-            if (hit.collider.gameObject.layer == CollisionLayer)
-                return false;
+            Debug.DrawRay(owner.VisionOrigin.position, owner.VecToPlayer - owner.HeightOffset, Color.black);
+            if (hit.collider.gameObject.layer != CollisionLayer)
+                return true;
         }
-        return true;
+        return false;
         //!Physics.Raycast(owner.transform.position, owner.vecToPlayer, spottingDistance, owner.collisionMask) //old old way
         //if (Physics.Raycast(owner.transform.position, owner.vecToPlayer, out hit, 50.0f)) //old way
         //{
@@ -61,14 +74,12 @@ public class Enemy1BaseState : State
 
     protected bool CheckForDistance()
     {
-        if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) < spottingDistance)
-            return true;
-        return false;
+        return (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < spottingDistance);
     }
 
     protected bool CheckIfPlayerAlive()
     {
-        if (owner.playerStats.ded != true)
+        if (owner.PlayerStats.ded != true)
             return true;
         return false;
     }

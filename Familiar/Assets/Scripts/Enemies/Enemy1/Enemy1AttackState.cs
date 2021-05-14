@@ -12,15 +12,15 @@ public class Enemy1AttackState : Enemy1BaseState
     public override void Enter()
     {
         base.Enter();
-        owner.anim.SetTrigger("roar");
+        owner.Anim.SetTrigger("roar");
     }
 
     public override void HandleUpdate()
     {
-        if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) > aggroLossDistance 
+        if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) > aggroLossDistance 
             || CheckIfPlayerAlive() == false)
             stateMachine.Transition<Enemy1PatrolState>();
-        else if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) < grabDistance)
+        else if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < grabDistance)
         {
             //feedback
             //start timer?
@@ -38,12 +38,12 @@ public class Enemy1AttackState : Enemy1BaseState
     private void ChasePlayer()
     {
         //owner.transform.LookAt(owner.vecToPlayer);
-        owner.navAgent.speed = chaseSpeed;
-        owner.navAgent.SetDestination(owner.vecToPlayer);
+        owner.NavAgent.speed = chaseSpeed;
+        owner.NavAgent.SetDestination(owner.VecToPlayer);
     }
     private void GrabPlayer()
     {
-        owner.playerStats.Die();
+        owner.PlayerStats.Die();
         stateMachine.Transition<Enemy1PatrolState>();
         //kanske teleport tillbaka?
         //owner.navAgent.acceleration = 0;

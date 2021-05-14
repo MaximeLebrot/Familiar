@@ -16,8 +16,8 @@ public class Enemy1DefeatState : Enemy1BaseState
 
     private void Defeated()
     {
-        owner.anim.SetTrigger("guardDeath");
-        owner.navAgent.isStopped = true;
+        owner.Anim.SetTrigger("guardDeath");
+        owner.NavAgent.isStopped = true;
         owner.RemoveNavMesh();
     }
 }
