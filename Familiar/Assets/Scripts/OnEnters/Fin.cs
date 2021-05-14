@@ -19,14 +19,14 @@ public class Fin : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && player.GetStones() >= 2)
+        if (other.tag == "Player" && player.GetStones() >= 6)
         {
             StartCoroutine(Fading());
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Player" && player.GetStones() >= 2)
+        if (collision.collider.tag == "Player" && player.GetStones() >= 6)
         {
             StartCoroutine(Fading());
         }
