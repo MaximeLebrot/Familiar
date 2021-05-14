@@ -19,7 +19,8 @@ public class Enemy1PatrolState : Enemy1BaseState
     {
         if (!owner.NavAgent.pathPending && owner.NavAgent.remainingDistance < 0.5f)
             Patrol();
-
+        if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < collisionDistance && CheckIfPlayerAlive() == true)
+            stateMachine.Transition<Enemy1AttackState>();
         if (CheckForDistance()
             && CheckForLOS()
             && CheckIfPlayerAlive()
@@ -34,7 +35,7 @@ public class Enemy1PatrolState : Enemy1BaseState
     private void DebugTransitionToAttackState()
     {
         if (CheckForLOS() == true)
-            Debug.DrawRay(owner.transform.position, owner.VecToPlayer, Color.red);
+            Debug.DrawRay(owner.Transform.position, owner.VecToPlayer, Color.red);
         if (timer <= 0)
         {
             Debug.Log("Distance: " + CheckForDistance());

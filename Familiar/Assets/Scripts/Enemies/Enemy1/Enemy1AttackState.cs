@@ -17,10 +17,10 @@ public class Enemy1AttackState : Enemy1BaseState
 
     public override void HandleUpdate()
     {
-        if (Vector3.Distance(owner.transform.position, owner.PlayerTransform.position) > aggroLossDistance 
+        if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) > aggroLossDistance 
             || CheckIfPlayerAlive() == false)
             stateMachine.Transition<Enemy1PatrolState>();
-        else if (Vector3.Distance(owner.transform.position, owner.PlayerTransform.position) < grabDistance)
+        else if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < grabDistance)
         {
             //feedback
             //start timer?

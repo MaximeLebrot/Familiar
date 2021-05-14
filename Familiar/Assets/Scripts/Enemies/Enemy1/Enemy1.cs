@@ -3,6 +3,8 @@ using UnityEngine.AI; //Navmesh https://docs.unity3d.com/Manual/nav-HowTos.html
 
 public class Enemy1 : MonoBehaviour, IZappable
 {
+    [Tooltip("The offset needed because of the position of the eyes of the enemy")]
+    private static Vector3 heightOffset = new Vector3(0, 10, 0);
     [SerializeField, Tooltip("The states that this enemy will use throughout their life")]
     private State[] states;
 
@@ -13,7 +15,7 @@ public class Enemy1 : MonoBehaviour, IZappable
     private Animator anim;
     [SerializeField, Tooltip("The transform component attached to this game object. Should be inputed manually")]
     new private Transform transform;
-    [SerializeField, Tooltip("The transform component attached to the \"eyes\" game object. Should be inputed manually")]
+    [SerializeField, Tooltip("The transform component attached to the \"Eyes\" game object. Should be inputed manually")]
     private Transform visionOrigin;
 
     [Header("Player")]
@@ -37,6 +39,7 @@ public class Enemy1 : MonoBehaviour, IZappable
 
     [Tooltip("The statemachine attached to the enemy")]
     private StateMachine stateMachine;
+    [Tooltip("The string value of the tag held by the patrol points")]
     private static string patrolPoint = "Patrol point";
 
     protected void Awake()
@@ -48,6 +51,8 @@ public class Enemy1 : MonoBehaviour, IZappable
 
     private void Update()
     {
+        //if (navAgent.velocity.magnitude < 0.1f)
+            //navAgent.velocity = Vector3.zero;
         vecToPlayer = playerTransform.position - transform.position;
         stateMachine.HandleUpdate();
     }
@@ -78,6 +83,30 @@ public class Enemy1 : MonoBehaviour, IZappable
         //kanske ville använda this.gameObject?
         //egentligen ska det vara anim.setTrigger("dead") och ha ett event i den istället.
     }
+
+    //this is a worst case scenario in case the "Eyes" game object has not been set manually
+    private Transform FindEyes()
+    {
+        Debug.LogError("Should not be looking for eyes, please input game object in inspector or prefab");
+        GameObject[] gameObjects = GameObject.FindGameObjectsWithTag("Eyes");
+        if (gameObjects != null)
+        {
+            Transform[] transforms = GetComponentsInChildren<Transform>();
+            if (transforms != null)
+            {
+                foreach (Transform transform in transforms)
+                {
+                    foreach (GameObject go in gameObjects)
+                    {
+                        if (go == transform.gameObject)
+                            return go.transform;
+                    }
+                }
+            }
+        }
+        return null;
+    }
+
     public void RemoveNavMesh()
     {
         Destroy(navAgent);
@@ -122,6 +151,8 @@ public class Enemy1 : MonoBehaviour, IZappable
             InitializePlayerGameObject();
         if (playerTransform == null) //if the value has been inputed manually, use it. Else find the component
             playerTransform = player.transform;
+        if (visionOrigin == null)
+            visionOrigin = FindEyes();
     }
 
     private void InitializeStateMachine()
@@ -155,6 +186,16 @@ public class Enemy1 : MonoBehaviour, IZappable
                 }
             }
         }
+    }
+
+    public Transform VisionOrigin
+    {
+        get => visionOrigin;
+    }
+
+    public Transform Transform
+    {
+        get => transform;
     }
 
     public NavMeshAgent NavAgent
@@ -196,5 +237,10 @@ public class Enemy1 : MonoBehaviour, IZappable
     public bool IsIdleEnemy
     {
         get => isIdleEnemy;
+    }
+
+    public Vector3 HeightOffset
+    {
+        get => heightOffset;
     }
 }
