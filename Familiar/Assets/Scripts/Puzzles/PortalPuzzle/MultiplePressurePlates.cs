@@ -24,7 +24,6 @@ public class MultiplePressurePlates : MonoBehaviour
             parent.UpdatePuzzle();
         }
     }
-
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Moveable"))

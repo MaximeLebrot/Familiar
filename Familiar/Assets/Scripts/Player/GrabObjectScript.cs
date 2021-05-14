@@ -11,11 +11,8 @@ public class GrabObjectScript : MonoBehaviour
 
     [SerializeField]
     private GameObject carriedObject;
-    private Rigidbody carriedObjectRB;
     [SerializeField]
     private Transform heldObjectPoint;
-    [SerializeField]
-    private float throwForce = 20.0f;
 
     public static float GrabRange
     {
@@ -58,12 +55,6 @@ public class GrabObjectScript : MonoBehaviour
             DropObject();
     }
 
-    private void FixedUpdate()
-    {
-        if (carriedObject != null)
-            carriedObjectRB.MovePosition(heldObjectPoint.position);
-    }
-
     public void GrabObject(RaycastHit[] hitArray)
     {
         int hitIndex = -1;
@@ -85,12 +76,8 @@ public class GrabObjectScript : MonoBehaviour
 
         carriedObject = hitArray[hitIndex].collider.gameObject;
         carriedObject.transform.parent = transform;
+        carriedObject.transform.localPosition = heldObjectPoint.localPosition;
         carriedObject.transform.rotation = carriedObject.transform.parent.rotation;
-
-        carriedObjectRB = carriedObject.GetComponent<Rigidbody>();
-        carriedObjectRB.useGravity = false;
-        carriedObjectRB.isKinematic = true;
-        //carriedObjectRB.transform.position = heldObjectPoint.position;
         //carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
     }
 
@@ -109,20 +96,15 @@ public class GrabObjectScript : MonoBehaviour
 
     public void DropObject()
     {
-        Debug.Log("throwing");
         try
         {
-            carriedObjectRB.useGravity = true;
-            carriedObjectRB.velocity += controller.Camera.transform.forward * throwForce + controller.Camera.transform.up * throwForce;
-            carriedObjectRB.isKinematic = false;
-
             carriedObject.transform.parent = null;
             carriedObject = null;
             //carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             //carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         }
-        catch (NullReferenceException) { Debug.Log("null ref"); }
-        catch (UnassignedReferenceException) { Debug.Log("unass ref"); };
+        catch (NullReferenceException) { }
+        catch (UnassignedReferenceException) { };
 
         return;
     }

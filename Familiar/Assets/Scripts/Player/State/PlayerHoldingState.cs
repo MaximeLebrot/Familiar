@@ -13,12 +13,17 @@ public class PlayerHoldingState : PlayerBaseState
         if (gos == null)
             gos = player.GetComponent<GrabObjectScript>();
 
-        gos.GrabObject();
+        gos.ToggleGrab();
     }
 
     public override void HandleUpdate()
     {
         if (Input.GetButtonDown("Fire2"))
+        {
+            gos.ToggleGrab();
+        }
+
+        if (gos.CarriedObject == null)
         {
             if (PlayerIdleState.IsPlayerIdle(player))
                 stateMachine.Transition<PlayerIdleState>();
@@ -26,13 +31,6 @@ public class PlayerHoldingState : PlayerBaseState
             if (PlayerMovingState.IsPlayerMoving(player))
                 stateMachine.Transition<PlayerMovingState>();
         }
-    }
-
-    public override void Exit()
-    {
-        base.Exit();
-        gos.DropObject();
-        Debug.Log("exited hold");
     }
 
     public static bool CanGrabObject(Controller controller)
