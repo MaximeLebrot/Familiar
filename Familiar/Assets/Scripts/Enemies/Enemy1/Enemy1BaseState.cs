@@ -79,7 +79,7 @@ public class Enemy1BaseState : State
 
     protected bool CheckIfPlayerAlive()
     {
-        if (owner.PlayerStats.ded != true)
+        if (owner.PlayerStats.Dead != true)
             return true;
         return false;
     }

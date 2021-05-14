@@ -18,9 +18,9 @@ public class CodePanelArea : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player.isInCodePanelArea = true;
+            player.IsInCodePanelArea = true;
 
-            if (player.canSeeCodePanel == true)
+            if (player.CanSeeCodePanel == true)
             {
                 helpText.text = instructions;
             }
@@ -30,7 +30,7 @@ public class CodePanelArea : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player.isInCodePanelArea = false;
+            player.IsInCodePanelArea = false;
             helpText.text = "";
         }
     }

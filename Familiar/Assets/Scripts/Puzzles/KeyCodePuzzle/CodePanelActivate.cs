@@ -16,6 +16,7 @@ public class CodePanelActivate : MonoBehaviour
 
     void Start()
     {
+        //initialize()
         anim = gameObject.GetComponent<Animator>();
         player = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilitySystem.Player>();
         cam = player.GetComponentInChildren<CameraHandler>();
@@ -26,11 +27,11 @@ public class CodePanelActivate : MonoBehaviour
     {
         if (puzzleDone != true)
         {
-            if (player.isInCodePanelArea != true)
+            if (player.IsInCodePanelArea != true)
             {
                 HideCodePanel();
             }
-            else if (player.canSeeCodePanel == true)
+            else if (player.CanSeeCodePanel == true)
             {
                 if (Input.GetKeyDown(KeyCode.C))
                 {

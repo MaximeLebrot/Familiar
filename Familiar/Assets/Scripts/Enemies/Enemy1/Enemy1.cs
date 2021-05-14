@@ -4,7 +4,7 @@ using UnityEngine.AI; //Navmesh https://docs.unity3d.com/Manual/nav-HowTos.html
 public class Enemy1 : MonoBehaviour, IZappable
 {
     [Tooltip("The offset needed because of the position of the eyes of the enemy")]
-    private static Vector3 heightOffset = new Vector3(0, 10, 0);
+    private static Vector3 heightOffset = new Vector3(0, 11, 0);
     [SerializeField, Tooltip("The states that this enemy will use throughout their life")]
     private State[] states;
 
@@ -14,7 +14,7 @@ public class Enemy1 : MonoBehaviour, IZappable
     [SerializeField, Tooltip("The animator attached to this game object. Should be inputed manually")]
     private Animator anim;
     [SerializeField, Tooltip("The transform component attached to this game object. Should be inputed manually")]
-    new private Transform transform;
+    private new Transform transform;
     [SerializeField, Tooltip("The transform component attached to the \"Eyes\" game object. Should be inputed manually")]
     private Transform visionOrigin;
 
@@ -34,7 +34,8 @@ public class Enemy1 : MonoBehaviour, IZappable
     [Tooltip("The next destination in the points array of Transforms")] 
     private int destPoint = 0;
 
-    [Header("Idle"), SerializeField, Tooltip("Should be true if the enemy does not patrol between points and is of idle only type")]
+    [Header("Idle")]
+    [SerializeField, Tooltip("Should be true if the enemy does not patrol between points and is of idle only type")]
     private bool isIdleEnemy;
 
     [Tooltip("The statemachine attached to the enemy")]

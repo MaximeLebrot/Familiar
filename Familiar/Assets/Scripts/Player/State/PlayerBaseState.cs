@@ -13,9 +13,7 @@ public class PlayerBaseState : State
     // Methods
     public override void Enter()
     {
-        //Debug.Log("Entered Base State");
-        player = owner.playerController;
-        //player.acceleration = moveSpeed;
+
     }
 
     public override void Initialize(StateMachine stateMachine, object owner)

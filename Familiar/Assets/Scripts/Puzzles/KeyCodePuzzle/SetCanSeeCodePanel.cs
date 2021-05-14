@@ -12,7 +12,7 @@ public class SetCanSeeCodePanel : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player.canSeeCodePanel = true;
+            player.CanSeeCodePanel = true;
         }
     }
 }

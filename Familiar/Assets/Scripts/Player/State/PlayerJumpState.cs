@@ -1,13 +1,8 @@
-using System.Collections;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "Player/PlayerJumpState")]
 public class PlayerJumpState : PlayerBaseState
 {
-    //private float gravity = 30.0f;
-    //private bool hasDoubleJumped;
-    private float previousPlayerKineticFriction;
-
     public override void Enter()
     {
         Debug.Log("Entered Jump State");
@@ -18,16 +13,16 @@ public class PlayerJumpState : PlayerBaseState
 
     public override void HandleUpdate()
     {
-        if (owner.ded)
+        if (owner.Dead == true)
             stateMachine.Transition<PlayerDeathState>();
 
         if (!Input.GetKey(KeyCode.Space))
-            player.isJumping = false;
+            player.IsJumping = false;
 
-        if (player.IsGrounded && player.InputVector.magnitude == 0 && player.Velocity.magnitude < 0.1) 
+        if (player.IsGrounded == true && player.InputVector.magnitude == 0 && player.Velocity.magnitude < 0.1) 
             stateMachine.Transition<PlayerIdleState>();
 
-        if (player.IsGrounded && !player.isJumping)
+        if (player.IsGrounded == true && player.IsJumping != true)
             stateMachine.Transition<PlayerMovingState>();
 
         //falling state?
@@ -35,13 +30,13 @@ public class PlayerJumpState : PlayerBaseState
 
     private void Jump()
     {
-        player.isJumping = true;
+        player.IsJumping = true;
         player.Jump();
     }
 
     public override void Exit()
     {
-        player.isJumping = false;
+        player.IsJumping = false;
         //hasDoubleJumped = false;
     }
 }

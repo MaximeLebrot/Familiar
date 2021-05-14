@@ -8,91 +8,52 @@ namespace AbilitySystem
 {
     public class Player : MonoBehaviour, IZappable
     {
+        [Tooltip("A counter of how many stones have been picked up")]
         private int stoneCounter;
+        [Tooltip("A reference to the instance of the ability system tied to the player")]
         private GameplayAbilitySystem abilitySystem;
+        [Tooltip("A reference to the instance of the state machine tied to the player")]
         private StateMachine stateMachine;
 
-        [Header("Public variables")]
-        [Tooltip("The animator connected to this game object")] public Animator anim;
-        [Tooltip("The controller of the player connected to this game object")] public Controller playerController;
-
         [Header("Booleans")]
-        [Tooltip("Is the player dead?")] public bool ded;
-        [Tooltip("Can the player see the code panel")] public bool canSeeCodePanel;
-        [Tooltip("Is the player in the code panel area?")] public bool isInCodePanelArea;
+        [Tooltip("Checks whether the player is dead")] 
+        private bool ded;
+        [Tooltip("Checks whether the player can see the code panel")] 
+        private bool canSeeCodePanel;
+        [Tooltip("Checks whether the player is in the code panel area")] 
+        private bool isInCodePanelArea;
 
-        [Header("Hierarky input")]
-        [Tooltip("List of starting abilities the player has access to")]
-        [SerializeField] private List<GameplayAbility> startingAbilities;
-        [Tooltip("List of starting effects the player has access to")]
-        [SerializeField] private List<GameplayEffect> startingEffects;
-        [Tooltip("List of attributes the player has access to")]
-        [SerializeField] private List<GameplayAttributeSetEntry> attributeSet;
-        [Tooltip("Array of all possible states the player can enter")]
-        [SerializeField] private State[] states;
-        [Tooltip("Array of moonstones")]
-        [SerializeField] private GameObject[] moonstones;
-        [Tooltip("The player health UI slider")]
-        [SerializeField] private Slider healthBar;
-        [Tooltip("The animator tied to the F2B object")]
-        [SerializeField] private Animator fadeToBlack;
-        [Tooltip("The image tied to the F2B object")]
-        [SerializeField] private Image blackImage;
+        [Header("Inspector input & references")]
+        [SerializeField, Tooltip("List of starting abilities the player has access to")]
+        private List<GameplayAbility> startingAbilities;
+        [SerializeField, Tooltip("List of starting effects the player has access to")]
+        private List<GameplayEffect> startingEffects;
+        [SerializeField, Tooltip("List of attributes the player has access to")]
+        private List<GameplayAttributeSetEntry> attributeSet;
+        [SerializeField, Tooltip("Array of all possible states the player can enter")]
+        private State[] states;
+        [SerializeField, Tooltip("The animator component attached to this game object. Should be inputed manually")]
+        private Animator anim;
+        [SerializeField, Tooltip("The \"Controller\" component attached to this game object. Should be inputed manually")]
+        private Controller playerController;
+        [SerializeField, Tooltip("Array of moonstones")]
+        private GameObject[] moonstones;
+        [SerializeField, Tooltip("The player health UI slider")]
+        private Slider healthBar;
+        [SerializeField, Tooltip("The animator tied to the F2B object")]
+        private Animator fadeToBlack;
+        [SerializeField, Tooltip("The image tied to the F2B object")]
+        private Image blackImage;
 
         [Header("Events")]
-        [Tooltip("The event in which the player dies")]
-        [SerializeField] private UnityEvent PlayerDied;
+        [SerializeField, Tooltip("The event in which the player dies")]
+        private UnityEvent PlayerDied;
 
-        public State CurrentState
-        {
-            get
-            {
-                return stateMachine.CurrentState;
-            }
-        }
-
-        public bool IsZapped
-        {
-            get
-            {
-                return false;
-            }
-
-            set
-            {
-            }
-        }
-
-        public int GetStones()
-        {
-            return stoneCounter;
-        }
 
         protected void Awake()
         {
-            anim = GetComponent<Animator>();
-            playerController = GetComponent<Controller>();
-            stateMachine = new StateMachine(this, states);
-
-            abilitySystem = gameObject.AddComponent<GameplayAbilitySystem>(); //lägg till en instans av ability systemet
-            if (abilitySystem != null)
-                //Debug.Log("Ability system found");
-
-            abilitySystem.RegisterAttributeSet(attributeSet); //sätter attribut som health och mana med ett float värde
-            //Debug.Log("Registered Attribute Set");
-
-            startingAbilities.ForEach(a => abilitySystem.GrantAbility(a)); //adderar abilities som spelaren ska börja med
-            //Debug.Log("Starting Abilities granted");
-
-            abilitySystem.RegisterAttributeCalculation(GameplayAttributes.PlayerHealth, ShockDamageCalculation); 
-            //abilitySystem.RegisterAttributeCalculation(GameplayAttributes.PlayerStamina, ZappingCalculation);
-            //Debug.Log("Registered Attribute Calculations");
-
-            startingEffects.ForEach(e => abilitySystem.ApplyEffectToSelf(e));
-            //Debug.Log("Applied Starting Effects To Self");
-
-            healthBar.value = 1;
-            stoneCounter = 0;
+            InitializeSequence();
+            Debug.Log(stoneCounter);
         }
 
         private void Update()
@@ -125,7 +86,48 @@ namespace AbilitySystem
                 stoneCounter++;
             }
         }
+        private void InitializeSequence()
+        {
+            InitializeAnimator();
+            InitializePlayerController();
+            InitializeStateMachine();
+            InitializeAbilitySystem();
+            InitializeHealthBarValue();
+        }
+        private void InitializeAnimator()
+        {
+            if (anim ==null)
+                anim = GetComponent<Animator>();
+        }
+        private void InitializePlayerController()
+        {
+            if (playerController == null)
+                playerController = GetComponent<Controller>();
+        }
+        private void InitializeStateMachine()
+        {
+            if (stateMachine == null)
+                stateMachine = new StateMachine(this, states);
+        }
+        private void InitializeAbilitySystem()
+        {
+            abilitySystem = gameObject.AddComponent<GameplayAbilitySystem>();
+            if (abilitySystem != null)
+            {
+                abilitySystem.RegisterAttributeSet(attributeSet);
 
+                startingAbilities.ForEach(a => abilitySystem.GrantAbility(a));
+
+                abilitySystem.RegisterAttributeCalculation(GameplayAttributes.PlayerHealth, ShockDamageCalculation);
+                //abilitySystem.RegisterAttributeCalculation(GameplayAttributes.PlayerStamina, ZappingCalculation);
+
+                startingEffects.ForEach(e => abilitySystem.ApplyEffectToSelf(e)); 
+            }
+        }
+        private void InitializeHealthBarValue()
+        {
+            healthBar.value = 1;
+        }
         public float ShockDamageCalculation(float value)
         {
             float? resistance = abilitySystem.GetAttributeValue(GameplayAttributes.ShockResistance);
@@ -161,9 +163,7 @@ namespace AbilitySystem
             Respawn(GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position, 2.5f);
             //Debug.Log("ded");
             //anim.PlayAnim("death");
-            //restart / menu
-            //Destroy(this.gameObject);
-                       
+            //restart / menu   
         }
 
         public void FadeToBlack()
@@ -203,21 +203,63 @@ namespace AbilitySystem
             GetAbilitySystem().TryApplyAttributeChange(GameplayAttributes.PlayerHealth, (float)refillHealth);
             healthBar.value = 1;
         }
-
         public void OnZap()
         {
             Die();
-            //Respawn(GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position, 2.5f);
         }
-
         public void HealthBarUpdate()
         {
             healthBar.value = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth)/10;
         }
-
+        public int GetStones()
+        {
+            return stoneCounter;
+        }
         public void ResetTakeDmgTrigger()
         {
             anim.ResetTrigger("takeDmg");
+        }
+
+        public State CurrentState
+        {
+            get
+            {
+                return stateMachine.CurrentState;
+            }
+        }
+        public bool IsZapped
+        {
+            get
+            {
+                return false;
+            }
+
+            set
+            {
+            }
+        }
+        public Animator Anim
+        {
+            get => anim;
+        }
+
+        public bool Dead
+        {
+            get => ded;
+        }
+        public Controller PlayerController
+        {
+            get => playerController;
+        }
+        public bool CanSeeCodePanel
+        {
+            get => canSeeCodePanel;
+            set => canSeeCodePanel = value;
+        }
+        public bool IsInCodePanelArea
+        {
+            get => isInCodePanelArea;
+            set => isInCodePanelArea = value;
         }
     }
 }

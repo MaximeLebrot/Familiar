@@ -6,7 +6,7 @@ public class PlayerDeathState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        owner.anim.SetTrigger("die");
+        owner.Anim.SetTrigger("die");
         //owner.anim.SetTrigger("death");
     }
 

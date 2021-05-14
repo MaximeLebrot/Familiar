@@ -28,8 +28,8 @@ public class Enemy1PatrolState : Enemy1BaseState
             stateMachine.Transition<Enemy1AttackState>();
         if (owner.IsZapped)
             stateMachine.Transition<Enemy1DefeatState>(); 
-        if (canSeeDebug)
-            DebugTransitionToAttackState();
+        //if (canSeeDebug)
+            //DebugTransitionToAttackState();
 
     }
     private void DebugTransitionToAttackState()

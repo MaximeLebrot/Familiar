@@ -1144,6 +1144,7 @@ Transform:
   m_Children:
   - {fileID: 1916523802712514938}
   - {fileID: 1916523802712514878}
+  - {fileID: 1471977207912099084}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: -32.91, z: 0}
@@ -1320,7 +1321,7 @@ MonoBehaviour:
   navAgent: {fileID: 0}
   anim: {fileID: 1916523802722061982}
   transform: {fileID: 1916523802712514876}
-  visionOrigin: {fileID: 0}
+  visionOrigin: {fileID: 1471977207912099084}
   player: {fileID: 0}
   playerStats: {fileID: 0}
   playerTransform: {fileID: 0}
@@ -2360,6 +2361,36 @@ Transform:
   - {fileID: 1916523802712514940}
   m_Father: {fileID: 1916523802712514880}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &8077912601917135943
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1471977207912099084}
+  m_Layer: 0
+  m_Name: Eyes
+  m_TagString: Eyes
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1471977207912099084
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8077912601917135943}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1.65, z: 0.14}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1916523802712514876}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1149059243142986491
 PrefabInstance:

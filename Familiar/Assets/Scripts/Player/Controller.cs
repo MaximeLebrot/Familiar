@@ -1,61 +1,66 @@
 using AbilitySystem;
-using System.Collections;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
 { 
-    //transform
     [Header("Movement")]
-    private const float collisionEpsilon = 0.001f;
-    [SerializeField, Range(0f, 100f)]
-    public float acceleration;
-    public float deceleration = 40.0f;
-    public float turnSpeedModifier = 10.0f;
-    public float maxSpeed = 7.0f;
-    public bool isJumping;
-    public bool isGrounded = true;
+    [SerializeField, Range(0f, 100f), Tooltip("Controls the acceleration")]
+    private float acceleration;
+    [SerializeField, Tooltip("Controls the maximum speed attainable")]
+    private float maxSpeed;
+    [Tooltip("Checks whether the player is jumping")]
+    private bool isJumping;
+    [Tooltip("Checks whether the player is grounded")]
+    private bool isGrounded;
+    [Tooltip("The transform component attached to the game object. Should be inputed manually")]
+    private new Transform transform;
+    [Tooltip("The string value of \"Horizontal\"")]
     private static string horizontal = "Horizontal";
+    [Tooltip("The string value of \"Vertical\"")]
     private static string vertical = "Vertical";
+    [Tooltip("The collision epsilon")]
+    private const float collisionEpsilon = 0.001f;
 
     [Header("Jump settings")]
-    [SerializeField]
-    private float gravity = 20.0f;
-    [SerializeField]
-    private float jumpHeight = 20.0f;
+    [SerializeField, Tooltip("The gravity affecting the player. Calculated by: Vector3.down * gravity * Time.fixedDeltaTime")]
+    private float gravity;
+    [SerializeField, Tooltip("The jump height of the player. Added to the y-axis of the jump vector")]
+    private float jumpHeight;
     [SerializeField, Tooltip("The amount of extra gravity applied while doing a short jump. Keep in mind that gravity is already being applied once.")]
-    private float lowJumpCoefficient = 1.0f;
+    private float lowJumpCoefficient;
     [SerializeField, Tooltip("The amount of extra gravity applied while falling. Keep in mind that gravity is already being applied once.")]
-    private float fastFallCoefficient = 2.0f;
+    private float fastFallCoefficient;
+    [Tooltip("The jump vector added to the velocity")]
     private Vector3 jumpVector;
 
     [Header("Physics")]
-    [SerializeField, Range(0.0f, 1.0f), Tooltip("The static friction coefficient")]
-    private float staticFrictionCoefficient = 0.65f;
-    [SerializeField, Range(0.0f, 1.0f), Tooltip("The kinetic friction coefficient")]
-    private float kineticFrictionCoefficient = 0.4f;
+    [SerializeField, Range(0.0f, 1.0f), Tooltip("The static friction coefficient. Should never be below the kinetic one")]
+    private float staticFrictionCoefficient;
+    [SerializeField, Range(0.0f, 1.0f), Tooltip("The kinetic friction coefficient. Should never be below the static one")]
+    private float kineticFrictionCoefficient;
     [SerializeField, Range(0.0f, 1.0f), Tooltip("The air resistance, the lower the resistance, the slower the player moves")]
     private float airResistance;
-
-    [SerializeField, Tooltip("The thickness of the skin of the player")]
-    private float skinWidth = 0.01f;
-    [SerializeField, Range(0.0f, 1.0f), Tooltip("0 = Vector3.up, 1 = hit.normal")]
+    [SerializeField, Range(0.0f, 0.1f), Tooltip("The thickness of the skin of the player")]
+    private float skinWidth;
+    [SerializeField, Range(0.0f, 1.0f), Tooltip("Project on plane uses a lerp between 0 = Vector3.up and 1 = hit.normal and uses the slope angle factor as the t value")]
     private float slopeAngleFactor;
-    [SerializeField, Tooltip("The distance checked below the player for ground")]
-    private const float groundCheckDistance = 0.1f;
+    [SerializeField, Range(0.0f, 1.0f), Tooltip("The distance checked below the player for the ground check")]
+    private float groundCheckDistance = 0.1f;
     [Tooltip("¨The magnitude of the input vector")]
     private float inputMagnitude;
 
-    [Header("ertard")]
+    [Header("Collision")]
     [SerializeField, Tooltip("The layer mask used for the controller to recognize collision")]
     private LayerMask collisionMask;
-    [SerializeField, Tooltip("The velocity of the player")]
+    [Tooltip("The velocity of the player")]
     private Vector3 velocity;
-    [SerializeField, Tooltip("The input of the player")]
+    [Tooltip("The input of the player")]
     private Vector3 input;
 
-    [SerializeField, Tooltip("The child camera component of the player, should be inputed manually")]
+    [Header("References")]
+    [SerializeField, Tooltip("The child camera component of the player. Should be inputed manually")]
     private CameraHandler cam;
-    [SerializeField, Tooltip("The collider component of the player, should be inputed manually")]
+    [SerializeField, Tooltip("The collider component of the player. Should be inputed manually")]
     private CapsuleCollider col;
     [Tooltip("This bool controls whether the players transform updates")]
     private bool stopController;
@@ -65,9 +70,7 @@ public class Controller : MonoBehaviour
 
     void Awake()
     {
-        InitializeJumpVector();
-        InitializeCollider();
-        InitializeCamera();
+        InitializeSequence();
     }
 
     void Update()
@@ -252,6 +255,14 @@ public class Controller : MonoBehaviour
     {
         velocity += jumpVector;
     }
+
+    private void InitializeSequence()
+    {
+        InitializeJumpVector();
+        InitializeCollider();
+        InitializeCamera();
+        InitilizeTransform();
+    }
     private void InitializeJumpVector()
     {
         jumpVector = new Vector3(0.0f, jumpHeight, 0.0f);
@@ -266,9 +277,26 @@ public class Controller : MonoBehaviour
         if (cam == null)
             cam = GetComponentInChildren<CameraHandler>();
     }
+    private void InitilizeTransform()
+    {
+        if (transform == null)
+            transform = GetComponent<Transform>();
+    }
 
-
-
+    public bool IsGrounded
+    {
+        get => isGrounded;
+        set => isGrounded = value;
+    }
+    public bool IsJumping
+    {
+        get => isJumping;
+        set => isJumping = value;
+    }
+    public Transform Transform
+    {
+        get => transform;
+    }
     public Vector3 Velocity
     {
         get => velocity;
@@ -324,20 +352,20 @@ public class Controller : MonoBehaviour
                 return staticFrictionCoefficient;
         }
     }
-    public bool IsGrounded
-    {
-        get
-        {
-            return Physics.CapsuleCast(
-                    point1: GetPoint1(),
-                    point2: GetPoint2(),
-                    radius: col.radius,
-                    direction: Vector3.down,
-                    maxDistance: GroundCheckMargin,
-                    layerMask: collisionMask
-                    );
-        }
-    }
+    //public bool IsGrounded
+    //{
+    //    get
+    //    {
+    //        return Physics.CapsuleCast(
+    //                point1: GetPoint1(),
+    //                point2: GetPoint2(),
+    //                radius: col.radius,
+    //                direction: Vector3.down,
+    //                maxDistance: GroundCheckMargin,
+    //                layerMask: collisionMask
+    //                );
+    //    }
+    //}
     public float LowJumpCoefficient
     {
         get
