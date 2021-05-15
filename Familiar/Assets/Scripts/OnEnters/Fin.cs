@@ -1,32 +1,38 @@
 using AbilitySystem;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Fin : MonoBehaviour
 {
+    [SerializeField, Tooltip("A reference to the \"Player\" script on the player game object. Should be inputed manually")]
     private Player player;
-
-    public Image black;
-    public Animator anim;
+    [SerializeField, Tooltip("A reference to the F2B game component. Should be inputed manually")]
+    private Image black;
+    [SerializeField, Tooltip("The animator componen attached to this game object. Should be inputed manually")]
+    private Animator anim;
 
     protected void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
+        if (anim == null)
+            anim = GetComponent<Animator>();
+        //if (black == null)
+            //find image
         
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && player.GetStones() >= 6)
+        if (other.tag == "Player" && player.StoneCounter >= 6)
         {
             StartCoroutine(Fading());
         }
     }
     private void OnCollisionEnter(Collision collision)
     {
-        if (collision.collider.tag == "Player" && player.GetStones() >= 6)
+        if (collision.collider.tag == "Player" && player.StoneCounter >= 6)
         {
             StartCoroutine(Fading());
         }

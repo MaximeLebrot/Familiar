@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player/PlayerHoldingState")]
 public class PlayerHoldingState : PlayerBaseState
 {
+    [Tooltip("A reference to the GrabObjectScript attached to the player game component")]
     private GrabObjectScript gos;
 
     public override void Enter()
@@ -32,7 +33,6 @@ public class PlayerHoldingState : PlayerBaseState
     {
         base.Exit();
         gos.DropObject();
-        Debug.Log("exited hold");
     }
 
     public static bool CanGrabObject(Controller controller)

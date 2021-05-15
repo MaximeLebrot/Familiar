@@ -16,6 +16,6 @@ public class CorrectCodeDisplay : MonoBehaviour
         inputOrder += 1;
         display.SetActive(true);
         text.text = inputOrder.ToString();
-        Debug.Log(number + ": should be inputted " + inputOrder);
+        //Debug.Log(number + ": should be inputted " + inputOrder);
     }
 }

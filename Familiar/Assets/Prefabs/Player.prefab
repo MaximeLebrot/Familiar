@@ -28,7 +28,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8266650046587695649}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &3392178984069751717
 GameObject:
@@ -59,7 +59,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8266650046587695649}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!135 &6784465702731436512
 SphereCollider:
@@ -109,11 +109,11 @@ Transform:
   m_LocalPosition: {x: 21, y: 6.08, z: -22.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 8266650047405726557}
   - {fileID: 8266650046398638254}
   - {fileID: 3930465672963647582}
   - {fileID: 1099446513}
   - {fileID: 4787620225183339415}
+  - {fileID: 8266650047405726557}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
@@ -144,11 +144,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   acceleration: 40
-  deceleration: 40
-  turnSpeedModifier: 10
   maxSpeed: 12
-  isJumping: 0
-  isGrounded: 1
   gravity: 20
   jumpHeight: 18
   lowJumpCoefficient: 4
@@ -158,11 +154,10 @@ MonoBehaviour:
   airResistance: 0.1
   skinWidth: 0.01
   slopeAngleFactor: 0
+  groundCheckDistance: 0.1
   collisionMask:
     serializedVersion: 2
     m_Bits: 128
-  velocity: {x: 0, y: 0, z: 0}
-  input: {x: 0, y: 0, z: 0}
   cam: {fileID: 0}
   col: {fileID: 0}
 --- !u!114 &8266650046587695648
@@ -177,11 +172,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b97dfa33e4b6c4286753f331f3b990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  anim: {fileID: 0}
-  playerController: {fileID: 0}
-  ded: 0
-  canSeeCodePanel: 0
-  isInCodePanelArea: 0
   startingAbilities:
   - {fileID: 11400000, guid: 5e8a410668693464692a8a1559dc5371, type: 2}
   startingEffects: []
@@ -204,6 +194,8 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  anim: {fileID: 1271261050}
+  playerController: {fileID: 8266650046587695661}
   healthBar: {fileID: 0}
   fadeToBlack: {fileID: 0}
   blackImage: {fileID: 0}
@@ -433,7 +425,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8266650046587695649}
-  m_RootOrder: 0
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!20 &8266650047405726546
 Camera:
@@ -1097,7 +1089,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9033315084302823688, guid: 832bb208e0ba8da4f8fb73acb2a1c95e, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 9033315084302823688, guid: 832bb208e0ba8da4f8fb73acb2a1c95e, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1295,7 +1287,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: 2536ecdb19e6dc74782ce75978552135, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 400016, guid: 2536ecdb19e6dc74782ce75978552135, type: 3}
       propertyPath: m_LocalScale.x

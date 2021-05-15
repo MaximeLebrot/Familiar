@@ -8,19 +8,27 @@ public class PauseMenu : MonoBehaviour
 {
     public static bool GameIsPaused = false;
 
-    public GameObject pauseMenuUI;
-    public GameObject optionsMenuUI;
-        
-    public Slider volumeSlider;
-    public Slider sensitivitySlider;
+    [SerializeField, Tooltip("")]
+    private GameObject pauseMenuUI;
+    [SerializeField, Tooltip("")]
+    private GameObject optionsMenuUI;
 
+    [SerializeField, Tooltip("")]
+    private Slider volumeSlider;
+    [SerializeField, Tooltip("")]
+    private Slider sensitivitySlider;
+
+    [SerializeField, Tooltip("Should be inputed manually")]
     private GameObject playerHandler;
+    [SerializeField, Tooltip("Should be inputed manually")]
     private GameObject camHandler;
 
     void Start()
     {
-        playerHandler = GameObject.Find("Player");
-        camHandler = GameObject.Find("Main Camera");
+        if (playerHandler == null)
+            playerHandler = GameObject.FindGameObjectWithTag("Player");
+        if (camHandler == null)
+            camHandler = Camera.main.gameObject;
     }
 
     void Update()
@@ -101,7 +109,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SetSensitivity()
     {
-        camHandler.GetComponent<CameraHandler>().mouseSensitivity = sensitivitySlider.value * 10;
+        camHandler.GetComponent<CameraHandler>().MouseSensitivity = sensitivitySlider.value * 10;
     }
 
     public void SaveGame()

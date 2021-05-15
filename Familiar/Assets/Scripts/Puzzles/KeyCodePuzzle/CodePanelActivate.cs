@@ -61,7 +61,7 @@ public class CodePanelActivate : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
             //Cursor.lockState = CursorLockMode.Locked;
-            cam.freezeCamera = false;
+            cam.FreezeCamera = false;
         }        
     }
     private void ShowCodePanel()
@@ -70,7 +70,7 @@ public class CodePanelActivate : MonoBehaviour
         active = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
-        cam.freezeCamera = true;
+        cam.FreezeCamera = true;
     }
     public IEnumerator PuzzleComplete()
     {

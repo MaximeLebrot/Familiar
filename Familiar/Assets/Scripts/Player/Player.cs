@@ -23,7 +23,7 @@ namespace AbilitySystem
         [Tooltip("Checks whether the player is in the code panel area")] 
         private bool isInCodePanelArea;
 
-        [Header("Inspector input & references")]
+        [Header("Inspector input")]
         [SerializeField, Tooltip("List of starting abilities the player has access to")]
         private List<GameplayAbility> startingAbilities;
         [SerializeField, Tooltip("List of starting effects the player has access to")]
@@ -32,28 +32,28 @@ namespace AbilitySystem
         private List<GameplayAttributeSetEntry> attributeSet;
         [SerializeField, Tooltip("Array of all possible states the player can enter")]
         private State[] states;
+        [SerializeField, Tooltip("Array of moonstones")]
+        private GameObject[] moonstones;
+
+        [Header("References")]
         [SerializeField, Tooltip("The animator component attached to this game object. Should be inputed manually")]
         private Animator anim;
         [SerializeField, Tooltip("The \"Controller\" component attached to this game object. Should be inputed manually")]
         private Controller playerController;
-        [SerializeField, Tooltip("Array of moonstones")]
-        private GameObject[] moonstones;
-        [SerializeField, Tooltip("The player health UI slider")]
+        [SerializeField, Tooltip("The player health UI slider. Should be inputed manually")]
         private Slider healthBar;
-        [SerializeField, Tooltip("The animator tied to the F2B object")]
+        [SerializeField, Tooltip("The animator tied to the F2B object. Should be inputed manually")]
         private Animator fadeToBlack;
-        [SerializeField, Tooltip("The image tied to the F2B object")]
+        [SerializeField, Tooltip("The image tied to the F2B object. Should be inputed manually")]
         private Image blackImage;
 
         [Header("Events")]
         [SerializeField, Tooltip("The event in which the player dies")]
         private UnityEvent PlayerDied;
 
-
         protected void Awake()
         {
             InitializeSequence();
-            Debug.Log(stoneCounter);
         }
 
         private void Update()
@@ -69,16 +69,11 @@ namespace AbilitySystem
                         Debug.LogWarning("Failed to activate Zap ability");
                     }
                 }
-
-                if (Input.GetButtonDown("Fire2"))
-                {
-                    abilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerMana, 10);
-                }
             }
             HealthBarUpdate();
         }
 
-        public void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
         {
             if (other.tag == "MoonStone")
             {
@@ -86,6 +81,7 @@ namespace AbilitySystem
                 stoneCounter++;
             }
         }
+
         private void InitializeSequence()
         {
             InitializeAnimator();
@@ -128,7 +124,7 @@ namespace AbilitySystem
         {
             healthBar.value = 1;
         }
-        public float ShockDamageCalculation(float value)
+        private float ShockDamageCalculation(float value)
         {
             float? resistance = abilitySystem.GetAttributeValue(GameplayAttributes.ShockResistance);
 
@@ -139,15 +135,10 @@ namespace AbilitySystem
             return value;
         }
 
-        public GameplayAbilitySystem GetAbilitySystem()
-        {
-            return abilitySystem;
-        }
-
         public void TakeDamage(float damage)
         {
-            GetAbilitySystem().TryApplyAttributeChange(GameplayAttributes.PlayerHealth, -damage);
-            Debug.Log("Health = " + GetAbilitySystem().GetAttributeValue(GameplayAttributes.PlayerHealth));
+            AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, -damage);
+            Debug.Log("Health = " + AbilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth));
             anim.SetTrigger("takeDmg");
         }
 
@@ -155,7 +146,7 @@ namespace AbilitySystem
         {
             ded = true;
             playerController.StopController = true;
-            playerController.Camera.cannotMoveCam = true;
+            playerController.Camera.CannotMoveCam = true;
             healthBar.value = 0;
 
             PlayerDied.Invoke();
@@ -185,39 +176,43 @@ namespace AbilitySystem
             yield return new WaitUntil(() => blackImage.color.a == 0);
         }
 
-        public void Respawn(Vector3 target, float delay)
+        private void Respawn(Vector3 target, float delay)
         {
             StartCoroutine(WaitForRespawn(target, delay));
         }
 
-        public IEnumerator WaitForRespawn(Vector3 target, float delay)
+        private IEnumerator WaitForRespawn(Vector3 target, float delay)
         {
             yield return new WaitForSeconds(delay);
             gameObject.transform.position = target;
 
             ded = false;
             playerController.StopController = false;
-            playerController.Camera.cannotMoveCam = false;
+            playerController.Camera.CannotMoveCam = false;
             float? refillHealth;
-            refillHealth = -(GetAbilitySystem().GetAttributeValue(GameplayAttributes.PlayerHealth) - 10);
-            GetAbilitySystem().TryApplyAttributeChange(GameplayAttributes.PlayerHealth, (float)refillHealth);
+            refillHealth = -(AbilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) - 10);
+            AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, (float)refillHealth);
             healthBar.value = 1;
         }
         public void OnZap()
         {
             Die();
         }
-        public void HealthBarUpdate()
+        private void HealthBarUpdate()
         {
             healthBar.value = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth)/10;
         }
-        public int GetStones()
-        {
-            return stoneCounter;
-        }
-        public void ResetTakeDmgTrigger()
+        private void ResetTakeDmgTrigger()
         {
             anim.ResetTrigger("takeDmg");
+        }
+        public int StoneCounter
+        {
+            get => stoneCounter;
+        }
+        public GameplayAbilitySystem AbilitySystem
+        {
+            get => abilitySystem;
         }
 
         public State CurrentState

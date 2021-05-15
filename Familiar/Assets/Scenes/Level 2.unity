@@ -10924,6 +10924,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 38dd606fc69c9344fb440a9cba371837, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  player: {fileID: 0}
   black: {fileID: 2063301522}
   anim: {fileID: 2063301521}
 --- !u!65 &501838175
@@ -13750,7 +13751,7 @@ GameObject:
   - component: {fileID: 574552443}
   m_Layer: 0
   m_Name: Point1
-  m_TagString: Untagged
+  m_TagString: Patrol point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -14495,6 +14496,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1391848369}
     m_Modifications:
+    - target: {fileID: 1029966034491669908, guid: a1aaa5444fe0fe04d9e6133d41e57b53, type: 3}
+      propertyPath: points.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1029966034491669908, guid: a1aaa5444fe0fe04d9e6133d41e57b53, type: 3}
+      propertyPath: points.Array.data[0]
+      value: 
+      objectReference: {fileID: 574552443}
+    - target: {fileID: 1029966034491669908, guid: a1aaa5444fe0fe04d9e6133d41e57b53, type: 3}
+      propertyPath: points.Array.data[1]
+      value: 
+      objectReference: {fileID: 1508912707}
     - target: {fileID: 1916523802712514876, guid: a1aaa5444fe0fe04d9e6133d41e57b53, type: 3}
       propertyPath: m_RootOrder
       value: 0
@@ -39869,7 +39882,7 @@ GameObject:
   - component: {fileID: 1508912707}
   m_Layer: 0
   m_Name: Point2
-  m_TagString: Untagged
+  m_TagString: Patrol point
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

@@ -7,7 +7,6 @@ public class PlayerJumpState : PlayerBaseState
     {
         Debug.Log("Entered Jump State");
         base.Enter();
-        //player.gravity = gravity;
         Jump();
     }
 
@@ -24,8 +23,6 @@ public class PlayerJumpState : PlayerBaseState
 
         if (player.IsGrounded == true && player.IsJumping != true)
             stateMachine.Transition<PlayerMovingState>();
-
-        //falling state?
     }
 
     private void Jump()
@@ -37,6 +34,5 @@ public class PlayerJumpState : PlayerBaseState
     public override void Exit()
     {
         player.IsJumping = false;
-        //hasDoubleJumped = false;
     }
 }

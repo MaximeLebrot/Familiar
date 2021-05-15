@@ -51,7 +51,7 @@ public class Enemy2AttackState : Enemy2BaseState
     private void DamagePlayer()
     {
         owner.playerStats.TakeDamage(damage);
-        if (owner.playerStats.GetAbilitySystem().GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) <= 0)
+        if (owner.playerStats.AbilitySystem.GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) <= 0)
         {
             owner.playerStats.Die();
             stateMachine.Transition<Enemy2IdleState>();
