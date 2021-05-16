@@ -3601,7 +3601,6 @@ GameObject:
   - component: {fileID: 122033956}
   - component: {fileID: 122033959}
   - component: {fileID: 122033958}
-  - component: {fileID: 122033957}
   - component: {fileID: 122033960}
   m_Layer: 0
   m_Name: WizardPuzzleComment2_Trigger
@@ -3622,29 +3621,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1277575948}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &122033957
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122033955}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 18161357}
-  instructions: Oh... was half expecting another key. This is... a switch, maybe
-    it opens the last door?
-  waitTime: 10
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &122033958
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -3690,7 +3668,7 @@ MonoBehaviour:
   dialogueText: {fileID: 18161357}
   dialogue: Oh... was half expecting another key. This is... a switch, maybe it opens
     the last door?
-  activeTime: 8
+  activeTime: 10
   needKey: 0
 --- !u!1001 &122123175
 PrefabInstance:
@@ -3799,7 +3777,6 @@ GameObject:
   - component: {fileID: 122223134}
   - component: {fileID: 122223137}
   - component: {fileID: 122223136}
-  - component: {fileID: 122223135}
   - component: {fileID: 122223138}
   m_Layer: 0
   m_Name: PressurePlateMission_Trigger2
@@ -3822,26 +3799,6 @@ Transform:
   m_Father: {fileID: 904399705}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &122223135
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 122223133}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 1495077187}
-  instructions: 'Mission: Remember the code'
-  waitTime: 1
-  deactiveTrigger: 1
-  permanentText: 1
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &122223136
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5377,7 +5334,6 @@ GameObject:
   - component: {fileID: 181136347}
   - component: {fileID: 181136346}
   - component: {fileID: 181136345}
-  - component: {fileID: 181136344}
   - component: {fileID: 181136348}
   m_Layer: 0
   m_Name: WizardPuzzleComment_Trigger
@@ -5386,27 +5342,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &181136344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 181136343}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 18161357}
-  instructions: More machinery. I do wonder who made all of these... contraptions.
-    And for what purpose.
-  waitTime: 15
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &181136345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -5448,7 +5383,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1277575948}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &181136348
 MonoBehaviour:
@@ -5466,7 +5401,7 @@ MonoBehaviour:
   dialogueText: {fileID: 18161357}
   dialogue: More machinery. I do wonder who made all of these... contraptions. And
     for what purpose.
-  activeTime: 15
+  activeTime: 9
   needKey: 0
 --- !u!1 &187499296
 GameObject:
@@ -11337,6 +11272,85 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 522395055}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &527740176
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 527740177}
+  - component: {fileID: 527740180}
+  - component: {fileID: 527740179}
+  - component: {fileID: 527740178}
+  m_Layer: 0
+  m_Name: WizardCodeComment_Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &527740177
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527740176}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -26.8, y: 8, z: 71.02}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1277575948}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &527740178
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527740176}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+  dialogue: That must be the code! Let's try it on the other code panel.
+  activeTime: 8
+  needKey: 0
+--- !u!65 &527740179
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527740176}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 30, y: 20, z: 10}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &527740180
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 527740176}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &530564021
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -16164,7 +16178,6 @@ GameObject:
   - component: {fileID: 703885071}
   - component: {fileID: 703885074}
   - component: {fileID: 703885073}
-  - component: {fileID: 703885072}
   - component: {fileID: 703885075}
   m_Layer: 0
   m_Name: ZapTutorial_Trigger2
@@ -16181,32 +16194,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703885070}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 33.6, y: 8, z: 28.9}
+  m_LocalPosition: {x: 24.96, y: 8, z: 28.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1420645089}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &703885072
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 703885070}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 1410712124}
-  instructions: This ability can damage some enemies and affect certain objects...
-  waitTime: 15
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &703885073
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -16249,8 +16242,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1410712124}
-  tutorial: This ability can damage spiders.
-  activeTime: 15
+  tutorial: This ability can damage Spiders.
+  activeTime: 10
   permanent: 0
 --- !u!1001 &708535449
 PrefabInstance:
@@ -17759,7 +17752,6 @@ GameObject:
   - component: {fileID: 751369725}
   - component: {fileID: 751369728}
   - component: {fileID: 751369727}
-  - component: {fileID: 751369726}
   - component: {fileID: 751369729}
   m_Layer: 0
   m_Name: ZapTutorial_Trigger
@@ -17776,32 +17768,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 751369724}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 47.39, y: 8, z: 28.9}
+  m_LocalPosition: {x: 40.89, y: 8, z: 28.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1420645089}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &751369726
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 751369724}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 1410712124}
-  instructions: Press 'LMB' to use Zap Ability.
-  waitTime: 15
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &751369727
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -17813,7 +17785,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 20, z: 20}
+  m_Size: {x: 10, y: 20, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &751369728
 Rigidbody:
@@ -17844,8 +17816,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1410712124}
-  tutorial: Press 'LMB' to use Zap Ability.
-  activeTime: 15
+  tutorial: Press 'LMB' to use the Zap Ability.
+  activeTime: 10
   permanent: 0
 --- !u!1001 &753557588
 PrefabInstance:
@@ -18179,7 +18151,6 @@ GameObject:
   - component: {fileID: 765688448}
   - component: {fileID: 765688452}
   - component: {fileID: 765688451}
-  - component: {fileID: 765688450}
   - component: {fileID: 765688449}
   m_Layer: 0
   m_Name: WizardKeyComment_Trigger
@@ -18196,11 +18167,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 765688447}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -115.32, y: 10.11, z: 23.14}
+  m_LocalPosition: {x: -116.38, y: 10.11, z: 18.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1277575948}
-  m_RootOrder: 8
+  m_RootOrder: 10
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &765688449
 MonoBehaviour:
@@ -18219,26 +18190,6 @@ MonoBehaviour:
   dialogue: That's the key we need! Move it to the door.
   activeTime: 6
   needKey: 0
---- !u!114 &765688450
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 765688447}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 18161357}
-  instructions: Our exit has been located! Finally.
-  waitTime: 10
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &765688451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -19997,7 +19948,6 @@ GameObject:
   - component: {fileID: 798252820}
   - component: {fileID: 798252823}
   - component: {fileID: 798252822}
-  - component: {fileID: 798252821}
   - component: {fileID: 798252824}
   m_Layer: 0
   m_Name: WizardComment_Trigger
@@ -20014,33 +19964,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 798252819}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 42, y: 8, z: 28.9}
+  m_LocalPosition: {x: 44.89, y: 8, z: 28.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1277575948}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &798252821
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 798252819}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 18161357}
-  instructions: It would seem escaping isn't going to be as easy as I'd hoped...
-    I'll lend you some of my powers, get us out of here!!
-  waitTime: 10
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &798252822
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20052,7 +19981,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 50, y: 20, z: 20}
+  m_Size: {x: 20, y: 20, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &798252823
 Rigidbody:
@@ -20084,9 +20013,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
-  dialogue: It would seem escaping isn't going to be as easy as I'd hoped... I'll
-    lend you some of my powers, get us out of here!!
-  activeTime: 8
+  dialogue: It would seem escaping isn't going to be as easy as I'd hoped. I'll lend
+    you some of my powers, now get us out of this Castle!
+  activeTime: 10
   needKey: 0
 --- !u!1001 &800489891
 PrefabInstance:
@@ -22297,6 +22226,7 @@ Transform:
   - {fileID: 122223134}
   - {fileID: 1683083212}
   - {fileID: 1930717644}
+  - {fileID: 1743073680}
   - {fileID: 1499121459}
   m_Father: {fileID: 700499922}
   m_RootOrder: 1
@@ -27123,6 +27053,86 @@ MonoBehaviour:
   m_AreaLightEmissiveMeshShadowCastingMode: 0
   m_AreaLightEmissiveMeshMotionVectorGenerationMode: 0
   m_AreaLightEmissiveMeshLayer: -1
+--- !u!1 &1123366113
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1123366114}
+  - component: {fileID: 1123366118}
+  - component: {fileID: 1123366117}
+  - component: {fileID: 1123366115}
+  m_Layer: 0
+  m_Name: WizardKeyDoorComment2_Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1123366114
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123366113}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -53.2, y: 10.11, z: 22.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1277575948}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1123366115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123366113}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+  dialogue: I'm hoping that this is finally the end of it but knowing the developers
+    of this game it probably won't be.
+  activeTime: 8
+  needKey: 1
+--- !u!65 &1123366117
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123366113}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 25, y: 20, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1123366118
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1123366113}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1001 &1126084024
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28733,7 +28743,6 @@ GameObject:
   - component: {fileID: 1184218313}
   - component: {fileID: 1184218316}
   - component: {fileID: 1184218315}
-  - component: {fileID: 1184218314}
   - component: {fileID: 1184218317}
   m_Layer: 0
   m_Name: WizardCodePanelComment_Trigger
@@ -28756,27 +28765,6 @@ Transform:
   m_Father: {fileID: 1277575948}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1184218314
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1184218312}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 18161357}
-  instructions: Hmm... this mechanism doesn't seem to be working. Let's try something
-    else...
-  waitTime: 10
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &1184218315
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28820,7 +28808,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
-  dialogue: Hmm... this mechanism doesn't seem to be working. Let's come back later.
+  dialogue: Hmm... this panel doesn't seem to be working. We'll also need a code.
+    Let's go look for that and come back later.
   activeTime: 8
   needKey: 0
 --- !u!1 &1187091244
@@ -32184,7 +32173,6 @@ GameObject:
   - component: {fileID: 1245199852}
   - component: {fileID: 1245199855}
   - component: {fileID: 1245199854}
-  - component: {fileID: 1245199853}
   - component: {fileID: 1245199856}
   m_Layer: 0
   m_Name: WizardBoxComment2_Trigger
@@ -32207,27 +32195,6 @@ Transform:
   m_Father: {fileID: 1277575948}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1245199853
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1245199851}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 18161357}
-  instructions: You know Familiar, I kind of like boxes. It's just something about
-    them. Something... nice.
-  waitTime: 10
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &1245199854
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32271,9 +32238,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
-  dialogue: You know Familiar, I kind of like boxes. It's just something about them.
-    Something... nice.
-  activeTime: 8
+  dialogue: This is a bit trickier.... one box but three plates....
+  activeTime: 5
   needKey: 0
 --- !u!1001 &1245737715
 PrefabInstance:
@@ -33232,10 +33198,13 @@ Transform:
   - {fileID: 1772068436}
   - {fileID: 1245199852}
   - {fileID: 1513079375}
+  - {fileID: 527740177}
   - {fileID: 181136347}
   - {fileID: 122033956}
+  - {fileID: 1872745391}
   - {fileID: 1647581140}
   - {fileID: 765688448}
+  - {fileID: 1123366114}
   - {fileID: 1767497340}
   m_Father: {fileID: 700499922}
   m_RootOrder: 2
@@ -39613,7 +39582,6 @@ GameObject:
   - component: {fileID: 1499121459}
   - component: {fileID: 1499121463}
   - component: {fileID: 1499121462}
-  - component: {fileID: 1499121461}
   - component: {fileID: 1499121460}
   m_Layer: 0
   m_Name: MoonstoneMission_Trigger
@@ -39634,7 +39602,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 904399705}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1499121460
 MonoBehaviour:
@@ -39649,30 +39617,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: {fileID: 1495077187}
-  mission: 'Mission: Collect Moonstones to open the Exit door'
+  mission: 'Mission: Collect Moonstones to open the Big door'
   needKey: 0
   typeSpeed: 0.025
   anim: {fileID: 1053945446}
---- !u!114 &1499121461
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1499121458}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 1495077187}
-  instructions: 'Mission: Find a key for the door.'
-  waitTime: 2
-  deactiveTrigger: 1
-  permanentText: 1
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &1499121462
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40518,7 +40466,6 @@ GameObject:
   - component: {fileID: 1513079375}
   - component: {fileID: 1513079374}
   - component: {fileID: 1513079373}
-  - component: {fileID: 1513079372}
   - component: {fileID: 1513079376}
   m_Layer: 0
   m_Name: WizardSpiderComment_Trigger
@@ -40527,27 +40474,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1513079372
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1513079371}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 18161357}
-  instructions: I'VE HAD IT WITH THESE MOTHERF*CKING SPIDER IN THIS MOTHERF*CKING
-    CASTLE
-  waitTime: 15
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &1513079373
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -40559,7 +40485,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 30, y: 20, z: 50}
+  m_Size: {x: 30, y: 20, z: 10}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1513079374
 Rigidbody:
@@ -40585,7 +40511,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1513079371}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -26.8, y: 8, z: 64.9}
+  m_LocalPosition: {x: -26.8, y: 8, z: 42.96}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1277575948}
@@ -42976,7 +42902,6 @@ GameObject:
   - component: {fileID: 1647581140}
   - component: {fileID: 1647581143}
   - component: {fileID: 1647581142}
-  - component: {fileID: 1647581141}
   - component: {fileID: 1647581144}
   m_Layer: 0
   m_Name: WizardFirstMoonstoneComment_Trigger
@@ -42993,32 +42918,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1647581139}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -99.82, y: 6.13, z: 52.01}
+  m_LocalPosition: {x: -103.37, y: 6.13, z: 52.15}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1277575948}
-  m_RootOrder: 7
+  m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1647581141
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1647581139}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 18161357}
-  instructions: Our exit has been located! Finally.
-  waitTime: 10
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &1647581142
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43063,7 +42968,7 @@ MonoBehaviour:
   dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: This egg looking thing seems important... I'll bring it along.
-  activeTime: 8
+  activeTime: 7
   needKey: 0
 --- !u!4 &1651072940 stripped
 Transform:
@@ -43089,7 +42994,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 4294967295
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!65 &1656324127
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -43694,7 +43599,6 @@ GameObject:
   - component: {fileID: 1683083212}
   - component: {fileID: 1683083215}
   - component: {fileID: 1683083214}
-  - component: {fileID: 1683083213}
   - component: {fileID: 1683083216}
   m_Layer: 0
   m_Name: GoToDoorMission_Trigger
@@ -43717,26 +43621,6 @@ Transform:
   m_Father: {fileID: 904399705}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1683083213
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1683083211}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 1495077187}
-  instructions: 'Mission: Go try the last door..?'
-  waitTime: 2
-  deactiveTrigger: 1
-  permanentText: 1
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &1683083214
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45206,6 +45090,85 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.5810812, y: 2.5, z: 2.5810812}
   m_Center: {x: -0.0000076293945, y: 0, z: -0.0000019073486}
+--- !u!1 &1743073679
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1743073680}
+  - component: {fileID: 1743073684}
+  - component: {fileID: 1743073683}
+  - component: {fileID: 1743073681}
+  m_Layer: 0
+  m_Name: KeyRoomMission2_Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1743073680
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743073679}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -118.16, y: 9.42, z: 18.17}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 904399705}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1743073681
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743073679}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f7816d6bef155344873df35654dbc5d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  missionText: {fileID: 1495077187}
+  mission: 'Mission: Bring the Key to the Locked Door.'
+  needKey: 0
+  typeSpeed: 0.025
+  anim: {fileID: 1053945446}
+--- !u!65 &1743073683
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743073679}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5, z: 5}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1743073684
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1743073679}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1756362493
 GameObject:
   m_ObjectHideFlags: 0
@@ -45687,7 +45650,6 @@ GameObject:
   - component: {fileID: 1767497340}
   - component: {fileID: 1767497344}
   - component: {fileID: 1767497343}
-  - component: {fileID: 1767497342}
   - component: {fileID: 1767497341}
   m_Layer: 0
   m_Name: WizardLastRoomComment_Trigger
@@ -45708,7 +45670,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1277575948}
-  m_RootOrder: 9
+  m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1767497341
 MonoBehaviour:
@@ -45726,28 +45688,8 @@ MonoBehaviour:
   dialogueText: {fileID: 18161357}
   dialogue: This is the biggest room so far! And it seems I was right, those egg
     looking things are important.
-  activeTime: 8
+  activeTime: 10
   needKey: 0
---- !u!114 &1767497342
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1767497339}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 18161357}
-  instructions: Our exit has been located! Finally.
-  waitTime: 10
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &1767497343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -45759,7 +45701,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 5, z: 5}
+  m_Size: {x: 28, y: 20, z: 5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1767497344
 Rigidbody:
@@ -45983,7 +45925,6 @@ GameObject:
   - component: {fileID: 1772068436}
   - component: {fileID: 1772068439}
   - component: {fileID: 1772068438}
-  - component: {fileID: 1772068437}
   - component: {fileID: 1772068440}
   m_Layer: 0
   m_Name: WizardBoxComment1_Trigger
@@ -46006,27 +45947,6 @@ Transform:
   m_Father: {fileID: 1277575948}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1772068437
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1772068435}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 18161357}
-  instructions: This doesn't seem so bad, just a lonely box with it's pressure plate
-    friend.
-  waitTime: 10
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &1772068438
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46070,9 +45990,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
-  dialogue: This doesn't seem so bad, just a lonely box with it's pressure plate
-    friend.
-  activeTime: 8
+  dialogue: Oh I know this! I've seen this before when I played Portal.
+  activeTime: 6
   needKey: 0
 --- !u!1 &1772635238 stripped
 GameObject:
@@ -47605,6 +47524,86 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &1872745390
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1872745391}
+  - component: {fileID: 1872745395}
+  - component: {fileID: 1872745394}
+  - component: {fileID: 1872745392}
+  m_Layer: 0
+  m_Name: WizardKeyDoorComment_Trigger
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1872745391
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872745390}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -53.2, y: 10.11, z: 22.97}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1277575948}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1872745392
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872745390}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueParent: {fileID: 1449507257}
+  dialogueText: {fileID: 18161357}
+  dialogue: Looks like we'll need a key for this door. It should be in this room
+    somewhere...
+  activeTime: 8
+  needKey: 0
+--- !u!65 &1872745394
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872745390}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 25, y: 20, z: 20}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!54 &1872745395
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1872745390}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!1 &1876159682
 GameObject:
   m_ObjectHideFlags: 0
@@ -49246,10 +49245,9 @@ GameObject:
   - component: {fileID: 1930717644}
   - component: {fileID: 1930717647}
   - component: {fileID: 1930717646}
-  - component: {fileID: 1930717645}
   - component: {fileID: 1930717648}
   m_Layer: 0
-  m_Name: BigRoomMission_Trigger
+  m_Name: KeyRoomMission_Trigger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -49263,32 +49261,12 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1930717643}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -41.69, y: 8, z: 28.9}
+  m_LocalPosition: {x: -51.95, y: 8, z: 19.31}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 904399705}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1930717645
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930717643}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 1495077187}
-  instructions: 'Mission: Find a key for the door.'
-  waitTime: 2
-  deactiveTrigger: 1
-  permanentText: 1
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &1930717646
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -49300,7 +49278,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 5, y: 20, z: 20}
+  m_Size: {x: 25, y: 20, z: 20}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!54 &1930717647
 Rigidbody:
@@ -49331,7 +49309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: {fileID: 1495077187}
-  mission: 'Mission: Find a key for the door.'
+  mission: 'Mission: Find the Key for the Locked Door.'
   needKey: 0
   typeSpeed: 0.025
   anim: {fileID: 1053945446}
@@ -49709,7 +49687,6 @@ GameObject:
   - component: {fileID: 1949158599}
   - component: {fileID: 1949158598}
   - component: {fileID: 1949158597}
-  - component: {fileID: 1949158596}
   - component: {fileID: 1949158600}
   m_Layer: 0
   m_Name: StartMission_Trigger
@@ -49718,26 +49695,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1949158596
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1949158595}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 1495077187}
-  instructions: 'Mission: Escape the Castle, somehow.'
-  waitTime: 1
-  deactiveTrigger: 1
-  permanentText: 1
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &1949158597
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52044,7 +52001,6 @@ GameObject:
   - component: {fileID: 2012628228}
   - component: {fileID: 2012628231}
   - component: {fileID: 2012628230}
-  - component: {fileID: 2012628229}
   - component: {fileID: 2012628232}
   m_Layer: 0
   m_Name: MechanicTutorial_Trigger
@@ -52067,26 +52023,6 @@ Transform:
   m_Father: {fileID: 1420645089}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2012628229
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2012628227}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 1410712124}
-  instructions: Press 'E' to interact
-  waitTime: 15
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &2012628230
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52129,7 +52065,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1410712124}
-  tutorial: Press 'E' to interact
+  tutorial: Press 'E' to interact with the Mechanism
   activeTime: 0
   permanent: 1
 --- !u!1 &2013638510
@@ -53815,7 +53751,6 @@ GameObject:
   - component: {fileID: 2094350343}
   - component: {fileID: 2094350346}
   - component: {fileID: 2094350345}
-  - component: {fileID: 2094350344}
   - component: {fileID: 2094350347}
   m_Layer: 0
   m_Name: PressurePlateMission_Trigger
@@ -53838,26 +53773,6 @@ Transform:
   m_Father: {fileID: 904399705}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2094350344
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2094350342}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 1495077187}
-  instructions: 'Mission: Find a way to activate the strange mechanic.'
-  waitTime: 1
-  deactiveTrigger: 1
-  permanentText: 1
-  needKey: 0
-  typeSpeed: 0
-  useTyping: 0
 --- !u!65 &2094350345
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53900,7 +53815,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: {fileID: 1495077187}
-  mission: 'Mission: Find a way to activate the strange mechanic.'
+  mission: 'Mission: Find a way to activate the Codepanel.'
   needKey: 0
   typeSpeed: 0.025
   anim: {fileID: 1053945446}

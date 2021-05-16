@@ -3183,7 +3183,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &382926845
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3253,7 +3253,6 @@ GameObject:
   - component: {fileID: 403758033}
   - component: {fileID: 403758036}
   - component: {fileID: 403758035}
-  - component: {fileID: 403758034}
   - component: {fileID: 403758037}
   m_Layer: 0
   m_Name: LastMission_Trigger
@@ -3276,26 +3275,6 @@ Transform:
   m_Father: {fileID: 228910466}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &403758034
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 403758032}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 656618147}
-  instructions: 'Mission: Take the Key to the Big Exit Door'
-  waitTime: 2
-  deactiveTrigger: 0
-  permanentText: 0
-  needKey: 1
-  typeSpeed: 0.05
-  useTyping: 0
 --- !u!54 &403758035
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3338,7 +3317,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: {fileID: 656618147}
-  mission: 'Mission: Take the Key to the Locked Door'
+  mission: 'Mission: Take the Key to the Locked Door.'
   needKey: 1
   typeSpeed: 0.025
   anim: {fileID: 1902547973}
@@ -5267,7 +5246,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3478025250975259355, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 3478025250975259355, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
       propertyPath: m_LocalScale.x
@@ -5346,7 +5325,6 @@ GameObject:
   - component: {fileID: 600333519}
   - component: {fileID: 600333522}
   - component: {fileID: 600333521}
-  - component: {fileID: 600333520}
   - component: {fileID: 600333523}
   m_Layer: 0
   m_Name: StartMission_Trigger
@@ -5369,26 +5347,6 @@ Transform:
   m_Father: {fileID: 228910466}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &600333520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 600333518}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 656618147}
-  instructions: 'Mission: Find the Key'
-  waitTime: 2
-  deactiveTrigger: 1
-  permanentText: 1
-  needKey: 0
-  typeSpeed: 0.05
-  useTyping: 0
 --- !u!54 &600333521
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5431,7 +5389,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: {fileID: 656618147}
-  mission: 'Mission: Find the Key'
+  mission: 'Mission: Find the Key.'
   needKey: 0
   typeSpeed: 0.025
   anim: {fileID: 1902547973}
@@ -6397,7 +6355,7 @@ PrefabInstance:
       objectReference: {fileID: 216671454}
     - target: {fileID: 8266650046587695649, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8266650046587695649, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -7479,7 +7437,6 @@ GameObject:
   - component: {fileID: 773042594}
   - component: {fileID: 773042593}
   - component: {fileID: 773042592}
-  - component: {fileID: 773042591}
   - component: {fileID: 773042595}
   m_Layer: 0
   m_Name: PullTutorial_Trigger
@@ -7488,27 +7445,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &773042591
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 773042590}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 1991818522}
-  instructions: Press 'RMB' on certain objects to move them. Click 'RMB' again to
-    release.
-  waitTime: 15
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0.05
-  useTyping: 0
 --- !u!54 &773042592
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8707,7 +8643,7 @@ RectTransform:
   - {fileID: 1764345995}
   - {fileID: 216671453}
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -12826,7 +12762,6 @@ GameObject:
   - component: {fileID: 1350857448}
   - component: {fileID: 1350857451}
   - component: {fileID: 1350857450}
-  - component: {fileID: 1350857449}
   - component: {fileID: 1350857452}
   m_Layer: 0
   m_Name: WizardKeyComment_Trigger
@@ -12849,27 +12784,6 @@ Transform:
   m_Father: {fileID: 1312686422}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1350857449
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1350857447}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 453392152}
-  instructions: You got the key! I knew you'd do it. This is why you're my favorite
-    Imp. Now let's get out of here, open the big gate out of here!
-  waitTime: 10
-  deactiveTrigger: 0
-  permanentText: 0
-  needKey: 1
-  typeSpeed: 0.01
-  useTyping: 0
 --- !u!54 &1350857450
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -12913,8 +12827,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueParent: {fileID: 1764345994}
   dialogueText: {fileID: 453392152}
-  dialogue: You got the key! I knew you'd do it. Now let's get out of here, open
-    that locked door over there so we can get out of here!
+  dialogue: You got the key! I knew I could trust you. Now let's get out of here,
+    open that locked door over there so we can finally get out of here!
   activeTime: 10
   needKey: 1
 --- !u!1001 &1364475892
@@ -13786,7 +13700,6 @@ GameObject:
   - component: {fileID: 1496452755}
   - component: {fileID: 1496452758}
   - component: {fileID: 1496452757}
-  - component: {fileID: 1496452756}
   - component: {fileID: 1496452759}
   m_Layer: 0
   m_Name: KeyMission_Trigger
@@ -13809,26 +13722,6 @@ Transform:
   m_Father: {fileID: 228910466}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1496452756
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1496452754}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 656618147}
-  instructions: 'Mission: Bring the Key to the Wizard'
-  waitTime: 0
-  deactiveTrigger: 0
-  permanentText: 1
-  needKey: 0
-  typeSpeed: 0.05
-  useTyping: 0
 --- !u!54 &1496452757
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -13871,7 +13764,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: {fileID: 656618147}
-  mission: 'Mission: Bring the Key to the Wizard'
+  mission: 'Mission: Bring the Key to the Wizard.'
   needKey: 0
   typeSpeed: 0.025
   anim: {fileID: 1902547973}
@@ -14049,7 +13942,6 @@ GameObject:
   - component: {fileID: 1518029203}
   - component: {fileID: 1518029206}
   - component: {fileID: 1518029205}
-  - component: {fileID: 1518029204}
   - component: {fileID: 1518029207}
   m_Layer: 0
   m_Name: EnemyTutorial_Trigger
@@ -14072,26 +13964,6 @@ Transform:
   m_Father: {fileID: 271147193}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1518029204
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1518029202}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 1991818522}
-  instructions: Be careful around the guards! They'll harm you.
-  waitTime: 10
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0.05
-  useTyping: 0
 --- !u!54 &1518029205
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -14134,7 +14006,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1991818522}
-  tutorial: Be careful around the guards! They'll harm you.
+  tutorial: Be careful around the Guards patrolling the area!
   activeTime: 10
   permanent: 0
 --- !u!1001 &1526088183
@@ -15577,7 +15449,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6ff7dd1e7554c67479c2a43f05582958, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6ff7dd1e7554c67479c2a43f05582958, type: 3}
       propertyPath: m_LocalPosition.x
@@ -16149,7 +16021,6 @@ GameObject:
   - component: {fileID: 1752208822}
   - component: {fileID: 1752208825}
   - component: {fileID: 1752208824}
-  - component: {fileID: 1752208823}
   - component: {fileID: 1752208826}
   m_Layer: 0
   m_Name: WizardComment_Trigger
@@ -16172,27 +16043,6 @@ Transform:
   m_Father: {fileID: 1312686422}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1752208823
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1752208821}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 453392152}
-  instructions: I finally managed to summon you! You should be big enough to fit
-    through the prison bars... go find the key! Make it hasty.
-  waitTime: 20
-  deactiveTrigger: 1
-  permanentText: 0
-  needKey: 0
-  typeSpeed: 0.01
-  useTyping: 0
 --- !u!54 &1752208824
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -16236,8 +16086,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueParent: {fileID: 1764345994}
   dialogueText: {fileID: 453392152}
-  dialogue: I finally managed to summon you! You should be big enough to fit through
-    the prison bars... go find the key! Make it hasty.
+  dialogue: I finally managed to summon you! You should be small enough to fit through
+    the prison bars so go find the Key! And make it hasty.
   activeTime: 10
   needKey: 0
 --- !u!1 &1757191201 stripped
@@ -17398,7 +17248,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 20
+  m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1856564450
 GameObject:
@@ -18895,7 +18745,7 @@ Transform:
   - {fileID: 947825139}
   - {fileID: 224690226}
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1942178555
 PrefabInstance:
@@ -19931,7 +19781,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: ac31f1824c2ac61478154485dac21206, type: 3}
       propertyPath: m_RootOrder
-      value: 13
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: ac31f1824c2ac61478154485dac21206, type: 3}
       propertyPath: m_LocalPosition.x
@@ -20322,7 +20172,6 @@ GameObject:
   - component: {fileID: 2081313521}
   - component: {fileID: 2081313524}
   - component: {fileID: 2081313523}
-  - component: {fileID: 2081313522}
   - component: {fileID: 2081313525}
   m_Layer: 0
   m_Name: GuardUpdateMission_Trigger
@@ -20345,26 +20194,6 @@ Transform:
   m_Father: {fileID: 228910466}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2081313522
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2081313520}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1743a4c82bd0126429bcaa3e89757e79, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  helpText: {fileID: 656618147}
-  instructions: 'Mission: Find the Key and avoid the Guards'
-  waitTime: 2
-  deactiveTrigger: 1
-  permanentText: 1
-  needKey: 0
-  typeSpeed: 0.05
-  useTyping: 0
 --- !u!54 &2081313523
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -20407,7 +20236,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   missionText: {fileID: 656618147}
-  mission: 'Mission: Find the Key and avoid the Guards'
+  mission: 'Mission: Find the Key and avoid the Guards.'
   needKey: 0
   typeSpeed: 0.025
   anim: {fileID: 1902547973}
@@ -20935,7 +20764,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1348100496250459567, guid: db8391bc7bc7a1240afc98496f9ead52, type: 3}
       propertyPath: m_RootOrder
-      value: 12
+      value: 13
       objectReference: {fileID: 0}
     - target: {fileID: 1348100496250459567, guid: db8391bc7bc7a1240afc98496f9ead52, type: 3}
       propertyPath: m_LocalPosition.x
