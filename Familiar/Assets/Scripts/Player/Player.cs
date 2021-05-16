@@ -51,7 +51,7 @@ namespace AbilitySystem
         [SerializeField, Tooltip("The event in which the player dies")]
         private UnityEvent PlayerDied;
 
-        protected void Awake()
+        private void Awake()
         {
             InitializeSequence();
         }
@@ -92,13 +92,19 @@ namespace AbilitySystem
         }
         private void InitializeAnimator()
         {
-            if (anim ==null)
+            if (anim == null)
+            {
                 anim = GetComponent<Animator>();
+                Debug.LogWarning("Anim value should be set in the inspector");
+            }
         }
         private void InitializePlayerController()
         {
             if (playerController == null)
+            {
                 playerController = GetComponent<Controller>();
+                Debug.LogWarning("Player \"Controller\" value should be set in the inspector");
+            }
         }
         private void InitializeStateMachine()
         {
@@ -256,5 +262,21 @@ namespace AbilitySystem
             get => isInCodePanelArea;
             set => isInCodePanelArea = value;
         }
+        /* 
+         
+        private void InitializeValue(var variable, Component<T>)
+        {
+
+            if (variable == null)
+            {
+                Debug.LogWarning(T.name + " value not set in inspector")
+                    variable = GetComponent<T>();
+                if (variable == null)
+                    Debug.LogError("Error fetching value of " + T.name);
+            }
+
+        }
+              
+        */
     }
 }

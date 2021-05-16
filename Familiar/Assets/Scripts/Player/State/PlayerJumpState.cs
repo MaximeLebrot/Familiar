@@ -5,7 +5,6 @@ public class PlayerJumpState : PlayerBaseState
 {
     public override void Enter()
     {
-        Debug.Log("Entered Jump State");
         base.Enter();
         Jump();
     }

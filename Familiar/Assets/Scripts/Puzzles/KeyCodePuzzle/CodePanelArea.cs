@@ -3,24 +3,27 @@ using UnityEngine.UI;
 
 public class CodePanelArea : MonoBehaviour
 {
-    private AbilitySystem.Player player;
+    [SerializeField, Tooltip("A reference to the Player game object. Should be inputed manually")]
+    private GameObject player;
+    [SerializeField, Tooltip("A reference to the \"Player\" script. Should be inputed manually")]
+    private AbilitySystem.Player playerStats;
 
-    // A text telling the player which button to press to open the code panel UI
-    public Text helpText;
-    public string instructions;
+    [SerializeField, Tooltip("A reference Text component attached to the UI. Must be inputed manually")]
+    private Text helpText;
+    [SerializeField, Tooltip("Instruction given to the player. Must be inputed manually")]
+    private string instructions;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilitySystem.Player>();
-        helpText.text = "";
+        InitializeSequence();
     }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player")
         {
-            player.IsInCodePanelArea = true;
+            playerStats.IsInCodePanelArea = true;
 
-            if (player.CanSeeCodePanel == true)
+            if (playerStats.CanSeeCodePanel == true)
             {
                 helpText.text = instructions;
             }
@@ -30,8 +33,43 @@ public class CodePanelArea : MonoBehaviour
     {
         if (other.tag == "Player")
         {
-            player.IsInCodePanelArea = false;
+            playerStats.IsInCodePanelArea = false;
             helpText.text = "";
         }
+    }
+    private void InitializeSequence()
+    {
+        InitializePlayerGameObject();
+        InitializePlayerScript();
+        InitializeHelpText();
+    }
+    private void InitializePlayerGameObject()
+    {
+        if (player == null)
+        {
+            Debug.LogWarning("The reference to the Player game object should be inputed manually");
+            player = GameObject.FindGameObjectWithTag("Player");
+            if (player == null)
+                Debug.LogError("Cannot find player game object");
+        }
+    }
+    private void InitializePlayerScript()
+    {
+        if (playerStats == null)
+        {
+            Debug.LogWarning("The reference to the \"Player\" script should be inputed manually");
+            playerStats = player.GetComponent<AbilitySystem.Player>();
+            if (playerStats == null)
+                Debug.LogError("Cannot find the \"Player\" script");
+        }
+    }
+    private void InitializeHelpText()
+    {
+        if (helpText == null)
+        {
+            Debug.LogError("Help text not set to any value");
+        }
+
+        helpText.text = "";
     }
 }

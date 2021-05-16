@@ -3,23 +3,26 @@ using UnityEngine;
 
 public class CodePanelActivate : MonoBehaviour
 {
-    // this is a little test script to check the animations for the code panel
-    [SerializeField] private Animator anim;
+    [SerializeField, Tooltip("A reference to the Animator component attached to this game object. Should be inputed manually")]
+    private Animator anim;
 
-    private AbilitySystem.Player player;
+    [SerializeField, Tooltip("A reference to the Player game object. Should be inputed manually")]
+    private GameObject player;
+    [SerializeField, Tooltip("A reference to the \"Player\" script. Should be inputed manually")]
+    private AbilitySystem.Player playerStats;
+    [SerializeField, Tooltip("A reference to the \"Player\" script. Should be inputed manually")]
     private CameraHandler cam;
 
-    [SerializeField] private GameObject UICoverPanel;
-    // Bool to toggle if code panel is active or not.
-    private bool active = false;
+    [SerializeField, Tooltip("A reference to the UICoverPanel game object. Must be inputed manually")]
+    private GameObject UICoverPanel;
+    [Tooltip("Checks whether the code panel is active or not")]
+    private bool active;
+    [Tooltip("Checks whether the puzzel is done or not")]
     private bool puzzleDone;
 
     void Start()
     {
-        //initialize()
-        anim = gameObject.GetComponent<Animator>();
-        player = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilitySystem.Player>();
-        cam = player.GetComponentInChildren<CameraHandler>();
+        InitializeSequence();
     }
 
     // Update is called once per frame
@@ -27,11 +30,11 @@ public class CodePanelActivate : MonoBehaviour
     {
         if (puzzleDone != true)
         {
-            if (player.IsInCodePanelArea != true)
+            if (playerStats.IsInCodePanelArea != true)
             {
                 HideCodePanel();
             }
-            else if (player.CanSeeCodePanel == true)
+            else if (playerStats.CanSeeCodePanel == true)
             {
                 if (Input.GetKeyDown(KeyCode.C))
                 {
@@ -78,5 +81,52 @@ public class CodePanelActivate : MonoBehaviour
         UICoverPanel.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         HideCodePanel();
+    }
+    private void InitializeSequence()
+    {
+        InitializePlayerGameObject();
+        InitializePlayerScript();
+        InitializeAnim();
+        InitializeCam();
+    }
+    private void InitializePlayerGameObject()
+    {
+        if (player == null)
+        {
+            Debug.LogWarning("The reference to the Player game object should be inputed manually");
+            player = GameObject.FindGameObjectWithTag("Player");
+            if (player == null)
+                Debug.LogError("Cannot find player game object");
+        }
+    }
+    private void InitializePlayerScript()
+    {
+        if (playerStats == null)
+        {
+            Debug.LogWarning("The reference to the \"Player\" script should be inputed manually");
+            playerStats = player.GetComponent<AbilitySystem.Player>();
+            if (playerStats == null)
+                Debug.LogError("Cannot find the \"Player\" script");
+        }
+    }
+    private void InitializeAnim()
+    {
+        if (anim == null)
+        {
+            Debug.LogWarning("The reference to the Animator component attached to this game object should be inputed manually");
+            anim = GetComponent<Animator>();
+            if (anim == null)
+                Debug.LogError("Cannot find the Animator component");
+        }
+    }
+    private void InitializeCam()
+    {
+        if (cam == null)
+        {
+            Debug.LogWarning("The reference to the Camera Handler component attached to the player game object game object should be inputed manually");
+            cam = player.GetComponentInChildren<CameraHandler>();
+            if (cam == null)
+                Debug.LogError("Cannot find the CameraHandler component");
+        }
     }
 }

@@ -43,11 +43,9 @@ public class Enemy1 : MonoBehaviour, IZappable
     [Tooltip("The string value of the tag held by the patrol points")]
     private static string patrolPoint = "Patrol point";
 
-    protected void Awake()
+    private void Awake()
     {
-        InitializeVariables(); //this is done in case the variables are not set in the inspector
-        InitializeStateMachine();
-        InitializePatrolPoints(); //this is done in case the variables are not set in the inspector
+        InitializeSequence(); //this is done in case the variables are not set in the inspector
     }
 
     private void Update()
@@ -114,58 +112,85 @@ public class Enemy1 : MonoBehaviour, IZappable
         Rigidbody RB = GetComponent<Rigidbody>();
         Destroy(RB);
     }
-    private void InitializeVariables()
+    private void InitializeSequence()
     {
         InitializePlayerGameObject();
         InitializePlayerScript();
         InitializeAnimator();
         InitializeNavAgent();
         InitializeTransforms();
+        InitializeStateMachine();
+        InitializePatrolPoints();
     }
     private void InitializePlayerGameObject()
     {
         if (player == null) //if the value has been inputed manually, use it. Else find the game object
+        {
             player = GameObject.FindGameObjectWithTag("Player");
+            Debug.LogWarning("Player game object value should be set inspector");
+        }
     }
     private void InitializePlayerScript()
     {
         if (player == null)
             InitializePlayerGameObject();
         if (playerStats == null) //if the value has been inputed manually, use it. Else find the component
+        {
             playerStats = player.GetComponent<AbilitySystem.Player>();
+            Debug.LogWarning("Player \"Player\" value should be set in the inspector");
+        }
     }
     private void InitializeAnimator()
     {
         if (anim == null) //if the value has been inputed manually, use it. Else find the component
+        {
             anim = GetComponent<Animator>();
+            Debug.LogWarning("Anim value should be set in the inspector");
+        }
     }
     private void InitializeNavAgent()
     {
         if (navAgent == null) //if the value has been inputed manually, use it. Else find the component
+        {
             navAgent = GetComponent<NavMeshAgent>();
+            Debug.LogWarning("Nav Agent value should be set in the inspector");
+        }
     }
     private void InitializeTransforms() //the transforms are set as variables instead because gameObject.transform performs a GetComponent() which is costly
     {
         if (this.transform == null) //if the value has been inputed manually, use it. Else find the component
+        {
             this.transform = gameObject.transform;
+            Debug.LogWarning("Transform value should be set in the inspector");
+        }
         if (player == null)
             InitializePlayerGameObject();
         if (playerTransform == null) //if the value has been inputed manually, use it. Else find the component
+        {
             playerTransform = player.transform;
+            Debug.LogWarning("Player Transform value should be set in the inspector");
+        }
         if (visionOrigin == null)
+        {
             visionOrigin = FindEyes();
+            Debug.LogWarning("Vision origin value should be set in the inspector");
+            if (visionOrigin == null)
+                Debug.LogError("Cannot locate vision origin");
+        }
     }
 
     private void InitializeStateMachine()
     {
-        stateMachine = new StateMachine(this, states);
+        if (stateMachine == null)
+            stateMachine = new StateMachine(this, states);
     }
 
     //this should never run and should be used only make sure there are patrol points tied to the enemy
     private void InitializePatrolPoints()
     {
-        if (points.Length == 0)
+        if (points.Length == 0 && isIdleEnemy != true)
         {
+            Debug.LogWarning("Patrol points value should be set in the inspector");
             Transform[] transforms;
             transforms = GetComponentsInChildren<Transform>();
             if (transforms != null)

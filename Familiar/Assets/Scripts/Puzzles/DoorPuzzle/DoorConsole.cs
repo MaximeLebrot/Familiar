@@ -2,12 +2,13 @@ using UnityEngine;
 
 public class DoorConsole : MonoBehaviour
 {
-    [Tooltip("Fill array with doors that this console should open. Handles opening in alternating order")]
-    [SerializeField] private GameObject[] doors;
+    [SerializeField, Tooltip("Fill array with doors that this console should open. Handles opening in alternating order")]
+    private GameObject[] doors;
 
-    [Tooltip("Fill array with doors that on activation should open simultaneously, should be left empty unless on last console")]
-    [SerializeField] private GameObject[] allDoors; //fill array if activation should open them all, else leave empty
+    [SerializeField, Tooltip("Fill array with doors that on activation should open simultaneously, should be left empty unless on last console")]
+    private GameObject[] allDoors; //fill array if activation should open them all, else leave empty
 
+    [Tooltip("Checks whether the player can use this console or not")]
     private bool canUseConsole;
 
     private void Start()
