@@ -3,20 +3,14 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player/PlayerMovingState")]
 public class PlayerMovingState : PlayerBaseState
 {
-    //private float gravity = 20.0f;
-    //private bool hasDoubleJumped = false;
-
     public override void Enter()
     {
         base.Enter();
-        owner.anim.SetBool("isWalking", true);
-        //Debug.Log("Entered Moving State");
-        //player.gravity = gravity;
+        owner.Anim.SetBool("isWalking", true);
     }
 
     public override void HandleUpdate()
     {
-        //Debug.Log("player moving");
         if (Input.GetButtonDown("Fire2") && PlayerHoldingState.CanGrabObject(player.GetComponent<Controller>()))
             stateMachine.Transition<PlayerHoldingState>();
 
@@ -25,21 +19,10 @@ public class PlayerMovingState : PlayerBaseState
 
         if (PlayerIdleState.IsPlayerIdle(player))
             stateMachine.Transition<PlayerIdleState>();
-
-        
-
-        //if (Input.GetButtonDown("Fire2"))
-           // stateMachine.Transition<PlayerHoldingState>();
     }
-
     public override void Exit()
     {
-
-    }
-
-    private void Moving()
-    {
-        
+        owner.Anim.SetBool("isWalking", false);
     }
 
     public static bool IsPlayerMoving(Controller controller)

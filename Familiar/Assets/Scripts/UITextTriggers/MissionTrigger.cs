@@ -10,12 +10,13 @@ public class MissionTrigger : MonoBehaviour
     public bool needKey;
     public float typeSpeed;
     // The mission texts animator?
-    //public Animator anim;
+    public Animator anim;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Player" && !needKey || other.tag == "Key" && needKey)
         {
+            anim.SetTrigger("Update");
             missionText.text = mission; // maybe add typing effect instead?
             //StartCoroutine(TypeText());
         }

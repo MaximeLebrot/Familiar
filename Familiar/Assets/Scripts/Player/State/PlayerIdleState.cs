@@ -8,9 +8,7 @@ public class PlayerIdleState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        //Debug.Log("Entered Idle State");
-        owner.anim.SetBool("isWalking", false);
-        player.isGrounded = true;
+        owner.PlayerController.IsGrounded = true; // ?
     }
 
     public override void HandleUpdate()
@@ -23,11 +21,6 @@ public class PlayerIdleState : PlayerBaseState
 
         if (player.InputVector.magnitude > 0 || player.Velocity.magnitude > 0.1)
             stateMachine.Transition<PlayerMovingState>();
-    }
-
-    private void Idle()
-    {
-
     }
 
     public static bool IsPlayerIdle(Controller controller)

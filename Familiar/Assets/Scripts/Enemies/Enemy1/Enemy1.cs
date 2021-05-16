@@ -4,7 +4,7 @@ using UnityEngine.AI; //Navmesh https://docs.unity3d.com/Manual/nav-HowTos.html
 public class Enemy1 : MonoBehaviour, IZappable
 {
     [Tooltip("The offset needed because of the position of the eyes of the enemy")]
-    private static Vector3 heightOffset = new Vector3(0, 10, 0);
+    private static Vector3 heightOffset = new Vector3(0, 11, 0);
     [SerializeField, Tooltip("The states that this enemy will use throughout their life")]
     private State[] states;
 
@@ -14,7 +14,7 @@ public class Enemy1 : MonoBehaviour, IZappable
     [SerializeField, Tooltip("The animator attached to this game object. Should be inputed manually")]
     private Animator anim;
     [SerializeField, Tooltip("The transform component attached to this game object. Should be inputed manually")]
-    new private Transform transform;
+    private new Transform transform;
     [SerializeField, Tooltip("The transform component attached to the \"Eyes\" game object. Should be inputed manually")]
     private Transform visionOrigin;
 
@@ -34,7 +34,8 @@ public class Enemy1 : MonoBehaviour, IZappable
     [Tooltip("The next destination in the points array of Transforms")] 
     private int destPoint = 0;
 
-    [Header("Idle"), SerializeField, Tooltip("Should be true if the enemy does not patrol between points and is of idle only type")]
+    [Header("Idle")]
+    [SerializeField, Tooltip("Should be true if the enemy does not patrol between points and is of idle only type")]
     private bool isIdleEnemy;
 
     [Tooltip("The statemachine attached to the enemy")]
@@ -42,11 +43,9 @@ public class Enemy1 : MonoBehaviour, IZappable
     [Tooltip("The string value of the tag held by the patrol points")]
     private static string patrolPoint = "Patrol point";
 
-    protected void Awake()
+    private void Awake()
     {
-        InitializeVariables(); //this is done in case the variables are not set in the inspector
-        InitializeStateMachine();
-        InitializePatrolPoints(); //this is done in case the variables are not set in the inspector
+        InitializeSequence(); //this is done in case the variables are not set in the inspector
     }
 
     private void Update()
@@ -113,58 +112,85 @@ public class Enemy1 : MonoBehaviour, IZappable
         Rigidbody RB = GetComponent<Rigidbody>();
         Destroy(RB);
     }
-    private void InitializeVariables()
+    private void InitializeSequence()
     {
         InitializePlayerGameObject();
         InitializePlayerScript();
         InitializeAnimator();
         InitializeNavAgent();
         InitializeTransforms();
+        InitializeStateMachine();
+        InitializePatrolPoints();
     }
     private void InitializePlayerGameObject()
     {
         if (player == null) //if the value has been inputed manually, use it. Else find the game object
+        {
             player = GameObject.FindGameObjectWithTag("Player");
+            Debug.LogWarning("Player game object value should be set inspector");
+        }
     }
     private void InitializePlayerScript()
     {
         if (player == null)
             InitializePlayerGameObject();
         if (playerStats == null) //if the value has been inputed manually, use it. Else find the component
+        {
             playerStats = player.GetComponent<AbilitySystem.Player>();
+            Debug.LogWarning("Player \"Player\" value should be set in the inspector");
+        }
     }
     private void InitializeAnimator()
     {
         if (anim == null) //if the value has been inputed manually, use it. Else find the component
+        {
             anim = GetComponent<Animator>();
+            Debug.LogWarning("Anim value should be set in the inspector");
+        }
     }
     private void InitializeNavAgent()
     {
         if (navAgent == null) //if the value has been inputed manually, use it. Else find the component
+        {
             navAgent = GetComponent<NavMeshAgent>();
+            Debug.LogWarning("Nav Agent value should be set in the inspector");
+        }
     }
     private void InitializeTransforms() //the transforms are set as variables instead because gameObject.transform performs a GetComponent() which is costly
     {
         if (this.transform == null) //if the value has been inputed manually, use it. Else find the component
+        {
             this.transform = gameObject.transform;
+            Debug.LogWarning("Transform value should be set in the inspector");
+        }
         if (player == null)
             InitializePlayerGameObject();
         if (playerTransform == null) //if the value has been inputed manually, use it. Else find the component
+        {
             playerTransform = player.transform;
+            Debug.LogWarning("Player Transform value should be set in the inspector");
+        }
         if (visionOrigin == null)
+        {
             visionOrigin = FindEyes();
+            Debug.LogWarning("Vision origin value should be set in the inspector");
+            if (visionOrigin == null)
+                Debug.LogError("Cannot locate vision origin");
+        }
     }
 
     private void InitializeStateMachine()
     {
-        stateMachine = new StateMachine(this, states);
+        if (stateMachine == null)
+            stateMachine = new StateMachine(this, states);
     }
 
     //this should never run and should be used only make sure there are patrol points tied to the enemy
     private void InitializePatrolPoints()
     {
-        if (points.Length == 0)
+        if (points.Length == 0 && isIdleEnemy != true)
         {
+            Debug.LogWarning("Patrol points value should be set in the inspector");
             Transform[] transforms;
             transforms = GetComponentsInChildren<Transform>();
             if (transforms != null)

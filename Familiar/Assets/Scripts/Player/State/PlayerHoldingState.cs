@@ -3,6 +3,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Player/PlayerHoldingState")]
 public class PlayerHoldingState : PlayerBaseState
 {
+    [Tooltip("A reference to the GrabObjectScript attached to the player game component")]
     private GrabObjectScript gos;
 
     public override void Enter()
@@ -13,17 +14,12 @@ public class PlayerHoldingState : PlayerBaseState
         if (gos == null)
             gos = player.GetComponent<GrabObjectScript>();
 
-        gos.ToggleGrab();
+        gos.GrabObject();
     }
 
     public override void HandleUpdate()
     {
         if (Input.GetButtonDown("Fire2"))
-        {
-            gos.ToggleGrab();
-        }
-
-        if (gos.CarriedObject == null)
         {
             if (PlayerIdleState.IsPlayerIdle(player))
                 stateMachine.Transition<PlayerIdleState>();
@@ -31,6 +27,12 @@ public class PlayerHoldingState : PlayerBaseState
             if (PlayerMovingState.IsPlayerMoving(player))
                 stateMachine.Transition<PlayerMovingState>();
         }
+    }
+
+    public override void Exit()
+    {
+        base.Exit();
+        gos.DropObject();
     }
 
     public static bool CanGrabObject(Controller controller)

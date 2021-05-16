@@ -47,7 +47,6 @@ public class Enemy1BaseState : State
     {
         directionToPlayer = owner.VecToPlayer.normalized;
         directionToPlayer.y = 0;
-        Debug.DrawRay(owner.Transform.position, directionToPlayer.normalized * 5f, Color.yellow, 1.0f);
         return Vector3.Dot(directionToPlayer.normalized, owner.Transform.forward) > visionAngle;
     }
 
@@ -56,7 +55,6 @@ public class Enemy1BaseState : State
         RaycastHit hit;
         if (Physics.Raycast(owner.VisionOrigin.position, owner.VecToPlayer - owner.HeightOffset, out hit, 50.0f))
         {
-            Debug.DrawRay(owner.VisionOrigin.position, owner.VecToPlayer - owner.HeightOffset, Color.black);
             if (hit.collider.gameObject.layer != CollisionLayer)
                 return true;
         }
@@ -79,7 +77,7 @@ public class Enemy1BaseState : State
 
     protected bool CheckIfPlayerAlive()
     {
-        if (owner.PlayerStats.ded != true)
+        if (owner.PlayerStats.Dead != true)
             return true;
         return false;
     }

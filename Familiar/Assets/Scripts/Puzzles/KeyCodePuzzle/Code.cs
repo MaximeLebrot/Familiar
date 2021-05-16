@@ -4,17 +4,33 @@ using UnityEngine;
 
 public class Code : MonoBehaviour
 {
-    [SerializeField] private GameObject door; // to open
-    public List<int> correctCode;
-    public int currentNumber;
+    [SerializeField, Tooltip("A reference to the door game object that should open upon puzzle completion. Should be inputed manually")] 
+    private GameObject door;
+    [Tooltip("A list of integers that represent the correct code in the correct order")]
+    private List<int> correctCode;
+    [Tooltip("The current number that needs to be inputed as part of the correct code")]
+    private int currentNumber;
 
-    private List<KeyCodeCombination> KeyCodeGenerated = new List<KeyCodeCombination>();
+    [SerializeField, Tooltip("A list of possible key codes. Should be inputed manually")]
+    private List<KeyCodeCombination> keyCodeGenerated = new List<KeyCodeCombination>();
+    [Tooltip("An iterator of the correct code")]
     private int correctCodeIterator;
 
     private void Awake()
     {
-        KeyCodeGenerated.AddRange(GetComponentsInChildren<KeyCodeCombination>());
-        GenerateCode();
+        InitializeSequence();
+
+        GenerateCorrectCode();
+    }
+
+    public void GenerateCorrectCode()
+    {
+        foreach (KeyCodeCombination key in keyCodeGenerated)
+        {
+            key.IsCorrect = RandomBool();
+            if (key.IsCorrect)
+                correctCode.Add(key.Number);
+        }
 
         if (correctCode.Count > 0)
             RandomizeOrder();
@@ -22,16 +38,6 @@ public class Code : MonoBehaviour
             correctCode[0] = 1;
 
         currentNumber = correctCode[0];
-    }
-
-    public void GenerateCode()
-    {
-        foreach (KeyCodeCombination key in KeyCodeGenerated)
-        {
-            key.isCorrect = RandomBool();
-            if (key.isCorrect)
-                correctCode.Add(key.number);
-        }
     }
 
     private bool RandomBool()
@@ -61,6 +67,7 @@ public class Code : MonoBehaviour
         //huller om buller, finns säker ett riktigt sätt att göra på
     }
 
+    //Called on by the buttons connected to the UI
     public void TryInput(int input)
     {
         TryingInput(input);
@@ -74,11 +81,11 @@ public class Code : MonoBehaviour
             Success();
             return;
         }
-        if (KeyCodeGenerated[temp].isCorrect && KeyCodeGenerated[temp].number == currentNumber)
+        if (keyCodeGenerated[temp].IsCorrect && keyCodeGenerated[temp].Number == currentNumber)
         {
-            KeyCodeGenerated[temp].setGreen();
+            keyCodeGenerated[temp].setGreen();
         }
-        if (!KeyCodeGenerated[temp].isCorrect || KeyCodeGenerated[temp].number != currentNumber)
+        if (!keyCodeGenerated[temp].IsCorrect || keyCodeGenerated[temp].Number != currentNumber)
         {
             ResetInput();
             return;
@@ -94,7 +101,7 @@ public class Code : MonoBehaviour
 
     private void ResetInput()
     {
-        foreach (KeyCodeCombination keycode in KeyCodeGenerated)
+        foreach (KeyCodeCombination keycode in keyCodeGenerated)
         {
             keycode.setRed();
         }
@@ -105,7 +112,7 @@ public class Code : MonoBehaviour
     private void Success()
     {
         door.SetActive(false);
-        foreach (KeyCodeCombination keycode in KeyCodeGenerated)
+        foreach (KeyCodeCombination keycode in keyCodeGenerated)
         {
             keycode.setGreen();
         }
@@ -115,7 +122,7 @@ public class Code : MonoBehaviour
     {
         RestartCurrentCodeCounter();
         yield return new WaitForSeconds(1.0f);
-        foreach (KeyCodeCombination keycode in KeyCodeGenerated)
+        foreach (KeyCodeCombination keycode in keyCodeGenerated)
         {
             keycode.ResetAll();
         }
@@ -132,5 +139,34 @@ public class Code : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f); //plåster för någon update ordning som skakar slottet
         RestartCurrentCodeCounter();
+    }
+
+    private void InitializeSequence()
+    {
+        InitializeKeyCodeList();
+        InitializeCorrectCode();
+    }
+    private void InitializeKeyCodeList()
+    {
+        if (keyCodeGenerated.Count == 0)
+        {
+            Debug.LogWarning("Key Code values should be inputed manually");
+            keyCodeGenerated.AddRange(GetComponentsInChildren<KeyCodeCombination>());
+            if (keyCodeGenerated == null)
+                Debug.LogError("Cannot find key codes. Are there children objects with key codes attached to them?");
+        }
+    }
+    private void InitializeCorrectCode()
+    {
+        correctCode = new List<int>();
+    }
+
+    public List<int> CorrectCode
+    {
+        get => correctCode;
+    }
+    public int CurrentNumber
+    {
+        get => currentNumber;
     }
 }

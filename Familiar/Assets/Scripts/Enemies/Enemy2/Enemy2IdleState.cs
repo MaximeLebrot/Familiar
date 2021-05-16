@@ -18,7 +18,7 @@ public class Enemy2IdleState : Enemy2BaseState
         if (owner.navAgent.remainingDistance < 0.15f && owner.anim.GetBool("spiderWalk") == true)
             SetWalkAnim(false);
         if (Vector3.Distance(owner.transform.position, owner.playerTransform.position) < aggroDistance 
-            && owner.playerStats.ded != true
+            && owner.playerStats.Dead != true
             && CheckForLOS())
             stateMachine.Transition<Enemy2AttackState>();
         if (owner.GetHealth() == 0)
