@@ -15,6 +15,8 @@ public class CodePanelActivate : MonoBehaviour
 
     [SerializeField, Tooltip("A reference to the UICoverPanel game object. Must be inputed manually")]
     private GameObject UICoverPanel;
+    [SerializeField, Tooltip("A reference to the UICoverPanel game object. Must be inputed manually")]
+    private GameObject ClearedUICoverPanel;
     [Tooltip("Checks whether the code panel is active or not")]
     private bool active;
     [Tooltip("Checks whether the puzzel is done or not")]
@@ -78,7 +80,7 @@ public class CodePanelActivate : MonoBehaviour
     public IEnumerator PuzzleComplete()
     {
         puzzleDone = true;
-        UICoverPanel.SetActive(true);
+        ClearedUICoverPanel.SetActive(true);
         yield return new WaitForSeconds(1.0f);
         HideCodePanel();
     }

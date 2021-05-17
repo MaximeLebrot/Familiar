@@ -5,6 +5,9 @@ using UnityEngine.UI;
 
 public class SetTextBlank : MonoBehaviour
 {
+    // Used to set all the UI texts to blank before the game starts.
+    // Maybe not necessary?
+
     public Text tutorialText;
     public Text missionText;
     public Text dialogueText;

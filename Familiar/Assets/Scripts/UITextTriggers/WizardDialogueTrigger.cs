@@ -5,10 +5,13 @@ using UnityEngine.UI;
 
 public class WizardDialogueTrigger : MonoBehaviour
 {
+    // The dialogue isn't permanent
+    // Gets nulled after a specified time, not affected by the player leaving the trigger.
     public GameObject dialogueParent;
     public Text dialogueText;
     public string dialogue;
     public float activeTime;
+    // need different dialogue triggers on the same place, use key bool.
     public bool needKey;
 
     private Animator anim;
@@ -21,11 +24,12 @@ public class WizardDialogueTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+        // Checks if its the player or key entering the trigger.
         if (other.tag == "Player" && !needKey || other.tag == "Key" && needKey)
         {
             // Sound effect here
             dialogueText.text = dialogue;
-            anim.SetBool("inUse", true);
+            anim.SetBool("inUse", true); // Animates in the panel
             // Start a coroutine to count down how long the text should be up.
             StartCoroutine(ActiveTime());
            
@@ -41,10 +45,11 @@ public class WizardDialogueTrigger : MonoBehaviour
         }
     }
 
+    // Waits for the specified time then closes the dialogue panel with animation and deactivates trigger.
     private IEnumerator ActiveTime()
     {
         yield return new WaitForSeconds(activeTime);
-        anim.SetBool("inUse", false);
+        anim.SetBool("inUse", false); // Animates out the panel
         // Maybe add something here so the text gets changed to "".
         gameObject.SetActive(false);
     }

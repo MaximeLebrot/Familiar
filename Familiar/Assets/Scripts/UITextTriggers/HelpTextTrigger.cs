@@ -3,6 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// The old class for setting all the texts in one script.
+// Not in use anymore!!!
+
 public class HelpTextTrigger : MonoBehaviour
 {
     // A class that sets an UI text via triggers who use this script.
