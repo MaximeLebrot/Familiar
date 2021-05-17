@@ -13,6 +13,8 @@ public class WizardDialogueTrigger : MonoBehaviour
     public float activeTime;
     // need different dialogue triggers on the same place, use key bool.
     public bool needKey;
+    public Image expressionPosition;
+    public Sprite expression;
 
     private Animator anim;
 
@@ -27,6 +29,7 @@ public class WizardDialogueTrigger : MonoBehaviour
         // Checks if its the player or key entering the trigger.
         if (other.tag == "Player" && !needKey || other.tag == "Key" && needKey)
         {
+            expressionPosition.sprite = expression;
             // Sound effect here
             dialogueText.text = dialogue;
             anim.SetBool("inUse", true); // Animates in the panel

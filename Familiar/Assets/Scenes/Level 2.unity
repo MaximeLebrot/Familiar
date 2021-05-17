@@ -1413,6 +1413,81 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!1 &54193976
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 54193977}
+  - component: {fileID: 54193979}
+  - component: {fileID: 54193978}
+  m_Layer: 5
+  m_Name: Expression_Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &54193977
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54193976}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2040497800}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 130, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &54193978
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54193976}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9020ffd5e767ffc4c8331bfee1a30bfd, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &54193979
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 54193976}
+  m_CullTransparentMesh: 1
 --- !u!1001 &57174692
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3670,6 +3745,8 @@ MonoBehaviour:
     the last door?
   activeTime: 10
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: a290b2a0971e2a642ae0edaf9c4fd6d6, type: 3}
 --- !u!1001 &122123175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5403,6 +5480,8 @@ MonoBehaviour:
     for what purpose.
   activeTime: 9
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: 83a307f844be3ea45bdbb4a8f0d0a3c9, type: 3}
 --- !u!1 &187499296
 GameObject:
   m_ObjectHideFlags: 0
@@ -11323,6 +11402,8 @@ MonoBehaviour:
   dialogue: That must be the code! Let's try it on the other code panel.
   activeTime: 8
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: a290b2a0971e2a642ae0edaf9c4fd6d6, type: 3}
 --- !u!65 &527740179
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -15965,7 +16046,7 @@ GameObject:
   - component: {fileID: 700499923}
   - component: {fileID: 700499924}
   m_Layer: 0
-  m_Name: DialogueTriggers_Parent
+  m_Name: UITextTriggers_Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -18192,6 +18273,8 @@ MonoBehaviour:
   dialogue: That's the key we need! Move it to the door.
   activeTime: 6
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: a290b2a0971e2a642ae0edaf9c4fd6d6, type: 3}
 --- !u!65 &765688451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -20019,6 +20102,8 @@ MonoBehaviour:
     you some of my powers, now get us out of this Castle!
   activeTime: 10
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: fd273747a00185b41859cd32502a1c2b, type: 3}
 --- !u!1001 &800489891
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27181,6 +27266,8 @@ MonoBehaviour:
     of this game it probably won't be.
   activeTime: 8
   needKey: 1
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: fd273747a00185b41859cd32502a1c2b, type: 3}
 --- !u!65 &1123366117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -28889,6 +28976,8 @@ MonoBehaviour:
     Let's go look for that and come back later.
   activeTime: 8
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: 83a307f844be3ea45bdbb4a8f0d0a3c9, type: 3}
 --- !u!1 &1187091244
 GameObject:
   m_ObjectHideFlags: 0
@@ -32318,6 +32407,8 @@ MonoBehaviour:
   dialogue: This is a bit trickier.... one box but three plates....
   activeTime: 5
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: 83a307f844be3ea45bdbb4a8f0d0a3c9, type: 3}
 --- !u!1001 &1245737715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -33253,7 +33344,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1277575948}
   m_Layer: 0
-  m_Name: WizardComments_Parent
+  m_Name: Dialogue_Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -38031,7 +38122,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 550, y: 0}
+  m_AnchoredPosition: {x: 655, y: 0}
   m_SizeDelta: {x: 650, y: 120}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!114 &1449507259
@@ -40612,6 +40703,8 @@ MonoBehaviour:
   dialogue: I'VE HAD IT WITH THESE MOTHERF*CKING SPIDER IN THIS MOTHERF*CKING CASTLE
   activeTime: 8
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: fd273747a00185b41859cd32502a1c2b, type: 3}
 --- !u!1 &1517924343
 GameObject:
   m_ObjectHideFlags: 0
@@ -43048,6 +43141,8 @@ MonoBehaviour:
   dialogue: This egg looking thing seems important... I'll bring it along.
   activeTime: 7
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: 83a307f844be3ea45bdbb4a8f0d0a3c9, type: 3}
 --- !u!4 &1651072940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6808287335540403863, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
@@ -45768,6 +45863,8 @@ MonoBehaviour:
     looking things are important.
   activeTime: 10
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: 83a307f844be3ea45bdbb4a8f0d0a3c9, type: 3}
 --- !u!65 &1767497343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -46071,6 +46168,8 @@ MonoBehaviour:
   dialogue: Oh I know this! I've seen this before when I played Portal.
   activeTime: 6
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: 9b4b39dbcd233394992272ca1ddc860e, type: 3}
 --- !u!1 &1772635238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1365ab675fbc827498daff1efaee0195, type: 3}
@@ -47564,6 +47663,8 @@ MonoBehaviour:
     somewhere...
   activeTime: 8
   needKey: 0
+  expressionPosition: {fileID: 54193978}
+  expression: {fileID: 21300000, guid: 83a307f844be3ea45bdbb4a8f0d0a3c9, type: 3}
 --- !u!65 &1872745394
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -52515,7 +52616,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 54193977}
   m_Father: {fileID: 1449507258}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -52537,7 +52639,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19847193, g: 0.130162, b: 0.23584908, a: 1}
+  m_Color: {r: 0.19847193, g: 0.130162, b: 0.23584908, a: 0.9647059}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1

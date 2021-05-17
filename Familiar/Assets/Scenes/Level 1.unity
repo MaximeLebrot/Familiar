@@ -2802,6 +2802,8 @@ MonoBehaviour:
   dialogue: They really aren't very good guards huh... that is very helpful for us.
   activeTime: 5
   needKey: 0
+  expressionPosition: {fileID: 1504842385}
+  expression: {fileID: 21300000, guid: 9020ffd5e767ffc4c8331bfee1a30bfd, type: 3}
 --- !u!54 &285502728
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -3450,6 +3452,8 @@ MonoBehaviour:
   dialogue: That's it! That's the key! Bring it here now, carefully!
   activeTime: 5
   needKey: 0
+  expressionPosition: {fileID: 1504842385}
+  expression: {fileID: 21300000, guid: a290b2a0971e2a642ae0edaf9c4fd6d6, type: 3}
 --- !u!54 &383929158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -8876,8 +8880,8 @@ RectTransform:
   m_Children:
   - {fileID: 1991818521}
   - {fileID: 382926845}
-  - {fileID: 1902547969}
   - {fileID: 1764345995}
+  - {fileID: 1902547969}
   - {fileID: 216671453}
   m_Father: {fileID: 0}
   m_RootOrder: 20
@@ -10124,7 +10128,7 @@ GameObject:
   - component: {fileID: 1051579268}
   - component: {fileID: 1051579269}
   m_Layer: 0
-  m_Name: TextTriggers_Parent
+  m_Name: UITextTriggers_Parent
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -13068,10 +13072,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogueParent: {fileID: 1764345994}
   dialogueText: {fileID: 453392152}
-  dialogue: You got the key! I knew I could trust you. Now let's get out of here,
-    open that locked door over there so we can finally get out of here!
+  dialogue: YES!!! You got the key here safely. Nice work! Now open that Big Gate
+    with the Key.
   activeTime: 10
   needKey: 1
+  expressionPosition: {fileID: 1504842385}
+  expression: {fileID: 21300000, guid: a290b2a0971e2a642ae0edaf9c4fd6d6, type: 3}
 --- !u!1001 &1364475892
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -14009,6 +14015,81 @@ MonoBehaviour:
   needKey: 0
   typeSpeed: 0.025
   anim: {fileID: 1902547973}
+--- !u!1 &1504842383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1504842384}
+  - component: {fileID: 1504842386}
+  - component: {fileID: 1504842385}
+  m_Layer: 5
+  m_Name: Expression_Image
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1504842384
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504842383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1821427571}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 130, y: 120}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &1504842385
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504842383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Sprite: {fileID: 21300000, guid: 9020ffd5e767ffc4c8331bfee1a30bfd, type: 3}
+  m_Type: 0
+  m_PreserveAspect: 1
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+  m_UseSpriteMesh: 0
+  m_PixelsPerUnitMultiplier: 1
+--- !u!222 &1504842386
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1504842383}
+  m_CullTransparentMesh: 1
 --- !u!1 &1507944171
 GameObject:
   m_ObjectHideFlags: 0
@@ -16331,6 +16412,8 @@ MonoBehaviour:
     the prison bars so go find the Key! And make it hasty.
   activeTime: 10
   needKey: 0
+  expressionPosition: {fileID: 1504842385}
+  expression: {fileID: 21300000, guid: 9020ffd5e767ffc4c8331bfee1a30bfd, type: 3}
 --- !u!1 &1757191201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543216753092369487, guid: ca014879105e38940824f2aeca60623c, type: 3}
@@ -16409,11 +16492,11 @@ RectTransform:
   - {fileID: 2068831919}
   - {fileID: 453392151}
   m_Father: {fileID: 876344419}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
-  m_AnchoredPosition: {x: 550, y: 0}
+  m_AnchoredPosition: {x: 655, y: 0}
   m_SizeDelta: {x: 650, y: 120}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!95 &1764345996
@@ -17078,7 +17161,7 @@ GameObject:
   - component: {fileID: 1821427573}
   - component: {fileID: 1821427572}
   m_Layer: 5
-  m_Name: Dialogue_Image
+  m_Name: Portraite_Image
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -17094,7 +17177,8 @@ RectTransform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1504842384}
   m_Father: {fileID: 1764345995}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -17116,7 +17200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.19607843, g: 0.13333334, b: 0.23921569, a: 1}
+  m_Color: {r: 0.19607843, g: 0.13333334, b: 0.23921569, a: 0.9647059}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -17288,6 +17372,8 @@ MonoBehaviour:
     sneak past him by getting ontop of that desk.
   activeTime: 8
   needKey: 0
+  expressionPosition: {fileID: 1504842385}
+  expression: {fileID: 21300000, guid: 83a307f844be3ea45bdbb4a8f0d0a3c9, type: 3}
 --- !u!54 &1831595465
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -18544,7 +18630,7 @@ RectTransform:
   - {fileID: 1339068768}
   - {fileID: 656618146}
   m_Father: {fileID: 876344419}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -20205,6 +20291,8 @@ MonoBehaviour:
     catch you I'm toast!
   activeTime: 8
   needKey: 0
+  expressionPosition: {fileID: 1504842385}
+  expression: {fileID: 21300000, guid: b9729e57eb8e811429145b7288f66a77, type: 3}
 --- !u!54 &2060259950
 Rigidbody:
   m_ObjectHideFlags: 0
