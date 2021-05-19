@@ -18,47 +18,37 @@ public class MoonstoneUI : MonoBehaviour
     // The moonstone texts UI.
     public Text moonstoneText;
 
-    // Probably needs an animator...
-    public GameObject moonstoneParent;
+    public GameObject moonstoneParent; // Used to find the animator component.
     private Animator anim;
 
-    // Start is called before the first frame update
     void Start()
     {
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        //moonstoneParent.SetActive(false); // Change for animation later
         anim = moonstoneParent.GetComponent<Animator>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        if (player.StoneCounter == 1 && !activated)
+        // Activates the text once the player picked up the first moonstone.
+        if (player.StoneCounter == 1 && !activated) // Bool makes sure this is only done once
         {
-            //moonstoneParent.SetActive(true); // Change for animation later
             activated = true;
             moonCounter = player.StoneCounter;
-            moonstoneText.text = " Collected a Moonstone";
+            moonstoneText.text = " Collected a Moonstone"; // Special text for the first moonstone.
             anim.SetTrigger("Activated"); // Triggers animation so UI is visable.
         }
 
         // Updates the text.
         if (moonCounter != player.StoneCounter)
         {
-            if (moonCounter == 1)
-            {
-                // Add special animation for first one? To hide the big text change.
+            if (moonCounter == 1) // Special animation for the first update since more text needs to be changed.
                 anim.SetTrigger("FirstUpdate");
-            }
-            else
-            {
-                anim.SetTrigger("Update"); //Triggers update animation
-            }
+            else // Same animation for the rest
+                anim.SetTrigger("Update");
             moonCounter = player.StoneCounter;
-            moonstoneText.text = " " + moonCounter + " / 6 Moonstones collected";
+            moonstoneText.text = " " + moonCounter + " / 6 Moonstones collected"; // Be aware of the 6 moonstones.
         }
-
     }
 }
