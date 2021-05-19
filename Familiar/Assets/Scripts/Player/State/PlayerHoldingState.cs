@@ -19,7 +19,7 @@ public class PlayerHoldingState : PlayerBaseState
 
     public override void HandleUpdate()
     {
-        if (Input.GetButtonDown("Fire2"))
+        if (Input.GetButtonDown("Fire2") || gos.CarriedObject == null)
         {
             if (PlayerIdleState.IsPlayerIdle(player))
                 stateMachine.Transition<PlayerIdleState>();
