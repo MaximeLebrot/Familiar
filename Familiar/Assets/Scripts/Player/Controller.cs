@@ -36,17 +36,17 @@ public class Controller : MonoBehaviour
     [Header("Physics")]
     [SerializeField, Range(0.0f, 1.0f), Tooltip("The static friction coefficient. Should never be below the kinetic one")]
     private float staticFrictionCoefficient;
-    [SerializeField, Range(0.0f, 1.0f), Tooltip("The kinetic friction coefficient. Should never be below the static one")]
+    [SerializeField, Range(0.0f, 1.0f), Tooltip("The kinetic friction coefficient. Should never be above the static one")]
     private float kineticFrictionCoefficient;
-    [SerializeField, Range(0.0f, 1.0f), Tooltip("The air resistance, the lower the resistance, the slower the player moves")]
+    [SerializeField, Range(0.0f, 1.0f), Tooltip("The air resistance; the lower the resistance, the slower the player moves")]
     private float airResistance;
-    [SerializeField, Range(0.0f, 0.1f), Tooltip("The thickness of the skin of the player")]
+    [SerializeField, Range(0.0f, 0.1f), Tooltip("The collision margin between the player collider and other colliders; implicit in most calculations -- change only if necessary")]
     private float skinWidth;
     [SerializeField, Range(0.0f, 1.0f), Tooltip("Project on plane uses a lerp between 0 = Vector3.up and 1 = hit.normal and uses the slope angle factor as the t value")]
     private float slopeAngleFactor;
     [SerializeField, Range(0.0f, 1.0f), Tooltip("The distance checked below the player for the ground check")]
     private float groundCheckDistance = 0.1f;
-    [Tooltip("¨The magnitude of the input vector")]
+    [Tooltip("The magnitude of the input vector")]
     private float inputMagnitude;
 
     [Header("Collision")]
@@ -58,9 +58,9 @@ public class Controller : MonoBehaviour
     private Vector3 input;
 
     [Header("References")]
-    [SerializeField, Tooltip("The child camera component of the player. Should be inputed manually")]
+    [SerializeField, Tooltip("The child camera component of the player. Should be inputted manually")]
     private CameraHandler cam;
-    [SerializeField, Tooltip("The collider component of the player. Should be inputed manually")]
+    [SerializeField, Tooltip("The collider component of the player. Should be inputted manually")]
     private CapsuleCollider col;
     [Tooltip("This bool controls whether the players transform updates")]
     private bool stopController;
@@ -262,20 +262,24 @@ public class Controller : MonoBehaviour
         InitializeCamera();
         InitilizeTransform();
     }
+
     private void InitializeJumpVector()
     {
         jumpVector = new Vector3(0.0f, jumpHeight, 0.0f);
     }
+
     private void InitializeCollider()
     {
         if (col == null)
             col = GetComponent<CapsuleCollider>();
     }
+
     private void InitializeCamera()
     {
         if (cam == null)
             cam = GetComponentInChildren<CameraHandler>();
     }
+
     private void InitilizeTransform()
     {
         if (transform == null)
@@ -287,23 +291,28 @@ public class Controller : MonoBehaviour
         get => isGrounded;
         set => isGrounded = value;
     }
+
     public bool IsJumping
     {
         get => isJumping;
         set => isJumping = value;
     }
+
     public Transform Transform
     {
         get => transform;
     }
+
     public Vector3 Velocity
     {
         get => velocity;
     }
+
     public Vector3 InputVector
     {
         get => input;
     }
+
     public CameraHandler Camera
     {
         get
@@ -311,6 +320,7 @@ public class Controller : MonoBehaviour
             return cam;
         }
     }
+
     public Vector3 HorizontalVelocity
     {
         get
@@ -318,15 +328,18 @@ public class Controller : MonoBehaviour
             return new Vector3(velocity.x, 0.0f, velocity.z);
         }
     }
+
     public LayerMask CollisionMask
     {
         get => collisionMask;
     }
+
     public bool StopController
     {
         get => stopController;
         set => stopController = value;
     }
+
     public Vector3 HorizontalInput
     {
         get
@@ -334,6 +347,7 @@ public class Controller : MonoBehaviour
             return new Vector3(input.x, 0.0f, input.z);
         }
     }
+
     public float GroundCheckMargin
     {
         get
@@ -341,6 +355,7 @@ public class Controller : MonoBehaviour
             return skinWidth + groundCheckDistance;
         }
     }
+
     public float AdjustedStaticFrictionCoefficient
     {
         get
@@ -351,6 +366,7 @@ public class Controller : MonoBehaviour
                 return staticFrictionCoefficient;
         }
     }
+
     //public bool IsGrounded
     //{
     //    get
@@ -372,6 +388,7 @@ public class Controller : MonoBehaviour
             return lowJumpCoefficient;
         }
     }
+
     public float Gravity
     {
         get

@@ -18,7 +18,7 @@ public class PressurePlateOneOrBoth : MonoBehaviour
     {
         foreach (PressurePlate pressurePlate in pressurePlates)
         {
-            if (pressurePlate.Active)
+            if (pressurePlate.IsActive)
             {
                 animator.SetBool("open", true); //vild kod
                 //door.SetActive(false);

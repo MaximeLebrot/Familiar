@@ -23,9 +23,14 @@ public class OutOfBoundsScript : MonoBehaviour
         if (collision.gameObject.CompareTag(gameObject.tag))
             return;
 
-        if (collision.gameObject.CompareTag("Moveable"))
+        IMoveable im = collision.gameObject.GetComponent<IMoveable>();
+
+        if (im != null || collision.gameObject.CompareTag("Moveable"))
             gos.DropObject();
 
-        collision.gameObject.transform.position = resetPoint.position;
+        if (im != null && im.ResetPoint != null)
+            collision.gameObject.transform.position = im.ResetPoint;
+        else
+            collision.gameObject.transform.position = resetPoint.position;
     }
 }

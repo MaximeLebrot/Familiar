@@ -3,7 +3,7 @@ using UnityEngine;
 public class PressurePlate : MonoBehaviour
 {
     [Tooltip("Checks whether this pressure plate is active or not")]
-    private bool active;
+    private bool isActive;
 
     [SerializeField, Tooltip("A reference to the parent script of this pressure plate. Should be inputed manually")]
     private PressurePlateOneOrBoth parent;
@@ -20,7 +20,7 @@ public class PressurePlate : MonoBehaviour
         if (other.gameObject.CompareTag("Moveable"))
         {
             anim.SetTrigger("Click"); 
-            active = true;
+            isActive = true;
             parent.UpdatePuzzle();
         }
     }
@@ -29,7 +29,7 @@ public class PressurePlate : MonoBehaviour
         if (other.gameObject.CompareTag("Moveable"))
         {
             anim.SetTrigger("Unclick");
-            active = false;
+            isActive = false;
             parent.UpdatePuzzle();
         }
     }
@@ -46,6 +46,7 @@ public class PressurePlate : MonoBehaviour
         {
             anim = GetComponent<Animator>();
             Debug.LogWarning("Anim value should be set in the inspector");
+
             if (anim == null)
                 Debug.LogError("Could not find animator");
         }
@@ -57,13 +58,14 @@ public class PressurePlate : MonoBehaviour
         {
             parent = GetComponentInParent<PressurePlateOneOrBoth>();
             Debug.LogWarning("Pressure plate parent value should be set in the inspector");
+
             if (parent == null)
                 Debug.LogError("Could not find pressure plate parent");
         }
     }
 
-    public bool Active
+    public bool IsActive
     {
-        get => active;
+        get => isActive;
     }
 }

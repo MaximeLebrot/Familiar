@@ -12,7 +12,7 @@ public class SwitchLevel : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Key")
+        if (other.CompareTag("Key"))
         {
             if (!prisonDoor.activeInHierarchy)
                 StartCoroutine(Fading());

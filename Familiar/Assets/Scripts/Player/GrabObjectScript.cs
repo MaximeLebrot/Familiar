@@ -57,7 +57,7 @@ public class GrabObjectScript : MonoBehaviour
 
         for (int i = 0; i < hitArray.Length; i++)
         {
-            if (hitArray[i].collider.CompareTag("Moveable") || hitArray[i].collider.CompareTag("Key")) //Emils dumma ändringar
+            if (hitArray[i].collider.CompareTag("Moveable") || hitArray[i].collider.CompareTag("Key") || hitArray[i].collider.GetComponent<IMoveable>() != null) //Emils dumma ändringar
             {
                 hitIndex = i;
                 break;
@@ -72,6 +72,12 @@ public class GrabObjectScript : MonoBehaviour
         carriedObject.transform.localPosition = heldObjectPoint.localPosition;
         carriedObject.transform.rotation = carriedObject.transform.parent.rotation;
         carriedObject.GetComponent<Rigidbody>().useGravity = false;
+        try
+        {
+            carriedObject.GetComponent<IMoveable>().Carrier = gameObject;
+        }
+        catch (Exception) { }
+
         //carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
     }
 

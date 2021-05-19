@@ -20,7 +20,7 @@ public class PressurePlatePuzzle : MonoBehaviour
     {
         foreach (MultiplePressurePlates pressurePlate in childPressurePlates)
         {
-            if (pressurePlate.Active)
+            if (pressurePlate.IsActive)
                 shouldOpen = true;
             else
             {

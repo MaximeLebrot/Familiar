@@ -52,7 +52,7 @@ public class PlayerHoldingState : PlayerBaseState
 
         foreach (RaycastHit rh in hitArray)
         {
-            if (rh.collider.gameObject.CompareTag("Moveable") || rh.collider.gameObject.CompareTag("Key")) //Emils dumma ändringar
+            if (rh.collider.gameObject.TryGetComponent(out IMoveable _) || rh.collider.gameObject.CompareTag("Moveable") || rh.collider.gameObject.CompareTag("Key")) //Emils dumma ändringar
                 return true;
         }
 

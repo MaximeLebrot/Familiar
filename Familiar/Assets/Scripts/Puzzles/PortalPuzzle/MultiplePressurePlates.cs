@@ -3,7 +3,7 @@ using UnityEngine;
 public class MultiplePressurePlates : MonoBehaviour
 {
     [Tooltip("The game object that should open in case of puzzle completion")]
-    private bool active;
+    private bool isActive;
     [SerializeField, Tooltip("A reference to the parent (puzzle) tied this pressure plate")]
     private PressurePlatePuzzle parent;
     [SerializeField, Tooltip("The material swapped to after completion")]
@@ -23,19 +23,21 @@ public class MultiplePressurePlates : MonoBehaviour
         if (other.gameObject.CompareTag("Moveable"))
         {
             anim.SetTrigger("Click");
-            active = true;
+            isActive = true;
             parent.UpdatePuzzle();
         }
     }
+
     private void OnTriggerExit(Collider other)
     {
         if (other.gameObject.CompareTag("Moveable"))
         {
             anim.SetTrigger("Unclick");
-            active = false;
+            isActive = false;
             parent.UpdatePuzzle();
         }
     }
+
     private void InitializeSequence()
     {
         InitializeChildren();
@@ -43,6 +45,7 @@ public class MultiplePressurePlates : MonoBehaviour
         InitializeMeshRenderer();
         InitializeNewMaterial();
     }
+
     private void InitializeNewMaterial()
     {
         if (newMat == null)
@@ -52,43 +55,51 @@ public class MultiplePressurePlates : MonoBehaviour
             //newMat = Material.
         }
     }
+
     private void InitializeMeshRenderer()
     {
         if (meshRenderer == null)
         {
             Debug.LogWarning("Mesh renderer value should be set in the inspector");
             meshRenderer = GetComponent<MeshRenderer>();
+
             if (meshRenderer == null)
                 Debug.LogError("Cannot find mesh renderer"); //skulle kunna ge mer info -> typ att jag använder GetComponent
         }
     }
+
     private void InitializeAnim()
     {
         if (anim == null)
         {
             Debug.LogWarning("Anim value should be set in the inspector");
             anim = gameObject.GetComponent<Animator>();
+
             if (anim == null)
                 Debug.LogError("Cannot find anim"); //skulle kunna ge mer info -> typ att jag använder GetComponent
         }
     }
+
     private void InitializeChildren()
     {
         if (parent == null)
         {
             parent = GetComponentInParent<PressurePlatePuzzle>();
             Debug.LogWarning("Parent of pressure plate value should be set in the inspector");
+
             if (parent == null)
                 Debug.LogError("Cannot find parent of pressure plates"); //skulle kunna ge mer info -> typ att jag använder GetComponentInParent
         }
     }
+
     public void ChangeMaterial()
     {
         //audio feedback
         meshRenderer.material = newMat;
     }
-    public bool Active
+
+    public bool IsActive
     {
-        get => active;
+        get => isActive;
     }
 }

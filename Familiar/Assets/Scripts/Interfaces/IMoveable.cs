@@ -4,9 +4,13 @@ using UnityEngine;
 
 public interface IMoveable
 {
-    public abstract bool IsCarried
+    /// <summary>
+    /// Due to Unity .NET limitations, no default implementation can be used. Should always be implemented as 
+    /// <code>get => Carrier != null</code>
+    /// </summary>
+    public bool IsCarried
     {
-        get; set;
+        get;
     }
 
     public GameObject Carrier
