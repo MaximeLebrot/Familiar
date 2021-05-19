@@ -32,7 +32,5 @@ public class OutOfBoundsScript : MonoBehaviour
             collision.gameObject.transform.position = im.ResetPoint;
         else
             collision.gameObject.transform.position = resetPoint.position;
-
-        Debug.Log("Moved an out of bounds object");
     }
 }
