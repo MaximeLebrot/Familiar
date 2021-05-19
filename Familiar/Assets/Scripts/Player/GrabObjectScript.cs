@@ -9,10 +9,8 @@ public class GrabObjectScript : MonoBehaviour
 
     private Controller controller;
 
-    [SerializeField]
-    private GameObject carriedObject;
-    [SerializeField]
-    private Transform heldObjectPoint;
+    [SerializeField] private GameObject carriedObject;
+    [SerializeField] private Transform heldObjectPoint;
 
     public static float GrabRange
     {
@@ -40,11 +38,6 @@ public class GrabObjectScript : MonoBehaviour
         if (heldObjectPoint == null)
             heldObjectPoint = GameObject.FindGameObjectWithTag("HOLP").transform;
         controller = GetComponent<Controller>();
-    }
-
-    void Update()
-    {
-
     }
 
     public void ToggleGrab()
@@ -78,6 +71,7 @@ public class GrabObjectScript : MonoBehaviour
         carriedObject.transform.parent = transform;
         carriedObject.transform.localPosition = heldObjectPoint.localPosition;
         carriedObject.transform.rotation = carriedObject.transform.parent.rotation;
+        carriedObject.GetComponent<Rigidbody>().useGravity = false;
         //carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePosition;
     }
 
@@ -98,6 +92,7 @@ public class GrabObjectScript : MonoBehaviour
     {
         try
         {
+            carriedObject.GetComponent<Rigidbody>().useGravity = true;
             carriedObject.transform.parent = null;
             carriedObject = null;
             //carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
