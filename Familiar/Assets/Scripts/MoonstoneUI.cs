@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Script for updating the Moonstone UI in the final room(s) in level 2.
 public class MoonstoneUI : MonoBehaviour
 {
     // Borrowed from the script Fin
@@ -19,6 +20,7 @@ public class MoonstoneUI : MonoBehaviour
 
     // Probably needs an animator...
     public GameObject moonstoneParent;
+    private Animator anim;
 
     // Start is called before the first frame update
     void Start()
@@ -26,7 +28,8 @@ public class MoonstoneUI : MonoBehaviour
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        moonstoneParent.SetActive(false); // Change for animation later
+        //moonstoneParent.SetActive(false); // Change for animation later
+        anim = moonstoneParent.GetComponent<Animator>();
     }
 
     // Update is called once per frame
@@ -34,20 +37,27 @@ public class MoonstoneUI : MonoBehaviour
     {
         if (player.StoneCounter == 1 && !activated)
         {
-            moonstoneParent.SetActive(true); // Change for animation later
+            //moonstoneParent.SetActive(true); // Change for animation later
             activated = true;
             moonCounter = player.StoneCounter;
             moonstoneText.text = " Collected a Moonstone";
-            // Activate/ animate the UI text so its visable.
-            // Update the text ?
+            anim.SetTrigger("Activated"); // Triggers animation so UI is visable.
         }
 
         // Updates the text.
         if (moonCounter != player.StoneCounter)
         {
+            if (moonCounter == 1)
+            {
+                // Add special animation for first one? To hide the big text change.
+                anim.SetTrigger("FirstUpdate");
+            }
+            else
+            {
+                anim.SetTrigger("Update"); //Triggers update animation
+            }
             moonCounter = player.StoneCounter;
             moonstoneText.text = " " + moonCounter + " / 6 Moonstones collected";
-            // Add animation?
         }
 
     }
