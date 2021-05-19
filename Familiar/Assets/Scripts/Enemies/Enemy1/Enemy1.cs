@@ -17,6 +17,9 @@ public class Enemy1 : MonoBehaviour, IZappable
     private new Transform transform;
     [SerializeField, Tooltip("The transform component attached to the \"Eyes\" game object. Should be inputed manually")]
     private Transform visionOrigin;
+    [SerializeField, Tooltip("The Light component attached to this game object. Should be inputed manually")]
+    private new Light light;
+
 
     [Header("Player")]
     [SerializeField, Tooltip("Reference to the player game object. Should be inputed manually")]
@@ -119,6 +122,7 @@ public class Enemy1 : MonoBehaviour, IZappable
         InitializeAnimator();
         InitializeNavAgent();
         InitializeTransforms();
+        InitializeLight();
         InitializeStateMachine();
         InitializePatrolPoints();
     }
@@ -176,6 +180,17 @@ public class Enemy1 : MonoBehaviour, IZappable
             Debug.LogWarning("Vision origin value should be set in the inspector");
             if (visionOrigin == null)
                 Debug.LogError("Cannot locate vision origin");
+        }
+    }
+
+    private void InitializeLight()
+    {
+        if (light == null)
+        {
+            Debug.LogWarning("Light component value should be set in the inspector");
+            light = GetComponentInChildren<Light>();
+            if (light == null)
+                Debug.LogError("Cannot find Light component. \"GetComponentInChildren\" used");
         }
     }
 
@@ -244,6 +259,10 @@ public class Enemy1 : MonoBehaviour, IZappable
         get => points;
     }
 
+    public Light Light
+    {
+        get => light;
+    }
     public int DestPoint
     {
         get => destPoint;

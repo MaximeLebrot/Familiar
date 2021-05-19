@@ -8,7 +8,8 @@ public class Enemy1AttackState : Enemy1BaseState
     [SerializeField] private float chaseSpeed;
 
     //timer och time som reguleras utav en difficulty level? hur länge man stannar i ljuset
-
+    private float timer = 1.0f;
+    private float time;
     public override void Enter()
     {
         base.Enter();
@@ -17,10 +18,18 @@ public class Enemy1AttackState : Enemy1BaseState
 
     public override void HandleUpdate()
     {
-        if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) > aggroLossDistance 
-            || CheckIfPlayerAlive() == false)
+        if (CheckForDistance(aggroLossDistance, true)
+            && CheckIfPlayerInFront() 
+            && CheckIfPlayerAlive())
+            AggroFeedback();
+
+        if (CheckForDistance(aggroLossDistance, false)
+            || CheckIfPlayerAlive() != true)
+        {
+            ResetAggro();
             stateMachine.Transition<Enemy1PatrolState>();
-        else if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < grabDistance)
+        }
+        else if (CheckForDistance(grabDistance, true))
         {
             //feedback
             //start timer?
@@ -30,11 +39,31 @@ public class Enemy1AttackState : Enemy1BaseState
         }
         else
         {
+            //AggroTimer();
             GrabPlayer();
             //ChasePlayer();
         }
     }
+    private void ResetAggro()
+    {
+        timer = 1.0f;
+        //light.color...
+    }
+    private void AggroFeedback()
+    {
+        if (timer <= 0)
+        {
+            timer = time;
+            GrabPlayer(); //kanske annan anim? kasta nåt? springa mot spelaren?
+        }
+        else
+        {
+            timer -= Time.deltaTime;
 
+            //owner.Light.color.r = (1 - timer);
+            //  Koppla till animation! som F2B
+        }
+    }
     private void ChasePlayer()
     {
         //owner.transform.LookAt(owner.vecToPlayer);

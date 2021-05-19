@@ -70,9 +70,13 @@ public class Enemy1BaseState : State
         //return false;
     }
 
-    protected bool CheckForDistance()
+    //Smaller should be true if the distance to the player is smaller than the distance given 
+    protected bool CheckForDistance(float distance, bool smaller)
     {
-        return (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < spottingDistance);
+        if (smaller == true)
+            return (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < distance);
+        else
+            return (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) > distance);
     }
 
     protected bool CheckIfPlayerAlive()
