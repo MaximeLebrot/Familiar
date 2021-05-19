@@ -5312,7 +5312,7 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 200
+  m_Intensity: 290
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
   m_InnerSpotPercent: 30
@@ -5425,8 +5425,8 @@ Light:
   serializedVersion: 10
   m_Type: 0
   m_Shape: 0
-  m_Color: {r: 1, g: 0.827451, b: 0, a: 1}
-  m_Intensity: 154.0358
+  m_Color: {r: 1, g: 1, b: 0, a: 1}
+  m_Intensity: 223.35191
   m_Range: 10
   m_SpotAngle: 75
   m_InnerSpotAngle: 6
@@ -17940,6 +17940,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 285158621}
     m_Modifications:
+    - target: {fileID: 124249133523557573, guid: ca014879105e38940824f2aeca60623c, type: 3}
+      propertyPath: light
+      value: 
+      objectReference: {fileID: 500050457}
     - target: {fileID: 124249133523557573, guid: ca014879105e38940824f2aeca60623c, type: 3}
       propertyPath: points.Array.size
       value: 6

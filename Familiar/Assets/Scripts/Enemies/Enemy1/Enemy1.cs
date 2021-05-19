@@ -262,6 +262,7 @@ public class Enemy1 : MonoBehaviour, IZappable
     public Light Light
     {
         get => light;
+        set => light = value;
     }
     public int DestPoint
     {

@@ -20,9 +20,10 @@ public class Enemy1IdleState : Enemy1BaseState
     {
         if (shouldJustIdle != true)
             stateMachine.Transition<Enemy1PatrolState>();
-        if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < collisionDistance && CheckIfPlayerAlive() == true)
+        if (CheckForDistanceFromFeet(collisionDistance, true)
+            && CheckIfPlayerAlive() == true)
             stateMachine.Transition<Enemy1AttackState>();
-        if (Vector3.Distance(owner.VisionOrigin.position, owner.PlayerTransform.position) < spottingDistance
+        if (CheckForDistanceFromEyes(spottingDistance, true)
             && CheckForLOS()
             && CheckIfPlayerAlive()
             && CheckIfPlayerInFront())

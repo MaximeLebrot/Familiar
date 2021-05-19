@@ -71,12 +71,19 @@ public class Enemy1BaseState : State
     }
 
     //Smaller should be true if the distance to the player is smaller than the distance given 
-    protected bool CheckForDistance(float distance, bool smaller)
+    protected bool CheckForDistanceFromFeet(float distance, bool smaller)
     {
         if (smaller == true)
             return (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < distance);
         else
             return (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) > distance);
+    }
+    protected bool CheckForDistanceFromEyes(float distance, bool smaller)
+    {
+        if (smaller == true)
+            return (Vector3.Distance(owner.VisionOrigin.position, owner.PlayerTransform.position) < distance);
+        else
+            return (Vector3.Distance(owner.VisionOrigin.position, owner.PlayerTransform.position) > distance);
     }
 
     protected bool CheckIfPlayerAlive()
