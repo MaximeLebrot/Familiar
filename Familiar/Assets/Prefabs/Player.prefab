@@ -24,7 +24,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1099446512}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 2.2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8266650046587695649}
@@ -194,6 +194,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  - {fileID: 0}
   anim: {fileID: 1271261050}
   playerController: {fileID: 8266650046587695661}
   healthBar: {fileID: 0}
@@ -339,7 +340,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volume: 0.025
   jumpSounds: []
-  runSounds: []
   damageSounds: []
   deathSounds:
   - {fileID: 8300000, guid: 2c0ac9daae754ac459729c2dc6a32633, type: 3}
@@ -369,7 +369,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   carriedObject: {fileID: 0}
   heldObjectPoint: {fileID: 1099446513}
-  throwForce: 20
 --- !u!95 &1271261050
 Animator:
   serializedVersion: 3
@@ -490,18 +489,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 884f5f0b7b431ed4fb51617c56873b46, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CameraVec: {x: 0, y: 0}
   mouseSensitivity: 3
   maxAngleDown: -60
   maxAngleUp: 60
-  playerController: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
-  firstPerson: 0
-  noClipCamera: 0.5
-  freezeCamera: 0
-  cannotMoveCam: 0
-  isInNierCam: 0
+  cameraAdjustmentOffset: 0
   cameraOffset: {x: 0, y: 1.65, z: -7}
+  playerController: {fileID: 0}
 --- !u!114 &6645680780004362317
 MonoBehaviour:
   m_ObjectHideFlags: 0
