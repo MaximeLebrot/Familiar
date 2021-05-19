@@ -34,7 +34,7 @@ public class Enemy1 : MonoBehaviour, IZappable
     [Header("Patrol")]
     [SerializeField, Tooltip("Array of Transforms that are used by the patrol state. Should be empty if patrol state not in use. Should be inputed manually")]
     private Transform[] points;
-    [Tooltip("The next destination in the points array of Transforms")] 
+    [Tooltip("The next destination in the points array of Transforms")]
     private int destPoint = 0;
 
     [Header("Idle")]
@@ -54,7 +54,7 @@ public class Enemy1 : MonoBehaviour, IZappable
     private void Update()
     {
         //if (navAgent.velocity.magnitude < 0.1f)
-            //navAgent.velocity = Vector3.zero;
+        //navAgent.velocity = Vector3.zero;
         vecToPlayer = playerTransform.position - transform.position;
         stateMachine.HandleUpdate();
     }
@@ -64,6 +64,16 @@ public class Enemy1 : MonoBehaviour, IZappable
         get;
         set;
     }
+
+    public void OnZap()
+    {
+        Debug.Log("Zapping enemy 1");
+        //Destroy(this, 1.0f);
+        //"this" här refererar till enemy1 scriptet. Det innebär att en zapp på en enemy1 effektivt gör dem handikappade
+        //kanske ville använda this.gameObject?
+        //egentligen ska det vara anim.setTrigger("dead") och ha ett event i den istället.
+    }
+
     public void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Moveable"))
@@ -76,14 +86,6 @@ public class Enemy1 : MonoBehaviour, IZappable
                     phs.DropObject();
             }
         }
-    }
-    public void OnZap()
-    {
-        Debug.Log("Zapping enemy 1");
-        //Destroy(this, 1.0f);
-        //"this" här refererar till enemy1 scriptet. Det innebär att en zapp på en enemy1 effektivt gör dem handikappade
-        //kanske ville använda this.gameObject?
-        //egentligen ska det vara anim.setTrigger("dead") och ha ett event i den istället.
     }
 
     //this is a worst case scenario in case the "Eyes" game object has not been set manually
@@ -115,6 +117,7 @@ public class Enemy1 : MonoBehaviour, IZappable
         Rigidbody RB = GetComponent<Rigidbody>();
         Destroy(RB);
     }
+
     private void InitializeSequence()
     {
         InitializePlayerGameObject();
@@ -126,6 +129,7 @@ public class Enemy1 : MonoBehaviour, IZappable
         InitializeStateMachine();
         InitializePatrolPoints();
     }
+
     private void InitializePlayerGameObject()
     {
         if (player == null) //if the value has been inputed manually, use it. Else find the game object
@@ -134,16 +138,19 @@ public class Enemy1 : MonoBehaviour, IZappable
             Debug.LogWarning("Player game object value should be set inspector");
         }
     }
+
     private void InitializePlayerScript()
     {
         if (player == null)
             InitializePlayerGameObject();
-        if (playerStats == null) //if the value has been inputed manually, use it. Else find the component
+
+        if (playerStats == null) //if the value has been inputted manually, use it. Else find the component
         {
             playerStats = player.GetComponent<AbilitySystem.Player>();
             Debug.LogWarning("Player \"Player\" value should be set in the inspector");
         }
     }
+
     private void InitializeAnimator()
     {
         if (anim == null) //if the value has been inputed manually, use it. Else find the component
@@ -152,6 +159,7 @@ public class Enemy1 : MonoBehaviour, IZappable
             Debug.LogWarning("Anim value should be set in the inspector");
         }
     }
+
     private void InitializeNavAgent()
     {
         if (navAgent == null) //if the value has been inputed manually, use it. Else find the component
@@ -160,6 +168,7 @@ public class Enemy1 : MonoBehaviour, IZappable
             Debug.LogWarning("Nav Agent value should be set in the inspector");
         }
     }
+
     private void InitializeTransforms() //the transforms are set as variables instead because gameObject.transform performs a GetComponent() which is costly
     {
         if (this.transform == null) //if the value has been inputed manually, use it. Else find the component
@@ -189,6 +198,7 @@ public class Enemy1 : MonoBehaviour, IZappable
         {
             Debug.LogWarning("Light component value should be set in the inspector");
             light = GetComponentInChildren<Light>();
+
             if (light == null)
                 Debug.LogError("Cannot find Light component. \"GetComponentInChildren\" used");
         }
@@ -264,6 +274,7 @@ public class Enemy1 : MonoBehaviour, IZappable
         get => light;
         set => light = value;
     }
+
     public int DestPoint
     {
         get => destPoint;
