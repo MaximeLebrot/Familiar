@@ -24,8 +24,6 @@ public class Enemy1AttackState : Enemy1BaseState
     {
         timer = time;
         base.Enter();
-        owner.Anim.SetTrigger("roar");
-
     }
 
     public override void HandleUpdate()
@@ -43,12 +41,6 @@ public class Enemy1AttackState : Enemy1BaseState
         if (CheckForDistanceFromFeet(aggroLossDistance, false)
             || CheckIfPlayerAlive() != true)
             ResetAggro();
-        else
-        {
-            //AggroTimer();
-            //GrabPlayer();
-            //ChasePlayer();
-        }
     }
     private void ResetAggro()
     {
@@ -61,7 +53,11 @@ public class Enemy1AttackState : Enemy1BaseState
     }
     private void AggroFeedback()
     {
+        //ska kallas en gång
+        //{ 
+        //anim.SetBool("Kinda sus", true);
         owner.NavAgent.ResetPath();
+        //}
         //owner.Anim.SetBool(Walk) //TODO sluta springa
         if (timer <= 0)
         {
@@ -90,6 +86,7 @@ public class Enemy1AttackState : Enemy1BaseState
     }
     private void GrabPlayer()
     {
+        owner.Anim.SetTrigger("roar");
         owner.PlayerStats.Die();
         ResetAggro();
         //kanske teleport tillbaka?

@@ -5,38 +5,49 @@ using UnityEngine.UI;
 
 public class Enemy2 : MonoBehaviour, IZappable
 {
-    [Tooltip("The states that this enemy will use throughout their life")]
-    [SerializeField] private State[] states;
+    [SerializeField, Tooltip("The states that this enemy will use throughout their life")]
+    private State[] states;
 
     [Header("Stats")]
-    [SerializeField] private float maxHealth;
+    [SerializeField, Tooltip("The maximum health of the enemy")] 
+    private float maxHealth;
+    [Tooltip("The current health of the enemy")] 
     private float health;
+    [Tooltip("Checks whether the enemy can attack")]
     private bool canAttack;
+
     [Header("Drop")]
-    [SerializeField] private GameObject drop;
-    [SerializeField] private ManaPickup mana;
+    [SerializeField, Tooltip("The gameobject dropped on death. Should be inputed manually")] 
+    private GameObject drop;
+    [SerializeField, Tooltip("A reference to the \"ManaPickup\" script on the drop gameobject. Should be inputed manually")]
+    private ManaPickup mana;
 
     [Header("Self references")]
-    [Tooltip("The navigation mesh agent attached to this game object, should be inputed manually")]
-    public NavMeshAgent navAgent;
-    [Tooltip("The animator attached to this game object")]
-    public Animator anim;
-    [Tooltip("The transform component attached to this game object")]
-    new public Transform transform;
+    [SerializeField, Tooltip("The navigation mesh agent attached to this game object. Should be inputed manually")]
+    private NavMeshAgent navAgent;
+    [SerializeField, Tooltip("The animator attached to this game object. Should be inputed manually")]
+    private Animator anim;
+    [SerializeField, Tooltip("The transform component attached to this game object. Should be inputed manually")]
+    new private Transform transform;
 
     [Header("Player")]
-    [Tooltip("Reference to the player game object, should be inputed manually")]
-    [SerializeField] private GameObject player;
-    [Tooltip("A reference to the instance of the \"Player\" script attached to the player game object")]
-    public AbilitySystem.Player playerStats;
-    [Tooltip("The transform component attached to the player game object")]
-    public Transform playerTransform;
+    [SerializeField, Tooltip("Reference to the player game object. Should be inputed manually")]
+    private GameObject player;
+    [SerializeField, Tooltip("A reference to the instance of the \"Player\" script attached to the player game object. Should be inputed manually")]
+    private AbilitySystem.Player playerStats;
+    [SerializeField, Tooltip("The transform component attached to the player game object. . Should be inputed manually")]
+    private Transform playerTransform;
 
+    [SerializeField, Tooltip("The transform component of this game objects idle position")]
     private Vector3 idlePosition;
-    [HideInInspector] public Vector3 vecToPlayer;
+    [Tooltip("A vector to the player, updates at runtime")]
+    private Vector3 vecToPlayer;
+
+    [Tooltip("The active statemachine of this component")]
     private StateMachine stateMachine;
 
-    [SerializeField] private Slider slider;
+    [SerializeField, Tooltip("The health bar slider")]
+    private Slider slider;
 
     protected void Awake()
     {
@@ -94,31 +105,6 @@ public class Enemy2 : MonoBehaviour, IZappable
         Destroy(gameObject);
     }
 
-    public float GetHealth()
-    {
-        return health;
-    }
-    private void SetHealth(float health)
-    {
-        this.health = health;
-    }
-    public bool GetCanAttack()
-    {
-        return canAttack;
-    }
-
-    public void SetCanAttack(bool b)
-    {
-        canAttack = b;
-    }
-    private void SetHealthSliderValue(float value)
-    {
-        slider.value = value;
-    }
-    public Vector3 GetIdlePosition()
-    {
-        return idlePosition;
-    }
     private void InitializeVariables()
     {
         InitializePlayerGameObject();
@@ -176,5 +162,43 @@ public class Enemy2 : MonoBehaviour, IZappable
     private void InitializeHealthSlider()
     {
         slider.value = 1.0f;
+    }
+
+    public Transform Transform
+    {
+        get => transform;
+    }
+    public NavMeshAgent NavAgent
+    {
+        get => navAgent;
+    }
+    public Animator Anim
+    {
+        get => anim;
+    }
+    public Transform PlayerTransform
+    {
+        get => playerTransform;
+    }
+    public AbilitySystem.Player PlayerStats
+    {
+        get => playerStats;
+    }
+    public Vector3 VecToPlayer
+    {
+        get => vecToPlayer;
+    }
+    public Vector3 IdlePosition
+    {
+        get => idlePosition;
+    }
+    public float Health
+    {
+        get => health;
+    }
+    public bool CanAttack
+    {
+        get => canAttack;
+        set => canAttack = value;
     }
 }

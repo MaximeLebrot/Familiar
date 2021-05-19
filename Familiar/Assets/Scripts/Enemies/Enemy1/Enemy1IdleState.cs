@@ -3,12 +3,11 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy1/Enemy1IdleState")]
 public class Enemy1IdleState : Enemy1BaseState
 {
-    public bool debug;
-    [Tooltip("")]
-    private bool shouldJustIdle;
+    [SerializeField, Tooltip("This distance from which the player is considered to be colliding with the enemy. Default value = 3.0f")]
+    protected float collisionDistance;
 
-    private float time = 1.0f;
-    private float timer;
+    [Tooltip("Checks whether this enemy should just idle")]
+    private bool shouldJustIdle;
 
     public override void Enter()
     {
@@ -28,20 +27,5 @@ public class Enemy1IdleState : Enemy1BaseState
             && CheckIfPlayerAlive()
             && CheckIfPlayerInFront())
                 stateMachine.Transition<Enemy1AttackState>();
-        if (debug)
-            DebugTransitionToAttackState();
-    }
-    private void DebugTransitionToAttackState()
-    {
-        if (timer <= 0)
-        {
-            Debug.Log("Distance: " + (Vector3.Distance(owner.VisionOrigin.position, owner.PlayerTransform.position) < spottingDistance));
-            Debug.Log("Raycast: " + CheckForLOS());
-            Debug.Log("Alive: " + CheckIfPlayerAlive());
-            Debug.Log("In front: " + CheckIfPlayerInFront());
-            timer = time;
-        }
-        else
-            timer -= Time.deltaTime;
     }
 }
