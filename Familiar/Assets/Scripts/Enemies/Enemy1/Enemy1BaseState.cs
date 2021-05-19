@@ -6,8 +6,6 @@ public class Enemy1BaseState : State
     protected float moveSpeed;
     [SerializeField, Tooltip("The distance from which the enemy can sense the player. Starts from the \"Eyes\" component")]
     protected float spottingDistance;
-    [SerializeField, Tooltip("This distance from which the player is considered to be colliding with the enemy. Default value = 3.0f")]
-    protected float collisionDistance;
     [SerializeField, Tooltip("The angle in which the enemy can see the player. Calculation: dot > visionAngle = can see player. 0.707 = 90°")]
     private float visionAngle;
     [SerializeField, Tooltip("The playback speed of the animator. Default value = moveSpeed / 10")]
@@ -40,8 +38,6 @@ public class Enemy1BaseState : State
         if (animSpeed == 0)
             animSpeed = moveSpeed / 10;
         owner.Anim.speed = animSpeed;
-        if (collisionDistance == 0)
-            collisionDistance = 3.0f;
     }
     protected bool CheckIfPlayerInFront()
     {
@@ -70,9 +66,20 @@ public class Enemy1BaseState : State
         //return false;
     }
 
-    protected bool CheckForDistance()
+    //Smaller should be true if the distance to the player is smaller than the distance given 
+    protected bool CheckForDistanceFromFeet(float distance, bool smaller)
     {
-        return (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < spottingDistance);
+        if (smaller == true)
+            return (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < distance);
+        else
+            return (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) > distance);
+    }
+    protected bool CheckForDistanceFromEyes(float distance, bool smaller)
+    {
+        if (smaller == true)
+            return (Vector3.Distance(owner.VisionOrigin.position, owner.PlayerTransform.position) < distance);
+        else
+            return (Vector3.Distance(owner.VisionOrigin.position, owner.PlayerTransform.position) > distance);
     }
 
     protected bool CheckIfPlayerAlive()

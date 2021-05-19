@@ -3,10 +3,8 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy1/Enemy1PatrolState")]
 public class Enemy1PatrolState : Enemy1BaseState
 {
-    [SerializeField] private bool canSeeDebug;
-
-    private float time = 1.0f;
-    private float timer;
+    [SerializeField, Tooltip("This distance from which the player is considered to be colliding with the enemy. Default value = 3.0f")]
+    protected float collisionDistance;
 
     public override void Enter()
     {
@@ -19,33 +17,16 @@ public class Enemy1PatrolState : Enemy1BaseState
     {
         if (!owner.NavAgent.pathPending && owner.NavAgent.remainingDistance < 0.5f)
             Patrol();
-        if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < collisionDistance && CheckIfPlayerAlive() == true)
+        if (CheckForDistanceFromFeet(collisionDistance, true)
+            && CheckIfPlayerAlive() == true)
             stateMachine.Transition<Enemy1AttackState>();
-        if (CheckForDistance()
+        if (CheckForDistanceFromFeet(spottingDistance, true)
             && CheckForLOS()
             && CheckIfPlayerAlive()
             && CheckIfPlayerInFront())
             stateMachine.Transition<Enemy1AttackState>();
         if (owner.IsZapped)
             stateMachine.Transition<Enemy1DefeatState>(); 
-        //if (canSeeDebug)
-            //DebugTransitionToAttackState();
-
-    }
-    private void DebugTransitionToAttackState()
-    {
-        if (CheckForLOS() == true)
-            Debug.DrawRay(owner.Transform.position, owner.VecToPlayer, Color.red);
-        if (timer <= 0)
-        {
-            Debug.Log("Distance: " + CheckForDistance());
-            Debug.Log("Raycast: " + CheckForLOS());
-            Debug.Log("Alive: " + CheckIfPlayerAlive());
-            Debug.Log("In front: " + CheckIfPlayerInFront());
-            timer = time;
-        }
-        else
-            timer -= Time.deltaTime;
     }
 
     private void Patrol()
@@ -55,9 +36,7 @@ public class Enemy1PatrolState : Enemy1BaseState
             stateMachine.Transition<Enemy1IdleState>();
             return;
         }
-
         owner.NavAgent.destination = owner.Points[owner.DestPoint].position;
-
         owner.DestPoint = (owner.DestPoint + 1) % owner.Points.Length;
     }
 }

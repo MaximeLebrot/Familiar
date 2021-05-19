@@ -95,7 +95,9 @@ namespace AbilitySystem
             if (anim == null)
             {
                 anim = GetComponent<Animator>();
-                Debug.LogWarning("Anim value should be set in the inspector");
+                Debug.LogWarning("Animator value should be set in the inspector");
+                if (anim == null)
+                    Debug.LogError("Could not find Animator");
             }
         }
         private void InitializePlayerController()
@@ -104,6 +106,8 @@ namespace AbilitySystem
             {
                 playerController = GetComponent<Controller>();
                 Debug.LogWarning("Player \"Controller\" value should be set in the inspector");
+                if (playerController == null)
+                    Debug.LogError("Could not find \"Controller\"");
             }
         }
         private void InitializeStateMachine()

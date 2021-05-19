@@ -6,10 +6,12 @@ public class PressurePlateOneOrBoth : MonoBehaviour
     private GameObject door;
     [SerializeField, Tooltip("Array of references to pressure plates that are in play in this puzzle")]
     private PressurePlate[] pressurePlates;
+    Animator animator; //vild kod
 
     void Start()
     {
         InitializeSequence();
+        animator = door.GetComponent<Animator>(); //vild kod
     }
 
     public void UpdatePuzzle()
@@ -18,10 +20,12 @@ public class PressurePlateOneOrBoth : MonoBehaviour
         {
             if (pressurePlate.Active)
             {
-                door.SetActive(false);
+                animator.SetBool("open", true); //vild kod
+                //door.SetActive(false);
                 return;
             }
-            door.SetActive(true);
+            animator.SetBool("open", false); //vild kod
+            //door.SetActive(true);
         }
     }
 

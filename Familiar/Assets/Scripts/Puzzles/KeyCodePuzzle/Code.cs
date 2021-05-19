@@ -15,12 +15,15 @@ public class Code : MonoBehaviour
     private List<KeyCodeCombination> keyCodeGenerated = new List<KeyCodeCombination>();
     [Tooltip("An iterator of the correct code")]
     private int correctCodeIterator;
+    Animator animator;
 
     private void Awake()
     {
         InitializeSequence();
 
         GenerateCorrectCode();
+
+        animator = door.GetComponent<Animator>(); //vild kod
     }
 
     public void GenerateCorrectCode()
@@ -48,7 +51,7 @@ public class Code : MonoBehaviour
         else
             return false;
     }
-
+    
     private void RandomizeOrder()
     {
         correctCode.Reverse();
@@ -111,7 +114,8 @@ public class Code : MonoBehaviour
 
     private void Success()
     {
-        door.SetActive(false);
+        animator.SetBool("open", true); //vild kod
+        //door.SetActive(false);
         foreach (KeyCodeCombination keycode in keyCodeGenerated)
         {
             keycode.setGreen();

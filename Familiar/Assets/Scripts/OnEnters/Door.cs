@@ -1,14 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Door : MonoBehaviour
 {
+    Animator animator;
+    void Start()
+    {
+        animator = GetComponent<Animator>(); //vild kod
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Key")
         {
-            gameObject.SetActive(false);
+            animator.SetBool("open", true); //vild kod
+            //gameObject.SetActive(false);
             //Destroy(gameObject);
         }
     }

@@ -3,48 +3,92 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "Enemy1/Enemy1AttackState")]
 public class Enemy1AttackState : Enemy1BaseState
 {
-    [SerializeField] private float grabDistance;
-    [SerializeField] private float aggroLossDistance;
-    [SerializeField] private float chaseSpeed;
+
+    [SerializeField, Tooltip("The distance from which the enemy can grab the player")] 
+    private float grabDistance;
+    [SerializeField, Tooltip("The distance from which the enemy loses interest in the player")]
+    private float aggroLossDistance;
+    [SerializeField, Tooltip("The distance the light covers")]
+    private float lightVisionDistance;
 
     //timer och time som reguleras utav en difficulty level? hur länge man stannar i ljuset
+    //the higher the time the easier the game is
+    [Tooltip("The maximum time the player can stand in the light before being caught")]
+    private float time = 2.0f;
+    [Tooltip("The timer controlled by how long the player stands in the lightVisionDistance")]
+    private float timer;
+    [Tooltip("The color that is set to the lantern of the enemy. Works as feedback for the player")]
+    private Color color = new Color();
 
     public override void Enter()
     {
+        timer = time;
         base.Enter();
-        owner.Anim.SetTrigger("roar");
     }
 
     public override void HandleUpdate()
     {
-        if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) > aggroLossDistance 
-            || CheckIfPlayerAlive() == false)
-            stateMachine.Transition<Enemy1PatrolState>();
-        else if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < grabDistance)
-        {
-            //feedback
-            //start timer?
-            //anim
-
+        if (CheckForDistanceFromFeet(grabDistance, true))
             GrabPlayer();
+        //vi kan / borde ha en annan variabel som är light distance typ
+        if (CheckForDistanceFromFeet(lightVisionDistance, true)
+            && CheckIfPlayerInFront()
+            && CheckIfPlayerAlive())
+        {
+            if (owner.Light != null)
+                AggroFeedback();
+        }
+        if (CheckForDistanceFromFeet(aggroLossDistance, false)
+            || CheckIfPlayerAlive() != true)
+            ResetAggro();
+    }
+    private void ResetAggro()
+    {
+        if (owner.Light != null)
+        {
+            timer = time;
+            SetColor(timer);
+        }
+        stateMachine.Transition<Enemy1PatrolState>();
+    }
+    private void AggroFeedback()
+    {
+        //ska kallas en gång
+        //{ 
+        //anim.SetBool("Kinda sus", true);
+        owner.NavAgent.ResetPath();
+        //}
+        //owner.Anim.SetBool(Walk) //TODO sluta springa
+        if (timer <= 0)
+        {
+            timer = time;
+            GrabPlayer(); //kanske annan anim? kasta nåt? springa mot spelaren?
         }
         else
         {
-            GrabPlayer();
-            //ChasePlayer();
+            timer -= Time.deltaTime;
+            SetColor(timer);
         }
     }
-
-    private void ChasePlayer()
+    private void SetColor(float timer)
     {
-        //owner.transform.LookAt(owner.vecToPlayer);
-        owner.NavAgent.speed = chaseSpeed;
-        owner.NavAgent.SetDestination(owner.VecToPlayer);
+        //make sure timer does not go under the value of zero
+        if (timer < 0)
+            timer = 0;
+        //sets the value of the green of RGB to a range between 0-1.
+        float g = timer / time; 
+
+        color.r = 1f;
+        color.g = g;
+        color.b = 0f;
+        color.a = 1f;
+        owner.Light.color = color;
     }
     private void GrabPlayer()
     {
+        owner.Anim.SetTrigger("roar");
         owner.PlayerStats.Die();
-        stateMachine.Transition<Enemy1PatrolState>();
+        ResetAggro();
         //kanske teleport tillbaka?
         //owner.navAgent.acceleration = 0;
         //owner.navAgent.speed = 0;

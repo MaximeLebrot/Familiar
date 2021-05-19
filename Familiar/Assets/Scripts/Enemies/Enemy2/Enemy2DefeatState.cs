@@ -16,7 +16,7 @@ public class Enemy2DefeatState : Enemy2BaseState
 
     private void Defeated()
     {
-        owner.anim.SetTrigger("spiderDie");
+        owner.Anim.SetTrigger("spiderDie");
         owner.StartCoroutine(owner.KillAfterAnim());
     }
 }
