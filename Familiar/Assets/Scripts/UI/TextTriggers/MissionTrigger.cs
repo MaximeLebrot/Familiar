@@ -24,7 +24,7 @@ public class MissionTrigger : MonoBehaviour
             anim.SetTrigger("Update");
             missionText.text = mission; // maybe add typing effect instead?
             //StartCoroutine(TypeText());
-
+            gameObject.SetActive(false);
             // Add SFX here ?
         }
     }
@@ -41,6 +41,5 @@ public class MissionTrigger : MonoBehaviour
             missionText.text += letter;
             yield return new WaitForSeconds(typeSpeed);
         }
-        gameObject.SetActive(false);
     }
 }
