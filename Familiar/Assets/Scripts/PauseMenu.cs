@@ -127,11 +127,8 @@ public class PauseMenu : MonoBehaviour
 
     void ApplyValueChange()
     {
-        Debug.Log(Stats.Instance.MouseSensitivity);
         Stats.Instance.MouseSensitivity = mouseSensitivitySlider.value;
-        Debug.Log(Stats.Instance.MouseSensitivity);
         camHandler.MouseSensitivity = Stats.Instance.MouseSensitivity;
-        Debug.Log("Apply successful");
         //sound.volume = Sound.Instance.Volume;
     }
 }

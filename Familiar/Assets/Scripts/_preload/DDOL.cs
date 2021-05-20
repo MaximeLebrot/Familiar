@@ -9,6 +9,7 @@ public class DDOL : MonoBehaviour
     }
     private void Start()
     {
-        SceneManager.LoadScene("Main Menu");
+        //SceneManager.LoadScene("Main Menu");
+        SceneManager.LoadScene(LoadingSceneIntegration.otherScene);
     }
 }
