@@ -122,6 +122,5 @@ public class Enemy1AttackState : Enemy1BaseState
                 time = 0.5f;
                 break;
         }
->>>>>>> Stashed changes
     }
 }
