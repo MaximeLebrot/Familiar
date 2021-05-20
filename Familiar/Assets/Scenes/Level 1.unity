@@ -6329,13 +6329,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 500050454}
-  m_LocalRotation: {x: 0.43342492, y: -0.43342492, z: 0.55869746, w: 0.55869746}
+  m_LocalRotation: {x: 0.50712204, y: -0.5067723, z: 0.49318075, w: 0.49272907}
   m_LocalPosition: {x: -0.03, y: -1.61, z: 1}
   m_LocalScale: {x: 1.424983, y: 1.4249836, z: 1.4249834}
   m_Children: []
   m_Father: {fileID: 639798592}
   m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 75.607, y: 0, z: 90}
+  m_LocalEulerAnglesHint: {x: 91.604004, y: -1.6430054, z: 88.362}
 --- !u!114 &500050456
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6356,10 +6356,10 @@ MonoBehaviour:
   m_PointlightHDType: 0
   m_SpotLightShape: 0
   m_AreaLightShape: 0
-  m_Intensity: 290
+  m_Intensity: 1000
   m_EnableSpotReflector: 1
   m_LuxAtDistance: 1
-  m_InnerSpotPercent: 30
+  m_InnerSpotPercent: 54.36997
   m_SpotIESCutoffPercent: 100
   m_LightDimmer: 1
   m_VolumetricDimmer: 1
@@ -6470,9 +6470,9 @@ Light:
   m_Type: 0
   m_Shape: 0
   m_Color: {r: 1, g: 1, b: 0, a: 1}
-  m_Intensity: 223.35191
-  m_Range: 10
-  m_SpotAngle: 75
+  m_Intensity: 414.78366
+  m_Range: 13.332833
+  m_SpotAngle: 103.907974
   m_InnerSpotAngle: 6
   m_CookieSize: 10
   m_Shadows:
@@ -12681,6 +12681,10 @@ PrefabInstance:
     - target: {fileID: 919132149155446097, guid: 75a7afa28862c8048ab69ae733b76ac5, type: 3}
       propertyPath: m_Name
       value: LightBeam
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: 75a7afa28862c8048ab69ae733b76ac5, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 75a7afa28862c8048ab69ae733b76ac5, type: 3}

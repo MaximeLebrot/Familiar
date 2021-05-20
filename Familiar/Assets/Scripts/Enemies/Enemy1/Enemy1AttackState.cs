@@ -32,14 +32,16 @@ public class Enemy1AttackState : Enemy1BaseState
             GrabPlayer();
         //vi kan / borde ha en annan variabel som är light distance typ
         if (CheckForDistanceFromFeet(lightVisionDistance, true)
-            && CheckIfPlayerInFront()
-            && CheckIfPlayerAlive())
+            && CheckIfPlayerInFront() == true
+            && CheckIfPlayerAlive() == true)
         {
             if (owner.Light != null)
                 AggroFeedback();
         }
         if (CheckForDistanceFromFeet(aggroLossDistance, false)
-            || CheckIfPlayerAlive() != true)
+            || CheckIfPlayerAlive() != true
+            || CheckForLOS() != true
+            || CheckIfPlayerInFront() != true)
             ResetAggro();
     }
     private void ResetAggro()
