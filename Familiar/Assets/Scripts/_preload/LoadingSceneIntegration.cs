@@ -5,6 +5,7 @@ public class LoadingSceneIntegration
 {
 
 #if UNITY_EDITOR 
+    [Tooltip("This is a reference to the scene started from in the editor")]
     public static int otherScene = -2;
 
     [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
@@ -16,7 +17,6 @@ public class LoadingSceneIntegration
 
         Debug.Log("Loading _preload scene");
         otherScene = sceneIndex;
-        //make sure your _preload scene is the first in scene build list
         SceneManager.LoadScene(0);
     }
 #endif

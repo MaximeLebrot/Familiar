@@ -22,6 +22,10 @@ public class Enemy1AttackState : Enemy1BaseState
     [Tooltip("Makes sure a section of the code only runs once")]
     private bool hasRan;
 
+    private bool grabbingPlayer;
+    private float aggroTime = 1.5f;
+    private float aggroTimer;
+
     public override void Enter()
     {
         if (time == 0)
@@ -34,15 +38,18 @@ public class Enemy1AttackState : Enemy1BaseState
     {
         if (CheckForDistanceFromFeet(grabDistance, true))
             GrabPlayer();
-        //vi kan / borde ha en annan variabel som är light distance typ
-        if (CheckForDistanceFromFeet(lightVisionDistance, true)
+        if (grabbingPlayer == true)
+        {
+            GrabSequence();
+        }
+        else if (CheckForDistanceFromFeet(lightVisionDistance, true)
             && CheckIfPlayerInFront() == true
             && CheckIfPlayerAlive() == true)
         {
             if (owner.Light != null)
                 AggroFeedback();
         }
-        if (CheckForDistanceFromFeet(aggroLossDistance, false)
+        else if (CheckForDistanceFromFeet(aggroLossDistance, false)
             || CheckIfPlayerAlive() != true
             || CheckForLOS() != true
             || CheckIfPlayerInFront() != true)
@@ -66,7 +73,6 @@ public class Enemy1AttackState : Enemy1BaseState
     {
         if (hasRan != true)
         {
-            //owner.NavAgent.ResetPath();
             owner.Transform.LookAt(owner.PlayerTransform.position);
             owner.Anim.SetBool("discover", true);
             owner.NavAgent.velocity = Vector3.zero;
@@ -74,15 +80,9 @@ public class Enemy1AttackState : Enemy1BaseState
         }
 
         if (timer <= 0)
-        {
-            timer = time;
-            GrabPlayer(); //kanske annan anim? kasta nåt? springa mot spelaren?
-        }
+            GrabPlayer();
         else
-        {
-            timer -= Time.deltaTime;
-            SetColor(timer);
-        }
+            SetColor(timer -= Time.deltaTime);
     }
     private void SetColor(float timer)
     {
@@ -101,9 +101,21 @@ public class Enemy1AttackState : Enemy1BaseState
     
     private void GrabPlayer()
     {
-        owner.StartCoroutine(owner.CaughtPlayer());
-        ResetAggro(false);
+        timer = time;
+        grabbingPlayer = true;
+        aggroTimer = aggroTime;
+        owner.Anim.SetTrigger("roar");
+        owner.PlayerStats.Die();
     }
+
+    private void GrabSequence()
+    {
+        if (aggroTimer <= 0)
+            grabbingPlayer = false;
+        else
+            aggroTimer -= Time.deltaTime;
+    }
+
     private void InitializeDifficulty()
     {
         int difficulty = Stats.Instance.Difficulty;

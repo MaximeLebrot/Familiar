@@ -7,7 +7,7 @@ public class ShowValue : MonoBehaviour
 {
     [SerializeField, Tooltip("The text component attached to this game object")]
     Text valueText;
-    [SerializeField, Tooltip("The slider value changed. Attached to parent of this game object")]
+    [SerializeField, Tooltip("The slider component attached to parent of this game object")]
     Slider slider;
 
     void Start()
