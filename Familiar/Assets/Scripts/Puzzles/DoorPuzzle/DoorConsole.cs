@@ -10,9 +10,11 @@ public class DoorConsole : MonoBehaviour
 
     [Tooltip("Checks whether the player can use this console or not")]
     private bool canUseConsole;
+    Animator anim; //vild kod
 
     private void Start()
     {
+        anim = GetComponent<Animator>(); //vild kod
         for (int i = 0; i < doors.Length; i++)
         {
             //first element put in is going to be active
