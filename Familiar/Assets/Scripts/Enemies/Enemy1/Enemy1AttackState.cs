@@ -14,7 +14,7 @@ public class Enemy1AttackState : Enemy1BaseState
     //timer och time som reguleras utav en difficulty level? hur länge man stannar i ljuset
     //the higher the time the easier the game is
     [Tooltip("The maximum time the player can stand in the light before being caught. Translated to seconds")]
-    private float time = 1;
+    private float time;
     [Tooltip("The timer controlled by how long the player stands in the lightVisionDistance")]
     private float timer;
     [Tooltip("The color that is set to the lantern of the enemy. Works as feedback for the player")]

@@ -12,6 +12,8 @@ public class MainMenu : MonoBehaviour
     private Slider volumeSlider;
     [SerializeField, Tooltip("")]
     private Slider mouseSensitivitySlider;
+    [SerializeField, Tooltip("")]
+    private Dropdown difficultyDropdown;
 
     private Vector3 level1SpawnPosition = new Vector3(-72.5f, 2.5f, -33f);
     private float level1Health = 10f;
@@ -49,6 +51,11 @@ public class MainMenu : MonoBehaviour
     public void SetMouseSensitivity()
     {
         Stats.Instance.MouseSensitivity = mouseSensitivitySlider.value;
+    }
+
+    public void SetDifficultyLevel()
+    {
+        Stats.Instance.Difficulty = difficultyDropdown.value + 1;
     }
 
     public void LoadGame()
