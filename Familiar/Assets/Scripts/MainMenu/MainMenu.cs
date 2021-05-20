@@ -13,6 +13,9 @@ public class MainMenu : MonoBehaviour
     [SerializeField, Tooltip("")]
     private Slider mouseSensitivitySlider;
 
+    private Vector3 level1SpawnPosition = new Vector3(-72.5f, 2.5f, -33f);
+    private float level1Health = 10f;
+
     public void StartGame()
     {
         InitializeStartStats();
@@ -56,11 +59,8 @@ public class MainMenu : MonoBehaviour
 
     private void InitializeStartStats()
     {
-        Vector3 position = new Vector3(-72.5f, 2.5f, -33f);
-        float health = 10;
-
-        Stats.Instance.Health = health;
-        Stats.Instance.Position = position;
+        Stats.Instance.Health = level1Health;
+        Stats.Instance.Position = level1SpawnPosition;
     }
 
     private void LoadVariables()

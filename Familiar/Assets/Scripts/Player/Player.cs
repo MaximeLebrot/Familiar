@@ -150,9 +150,10 @@ namespace AbilitySystem
             float healthDifference = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) - Stats.Instance.Health;            
             AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, -healthDifference);
             HealthBarUpdate();
-
-
-            gameObject.transform.position = Stats.Instance.Position;
+            if (Stats.Instance.Position == Vector3.zero)
+                gameObject.transform.position = GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position;
+            else
+                gameObject.transform.position = Stats.Instance.Position;
 
         }
 

@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -9,6 +8,9 @@ public class SwitchLevel : MonoBehaviour
     public GameObject prisonDoor;
     public Image black;
     public Animator anim;
+    
+    private Vector3 level2StartPosition = new Vector3(51.5f, 1.5f, 33f);
+    private float level2StartHealth = 10f;
 
     private void OnTriggerEnter(Collider other)
     {
@@ -29,11 +31,8 @@ public class SwitchLevel : MonoBehaviour
     }
     private void InitializeLevel2Stats()
     {
-        Vector3 position = new Vector3(51.5f, 1.5f, 33f);
-        float health = 10;
-
-        Stats.Instance.Health = health;
-        Stats.Instance.Position = position;
+        Stats.Instance.Health = level2StartHealth;
+        Stats.Instance.Position = level2StartPosition;
     }
 
 }

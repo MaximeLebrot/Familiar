@@ -8,7 +8,7 @@ public class Stats : MonoBehaviour
 
     private Vector3 position;
 
-    private float health;
+    private float health = 10;
 
     private int difficulty;
 
