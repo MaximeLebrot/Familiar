@@ -21,16 +21,19 @@ public class MissionTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && !needKey || other.CompareTag("Key") && needKey)
         {
-            if (delay)
-                //StartCoroutine(DelayChange());
-
-            // Add SFX here ?
             anim.SetTrigger("Update"); // Needs better animation ?
+                                       //if (delay)
+                                       //StartCoroutine(DelayChange());
+
+            StartCoroutine(DelayChange()); // Doesn't seem to work? 
+            // Add SFX here ?
+
             missionText.text = mission; // maybe add typing effect instead?
             gameObject.SetActive(false);
         }
     }
 
+    // It doesnt seem to enter the coroutine? Why?
     // Delays the mission text being updated.
     private IEnumerator DelayChange()
     {
