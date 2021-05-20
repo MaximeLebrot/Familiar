@@ -16,19 +16,23 @@ public class PauseMenu : MonoBehaviour
     [SerializeField, Tooltip("")]
     private Slider volumeSlider;
     [SerializeField, Tooltip("")]
-    private Slider sensitivitySlider;
+    private Slider mouseSensitivitySlider;
 
     [SerializeField, Tooltip("Should be inputed manually")]
     private GameObject playerHandler;
     [SerializeField, Tooltip("Should be inputed manually")]
-    private GameObject camHandler;
+    private GameObject cam;
+    [SerializeField, Tooltip("Should be inputed manually")]
+    private CameraHandler camHandler;
 
     void Start()
     {
         if (playerHandler == null)
             playerHandler = GameObject.FindGameObjectWithTag("Player");
+        if (cam == null)
+            cam = Camera.main.gameObject;
         if (camHandler == null)
-            camHandler = Camera.main.gameObject;
+            camHandler = cam.GetComponent<CameraHandler>();
     }
 
     void Update()
@@ -60,7 +64,9 @@ public class PauseMenu : MonoBehaviour
         playerHandler.GetComponent<Controller>().enabled = true;
         playerHandler.GetComponent<ShootingScript>().enabled = true;
         playerHandler.GetComponent<AbilitySystem.Player>().enabled = true;
-        camHandler.GetComponent<CameraHandler>().enabled = true;
+        camHandler.enabled = true;
+
+        ApplyValueChange();
     }
 
     void Pause()
@@ -71,11 +77,11 @@ public class PauseMenu : MonoBehaviour
 
         Time.timeScale = 0;
         GameIsPaused = true;
-        
+
         playerHandler.GetComponent<Controller>().enabled = false;
         playerHandler.GetComponent<ShootingScript>().enabled = false;
         playerHandler.GetComponent<AbilitySystem.Player>().enabled = false;
-        camHandler.GetComponent<CameraHandler>().enabled = false;
+        camHandler.enabled = false;
     }
 
     public void LoadMenu()
@@ -104,16 +110,28 @@ public class PauseMenu : MonoBehaviour
 
     public void SetVolume()
     {
-        AudioListener.volume = volumeSlider.value;
+        Sound.Instance.Volume = volumeSlider.value;
     }
 
-    public void SetSensitivity()
+    public void SetMouseSensitivity()
     {
-        camHandler.GetComponent<CameraHandler>().MouseSensitivity = sensitivitySlider.value * 10;
+        //Det här körs inte på on value change på slidern. vrf??
+        Stats.Instance.MouseSensitivity = mouseSensitivitySlider.value;
+        Debug.Log(Stats.Instance.MouseSensitivity);
     }
 
     public void SaveGame()
     {
         Debug.Log("Saving game...");
+    }
+
+    void ApplyValueChange()
+    {
+        Debug.Log(Stats.Instance.MouseSensitivity);
+        Stats.Instance.MouseSensitivity = mouseSensitivitySlider.value;
+        Debug.Log(Stats.Instance.MouseSensitivity);
+        camHandler.MouseSensitivity = Stats.Instance.MouseSensitivity;
+        Debug.Log("Apply successful");
+        //sound.volume = Sound.Instance.Volume;
     }
 }

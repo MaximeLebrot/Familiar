@@ -5,26 +5,31 @@ using UnityEngine.UI;
 
 public class ShowValue : MonoBehaviour
 {
+    [SerializeField, Tooltip("The text component attached to this game object")]
     Text valueText;
+    [SerializeField, Tooltip("The slider value changed. Attached to parent of this game object")]
+    Slider slider;
 
-    // Start is called before the first frame update
     void Start()
     {
-        valueText = GetComponent<Text>();
+        if (valueText == null)
+            valueText = GetComponent<Text>();
+        if (slider == null)
+            slider = GetComponentInParent<Slider>();
     }
 
-    public void textUpdate(float value)
+    public void VolumeTextUpdate()
     {
-        valueText.text = Mathf.RoundToInt(value * 100) + "%";
+        valueText.text = Mathf.RoundToInt(slider.value * 100).ToString() + "%";
     }
 
-    public void SensitivityTextUpdate(float value)
+    public void MouseSenseTextUpdate()
     {
-        valueText.text = Mathf.Round(value) + "";
+        valueText.text = Mathf.Round(slider.value).ToString();
     }
 
-    public void DifficultyTextUpdate(float value)
+    public void DifficultyTextUpdate()
     {
-        valueText.text = Mathf.Round(value).ToString();
+
     }
 }

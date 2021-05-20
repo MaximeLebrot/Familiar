@@ -659,6 +659,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268eab66c1ffdf948b0ff1a66f86ab7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valueText: {fileID: 167932248}
+  slider: {fileID: 1121725117}
 --- !u!114 &167932248
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -692,9 +694,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: '3
-
-'
+  m_Text: 5
 --- !u!222 &167932249
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1003,8 +1003,8 @@ MonoBehaviour:
         m_CallState: 2
       - m_Target: {fileID: 1053805188}
         m_TargetAssemblyTypeName: ShowValue, Assembly-CSharp
-        m_MethodName: textUpdate
-        m_Mode: 4
+        m_MethodName: VolumeTextUpdate
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -1453,8 +1453,8 @@ RectTransform:
   m_Father: {fileID: 1239753790}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.3, y: 0}
-  m_AnchorMax: {x: 0.3, y: 1}
+  m_AnchorMin: {x: 0.44444445, y: 0}
+  m_AnchorMax: {x: 0.44444445, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 20, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -1681,6 +1681,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 268eab66c1ffdf948b0ff1a66f86ab7b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  valueText: {fileID: 1053805189}
+  slider: {fileID: 525390930}
 --- !u!114 &1053805189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2038,14 +2040,14 @@ MonoBehaviour:
   m_MinValue: 1
   m_MaxValue: 10
   m_WholeNumbers: 1
-  m_Value: 10
+  m_Value: 5
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 167932247}
         m_TargetAssemblyTypeName: ShowValue, Assembly-CSharp
-        m_MethodName: SensitivityTextUpdate
-        m_Mode: 4
+        m_MethodName: MouseSenseTextUpdate
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2408,7 +2410,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0.3, y: 1}
+  m_AnchorMax: {x: 0.44444445, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 10, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
