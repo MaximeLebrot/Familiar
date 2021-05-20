@@ -2252,8 +2252,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1991818522}
   tutorial: You can also move Keys with 'RMB'.
-  activeTime: 8
-  permanent: 0
+  activeTime: 0
+  permanent: 1
+  anim: {fileID: 1991818524}
 --- !u!54 &198987982
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10483,6 +10484,7 @@ MonoBehaviour:
   tutorial: Press 'RMB' on boxes to move them. Click 'RMB' again to release.
   activeTime: 15
   permanent: 0
+  anim: {fileID: 1991818524}
 --- !u!1001 &784563734
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -23371,7 +23373,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1518029203
 Transform:
   m_ObjectHideFlags: 0
@@ -23431,6 +23433,7 @@ MonoBehaviour:
   tutorial: Be careful around the Guards patrolling the area!
   activeTime: 10
   permanent: 0
+  anim: {fileID: 1991818524}
 --- !u!4 &1519691390 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 203851938e743884baa5d3c8f8567871, type: 3}
@@ -30766,6 +30769,7 @@ GameObject:
   - component: {fileID: 1991818521}
   - component: {fileID: 1991818523}
   - component: {fileID: 1991818522}
+  - component: {fileID: 1991818524}
   m_Layer: 5
   m_Name: Tutorial_Text
   m_TagString: Untagged
@@ -30835,6 +30839,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1991818520}
   m_CullTransparentMesh: 1
+--- !u!95 &1991818524
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1991818520}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 07aafb1b3ec74e84bbda20fb607c0dac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &1994263280
 GameObject:
   m_ObjectHideFlags: 0

@@ -13,13 +13,17 @@ public class TutorialTrigger : MonoBehaviour
     public float activeTime;
     public bool permanent;
 
+    public Animator anim; // Tutorialtexts animator.
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
-            tutorialText.text = "";
+            //tutorialText.text = "";
             // SFX here?
             tutorialText.text = tutorial;
+            anim.SetBool("isActive", true); // Fade in text
+            
             if (!permanent)
             {
                 StartCoroutine(WaitAndDeactivate());
@@ -34,7 +38,8 @@ public class TutorialTrigger : MonoBehaviour
         yield return new WaitForSeconds(activeTime);
         if (tutorialText.text == tutorial)
         {
-            tutorialText.text = "";
+            anim.SetBool("isActive", false); // Fade out text
+            //tutorialText.text = "";
         }
         gameObject.SetActive(false);
     }
@@ -44,7 +49,8 @@ public class TutorialTrigger : MonoBehaviour
     {
         if (other.CompareTag("Player") && tutorialText.text == tutorial)
         {
-            tutorialText.text = "";
+            anim.SetBool("isActive", false); // Fade out text
+            //tutorialText.text = "";
         }
     }
 }
