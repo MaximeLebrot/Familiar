@@ -1,15 +1,17 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class MainMenu : MonoBehaviour
 {
-    public GameObject mainMenuUI;
-    public GameObject optionsMenuUI;
-
-    public Slider volumeSlider;
+    [SerializeField, Tooltip("")]
+    private GameObject mainMenuUI;
+    [SerializeField, Tooltip("")]
+    private GameObject optionsMenuUI;
+    [SerializeField, Tooltip("")]
+    private Slider volumeSlider;
+    [SerializeField, Tooltip("")]
+    private Slider mouseSensitivitySlider;
 
     public void StartGame()
     {
@@ -18,7 +20,7 @@ public class MainMenu : MonoBehaviour
 
     public void Options()
     {
-        Debug.Log("Loading options...");
+        //Debug.Log("Loading options...");
         optionsMenuUI.SetActive(true);
         mainMenuUI.SetActive(false);
     }
@@ -37,7 +39,14 @@ public class MainMenu : MonoBehaviour
 
     public void SetVolume()
     {
-        AudioListener.volume = volumeSlider.value;
+        Sound.Instance.Volume = volumeSlider.value;
+        //AudioListener.volume = volumeSlider.value;
+    }
+
+    public void SetMouseSensitivity()
+    {
+        Stats.Instance.MouseSensitivity = mouseSensitivitySlider.value;
+        Debug.Log(Stats.Instance.MouseSensitivity);
     }
 
     public void LoadGame()

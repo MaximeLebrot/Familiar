@@ -10,16 +10,17 @@ public class Enemy1AttackState : Enemy1BaseState
     private float aggroLossDistance;
     [SerializeField, Tooltip("The distance the light covers")]
     private float lightVisionDistance;
-    Animator animator; //vild kod
 
     //timer och time som reguleras utav en difficulty level? hur länge man stannar i ljuset
     //the higher the time the easier the game is
-    [Tooltip("The maximum time the player can stand in the light before being caught")]
-    private float time = 2.0f;
+    [SerializeField, Tooltip("The maximum time the player can stand in the light before being caught. Translated to seconds")]
+    private float time;
     [Tooltip("The timer controlled by how long the player stands in the lightVisionDistance")]
     private float timer;
     [Tooltip("The color that is set to the lantern of the enemy. Works as feedback for the player")]
     private Color color = new Color();
+    [Tooltip("Makes sure a section of the code only runs once")]
+    private bool hasRan;
 
     public override void Enter()
     {
@@ -47,6 +48,7 @@ public class Enemy1AttackState : Enemy1BaseState
     }
     private void ResetAggro()
     {
+        hasRan = false;
         if (owner.Light != null)
         {
             timer = time;
@@ -58,13 +60,15 @@ public class Enemy1AttackState : Enemy1BaseState
    
     private void AggroFeedback()
     {
-        //ska kallas en gång
-        //{ 
-        //anim.SetBool("Kinda sus", true);
-        owner.NavAgent.ResetPath();
-        owner.Anim.SetTrigger("purpleSus"); //vild kod
-        //}
-        //owner.Anim.SetBool(Walk) //TODO sluta springa
+        if (hasRan != true)
+        {
+            //owner.NavAgent.ResetPath();
+            owner.Transform.LookAt(owner.PlayerTransform.position);
+            owner.Anim.SetTrigger("purpleSus");
+            owner.NavAgent.velocity = Vector3.zero;
+            hasRan = true;
+        }
+
         if (timer <= 0)
         {
             timer = time;
