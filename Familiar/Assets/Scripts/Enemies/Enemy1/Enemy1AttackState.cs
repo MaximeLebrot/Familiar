@@ -13,8 +13,8 @@ public class Enemy1AttackState : Enemy1BaseState
 
     //timer och time som reguleras utav en difficulty level? hur länge man stannar i ljuset
     //the higher the time the easier the game is
-    [SerializeField, Tooltip("The maximum time the player can stand in the light before being caught. Translated to seconds")]
-    private float time;
+    [Tooltip("The maximum time the player can stand in the light before being caught. Translated to seconds")]
+    private float time = 1;
     [Tooltip("The timer controlled by how long the player stands in the lightVisionDistance")]
     private float timer;
     [Tooltip("The color that is set to the lantern of the enemy. Works as feedback for the player")]
@@ -24,6 +24,8 @@ public class Enemy1AttackState : Enemy1BaseState
 
     public override void Enter()
     {
+        if (time == 0)
+            InitializeDifficulty();
         timer = time;
         base.Enter();
     }
@@ -44,10 +46,14 @@ public class Enemy1AttackState : Enemy1BaseState
             || CheckIfPlayerAlive() != true
             || CheckForLOS() != true
             || CheckIfPlayerInFront() != true)
+<<<<<<< Updated upstream
             ResetAggro();
        
+=======
+            ResetAggro(true);
+>>>>>>> Stashed changes
     }
-    private void ResetAggro()
+    private void ResetAggro(bool doPatrol)
     {
         owner.Anim.SetBool("discover", false);
         hasRan = false;
@@ -56,7 +62,8 @@ public class Enemy1AttackState : Enemy1BaseState
             timer = time;
             SetColor(timer);
         }
-        stateMachine.Transition<Enemy1PatrolState>();
+        if (doPatrol)
+            stateMachine.Transition<Enemy1PatrolState>();
     }
 
    
@@ -96,8 +103,10 @@ public class Enemy1AttackState : Enemy1BaseState
         color.a = 1f;
         owner.Light.color = color;
     }
+    
     private void GrabPlayer()
     {
+<<<<<<< Updated upstream
         owner.Anim.SetTrigger("roar");
         owner.PlayerStats.Die();
         ResetAggro();
@@ -111,5 +120,28 @@ public class Enemy1AttackState : Enemy1BaseState
         //owner.StartCoroutine(stillensec());
         //playerController.velocity = Vector3.zero;
         //playerStats.Respawn(owner.playerRespawnLocation, 1.0f);
+=======
+        owner.StartCoroutine(owner.CaughtPlayer());
+        ResetAggro(false);
+    }
+    private void InitializeDifficulty()
+    {
+        int difficulty = Stats.Instance.Difficulty;
+        switch (difficulty)
+        {
+            case 1:
+                time = 3;
+                break;
+            case 2:
+                time = 2;
+                break;
+            case 3:
+                time = 1;
+                break;
+            case 4:
+                time = 0.5f;
+                break;
+        }
+>>>>>>> Stashed changes
     }
 }

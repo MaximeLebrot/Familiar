@@ -18,8 +18,13 @@ public class ShowValue : MonoBehaviour
         valueText.text = Mathf.RoundToInt(value * 100) + "%";
     }
 
-    public void sensitivityTextUpdate(float value)
+    public void SensitivityTextUpdate(float value)
     {
-        valueText.text = Mathf.Round(value * 10) + "";
+        valueText.text = Mathf.Round(value) + "";
+    }
+
+    public void DifficultyTextUpdate(float value)
+    {
+        valueText.text = Mathf.Round(value).ToString();
     }
 }

@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 using UnityEngine.AI; //Navmesh https://docs.unity3d.com/Manual/nav-HowTos.html
 
@@ -109,6 +110,14 @@ public class Enemy1 : MonoBehaviour, IZappable
             }
         }
         return null;
+    }
+    
+    public IEnumerator CaughtPlayer()
+    {
+        Anim.SetTrigger("roar");
+        PlayerStats.Die();
+        yield return new WaitForSeconds(2.5f);
+        stateMachine.Transition<Enemy1PatrolState>();
     }
 
     public void RemoveNavMesh()

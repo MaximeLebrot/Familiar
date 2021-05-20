@@ -80,6 +80,7 @@ public class CameraHandler : MonoBehaviour
     private void InitializeSequence()
     {
         InitializePlayerController();
+        InitializeMouseSensitivity();
         InitializeCameraVector();
         InitializeCursor();
     }
@@ -87,6 +88,11 @@ public class CameraHandler : MonoBehaviour
     {
         if (playerController == null)
             playerController = GetComponentInParent<Controller>();
+    }
+    private void InitializeMouseSensitivity()
+    {
+        if (mouseSensitivity == 0)
+            mouseSensitivity = Stats.Instance.MouseSensitivity;
     }
     private void InitializeCameraVector()
     {

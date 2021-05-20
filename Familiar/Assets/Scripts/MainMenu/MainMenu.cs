@@ -40,13 +40,11 @@ public class MainMenu : MonoBehaviour
     public void SetVolume()
     {
         Sound.Instance.Volume = volumeSlider.value;
-        //AudioListener.volume = volumeSlider.value;
     }
 
     public void SetMouseSensitivity()
     {
         Stats.Instance.MouseSensitivity = mouseSensitivitySlider.value;
-        Debug.Log(Stats.Instance.MouseSensitivity);
     }
 
     public void LoadGame()
