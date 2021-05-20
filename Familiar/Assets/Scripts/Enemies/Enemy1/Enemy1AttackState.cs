@@ -46,12 +46,7 @@ public class Enemy1AttackState : Enemy1BaseState
             || CheckIfPlayerAlive() != true
             || CheckForLOS() != true
             || CheckIfPlayerInFront() != true)
-<<<<<<< Updated upstream
-            ResetAggro();
-       
-=======
             ResetAggro(true);
->>>>>>> Stashed changes
     }
     private void ResetAggro(bool doPatrol)
     {
@@ -106,21 +101,6 @@ public class Enemy1AttackState : Enemy1BaseState
     
     private void GrabPlayer()
     {
-<<<<<<< Updated upstream
-        owner.Anim.SetTrigger("roar");
-        owner.PlayerStats.Die();
-        ResetAggro();
-
-        //kanske teleport tillbaka?
-        //owner.navAgent.acceleration = 0;
-        //owner.navAgent.speed = 0;
-        //owner.navAgent.isStopped = true;
-        //owner.navAgent.ResetPath();
-
-        //owner.StartCoroutine(stillensec());
-        //playerController.velocity = Vector3.zero;
-        //playerStats.Respawn(owner.playerRespawnLocation, 1.0f);
-=======
         owner.StartCoroutine(owner.CaughtPlayer());
         ResetAggro(false);
     }
