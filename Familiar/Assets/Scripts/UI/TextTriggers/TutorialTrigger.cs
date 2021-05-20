@@ -15,7 +15,7 @@ public class TutorialTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             tutorialText.text = "";
             // SFX here?
@@ -42,7 +42,7 @@ public class TutorialTrigger : MonoBehaviour
     // Used to null out the text when player leaves trigger.
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player" && tutorialText.text == tutorial)
+        if (other.CompareTag("Player") && tutorialText.text == tutorial)
         {
             tutorialText.text = "";
         }

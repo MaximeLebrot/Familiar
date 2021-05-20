@@ -6,40 +6,34 @@ using UnityEngine.UI;
 public class MissionTrigger : MonoBehaviour
 {
     // The mission text is permanently on the screen.
-    // Maybe add a delay to the missiontext?
+    // Can be delayed.
    
     public Text missionText;
     public string mission;
     public bool needKey;
-    public float typeSpeed; // needs to be around 0.025?
+    public bool delay; //If the mission should wait for dialog
+    public float delayTime; // How long before mission should change.
     
-    // The mission texts animator
+    // The mission panels animator
     public Animator anim;
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && !needKey || other.tag == "Key" && needKey)
+        if (other.CompareTag("Player") && !needKey || other.CompareTag("Key") && needKey)
         {
-            // Needs better animation or something to give better feedback on when text gets updated.
-            anim.SetTrigger("Update");
-            missionText.text = mission; // maybe add typing effect instead?
-            //StartCoroutine(TypeText());
-            gameObject.SetActive(false);
+            if (delay)
+                StartCoroutine(DelayChange());
+
             // Add SFX here ?
+            anim.SetTrigger("Update"); // Needs better animation ?
+            missionText.text = mission; // maybe add typing effect instead?
+            gameObject.SetActive(false);
         }
     }
 
-    // Not used as of now.
-    // Becomes a problem when player walks out of the trigger?
-    // Or when the typing speed is to low, the sentence gets cut of for some reason?
-
-    private IEnumerator TypeText()
+    // Delays the mission text being updated.
+    private IEnumerator DelayChange()
     {
-        missionText.text = "";
-        foreach (char letter in mission.ToCharArray())
-        {
-            missionText.text += letter;
-            yield return new WaitForSeconds(typeSpeed);
-        }
+        yield return new WaitForSeconds(delayTime);
     }
 }

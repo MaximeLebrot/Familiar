@@ -4484,6 +4484,7 @@ MonoBehaviour:
   needKey: 0
   expressionPosition: {fileID: 1504842385}
   expression: {fileID: 21300000, guid: d68ecb2f6df4f2b40b69ff7f326f0e4e, type: 3}
+  anim: {fileID: 1764345996}
 --- !u!54 &285502728
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5774,6 +5775,7 @@ MonoBehaviour:
   needKey: 0
   expressionPosition: {fileID: 1504842385}
   expression: {fileID: 21300000, guid: 02a705da42b270e4a9eab9eefa83b70f, type: 3}
+  anim: {fileID: 1764345996}
 --- !u!54 &383929158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -6035,7 +6037,8 @@ MonoBehaviour:
   missionText: {fileID: 656618147}
   mission: Take the Keychain to the big Locked Door.
   needKey: 1
-  typeSpeed: 0.025
+  delay: 1
+  delayTime: 4
   anim: {fileID: 1902547973}
 --- !u!1001 &405126582
 PrefabInstance:
@@ -9995,7 +9998,8 @@ MonoBehaviour:
   missionText: {fileID: 656618147}
   mission: Find the Keychain.
   needKey: 0
-  typeSpeed: 0.025
+  delay: 1
+  delayTime: 4
   anim: {fileID: 1902547973}
 --- !u!4 &602157572 stripped
 Transform:
@@ -22730,6 +22734,7 @@ MonoBehaviour:
   needKey: 1
   expressionPosition: {fileID: 1504842385}
   expression: {fileID: 21300000, guid: 02a705da42b270e4a9eab9eefa83b70f, type: 3}
+  anim: {fileID: 1764345996}
 --- !u!1001 &1351479035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -25862,7 +25867,8 @@ MonoBehaviour:
   missionText: {fileID: 656618147}
   mission: Bring the Keychain to the Wizard.
   needKey: 0
-  typeSpeed: 0.025
+  delay: 0
+  delayTime: 0
   anim: {fileID: 1902547973}
 --- !u!1 &1504842383
 GameObject:
@@ -29933,6 +29939,7 @@ MonoBehaviour:
   needKey: 0
   expressionPosition: {fileID: 1504842385}
   expression: {fileID: 21300000, guid: d68ecb2f6df4f2b40b69ff7f326f0e4e, type: 3}
+  anim: {fileID: 1764345996}
 --- !u!1 &1757191201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543216753092369487, guid: ca014879105e38940824f2aeca60623c, type: 3}
@@ -31053,6 +31060,7 @@ MonoBehaviour:
   needKey: 0
   expressionPosition: {fileID: 1504842385}
   expression: {fileID: 21300000, guid: f06063bae9978c845b2763011693f8e2, type: 3}
+  anim: {fileID: 1764345996}
 --- !u!54 &1831595465
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35256,6 +35264,7 @@ MonoBehaviour:
   needKey: 0
   expressionPosition: {fileID: 1504842385}
   expression: {fileID: 21300000, guid: 2266350323c7b54499a44ea407ec899a, type: 3}
+  anim: {fileID: 1764345996}
 --- !u!54 &2060259950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35599,7 +35608,8 @@ MonoBehaviour:
   missionText: {fileID: 656618147}
   mission: Find the Keychain and avoid being caught by the Guards.
   needKey: 0
-  typeSpeed: 0.025
+  delay: 1
+  delayTime: 1
   anim: {fileID: 1902547973}
 --- !u!1001 &2082632455
 PrefabInstance:
