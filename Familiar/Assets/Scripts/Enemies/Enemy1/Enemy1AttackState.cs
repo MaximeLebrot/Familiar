@@ -45,9 +45,11 @@ public class Enemy1AttackState : Enemy1BaseState
             || CheckForLOS() != true
             || CheckIfPlayerInFront() != true)
             ResetAggro();
+       
     }
     private void ResetAggro()
     {
+        owner.Anim.SetBool("discover", false);
         hasRan = false;
         if (owner.Light != null)
         {
@@ -64,7 +66,7 @@ public class Enemy1AttackState : Enemy1BaseState
         {
             //owner.NavAgent.ResetPath();
             owner.Transform.LookAt(owner.PlayerTransform.position);
-            owner.Anim.SetTrigger("purpleSus");
+            owner.Anim.SetBool("discover", true);
             owner.NavAgent.velocity = Vector3.zero;
             hasRan = true;
         }
@@ -99,6 +101,7 @@ public class Enemy1AttackState : Enemy1BaseState
         owner.Anim.SetTrigger("roar");
         owner.PlayerStats.Die();
         ResetAggro();
+
         //kanske teleport tillbaka?
         //owner.navAgent.acceleration = 0;
         //owner.navAgent.speed = 0;
