@@ -22,7 +22,7 @@ public class MissionTrigger : MonoBehaviour
         if (other.CompareTag("Player") && !needKey || other.CompareTag("Key") && needKey)
         {
             if (delay)
-                StartCoroutine(DelayChange());
+                //StartCoroutine(DelayChange());
 
             // Add SFX here ?
             anim.SetTrigger("Update"); // Needs better animation ?
