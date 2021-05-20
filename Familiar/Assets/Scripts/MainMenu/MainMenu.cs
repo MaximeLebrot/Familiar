@@ -15,6 +15,7 @@ public class MainMenu : MonoBehaviour
 
     public void StartGame()
     {
+        InitializeStartStats();
         SceneManager.LoadScene("Level 1");
     }
 
@@ -49,6 +50,28 @@ public class MainMenu : MonoBehaviour
 
     public void LoadGame()
     {
+        LoadVariables();
         Debug.Log("Loading game...");
+    }
+
+    private void InitializeStartStats()
+    {
+        Vector3 position = new Vector3(-72.5f, 2.5f, -33f);
+        float health = 10;
+
+        Stats.Instance.Health = health;
+        Stats.Instance.Position = position;
+    }
+
+    private void LoadVariables()
+    {
+        SaveData data = SaveGame.LoadPlayer();
+        Stats.Instance.Health = data.health;
+        Vector3 position = new Vector3();
+        position.x = data.position[0];
+        position.y = data.position[1];
+        position.z = data.position[2];
+        Stats.Instance.Position = position;
+        SceneManager.LoadScene(data.sceneName);
     }
 }

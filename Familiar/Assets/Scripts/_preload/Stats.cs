@@ -6,6 +6,10 @@ public class Stats : MonoBehaviour
 
     private float mouseSensitivity;
 
+    private Vector3 position;
+
+    private float health;
+
     private int difficulty;
 
     void Awake()
@@ -31,5 +35,15 @@ public class Stats : MonoBehaviour
     {
         get => difficulty;
         set => difficulty = value;
+    }
+    public float Health
+    {
+        get => health;
+        set => health = value;
+    }
+    public Vector3 Position
+    {
+        get => position;
+        set => position = value;
     }
 }

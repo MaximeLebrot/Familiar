@@ -203,13 +203,16 @@ public class Enemy1 : MonoBehaviour, IZappable
 
     private void InitializeLight()
     {
-        if (light == null)
+        if (isIdleEnemy != true)
         {
-            Debug.LogWarning("Light component value should be set in the inspector");
-            light = GetComponentInChildren<Light>();
-
             if (light == null)
-                Debug.LogError("Cannot find Light component. \"GetComponentInChildren\" used");
+            {
+                Debug.LogWarning("Light component value should be set in the inspector");
+                light = GetComponentInChildren<Light>();
+
+                if (light == null)
+                    Debug.LogError("Cannot find Light component. \"GetComponentInChildren\" used");
+            }
         }
     }
 

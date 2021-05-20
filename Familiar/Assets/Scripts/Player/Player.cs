@@ -89,6 +89,7 @@ namespace AbilitySystem
             InitializeStateMachine();
             InitializeAbilitySystem();
             InitializeHealthBarValue();
+            InitializeStats();
         }
         private void InitializeAnimator()
         {
@@ -143,6 +144,16 @@ namespace AbilitySystem
                 value *= (1.0f - resistance.Value);
             }
             return value;
+        }
+        private void InitializeStats()
+        {
+            float healthDifference = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) - Stats.Instance.Health;            
+            AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, -healthDifference);
+            HealthBarUpdate();
+
+
+            gameObject.transform.position = Stats.Instance.Position;
+
         }
 
         public void TakeDamage(float damage)

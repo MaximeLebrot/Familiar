@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -120,8 +118,9 @@ public class PauseMenu : MonoBehaviour
         Debug.Log(Stats.Instance.MouseSensitivity);
     }
 
-    public void SaveGame()
+    public void SaveTheGame()
     {
+        SaveGame.SavePlayer(playerHandler.GetComponent<AbilitySystem.Player>());
         Debug.Log("Saving game...");
     }
 
