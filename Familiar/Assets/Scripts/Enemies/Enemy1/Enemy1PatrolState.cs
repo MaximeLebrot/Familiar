@@ -9,7 +9,7 @@ public class Enemy1PatrolState : Enemy1BaseState
     public override void Enter()
     {
         base.Enter();
-        owner.NavAgent.autoBraking = false;
+        //owner.NavAgent.autoBraking = false;
         Patrol();
     }
 

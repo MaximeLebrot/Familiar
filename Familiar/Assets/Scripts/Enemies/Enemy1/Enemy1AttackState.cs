@@ -10,6 +10,7 @@ public class Enemy1AttackState : Enemy1BaseState
     private float aggroLossDistance;
     [SerializeField, Tooltip("The distance the light covers")]
     private float lightVisionDistance;
+    Animator animator; //vild kod
 
     //timer och time som reguleras utav en difficulty level? hur länge man stannar i ljuset
     //the higher the time the easier the game is
@@ -53,12 +54,15 @@ public class Enemy1AttackState : Enemy1BaseState
         }
         stateMachine.Transition<Enemy1PatrolState>();
     }
+
+   
     private void AggroFeedback()
     {
         //ska kallas en gång
         //{ 
         //anim.SetBool("Kinda sus", true);
         owner.NavAgent.ResetPath();
+        owner.Anim.SetTrigger("purpleSus"); //vild kod
         //}
         //owner.Anim.SetBool(Walk) //TODO sluta springa
         if (timer <= 0)
