@@ -23,7 +23,7 @@ public class Enemy1AttackState : Enemy1BaseState
     private bool hasRan;
 
     private bool grabbingPlayer;
-    private float aggroTime = 1.5f;
+    private static readonly float aggroTime = 1.5f;
     private float aggroTimer;
 
     public override void Enter()
@@ -73,9 +73,7 @@ public class Enemy1AttackState : Enemy1BaseState
     {
         if (hasRan != true)
         {
-            owner.Transform.LookAt(owner.PlayerTransform.position);
-            owner.Anim.SetBool("discover", true);
-            owner.NavAgent.velocity = Vector3.zero;
+            LookAtPlayer();
             hasRan = true;
         }
 
@@ -110,10 +108,17 @@ public class Enemy1AttackState : Enemy1BaseState
 
     private void GrabSequence()
     {
+        LookAtPlayer();
         if (aggroTimer <= 0)
             grabbingPlayer = false;
         else
             aggroTimer -= Time.deltaTime;
+    }
+    private void LookAtPlayer()
+    {
+        owner.Anim.SetBool("discover", true);
+        owner.Transform.LookAt(owner.PlayerTransform.position);
+        owner.NavAgent.velocity = Vector3.zero;
     }
 
     private void InitializeDifficulty()
