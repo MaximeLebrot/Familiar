@@ -30,6 +30,7 @@ public class Enemy1AttackState : Enemy1BaseState
     {
         if (time == 0)
             InitializeDifficulty();
+        owner.NavAgent.autoBraking = true;
         timer = time;
         base.Enter();
     }

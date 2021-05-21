@@ -40,7 +40,6 @@ public class UICodePanelButton : MonoBehaviour
         }
         else
         {
-            Debug.Log("Wrong!");
             allImages.SetAllToColor(Color.red);
             StartCoroutine(code.RestartCodeCounterAfterDelay());
             StartCoroutine(allImages.ResetAll());

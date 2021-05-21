@@ -134,7 +134,6 @@ public class Code : MonoBehaviour
 
     public void RestartCurrentCodeCounter()
     {
-        Debug.Log("Restartnig current code counter");
         currentNumber = correctCode[0];
         correctCodeIterator = 0;
     }
