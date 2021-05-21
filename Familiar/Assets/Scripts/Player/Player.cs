@@ -81,7 +81,7 @@ namespace AbilitySystem
 
         private void OnTriggerEnter(Collider other)
         {
-            if (other.tag == "MoonStone")
+            if (other.CompareTag("MoonStone"))
             {
                 moonstones[stoneCounter].SetActive(true);
                 stoneCounter++;
@@ -153,6 +153,8 @@ namespace AbilitySystem
         }
         private void InitializeStats()
         {
+            if (Stats.Instance == null)
+                Debug.Log(Stats.Instance.Health);
             float healthDifference = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) - Stats.Instance.Health;            
             AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, -healthDifference);
             HealthBarUpdate();
@@ -230,6 +232,7 @@ namespace AbilitySystem
         {
             healthBar.value = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth)/10;
         }
+        //used by animator
         private void ResetTakeDmgTrigger()
         {
             anim.ResetTrigger("takeDmg");

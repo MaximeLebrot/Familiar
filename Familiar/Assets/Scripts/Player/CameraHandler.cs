@@ -37,6 +37,7 @@ public class CameraHandler : MonoBehaviour
 
     private void Awake()
     {
+        Debug.Log("player awake");
         InitializeSequence();
     }
 
@@ -92,6 +93,7 @@ public class CameraHandler : MonoBehaviour
     }
     private void InitializeMouseSensitivity()
     {
+        Debug.Log(Stats.Instance.MouseSensitivity);
         if (mouseSensitivity == 0)
             mouseSensitivity = Stats.Instance.MouseSensitivity;
     }

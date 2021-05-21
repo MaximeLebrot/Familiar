@@ -8,12 +8,13 @@ public class Stats : MonoBehaviour
 
     private Vector3 position;
 
-    private float health = 10;
+    private float health;
 
     private int difficulty;
 
     void Awake()
     {
+        Debug.Log("Stats awake");
         if (Instance == null)
         {
             Instance = this;
@@ -23,6 +24,7 @@ public class Stats : MonoBehaviour
             Debug.Log("Warning: multiple " + this + " in scene!");
         }
         Instance.MouseSensitivity = 3.0f;
+        Instance.Health = 10f;
         Instance.Difficulty = 1;
     }
 

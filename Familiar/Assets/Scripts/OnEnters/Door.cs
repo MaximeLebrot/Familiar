@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    [/*HideInInspector,*/ Tooltip("Checks whether the door is open or not")]
+    [HideInInspector, Tooltip("Checks whether the door is open or not")]
     public bool open;
     [SerializeField, Tooltip("The Animator component tied to this object")]
     private Animator animator;
