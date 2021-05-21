@@ -13,8 +13,11 @@ public class LoadingSceneIntegration
     {
         Debug.Log("InitLoadingScene()");
         int sceneIndex = SceneManager.GetActiveScene().buildIndex;
-        if (sceneIndex == 0) return;
-
+        if (sceneIndex == 0)
+        {
+            otherScene = 1;
+            return;
+        }
         Debug.Log("Loading _preload scene");
         otherScene = sceneIndex;
         SceneManager.LoadScene(0);

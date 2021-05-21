@@ -37,6 +37,4 @@ public static class SaveGame
             return null;
         }
     }
-
-
 }

@@ -39,7 +39,9 @@ public class Enemy1AttackState : Enemy1BaseState
     {
         if (CheckForDistanceFromFeet(grabDistance, true) 
             && CheckIfPlayerAlive() == true)
+        {
             GrabPlayer();
+        }
         if (grabbingPlayer == true)
         {
             GrabSequence();
@@ -71,7 +73,7 @@ public class Enemy1AttackState : Enemy1BaseState
             {
                 owner.Anim.SetBool("discover", false);
                 timer = time;
-                SetColor(timer);
+                SetColorToRedWithTime(timer);
                 if (doPatrol == true)
                     stateMachine.Transition<Enemy1PatrolState>();
             }
@@ -104,10 +106,10 @@ public class Enemy1AttackState : Enemy1BaseState
         if (timer <= 0)
             GrabPlayer();
         else
-            SetColor(timer -= Time.deltaTime);
+            SetColorToRedWithTime(timer -= Time.deltaTime);
     }
 
-    private void SetColor(float timer)
+    private void SetColorToRedWithTime(float timer)
     {
         //make sure timer does not go under the value of zero
         if (timer < 0)
