@@ -36,7 +36,8 @@ public class Enemy1AttackState : Enemy1BaseState
 
     public override void HandleUpdate()
     {
-        if (CheckForDistanceFromFeet(grabDistance, true) && CheckIfPlayerAlive() == true)
+        if (CheckForDistanceFromFeet(grabDistance, true) 
+            && CheckIfPlayerAlive() == true)
             GrabPlayer();
         if (grabbingPlayer == true)
         {
@@ -57,18 +58,39 @@ public class Enemy1AttackState : Enemy1BaseState
     }
     private void ResetAggro(bool doPatrol)
     {
-        owner.Anim.SetBool("discover", false);
         hasRan = false;
         if (owner.Light != null)
         {
-            timer = time;
-            SetColor(timer);
+            if (timer < time)
+            {
+                InverseLight(timer += Time.deltaTime);
+            }
+            else
+            {
+                owner.Anim.SetBool("discover", false);
+                timer = time;
+                SetColor(timer);
+                if (doPatrol == true)
+                    stateMachine.Transition<Enemy1PatrolState>();
+            }
         }
-        if (doPatrol)
-            stateMachine.Transition<Enemy1PatrolState>();
     }
 
-   
+    private void InverseLight(float timer)
+    {
+        if (timer > time)
+            timer = time;
+
+        float g = timer / time;
+
+        color.r = 1f;
+        color.g = g;
+        color.b = 0f;
+        color.a = 1f;
+
+        owner.Light.color = color;
+    }
+
     private void AggroFeedback()
     {
         if (hasRan != true)
@@ -82,6 +104,7 @@ public class Enemy1AttackState : Enemy1BaseState
         else
             SetColor(timer -= Time.deltaTime);
     }
+
     private void SetColor(float timer)
     {
         //make sure timer does not go under the value of zero
@@ -114,6 +137,7 @@ public class Enemy1AttackState : Enemy1BaseState
         else
             aggroTimer -= Time.deltaTime;
     }
+
     private void LookAtPlayer()
     {
         owner.Anim.SetBool("discover", true);

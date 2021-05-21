@@ -45,7 +45,7 @@ public class Enemy1 : MonoBehaviour, IZappable
     [Tooltip("The statemachine attached to the enemy")]
     private StateMachine stateMachine;
     [Tooltip("The string value of the tag held by the patrol points")]
-    private static string patrolPoint = "Patrol point";
+    private static readonly string patrolPoint = "Patrol point";
 
     private void Awake()
     {
