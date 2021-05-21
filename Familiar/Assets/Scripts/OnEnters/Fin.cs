@@ -6,12 +6,12 @@ using UnityEngine.UI;
 
 public class Fin : MonoBehaviour
 {
-    [Tooltip("A reference to the \"Player\" script on the player game object. Should be inputed manually")]
-    [SerializeField] private Player player;
-    [Tooltip("A reference to the F2B game component. Should be inputed manually")]
-    [SerializeField] private Image black;
-    [Tooltip("The animator componen attached to this game object. Should be inputed manually")]
-    [SerializeField] private Animator anim;
+    [SerializeField, Tooltip("A reference to the \"Player\" script on the player game object. Should be inputed manually")]
+    private Player player;
+    [SerializeField, Tooltip("A reference to the F2B game components image component. Must be inputed manually")]
+    private Image black;
+    [SerializeField, Tooltip("The animator componen attached to this game object. Should be inputed manually")]
+    private Animator anim;
 
     protected void Awake()
     {
@@ -19,9 +19,8 @@ public class Fin : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
         if (anim == null)
             anim = GetComponent<Animator>();
-        //if (black == null)
-            //find image
-        
+        if (black == null)
+            Debug.LogError("Input the F2B component in \"Fin\" manually");
     }
 
     private void OnTriggerEnter(Collider other)
@@ -40,7 +39,7 @@ public class Fin : MonoBehaviour
         }
     }
 
-    IEnumerator Fading()
+    private IEnumerator Fading()
     {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => black.color.a == 1);

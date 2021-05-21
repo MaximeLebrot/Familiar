@@ -2,18 +2,21 @@ using UnityEngine;
 
 public class Door : MonoBehaviour
 {
-    Animator animator;
+    [/*HideInInspector,*/ Tooltip("Checks whether the door is open or not")]
+    public bool open;
+    [SerializeField, Tooltip("The Animator component tied to this object")]
+    private Animator animator;
     void Start()
     {
-        animator = GetComponent<Animator>(); //vild kod
+        if (animator == null)
+            animator = GetComponent<Animator>(); //vild kod
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Key")
+        if (other.CompareTag("Key"))
         {
-            animator.SetBool("open", true); //vild kod
-            //gameObject.SetActive(false);
-            //Destroy(gameObject);
+            open = true;
+            animator.SetBool("open", true);
         }
     }
 }

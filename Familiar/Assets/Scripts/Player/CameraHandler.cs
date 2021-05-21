@@ -29,9 +29,11 @@ public class CameraHandler : MonoBehaviour
     private Vector3 pos;
     [Tooltip("The camera vector2 which gets the mouse input from the player")]
     private Vector2 CameraVec;
+    [Tooltip("The RaycastHit struct carrying information about the collision of the camera")]
+    private RaycastHit hitInfo;
 
-    private static string MouseY = "Mouse Y";
-    private static string MouseX = "Mouse X";
+    private static readonly string MouseY = "Mouse Y";
+    private static readonly string MouseX = "Mouse X";
 
     private void Awake()
     {
@@ -69,7 +71,6 @@ public class CameraHandler : MonoBehaviour
 
     private Vector3 CheckCollision()
     {
-        RaycastHit hitInfo;
         bool hit = Physics.Raycast(playerController.transform.position, pos.normalized, out hitInfo, pos.magnitude, playerController.CollisionMask);
         if (hit)
             return pos.normalized * (hitInfo.distance - cameraAdjustmentOffset);
