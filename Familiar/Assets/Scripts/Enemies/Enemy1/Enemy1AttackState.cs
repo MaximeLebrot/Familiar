@@ -57,6 +57,7 @@ public class Enemy1AttackState : Enemy1BaseState
             || CheckIfPlayerInFront() != true)
             ResetAggro(true);
     }
+
     private void ResetAggro(bool doPatrol)
     {
         hasRan = false;
@@ -152,17 +153,37 @@ public class Enemy1AttackState : Enemy1BaseState
         switch (difficulty)
         {
             case 1:
-                time = 3;
+                SetEasyDifficulty();
                 break;
             case 2:
-                time = 2;
+                SetNormalDifficulty();
                 break;
             case 3:
-                time = 1;
+                SetHardDifficulty();
                 break;
             case 4:
-                time = 0.5f;
+                SetImpossibleDifficulty();
                 break;
         }
+    }
+
+    private void SetEasyDifficulty()
+    {
+        time = 3;
+    }
+
+    private void SetNormalDifficulty()
+    {
+        time = 2;
+    }
+
+    private void SetHardDifficulty()
+    {
+        time = 1;
+    }
+
+    private void SetImpossibleDifficulty()
+    {
+        time = 0.5f;
     }
 }
