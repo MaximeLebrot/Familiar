@@ -25,7 +25,7 @@ public class Stats : MonoBehaviour
         }
         Instance.MouseSensitivity = 3.0f;
         Instance.Health = 10f;
-        Instance.Difficulty = 1;
+        Instance.Difficulty = 2;
     }
 
     public float MouseSensitivity
