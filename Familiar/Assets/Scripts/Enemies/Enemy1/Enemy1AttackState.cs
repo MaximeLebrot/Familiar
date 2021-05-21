@@ -36,7 +36,7 @@ public class Enemy1AttackState : Enemy1BaseState
 
     public override void HandleUpdate()
     {
-        if (CheckForDistanceFromFeet(grabDistance, true))
+        if (CheckForDistanceFromFeet(grabDistance, true) && CheckIfPlayerAlive() == true)
             GrabPlayer();
         if (grabbingPlayer == true)
         {
