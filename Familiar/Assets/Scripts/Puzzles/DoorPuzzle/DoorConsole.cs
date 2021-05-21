@@ -10,21 +10,20 @@ public class DoorConsole : MonoBehaviour
 
     [Tooltip("Checks whether the player can use this console or not")]
     private bool canUseConsole;
-    Animator anim; //vild kod
+   
 
     private void Start()
     {
-        anim = GetComponent<Animator>(); //vild kod
         for (int i = 0; i < doors.Length; i++)
         {
             //first element put in is going to be active
             if (i % 2 == 0)
             {
-                doors[i].SetActive(true);
+                doors[i].GetComponent<Animator>().SetBool("isOpen", false);
             }
             else
             {
-                doors[i].SetActive(false);
+                doors[i].GetComponent<Animator>().SetBool("isOpen", true);
             }
         }
     }
@@ -56,12 +55,13 @@ public class DoorConsole : MonoBehaviour
     {
         for (int i = 0; i<doors.Length; i++)
         {
-            doors[i].SetActive(!doors[i].activeInHierarchy);
+            //doors[i].SetActive(!doors[i].activeInHierarchy);
+            doors[i].GetComponent<Animator>().SetBool("isOpen", !doors[i].GetComponent<Animator>().GetBool("isOpen"));
         }
         if (allDoors.Length > 0)
         {
             foreach (GameObject door in allDoors)
-                door.SetActive(false);
+                door.GetComponent<Animator>().SetBool("isOpen", true);
         }
     }
 }
