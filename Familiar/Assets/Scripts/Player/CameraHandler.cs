@@ -37,7 +37,7 @@ public class CameraHandler : MonoBehaviour
 
     private void Awake()
     {
-        Debug.Log("player awake");
+        //Debug.Log("player awake");
         InitializeSequence();
     }
 
@@ -86,21 +86,24 @@ public class CameraHandler : MonoBehaviour
         InitializeCameraVector();
         InitializeCursor();
     }
+
     private void InitializePlayerController()
     {
         if (playerController == null)
             playerController = GetComponentInParent<Controller>();
     }
+
     private void InitializeMouseSensitivity()
     {
-        Debug.Log(Stats.Instance.MouseSensitivity);
         if (mouseSensitivity == 0)
             mouseSensitivity = Stats.Instance.MouseSensitivity;
     }
+
     private void InitializeCameraVector()
     {
         CameraVec = new Vector2(0, 0);
     }
+
     private void InitializeCursor()
     {
         Cursor.lockState = CursorLockMode.Locked;
@@ -112,16 +115,19 @@ public class CameraHandler : MonoBehaviour
         get => freezeCamera;
         set => freezeCamera = value;
     }
+
     public bool CannotMoveCam
     {
         get => cannotMoveCam;
         set => cannotMoveCam = value;
     }
+
     public bool FirstPerson
     {
         get => firstPerson;
         set => firstPerson = value;
     }
+
     public float MouseSensitivity
     {
         get => mouseSensitivity;

@@ -189,7 +189,6 @@ namespace AbilitySystem
 
         public void FadeToBlack()
         {
-            Debug.Log("FadedToBlack");
             StartCoroutine(FadeOut());
         }
 

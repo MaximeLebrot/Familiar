@@ -14,7 +14,7 @@ public class Stats : MonoBehaviour
 
     void Awake()
     {
-        Debug.Log("Stats awake");
+        //Debug.Log("Stats awake");
         if (Instance == null)
         {
             Instance = this;
