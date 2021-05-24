@@ -164,7 +164,7 @@ public class Controller : MonoBehaviour
                 positionB: colliders[i].transform.position,
                 rotationB: colliders[i].transform.rotation,
                 direction: out Vector3 direction,
-                distance: out float distance);
+                distance: out float _);
             //velocity += SurfaceProjection(velocity);
             CalculateVelocity(direction);
         }

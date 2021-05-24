@@ -4,18 +4,18 @@ using UnityEngine;
 //Author: Simon Canbäck
 public class GrabObjectScript : MonoBehaviour
 {
-    [SerializeField]
-    private static readonly float grabRange = 3.0f;
+    [SerializeField] private static readonly float grabRange = 3.0f;
+    [SerializeField] private static readonly float heldObjectDistanceTolerance = 2.0f;
 
     private Controller controller;
+    [SerializeField] private SpringJoint spring;
 
     [SerializeField] private GameObject carriedObject;
     [SerializeField] private Transform heldObjectPoint;
 
-    public static float GrabRange
-    {
-        get => grabRange;
-    }
+    public static float GrabRange => grabRange;
+
+    public static float HeldObjectDistanceTolerance => heldObjectDistanceTolerance;
 
     public GameObject CarriedObject
     {
@@ -29,6 +29,13 @@ public class GrabObjectScript : MonoBehaviour
             heldObjectPoint = GameObject.FindGameObjectWithTag("HOLP").transform;
 
         controller = GetComponent<Controller>();
+    }
+
+    private void FixedUpdate()
+    {
+        if (carriedObject != null 
+            && (carriedObject.transform.position - heldObjectPoint.position).magnitude > heldObjectDistanceTolerance)
+            DropObject();
     }
 
     public void ToggleGrab()
@@ -62,6 +69,8 @@ public class GrabObjectScript : MonoBehaviour
         carriedObject.transform.parent = transform;
         carriedObject.transform.localPosition = heldObjectPoint.localPosition;
         carriedObject.transform.rotation = carriedObject.transform.parent.rotation;
+        spring.connectedBody = carriedObject.GetComponent<Rigidbody>();
+        spring.spring = carriedObject.GetComponent<Rigidbody>().mass * 1000.0f;
         carriedObject.GetComponent<Rigidbody>().useGravity = false;
         try
         {
@@ -92,6 +101,7 @@ public class GrabObjectScript : MonoBehaviour
             carriedObject.GetComponent<Rigidbody>().useGravity = true;
             carriedObject.transform.parent = null;
             carriedObject = null;
+            spring.connectedBody = null;
             //carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.None;
             //carriedObject.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeRotation;
         }
