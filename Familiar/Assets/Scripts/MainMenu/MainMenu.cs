@@ -45,6 +45,7 @@ public class MainMenu : MonoBehaviour
 
     public void SetVolume()
     {
+        Sound.Instance.SetGlobalVolume(volumeSlider.value);
         Sound.Instance.Volume = volumeSlider.value;
     }
 

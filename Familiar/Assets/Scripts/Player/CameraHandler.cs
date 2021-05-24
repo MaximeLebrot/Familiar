@@ -95,8 +95,11 @@ public class CameraHandler : MonoBehaviour
 
     private void InitializeMouseSensitivity()
     {
-        if (mouseSensitivity == 0)
-            mouseSensitivity = Stats.Instance.MouseSensitivity;
+        if (Stats.Instance != null)
+        {
+            if (mouseSensitivity == 0)
+                mouseSensitivity = Stats.Instance.MouseSensitivity;
+        }
     }
 
     private void InitializeCameraVector()
