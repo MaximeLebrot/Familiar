@@ -14,29 +14,20 @@ public class GrabObjectScript : MonoBehaviour
 
     public static float GrabRange
     {
-        get
-        {
-            return grabRange;
-        }
+        get => grabRange;
     }
 
     public GameObject CarriedObject
     {
-        get
-        {
-            return carriedObject;
-        }
-
-        set
-        {
-            carriedObject = value;
-        }
+        get => carriedObject;
+        set => carriedObject = value;
     }
 
     private void Awake()
     {
         if (heldObjectPoint == null)
             heldObjectPoint = GameObject.FindGameObjectWithTag("HOLP").transform;
+
         controller = GetComponent<Controller>();
     }
 
@@ -110,12 +101,7 @@ public class GrabObjectScript : MonoBehaviour
         return;
     }
 
-    public void OnPlayerDeath()
-    {
-        //Debug.Log("In GrabObjectScript.OnPlayerDeath()");
-
-        DropObject();
-    }
+    public void OnPlayerDeath() => DropObject();
 
     private void OnCollisionEnter(Collision collision)
     {
