@@ -74,6 +74,7 @@ public class Enemy1BaseState : State
         else
             return (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) > distance);
     }
+
     protected bool CheckForDistanceFromEyes(float distance, bool smaller)
     {
         if (smaller == true)
