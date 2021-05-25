@@ -50,6 +50,8 @@ namespace AbilitySystem
         [Header("Events")]
         [SerializeField, Tooltip("The event in which the player dies")]
         private UnityEvent PlayerDied;
+        [SerializeField, Tooltip("The event in which the player respawns")]
+        private UnityEvent PlayerRespawned;
 
         private void Awake()
         {
@@ -213,8 +215,8 @@ namespace AbilitySystem
         private IEnumerator WaitForRespawn(Vector3 target, float delay)
         {
             yield return new WaitForSeconds(delay);
+            PlayerRespawned.Invoke();
             gameObject.transform.position = target;
-
             ded = false;
             playerController.StopController = false;
             playerController.Camera.CannotMoveCam = false;

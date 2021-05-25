@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class EliasDemoEventTrigger : MonoBehaviour
 {
-    [SerializeField]
     private static EliasPlayer eliasPlayer;
-	//public EliasPlayer eliasPlayer;
     public bool useSetLevel;
     public EliasSetLevel setLevel;
 

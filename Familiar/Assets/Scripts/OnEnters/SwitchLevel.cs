@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
@@ -16,6 +17,11 @@ public class SwitchLevel : MonoBehaviour
     
     private static readonly Vector3 level2StartPosition = new Vector3(51.5f, 1.5f, 33f);
     private static readonly float level2StartHealth = 10f;
+
+    [Header("Events")]
+    [SerializeField, Tooltip("The event in which the player goes to level 2")]
+    private UnityEvent SwitchToLevel2;
+
     private void Awake()
     {
         if (prisonDoor == null)
@@ -39,6 +45,7 @@ public class SwitchLevel : MonoBehaviour
 
     IEnumerator Fading()
     {
+        SwitchToLevel2.Invoke();
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => black.color.a == 1);
 
