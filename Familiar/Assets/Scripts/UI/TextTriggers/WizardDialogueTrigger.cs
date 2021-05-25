@@ -12,8 +12,6 @@ public class WizardDialogueTrigger : MonoBehaviour
     public string dialogue;
     public float activeTime;
     public bool needKey;
-    public Image expressionPosition; // The Image that'll be changed
-    public Sprite expression; // The sprite that'll be used in the change
     public string expressionTrigger; // The expressions trigger
 
     public Animator anim; // Dialogue panels animator
@@ -24,7 +22,6 @@ public class WizardDialogueTrigger : MonoBehaviour
         // Checks if its the player or key entering the trigger.
         if (other.CompareTag("Player") && !needKey || other.CompareTag("Key") && needKey)
         {
-            //expressionPosition.sprite = expression;
             expressionAnim.SetTrigger(expressionTrigger);
             // Sound effect here ?
             dialogueText.text = dialogue;

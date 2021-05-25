@@ -4461,9 +4461,9 @@ MonoBehaviour:
   dialogue: They really aren't very good guards huh... that is very helpful for us.
   activeTime: 5
   needKey: 0
-  expressionPosition: {fileID: 1504842385}
-  expression: {fileID: 21300000, guid: d68ecb2f6df4f2b40b69ff7f326f0e4e, type: 3}
+  expressionTrigger: normal
   anim: {fileID: 1764345996}
+  expressionAnim: {fileID: 1504842387}
 --- !u!54 &285502728
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -5688,9 +5688,9 @@ MonoBehaviour:
   dialogue: That's it! That's the key! Bring it here now, carefully! But quick!
   activeTime: 5
   needKey: 0
-  expressionPosition: {fileID: 1504842385}
-  expression: {fileID: 21300000, guid: 02a705da42b270e4a9eab9eefa83b70f, type: 3}
+  expressionTrigger: excitedKey
   anim: {fileID: 1764345996}
+  expressionAnim: {fileID: 1504842387}
 --- !u!54 &383929158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -24327,9 +24327,9 @@ MonoBehaviour:
     out of this place! Could you open that big Locked door?
   activeTime: 10
   needKey: 1
-  expressionPosition: {fileID: 1504842385}
-  expression: {fileID: 21300000, guid: 02a705da42b270e4a9eab9eefa83b70f, type: 3}
+  expressionTrigger: excited
   anim: {fileID: 1764345996}
+  expressionAnim: {fileID: 1504842387}
 --- !u!1001 &1351479035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -27841,7 +27841,7 @@ Animator:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1504842383}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: 72aa8400bf8a3bd4581805cf99effbbd, type: 2}
   m_CullingMode: 0
@@ -32364,9 +32364,9 @@ MonoBehaviour:
     the prison bars so go find the Keys! And make it hasty.
   activeTime: 10
   needKey: 0
-  expressionPosition: {fileID: 1504842385}
-  expression: {fileID: 21300000, guid: d68ecb2f6df4f2b40b69ff7f326f0e4e, type: 3}
+  expressionTrigger: normal
   anim: {fileID: 1764345996}
+  expressionAnim: {fileID: 1504842387}
 --- !u!1 &1757191201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543216753092369487, guid: ca014879105e38940824f2aeca60623c, type: 3}
@@ -32976,9 +32976,9 @@ MonoBehaviour:
     sneak past him by getting ontop of that desk.
   activeTime: 8
   needKey: 0
-  expressionPosition: {fileID: 1504842385}
-  expression: {fileID: 21300000, guid: f06063bae9978c845b2763011693f8e2, type: 3}
+  expressionTrigger: suspicious
   anim: {fileID: 1764345996}
+  expressionAnim: {fileID: 1504842387}
 --- !u!54 &1831595465
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -37050,11 +37050,11 @@ MonoBehaviour:
   dialogueText: {fileID: 453392152}
   dialogue: Seems this castle is fairly populated with guards... be careful! If they
     catch you, I'll be dead too!!!
-  activeTime: 5
+  activeTime: 6
   needKey: 0
-  expressionPosition: {fileID: 1504842385}
-  expression: {fileID: 21300000, guid: 2266350323c7b54499a44ea407ec899a, type: 3}
+  expressionTrigger: anxious
   anim: {fileID: 1764345996}
+  expressionAnim: {fileID: 1504842387}
 --- !u!54 &2060259950
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -40605,7 +40605,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3331382728121950262, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
       propertyPath: m_Intensity
-      value: 100
+      value: 47.746483
       objectReference: {fileID: 0}
     - target: {fileID: 3331382728121950262, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
       propertyPath: m_UseColorTemperature
