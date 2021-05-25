@@ -48,7 +48,15 @@ public class MoonstoneUI : MonoBehaviour
             else // Same animation for the rest
                 anim.SetTrigger("Update");
             moonCounter = player.StoneCounter;
+
+            //StopAllCoroutines();
+            StartCoroutine(Delay()); // So the update animation can play.
             moonstoneText.text = " " + moonCounter + " / 6 Moonstones collected"; // Be aware of the 6 moonstones.
         }
+    }
+
+    private IEnumerator Delay()
+    {
+        yield return new WaitForSeconds(2f);
     }
 }
