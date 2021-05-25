@@ -14,15 +14,18 @@ public class WizardDialogueTrigger : MonoBehaviour
     public bool needKey;
     public Image expressionPosition; // The Image that'll be changed
     public Sprite expression; // The sprite that'll be used in the change
+    public string expressionTrigger; // The expressions trigger
 
     public Animator anim; // Dialogue panels animator
+    public Animator expressionAnim; // Expression images animator
 
     private void OnTriggerEnter(Collider other)
     {
         // Checks if its the player or key entering the trigger.
         if (other.CompareTag("Player") && !needKey || other.CompareTag("Key") && needKey)
         {
-            expressionPosition.sprite = expression;
+            //expressionPosition.sprite = expression;
+            expressionAnim.SetTrigger(expressionTrigger);
             // Sound effect here ?
             dialogueText.text = dialogue;
             anim.SetBool("inUse", true); // Animates in the panel
