@@ -20,8 +20,10 @@ namespace AbilitySystem
         private bool ded;
         [Tooltip("Checks whether the player can see the code panel")] 
         private bool canSeeCodePanel;
-        [Tooltip("Checks whether the player is in the code panel area")] 
+        [Tooltip("Checks whether the player is in the code panel area")]
         private bool isInCodePanelArea;
+        [Tooltip("Checks whether the player can zap or not")]
+        private bool canZap;
 
         [Header("Inspector input")]
         [SerializeField, Tooltip("List of starting abilities the player has access to")]
@@ -68,7 +70,7 @@ namespace AbilitySystem
 
             if (!ded)
             {
-                if (Input.GetButtonDown("Fire1"))
+                if (Input.GetButtonDown("Fire1") && canZap)
                 {
                     if (!abilitySystem.TryActivateAbilityByTag(GameplayTags.ZapAbilityTag))
                     {
@@ -172,6 +174,8 @@ namespace AbilitySystem
                     gameObject.transform.position = GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position;
                 else
                     gameObject.transform.position = Stats.Instance.Position;
+                
+                canZap = true;
             }
         }
 
@@ -290,6 +294,11 @@ namespace AbilitySystem
         {
             get => isInCodePanelArea;
             set => isInCodePanelArea = value;
+        }
+        public bool CanZap
+        {
+            get => canZap;
+            set => canZap = value;
         }
         /* 
          

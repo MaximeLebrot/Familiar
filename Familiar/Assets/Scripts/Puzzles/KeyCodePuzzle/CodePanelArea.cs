@@ -19,7 +19,7 @@ public class CodePanelArea : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             playerStats.IsInCodePanelArea = true;
 
@@ -31,7 +31,7 @@ public class CodePanelArea : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             playerStats.IsInCodePanelArea = false;
             helpText.text = "";
