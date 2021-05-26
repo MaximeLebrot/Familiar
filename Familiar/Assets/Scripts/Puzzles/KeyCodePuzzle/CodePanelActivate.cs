@@ -66,6 +66,7 @@ public class CodePanelActivate : MonoBehaviour
             Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Confined;
             //Cursor.lockState = CursorLockMode.Locked;
+            playerStats.CanZap = true;
             cam.FreezeCamera = false;
         }        
     }
@@ -75,6 +76,7 @@ public class CodePanelActivate : MonoBehaviour
         active = true;
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+        playerStats.CanZap = false;
         cam.FreezeCamera = true;
     }
     public IEnumerator PuzzleComplete()
