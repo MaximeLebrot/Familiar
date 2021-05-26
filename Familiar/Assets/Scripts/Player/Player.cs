@@ -46,12 +46,16 @@ namespace AbilitySystem
         private Animator fadeToBlack;
         [SerializeField, Tooltip("The image tied to the F2B object. Should be inputed manually")]
         private Image blackImage;
+        [SerializeField] private ParticleSystem dustVFX;
+
 
         [Header("Events")]
         [SerializeField, Tooltip("The event in which the player dies")]
         private UnityEvent PlayerDied;
         [SerializeField, Tooltip("The event in which the player respawns")]
         private UnityEvent PlayerRespawned;
+
+        public ParticleSystem DustVFX => dustVFX;
 
         private void Awake()
         {
@@ -99,6 +103,7 @@ namespace AbilitySystem
             InitializeHealthBarValue();
             InitializeStats();
         }
+
         private void InitializeAnimator()
         {
             if (anim == null)
@@ -109,6 +114,7 @@ namespace AbilitySystem
                     Debug.LogError("Could not find Animator");
             }
         }
+
         private void InitializePlayerController()
         {
             if (playerController == null)
@@ -119,11 +125,13 @@ namespace AbilitySystem
                     Debug.LogError("Could not find \"Controller\"");
             }
         }
+
         private void InitializeStateMachine()
         {
             if (stateMachine == null)
                 stateMachine = new StateMachine(this, states);
         }
+
         private void InitializeAbilitySystem()
         {
             abilitySystem = gameObject.AddComponent<GameplayAbilitySystem>();
@@ -265,15 +273,10 @@ namespace AbilitySystem
             {
             }
         }
-        public Animator Anim
-        {
-            get => anim;
-        }
+        public Animator Anim => anim;
 
-        public bool Dead
-        {
-            get => ded;
-        }
+        public bool Dead => ded;
+
         public Controller PlayerController
         {
             get => playerController;

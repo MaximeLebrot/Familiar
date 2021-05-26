@@ -7,13 +7,11 @@ using UnityEngine.Events;
 //Secondary author: Maxime Lebrot
 public class ShootingScript : MonoBehaviour
 {
-    [SerializeField]
-    private float attackRadius = 1.0f;
-    [SerializeField]
-    private float attackRange = 3.0f;
+    [SerializeField] private float attackRadius = 1.0f;
+    [SerializeField] private float attackRange = 3.0f;
 
-    [SerializeField]
-    private Transform attackOrigin;
+    [SerializeField] private Transform attackOrigin;
+    [SerializeField] private ParticleSystem zapVFX;
 
     public bool CanFire
     {
@@ -26,11 +24,6 @@ public class ShootingScript : MonoBehaviour
         CanFire = true;
     }
 
-    void Update()
-    {
-
-    }
-
     public void Shoot()
     {
         RaycastHit[] hitArray;
@@ -41,7 +34,7 @@ public class ShootingScript : MonoBehaviour
         //Ray playerRay = new Ray(transform.position, (hitPoint.point - transform.position).normalized);
         //Debug.DrawRay(playerRay.origin, playerRay.direction * 20.0f, Color.yellow, 1.0f);
 
-        gameObject.GetComponentInChildren<ParticleSystem>().Play();
+        zapVFX.Play();
 
         hitArray = Physics.SphereCastAll(attackOrigin.position, attackRadius, transform.forward, attackRange);
 

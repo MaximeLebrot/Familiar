@@ -7,6 +7,8 @@ public class PlayerJumpState : PlayerBaseState
     {
         base.Enter();
         Jump();
+        Instantiate(player.Player.DustVFX, player.transform.position, player.Player.DustVFX.transform.rotation);
+        //player.Player.DustVFX.Play();
     }
 
     public override void HandleUpdate()

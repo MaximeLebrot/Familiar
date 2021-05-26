@@ -2,7 +2,7 @@ using AbilitySystem;
 using UnityEngine;
 
 public class Controller : MonoBehaviour
-{ 
+{
     [Header("Movement")]
     [SerializeField, Range(0f, 100f), Tooltip("Controls the acceleration")]
     private float acceleration;
@@ -67,6 +67,18 @@ public class Controller : MonoBehaviour
 
     [Tooltip("The RaycastHit component set by the ground check")]
     private RaycastHit hit;
+
+    private Player player;
+    public Player Player
+    {
+        get
+        {
+            if (player == null)
+                player = GetComponent<Player>();
+
+            return player;
+        }
+    }
 
     void Awake()
     {
@@ -298,41 +310,17 @@ public class Controller : MonoBehaviour
         set => isJumping = value;
     }
 
-    public Transform Transform
-    {
-        get => transform;
-    }
+    public Transform Transform => transform;
 
-    public Vector3 Velocity
-    {
-        get => velocity;
-    }
+    public Vector3 Velocity => velocity;
 
-    public Vector3 InputVector
-    {
-        get => input;
-    }
+    public Vector3 InputVector => input;
 
-    public CameraHandler Camera
-    {
-        get
-        {
-            return cam;
-        }
-    }
+    public CameraHandler Camera => cam;
 
-    public Vector3 HorizontalVelocity
-    {
-        get
-        {
-            return new Vector3(velocity.x, 0.0f, velocity.z);
-        }
-    }
+    public Vector3 HorizontalVelocity => new Vector3(velocity.x, 0.0f, velocity.z);
 
-    public LayerMask CollisionMask
-    {
-        get => collisionMask;
-    }
+    public LayerMask CollisionMask => collisionMask;
 
     public bool StopController
     {
@@ -340,21 +328,9 @@ public class Controller : MonoBehaviour
         set => stopController = value;
     }
 
-    public Vector3 HorizontalInput
-    {
-        get
-        {
-            return new Vector3(input.x, 0.0f, input.z);
-        }
-    }
+    public Vector3 HorizontalInput => new Vector3(input.x, 0.0f, input.z);
 
-    public float GroundCheckMargin
-    {
-        get
-        {
-            return skinWidth + groundCheckDistance;
-        }
-    }
+    public float GroundCheckMargin => skinWidth + groundCheckDistance;
 
     public float AdjustedStaticFrictionCoefficient
     {
@@ -381,19 +357,7 @@ public class Controller : MonoBehaviour
     //                );
     //    }
     //}
-    public float LowJumpCoefficient
-    {
-        get
-        {
-            return lowJumpCoefficient;
-        }
-    }
+    public float LowJumpCoefficient => lowJumpCoefficient;
 
-    public float Gravity
-    {
-        get
-        {
-            return gravity;
-        }
-    }
+    public float Gravity => gravity;
 }
