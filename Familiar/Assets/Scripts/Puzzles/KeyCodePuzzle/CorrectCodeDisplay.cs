@@ -7,8 +7,6 @@ public class CorrectCodeDisplay : MonoBehaviour
     private GameObject display;
     [SerializeField]
     private GameObject textObject;
-    [SerializeField, Tooltip("A reference to the Text mesh attached to this game object. Should be inputed manually")]
-    private TextMesh text;
     [SerializeField, Tooltip("The number this key code represents. Must be inputed manually")]
     private int number;
 
@@ -29,16 +27,6 @@ public class CorrectCodeDisplay : MonoBehaviour
     {
         //InitializeTextMesh();
         InitializeDisplay();
-    }
-    private void InitializeTextMesh()
-    {
-        if (text == null)
-        {
-            Debug.LogWarning("The reference to this game objects text mesh should be inputed manually");
-            text = GetComponent<TextMesh>();
-            if (text == null)
-                Debug.LogError("Cannot find text mesh");
-        }
     }
     private void InitializeDisplay()
     {
