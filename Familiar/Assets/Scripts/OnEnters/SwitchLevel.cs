@@ -14,7 +14,9 @@ public class SwitchLevel : MonoBehaviour
     private Image black;
     [SerializeField, Tooltip("")]
     private Animator anim;
-    
+    [SerializeField, Tooltip("")]
+    private Animator animDoor;
+
     private static readonly Vector3 level2StartPosition = new Vector3(51.5f, 1.5f, 33f);
     private static readonly float level2StartHealth = 10f;
 
@@ -30,6 +32,8 @@ public class SwitchLevel : MonoBehaviour
             Debug.LogError("Input the F2B component in \"Fin\" manually");
         if (anim == null)
             GetComponent<Animator>();
+        if (animDoor == null)
+            GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -38,6 +42,7 @@ public class SwitchLevel : MonoBehaviour
         { 
             if (other.CompareTag("Key"))
             {
+                animDoor.SetTrigger("exitOpen");
                 StartCoroutine(Fading());
             }
         }
