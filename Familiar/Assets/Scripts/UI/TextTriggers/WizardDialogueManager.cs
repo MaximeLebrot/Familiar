@@ -37,7 +37,6 @@ public class WizardDialogueManager : MonoBehaviour
     {
         yield return new WaitForSeconds(activeTime);
         anim.SetBool("inUse", false); // Animates out the panel
-        // Maybe add something here so the text gets changed to ""?
         isActive = false;
     }
 }
