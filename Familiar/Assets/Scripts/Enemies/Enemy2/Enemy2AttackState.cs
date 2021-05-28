@@ -28,7 +28,7 @@ public class Enemy2AttackState : Enemy2BaseState
             stateMachine.Transition<Enemy2DefeatState>();
             return;
         }
-        if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) > aggroLossDistance /* vector3distance from idle pos*/)
+        if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) > aggroLossDistance /* vector3distance from idle pos*/ || owner.PlayerStats.Dead == true)
             stateMachine.Transition<Enemy2IdleState>();
         else if (Vector3.Distance(owner.Transform.position, owner.PlayerTransform.position) < hitDistance && owner.CanAttack)
             HitPlayer();
@@ -52,10 +52,5 @@ public class Enemy2AttackState : Enemy2BaseState
     private void DamagePlayer()
     {
         owner.PlayerStats.TakeDamage(damage);
-        if (owner.PlayerStats.AbilitySystem.GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) <= 0)
-        {
-            owner.PlayerStats.Die();
-            stateMachine.Transition<Enemy2IdleState>();
-        }
     }
 }

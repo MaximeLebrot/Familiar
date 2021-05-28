@@ -8,6 +8,9 @@ public class DoorConsole : MonoBehaviour
     [SerializeField, Tooltip("Fill array with doors that on activation should open simultaneously, should be left empty unless on last console")]
     private GameObject[] allDoors; //fill array if activation should open them all, else leave empty
 
+    [SerializeField, Tooltip("Fill array with doors that on activation should open simultaneously, should be left empty unless on last console")]
+    private FireZone[] fireZone; //fill array if activation should stop the fire zone
+
     [Tooltip("Checks whether the player can use this console or not")]
     private bool canUseConsole;
    
@@ -36,7 +39,7 @@ public class DoorConsole : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if(other.CompareTag("Player"))
         {
             //ui "press e to activate"
             canUseConsole = true;
@@ -44,7 +47,7 @@ public class DoorConsole : MonoBehaviour
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             //remove ui "press e to activate"
             canUseConsole = false;
@@ -63,5 +66,11 @@ public class DoorConsole : MonoBehaviour
             foreach (GameObject door in allDoors)
                 door.GetComponent<Animator>().SetBool("isOpen", true);
         }
+        if (fireZone.Length > 0)
+        {
+            foreach (FireZone zone in fireZone)
+                zone.Deactivate();
+        }
+
     }
 }

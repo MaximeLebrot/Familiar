@@ -182,8 +182,14 @@ namespace AbilitySystem
         public void TakeDamage(float damage)
         {
             AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, -damage);
-            Debug.Log("Health = " + AbilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth));
-            anim.SetTrigger("takeDmg");
+            if (abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) <= 0)
+            {
+                Die();
+                Debug.Log("Health = " + AbilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth));
+            }
+            else
+                anim.SetTrigger("takeDmg");
+
         }
 
         public void Die()

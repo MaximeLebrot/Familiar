@@ -17,4 +17,9 @@ public class EliasStartingLevel : MonoBehaviour
     {
         eliasPlayer.QueueEvent(setLevel.CreateSetLevelEvent(eliasPlayer.Elias));
     }
+
+    public void PlayLevel2Theme()
+    {
+        eliasPlayer.QueueEvent(setLevel.CreateSetLevelEvent(eliasPlayer.Elias));
+    }
 }
