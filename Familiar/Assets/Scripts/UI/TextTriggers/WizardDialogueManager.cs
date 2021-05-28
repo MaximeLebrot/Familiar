@@ -15,13 +15,18 @@ public class WizardDialogueManager : MonoBehaviour
     {
         if (isActive)
         {
-            // Do different animation
+            anim.SetTrigger("update");
+            expressionAnim.SetTrigger("update");
         }
         expressionAnim.SetTrigger(expression);
         // Sound effect here ?
         dialogueText.text = dialogue;
-        anim.SetBool("inUse", true); // Animates in the panel
-        isActive = true;
+        if (!isActive)
+        {
+            anim.SetBool("inUse", true); // Animates in the panel
+            isActive = true;
+        }
+
         StopAllCoroutines();
         // Start a coroutine to count down how long the text should be up.
         StartCoroutine(ActiveTime(activeTime));
