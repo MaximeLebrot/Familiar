@@ -18,4 +18,9 @@ public class DialogueAudio : MonoBehaviour
             audioS.Stop();
         audioS.PlayOneShot(audioClip);
     }
+
+    public void UpdateVolume()
+    {
+        audioS.volume = Sound.Instance.EffectsVolume;
+    }
 }

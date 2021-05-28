@@ -46,6 +46,10 @@ public class AudioHandler : MonoBehaviour
     {
         audioSource.PlayOneShot(zappingSounds[Random.Range(0, zappingSounds.Length)], volume);
     }
+    public void UpdateVolume()
+    {
+        volume = Sound.Instance.EffectsVolume * volumeMultiplier;
+    }
 
     public float Volume
     {

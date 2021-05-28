@@ -50,10 +50,20 @@ public class Sound : MonoBehaviour
         set => effectsVolume = value;
     }
 
+    public float EffectsVolumeRaw
+    {
+        get => effectsVolume;
+    }
+
     public float MusicVolume
     {
         get => musicVolume * globalVolume;
         set => musicVolume = value;
+    }
+
+    public float MusicVolumeRaw
+    {
+        get => musicVolume;
     }
 
     public EliasPlayer EliasPlayer

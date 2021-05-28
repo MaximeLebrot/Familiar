@@ -20,6 +20,11 @@ public class PauseMenu : MonoBehaviour
     [SerializeField, Tooltip("")]
     private Slider mouseSensitivitySlider;
 
+    [SerializeField, Tooltip("A reference to the Dialogue Audio Script")]
+    private DialogueAudio dialogueAudio;
+    [SerializeField, Tooltip("All Instances of AudioHandler in this scene")]
+    private AudioHandler[] audioSources;
+
     [SerializeField, Tooltip("Should be inputed manually")]
     private GameObject playerHandler;
     [SerializeField, Tooltip("Should be inputed manually")]
@@ -73,6 +78,7 @@ public class PauseMenu : MonoBehaviour
 
     void Pause()
     {
+        UpdateSettingsToCorrectValue();
         pauseMenuUI.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
@@ -84,6 +90,14 @@ public class PauseMenu : MonoBehaviour
         playerHandler.GetComponent<ShootingScript>().enabled = false;
         playerHandler.GetComponent<AbilitySystem.Player>().enabled = false;
         camHandler.enabled = false;
+    }
+
+    void UpdateSettingsToCorrectValue()
+    {
+        globalVolumeSlider.value = Sound.Instance.GlobalVolume;
+        effectsVolumeSlider.value = Sound.Instance.EffectsVolumeRaw;
+        musicVolumeSlider.value = Sound.Instance.MusicVolumeRaw;
+        mouseSensitivitySlider.value = Stats.Instance.MouseSensitivity;
     }
 
     public void LoadMenu()
@@ -114,11 +128,14 @@ public class PauseMenu : MonoBehaviour
     {
         Sound.Instance.GlobalVolume = globalVolumeSlider.value;
         Sound.Instance.UpdateMusicVolume();
+        dialogueAudio.UpdateVolume();
     }
 
     public void SetEffectsVolume()
     {
         Sound.Instance.EffectsVolume = effectsVolumeSlider.value;
+        //UpdateAllAudioHandlersVolume(); //could be called here but would not be optimal
+        dialogueAudio.UpdateVolume();
     }
 
     public void SetMusicVolume()
@@ -129,7 +146,6 @@ public class PauseMenu : MonoBehaviour
 
     public void SetMouseSensitivity()
     {
-        //Det här körs inte på on value change på slidern. vrf??
         Stats.Instance.MouseSensitivity = mouseSensitivitySlider.value;
         Debug.Log(Stats.Instance.MouseSensitivity);
     }
@@ -142,8 +158,15 @@ public class PauseMenu : MonoBehaviour
 
     void ApplyValueChange()
     {
-        //Stats.Instance.MouseSensitivity = mouseSensitivitySlider.value;
-        //camHandler.MouseSensitivity = Stats.Instance.MouseSensitivity;
-        //sound.volume = Sound.Instance.Volume;
+        camHandler.MouseSensitivity = Stats.Instance.MouseSensitivity;
+        UpdateAllAudioHandlersVolume();
+    }
+
+    void UpdateAllAudioHandlersVolume()
+    {
+        foreach (AudioHandler audio in audioSources)
+        {
+            audio.UpdateVolume();
+        }
     }
 }
