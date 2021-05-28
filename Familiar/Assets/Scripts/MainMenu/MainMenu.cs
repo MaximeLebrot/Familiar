@@ -9,7 +9,11 @@ public class MainMenu : MonoBehaviour
     [SerializeField, Tooltip("")]
     private GameObject optionsMenuUI;
     [SerializeField, Tooltip("")]
-    private Slider volumeSlider;
+    private Slider globalVolumeSlider;
+    [SerializeField, Tooltip("")]
+    private Slider effectsVolumeSlider;
+    [SerializeField, Tooltip("")]
+    private Slider musicVolumeSlider;
     [SerializeField, Tooltip("")]
     private Slider mouseSensitivitySlider;
     [SerializeField, Tooltip("")]
@@ -43,20 +47,31 @@ public class MainMenu : MonoBehaviour
         mainMenuUI.SetActive(true);
     }
 
-    public void SetVolume()
+    public void SetDifficultyLevel()
     {
-        Sound.Instance.SetGlobalVolume(volumeSlider.value);
-        Sound.Instance.Volume = volumeSlider.value;
+        Stats.Instance.Difficulty = difficultyDropdown.value + 1;
+    }
+
+    public void SetGlobalVolume()
+    {
+        Sound.Instance.GlobalVolume = globalVolumeSlider.value;
+        Sound.Instance.UpdateMusicVolume();
+    }
+
+    public void SetEffectsVolume()
+    {
+        Sound.Instance.EffectsVolume = effectsVolumeSlider.value;
+    }
+
+    public void SetMusicVolume()
+    {
+        Sound.Instance.MusicVolume = musicVolumeSlider.value;
+        Sound.Instance.UpdateMusicVolume();
     }
 
     public void SetMouseSensitivity()
     {
         Stats.Instance.MouseSensitivity = mouseSensitivitySlider.value;
-    }
-
-    public void SetDifficultyLevel()
-    {
-        Stats.Instance.Difficulty = difficultyDropdown.value + 1;
     }
 
     public void LoadGame()

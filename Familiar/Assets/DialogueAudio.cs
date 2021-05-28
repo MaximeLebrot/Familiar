@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class DialogueAudio : MonoBehaviour
@@ -11,8 +9,7 @@ public class DialogueAudio : MonoBehaviour
         if (audioS == null)
             audioS = GetComponent<AudioSource>();
         if (Sound.Instance != null)
-            audioS.volume = Sound.Instance.Volume;
-        Debug.Log(Sound.Instance.Volume);
+            audioS.volume = Sound.Instance.EffectsVolume;
     }
 
     public void PlayAudioClip(AudioClip audioClip)

@@ -108,7 +108,7 @@ public class PauseMenu : MonoBehaviour
 
     public void SetVolume()
     {
-        Sound.Instance.Volume = volumeSlider.value;
+        Sound.Instance.GlobalVolume = volumeSlider.value;
     }
 
     public void SetMouseSensitivity()

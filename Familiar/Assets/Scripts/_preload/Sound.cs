@@ -4,7 +4,10 @@ public class Sound : MonoBehaviour
 {
     public static Sound Instance { get; set; }
 
-    private float volume;
+    private float globalVolume;
+    private float effectsVolume;
+    private float musicVolume;
+
     [SerializeField]
     private new AudioSource audio;
     [SerializeField]
@@ -20,33 +23,41 @@ public class Sound : MonoBehaviour
         { 
             Debug.Log("Warning: multiple " + this + " in scene!"); 
         }
-        audio = GetComponent<AudioSource>();
-        eliasPlayer = GetComponent<EliasPlayer>();
-        Instance.Volume = 1.0f;
+        if (audio == null)
+            audio = GetComponent<AudioSource>();
+        if (eliasPlayer == null)
+            eliasPlayer = GetComponent<EliasPlayer>();
+        Instance.GlobalVolume = 1.0f;
+        Instance.EffectsVolume = 1.0f;
+        Instance.MusicVolume = 1.0f;
+        UpdateMusicVolume();
     }
 
-    public float Volume
+    public void UpdateMusicVolume()
     {
-        get => volume;
-        set => volume = value;
+        audio.volume = MusicVolume;
     }
+
+    public float GlobalVolume
+    {
+        get => globalVolume;
+        set => globalVolume = value;
+    }
+
+    public float EffectsVolume
+    {
+        get => effectsVolume * globalVolume;
+        set => effectsVolume = value;
+    }
+
+    public float MusicVolume
+    {
+        get => musicVolume * globalVolume;
+        set => musicVolume = value;
+    }
+
     public EliasPlayer EliasPlayer
     {
         get => eliasPlayer;
-    }
-
-    public void SetGlobalVolume(float value)
-    {
-        SetMusicVolume(value);
-        SetEffectsVolume(value);
-    }
-    public void SetMusicVolume(float value)
-    {
-        audio.volume = value;
-    }
-
-    public void SetEffectsVolume(float value)
-    {
-
     }
 }

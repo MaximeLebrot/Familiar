@@ -5,6 +5,7 @@ public class AudioHandler : MonoBehaviour
 {
     [SerializeField, Tooltip("The volume of this instance of the audio handler")]
     private float volume;
+    private static readonly float volumeMultiplier = 0.1f;
 
     [SerializeField, Tooltip("Array of jumping sounds")]
     public AudioClip[] jumpSounds;
@@ -22,6 +23,7 @@ public class AudioHandler : MonoBehaviour
     void Start()
     {
         audioSource = GetComponent<AudioSource>();
+        volume = Sound.Instance.EffectsVolume * volumeMultiplier;
     }
 
     public void PlayJumpSound()
