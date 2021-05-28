@@ -12,7 +12,11 @@ public class PauseMenu : MonoBehaviour
     private GameObject optionsMenuUI;
 
     [SerializeField, Tooltip("")]
-    private Slider volumeSlider;
+    private Slider globalVolumeSlider;
+    [SerializeField, Tooltip("")]
+    private Slider effectsVolumeSlider;
+    [SerializeField, Tooltip("")]
+    private Slider musicVolumeSlider;
     [SerializeField, Tooltip("")]
     private Slider mouseSensitivitySlider;
 
@@ -106,9 +110,21 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
     }
 
-    public void SetVolume()
+    public void SetGlobalVolume()
     {
-        Sound.Instance.GlobalVolume = volumeSlider.value;
+        Sound.Instance.GlobalVolume = globalVolumeSlider.value;
+        Sound.Instance.UpdateMusicVolume();
+    }
+
+    public void SetEffectsVolume()
+    {
+        Sound.Instance.EffectsVolume = effectsVolumeSlider.value;
+    }
+
+    public void SetMusicVolume()
+    {
+        Sound.Instance.MusicVolume = musicVolumeSlider.value;
+        Sound.Instance.UpdateMusicVolume();
     }
 
     public void SetMouseSensitivity()

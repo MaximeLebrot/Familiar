@@ -23576,6 +23576,22 @@ ParticleSystem:
   m_CorrespondingSourceObject: {fileID: 7005344458802057927, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
   m_PrefabInstance: {fileID: 698408233}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &698408235 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8266650047405726556, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
+  m_PrefabInstance: {fileID: 698408233}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 698408236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 884f5f0b7b431ed4fb51617c56873b46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &698408236 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8266650047405726558, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
+  m_PrefabInstance: {fileID: 698408233}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &699479525
 GameObject:
   m_ObjectHideFlags: 0
@@ -43165,13 +43181,17 @@ PrefabInstance:
       value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 4780144783269439407, guid: 70c1e9796d8c3974e89eca3ca0a53048, type: 3}
+      propertyPath: cam
+      value: 
+      objectReference: {fileID: 698408236}
+    - target: {fileID: 4780144783269439407, guid: 70c1e9796d8c3974e89eca3ca0a53048, type: 3}
       propertyPath: Player
       value: 
       objectReference: {fileID: 1271261059}
     - target: {fileID: 4780144783269439407, guid: 70c1e9796d8c3974e89eca3ca0a53048, type: 3}
       propertyPath: camHandler
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 698408235}
     - target: {fileID: 4780144783269439407, guid: 70c1e9796d8c3974e89eca3ca0a53048, type: 3}
       propertyPath: volumeSlider
       value: 
