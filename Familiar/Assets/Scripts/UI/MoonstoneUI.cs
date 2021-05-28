@@ -1,6 +1,5 @@
 using AbilitySystem;
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,6 +18,7 @@ public class MoonstoneUI : MonoBehaviour
     public Text moonstoneText;
 
     public GameObject moonstoneParent; // Used to find the animator component.
+    [SerializeField]
     private Animator anim;
 
     void Start()
@@ -26,7 +26,8 @@ public class MoonstoneUI : MonoBehaviour
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<Player>();
 
-        anim = moonstoneParent.GetComponent<Animator>();
+        if (anim == null)
+            anim = moonstoneParent.GetComponent<Animator>();
     }
 
     void Update()

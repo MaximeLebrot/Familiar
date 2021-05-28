@@ -8,7 +8,7 @@ namespace AbilitySystem
 {
     public class Player : MonoBehaviour, IZappable
     {
-        [Tooltip("A counter of how many stones have been picked up")]
+        [SerializeField, Tooltip("A counter of how many stones have been picked up")]
         private int stoneCounter;
         [Tooltip("A reference to the instance of the ability system tied to the player")]
         private GameplayAbilitySystem abilitySystem;
@@ -49,6 +49,8 @@ namespace AbilitySystem
         [SerializeField, Tooltip("The image tied to the F2B object. Should be inputed manually")]
         private Image blackImage;
         [SerializeField] private ParticleSystem dustVFX;
+        [SerializeField, Tooltip("The MoonstoneDoorCol script tied to the MoonstoneDoor game object. Must be inputed manually")]
+        private MoonstoneDoorCol moonstoneDoorCol;
 
 
         [Header("Events")]
@@ -93,6 +95,7 @@ namespace AbilitySystem
             {
                 moonstones[stoneCounter].SetActive(true);
                 stoneCounter++;
+                moonstoneDoorCol.CheckStoneCounter();
             }
         }
 
