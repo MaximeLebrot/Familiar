@@ -5198,7 +5198,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: Oh... was half expecting another key. This is... a switch, maybe it opens
     the last door?
@@ -5207,6 +5206,7 @@ MonoBehaviour:
   expressionTrigger: excitedKey
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!1001 &122123175
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7511,7 +7511,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: More machinery. I do wonder who made all of these... contraptions. And
     for what purpose.
@@ -7520,6 +7519,7 @@ MonoBehaviour:
   expressionTrigger: suspicious
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!1001 &182926566
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -18310,7 +18310,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: That must be the code! Let's try it on the other code panel.
   activeTime: 12
@@ -18318,6 +18317,7 @@ MonoBehaviour:
   expressionTrigger: excitedKey
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!65 &527740179
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -32812,7 +32812,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: That's the key we need! Bring it to the door.
   activeTime: 6
@@ -32820,6 +32819,7 @@ MonoBehaviour:
   expressionTrigger: excitedKey
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!65 &765688451
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -35037,7 +35037,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: It would seem escaping isn't going to be as easy as I'd hoped. I'll lend
     you some of my powers, now get us out of this Castle!
@@ -35046,6 +35045,7 @@ MonoBehaviour:
   expressionTrigger: angry
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!1001 &798529300
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -51412,7 +51412,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: I'm hoping that this is finally the end of it but knowing the developers
     of this game it probably won't be.
@@ -51421,6 +51420,7 @@ MonoBehaviour:
   expressionTrigger: angry
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!65 &1123366117
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -53410,7 +53410,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: Hmm... this panel doesn't seem to be working. We'll also need a code.
     Let's go look for that and come back later.
@@ -53419,6 +53418,7 @@ MonoBehaviour:
   expressionTrigger: suspicious
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!1001 &1185393443
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -55634,7 +55634,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: This is a bit trickier.... one box but three plates....
   activeTime: 6
@@ -55642,6 +55641,7 @@ MonoBehaviour:
   expressionTrigger: suspicious
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!1001 &1245737715
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -57024,6 +57024,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1277575948}
+  - component: {fileID: 1277575949}
   m_Layer: 0
   m_Name: Dialogue_Parent
   m_TagString: Untagged
@@ -57058,6 +57059,21 @@ Transform:
   m_Father: {fileID: 700499922}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1277575949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1277575947}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac918ff58f7fe5544a727828989cbbb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 18161357}
+  anim: {fileID: 1449507262}
+  expressionAnim: {fileID: 54193980}
 --- !u!1001 &1279654952
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -66760,7 +66776,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: I'VE HAD IT WITH THESE MOTHERF*CKING SPIDER IN THIS MOTHERF*CKING CASTLE
   activeTime: 8
@@ -66768,6 +66783,7 @@ MonoBehaviour:
   expressionTrigger: angry
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!1001 &1517508622
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -70863,7 +70879,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: This egg looking thing seems important... I'll bring it along.
   activeTime: 7
@@ -70871,6 +70886,7 @@ MonoBehaviour:
   expressionTrigger: suspicious
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!1001 &1648010572
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -74407,7 +74423,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: This is the biggest room so far! And it seems I was right, those egg
     looking things are important.
@@ -74416,6 +74431,7 @@ MonoBehaviour:
   expressionTrigger: suspicious
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!65 &1767497343
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -74858,7 +74874,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: Oh I know this! I've seen this before when I played Portal.
   activeTime: 6
@@ -74866,6 +74881,7 @@ MonoBehaviour:
   expressionTrigger: excited
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!1 &1772635238 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 1365ab675fbc827498daff1efaee0195, type: 3}
@@ -77632,7 +77648,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1449507257}
   dialogueText: {fileID: 18161357}
   dialogue: Looks like we'll need a key for this door. I can sense that it's in this
     room... somewhere.
@@ -77641,6 +77656,7 @@ MonoBehaviour:
   expressionTrigger: suspicious
   anim: {fileID: 1449507262}
   expressionAnim: {fileID: 54193980}
+  dialogueManager: {fileID: 1277575949}
 --- !u!65 &1872745394
 BoxCollider:
   m_ObjectHideFlags: 0

@@ -9614,14 +9614,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1764345994}
-  dialogueText: {fileID: 453392152}
   dialogue: They really aren't very good guards huh... that is very helpful for us.
   activeTime: 5
   needKey: 0
   expressionTrigger: normal
-  anim: {fileID: 1764345996}
-  expressionAnim: {fileID: 1504842387}
+  dialogueManager: {fileID: 1312686423}
 --- !u!54 &285502728
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -10962,14 +10959,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1764345994}
-  dialogueText: {fileID: 453392152}
   dialogue: That's it! That's the key! Bring it here now, carefully! But quick!
   activeTime: 5
   needKey: 0
   expressionTrigger: excitedKey
-  anim: {fileID: 1764345996}
-  expressionAnim: {fileID: 1504842387}
+  dialogueManager: {fileID: 1312686423}
 --- !u!54 &383929158
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -35074,6 +35068,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1312686422}
+  - component: {fileID: 1312686423}
   m_Layer: 0
   m_Name: Dialogue_Parent
   m_TagString: Untagged
@@ -35101,6 +35096,21 @@ Transform:
   m_Father: {fileID: 1051579267}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1312686423
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1312686421}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac918ff58f7fe5544a727828989cbbb6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dialogueText: {fileID: 453392152}
+  anim: {fileID: 1764345996}
+  expressionAnim: {fileID: 1504842387}
 --- !u!1 &1323121700
 GameObject:
   m_ObjectHideFlags: 0
@@ -35995,15 +36005,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1764345994}
-  dialogueText: {fileID: 453392152}
   dialogue: YES!!! You got the key here safely. Nice work! Now I can finally get
     out of this place! Could you open that big Locked door?
   activeTime: 10
   needKey: 1
   expressionTrigger: excited
-  anim: {fileID: 1764345996}
-  expressionAnim: {fileID: 1504842387}
+  dialogueManager: {fileID: 1312686423}
 --- !u!1001 &1351479035
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -44912,15 +44919,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1764345994}
-  dialogueText: {fileID: 453392152}
   dialogue: I finally managed to summon you! You should be small enough to fit through
     the prison bars so go find the Keys! And make it hasty.
   activeTime: 10
   needKey: 0
   expressionTrigger: normal
-  anim: {fileID: 1764345996}
-  expressionAnim: {fileID: 1504842387}
+  dialogueManager: {fileID: 1312686423}
 --- !u!1 &1757191201 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1543216753092369487, guid: ca014879105e38940824f2aeca60623c, type: 3}
@@ -45524,15 +45528,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1764345994}
-  dialogueText: {fileID: 453392152}
   dialogue: Looks like he's busy making some sort of potion. You should be able to
     sneak past him by getting ontop of that desk.
   activeTime: 8
   needKey: 0
   expressionTrigger: suspicious
-  anim: {fileID: 1764345996}
-  expressionAnim: {fileID: 1504842387}
+  dialogueManager: {fileID: 1312686423}
 --- !u!54 &1831595465
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -50321,15 +50322,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogueParent: {fileID: 1764345994}
-  dialogueText: {fileID: 453392152}
   dialogue: Seems this castle is fairly populated with guards... be careful! If they
     catch you, I'll be dead too!!!
   activeTime: 6
   needKey: 0
   expressionTrigger: anxious
-  anim: {fileID: 1764345996}
-  expressionAnim: {fileID: 1504842387}
+  dialogueManager: {fileID: 1312686423}
 --- !u!54 &2060259950
 Rigidbody:
   m_ObjectHideFlags: 0
