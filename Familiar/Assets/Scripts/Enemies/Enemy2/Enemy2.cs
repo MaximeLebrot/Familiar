@@ -49,6 +49,9 @@ public class Enemy2 : MonoBehaviour, IZappable
     [SerializeField, Tooltip("The health bar slider")]
     private Slider slider;
 
+    [SerializeField, Tooltip("The health bars animator")] // Added
+    private Animator healthbarAnim;
+
     protected void Awake()
     {
         InitializeVariables(); //this is done in case the variables are not set in the inspector
@@ -85,7 +88,8 @@ public class Enemy2 : MonoBehaviour, IZappable
         Debug.Log("Spider took " + damage + " damage");
 
         slider.value -= (damage / maxHealth);
-
+        if (healthbarAnim != null)
+            healthbarAnim.SetTrigger("takeDamage"); // Added
         health -= damage;
         anim.SetTrigger("spiderDmg");
     }
