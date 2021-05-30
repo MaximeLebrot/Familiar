@@ -11,16 +11,9 @@ public class WizardDialogueTrigger : MonoBehaviour
 
     [SerializeField] private DialogueAudio dialogueAudio;
     [SerializeField] private AudioClip voiceLine;
-    [SerializeField] private GameObject player;
-    [SerializeField] private GameObject wizard;
 
     public WizardDialogueManager dialogueManager;
 
-    private void Start()
-    {
-        if (player == null)
-            player = GameObject.FindGameObjectWithTag("Player");
-    }
     private void OnTriggerEnter(Collider other)
     {
         // Checks if its the player or key entering the trigger.
