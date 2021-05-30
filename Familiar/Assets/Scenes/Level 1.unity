@@ -5090,7 +5090,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: They really aren't very good guards... that is very helpful for us.
-  activeTime: 6
+  activeTime: 8
   needKey: 0
   expressionTrigger: normal
   dialogueAudio: {fileID: 285592521}
@@ -19423,6 +19423,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 701910045}
     - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
+      propertyPath: healthBarAnim
+      value: 
+      objectReference: {fileID: 1740849720}
+    - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
       propertyPath: PlayerDied.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1954172571}
@@ -22201,7 +22205,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &856056461
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -35285,7 +35289,7 @@ RectTransform:
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
-  m_AnchorMax: {x: 0, y: 0}
+  m_AnchorMax: {x: 1, y: 1}
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
@@ -41041,6 +41045,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+--- !u!95 &1740849720 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 2911753048655577630, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+  m_PrefabInstance: {fileID: 1740849719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &1741545590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 203851938e743884baa5d3c8f8567871, type: 3}
@@ -43642,7 +43651,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1910772272
 RectTransform:
   m_ObjectHideFlags: 0

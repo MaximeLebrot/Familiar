@@ -46,6 +46,8 @@ namespace AbilitySystem
         private Slider healthBar;
         [SerializeField, Tooltip("The player health UI. Should be inputed manually")]
         private Image healthBarNew;
+        [SerializeField, Tooltip("The player health UI Animator. Should be inputed manually")]
+        private Animator healthBarAnim;
         [SerializeField, Tooltip("The animator tied to the F2B object. Should be inputed manually")]
         private Animator fadeToBlack;
         [SerializeField, Tooltip("The image tied to the F2B object. Should be inputed manually")]
@@ -194,8 +196,11 @@ namespace AbilitySystem
                 Debug.Log("Health = " + AbilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth));
             }
             else
+            {
                 anim.SetTrigger("takeDmg");
-
+                healthBarAnim.SetTrigger("Damage");
+            }
+                
         }
 
         public void Die()
