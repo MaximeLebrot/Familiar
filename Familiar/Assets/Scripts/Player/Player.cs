@@ -44,6 +44,8 @@ namespace AbilitySystem
         private Controller playerController;
         [SerializeField, Tooltip("The player health UI slider. Should be inputed manually")]
         private Slider healthBar;
+        [SerializeField, Tooltip("The player health UI. Should be inputed manually")]
+        private Image healthBarNew;
         [SerializeField, Tooltip("The animator tied to the F2B object. Should be inputed manually")]
         private Animator fadeToBlack;
         [SerializeField, Tooltip("The image tied to the F2B object. Should be inputed manually")]
@@ -155,6 +157,7 @@ namespace AbilitySystem
         private void InitializeHealthBarValue()
         {
             healthBar.value = 1;
+            healthBarNew.fillAmount = 1;
         }
         private float ShockDamageCalculation(float value)
         {
@@ -201,6 +204,7 @@ namespace AbilitySystem
             playerController.StopController = true;
             playerController.Camera.CannotMoveCam = true;
             healthBar.value = 0;
+            healthBarNew.fillAmount = 0;
 
             PlayerDied.Invoke();
             anim.SetTrigger("die");
@@ -245,6 +249,7 @@ namespace AbilitySystem
             refillHealth = -(AbilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) - 10);
             AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, (float)refillHealth);
             healthBar.value = 1;
+            healthBarNew.fillAmount = 1;
         }
         public void OnZap()
         {
@@ -253,6 +258,7 @@ namespace AbilitySystem
         private void HealthBarUpdate()
         {
             healthBar.value = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth)/10;
+            healthBarNew.fillAmount = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) / 10;
         }
         //used by animator
         private void ResetTakeDmgTrigger()

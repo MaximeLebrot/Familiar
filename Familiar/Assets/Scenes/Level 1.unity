@@ -3203,7 +3203,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 876344419}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -5090,13 +5090,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: They really aren't very good guards... that is very helpful for us.
-  activeTime: 5
+  activeTime: 6
   needKey: 0
   expressionTrigger: normal
   dialogueAudio: {fileID: 285592521}
   voiceLine: {fileID: 8300000, guid: c8cc73767323f3e40a989e3eb9f210c2, type: 3}
-  player: {fileID: 1687163024}
-  wizard: {fileID: 590731603}
   dialogueManager: {fileID: 1312686423}
 --- !u!54 &285502728
 Rigidbody:
@@ -6419,7 +6417,7 @@ RectTransform:
   m_Children:
   - {fileID: 37412923}
   m_Father: {fileID: 876344419}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -6510,13 +6508,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: Ohh! That's it! That's the key! Bring it here now, carefully! But quick...
-  activeTime: 5
+  activeTime: 8
   needKey: 0
   expressionTrigger: excitedKey
   dialogueAudio: {fileID: 285592521}
   voiceLine: {fileID: 8300000, guid: e1b1c5af906aa9b41ab217a24806c0c9, type: 3}
-  player: {fileID: 1687163024}
-  wizard: {fileID: 590731603}
   dialogueManager: {fileID: 1312686423}
 --- !u!54 &383929158
 Rigidbody:
@@ -8077,7 +8073,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
-  m_AnchoredPosition: {x: 75, y: -5}
+  m_AnchoredPosition: {x: 75, y: -2}
   m_SizeDelta: {x: 475, y: 100}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &453392152
@@ -8102,7 +8098,7 @@ MonoBehaviour:
       m_Calls: []
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 22
+    m_FontSize: 20
     m_FontStyle: 0
     m_BestFit: 0
     m_MinSize: 2
@@ -16363,11 +16359,6 @@ PrefabInstance:
       objectReference: {fileID: 9100000, guid: 1ccdffec1190dcf469dda038f56ff8ee, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
---- !u!1 &590731603 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1839304754744059133, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
-  m_PrefabInstance: {fileID: 590731602}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &597790841
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -19428,6 +19419,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 216671454}
     - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
+      propertyPath: healthBarNew
+      value: 
+      objectReference: {fileID: 701910045}
+    - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
       propertyPath: PlayerDied.m_PersistentCalls.m_Calls.Array.data[1].m_Target
       value: 
       objectReference: {fileID: 1954172571}
@@ -19954,6 +19949,17 @@ ReflectionProbe:
   m_UseOcclusionCulling: 1
   m_Importance: 1
   m_CustomBakedTexture: {fileID: 0}
+--- !u!114 &701910045 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2911753047195246831, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+  m_PrefabInstance: {fileID: 1740849719}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &706278553 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 795b369e8ef3d444a95a9b77cd8c18c6, type: 3}
@@ -22455,6 +22461,7 @@ RectTransform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children:
+  - {fileID: 1714124793}
   - {fileID: 1991818521}
   - {fileID: 382926845}
   - {fileID: 1764345995}
@@ -31859,8 +31866,6 @@ MonoBehaviour:
   expressionTrigger: excited
   dialogueAudio: {fileID: 285592521}
   voiceLine: {fileID: 8300000, guid: 8e98b18a7a3df5b40a5d7839d437afc1, type: 3}
-  player: {fileID: 1687163024}
-  wizard: {fileID: 590731603}
   dialogueManager: {fileID: 1312686423}
 --- !u!1001 &1351479035
 PrefabInstance:
@@ -40068,6 +40073,11 @@ Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 6ff7dd1e7554c67479c2a43f05582958, type: 3}
   m_PrefabInstance: {fileID: 1711397993}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1714124793 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+  m_PrefabInstance: {fileID: 1740849719}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1720137770
 GameObject:
   m_ObjectHideFlags: 0
@@ -40934,6 +40944,103 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 203851938e743884baa5d3c8f8567871, type: 3}
+--- !u!1001 &1740849719
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 876344419}
+    m_Modifications:
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_Pivot.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_Pivot.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108240, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2911753046631108247, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
+      propertyPath: m_Name
+      value: PlayerHealthbar_Panel
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: fb43e8be748a81148bd4ecc1bbd9fd63, type: 3}
 --- !u!4 &1741545590 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 203851938e743884baa5d3c8f8567871, type: 3}
@@ -41117,8 +41224,6 @@ MonoBehaviour:
   expressionTrigger: normal
   dialogueAudio: {fileID: 285592521}
   voiceLine: {fileID: 8300000, guid: 25c0f5298be49724692714288512778a, type: 3}
-  player: {fileID: 1687163024}
-  wizard: {fileID: 590731603}
   dialogueManager: {fileID: 1312686423}
 --- !u!1 &1757191201 stripped
 GameObject:
@@ -41245,7 +41350,7 @@ RectTransform:
   - {fileID: 2068831919}
   - {fileID: 453392151}
   m_Father: {fileID: 876344419}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
@@ -41741,8 +41846,6 @@ MonoBehaviour:
   expressionTrigger: suspicious
   dialogueAudio: {fileID: 285592521}
   voiceLine: {fileID: 8300000, guid: 6ed09abd5a4ef494a863bf0fe199936c, type: 3}
-  player: {fileID: 1687163024}
-  wizard: {fileID: 590731603}
   dialogueManager: {fileID: 1312686423}
 --- !u!54 &1831595465
 Rigidbody:
@@ -43354,7 +43457,7 @@ RectTransform:
   - {fileID: 1339068768}
   - {fileID: 656618146}
   m_Father: {fileID: 876344419}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 1}
   m_AnchorMax: {x: 1, y: 1}
@@ -45019,7 +45122,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 876344419}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0}
   m_AnchorMax: {x: 0.5, y: 0}
@@ -46586,13 +46689,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: From what I can see through your eyes, the caste seems fairly populated
     with guards... be careful! If they catch you, I'll be dead too!!!
-  activeTime: 6
+  activeTime: 8
   needKey: 0
   expressionTrigger: anxious
   dialogueAudio: {fileID: 285592521}
   voiceLine: {fileID: 8300000, guid: f4b7bf94f48ed3c41bed3194c0c9661e, type: 3}
-  player: {fileID: 1687163024}
-  wizard: {fileID: 590731603}
   dialogueManager: {fileID: 1312686423}
 --- !u!54 &2060259950
 Rigidbody:
@@ -46662,7 +46763,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 160, y: -8}
+  m_AnchoredPosition: {x: 160, y: -5}
   m_SizeDelta: {x: 100, y: 30}
   m_Pivot: {x: 0, y: 1}
 --- !u!114 &2068831920
