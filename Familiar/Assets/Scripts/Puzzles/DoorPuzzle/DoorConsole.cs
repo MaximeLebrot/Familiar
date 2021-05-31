@@ -58,13 +58,16 @@ public class DoorConsole : MonoBehaviour
     {
         for (int i = 0; i<doors.Length; i++)
         {
-            //doors[i].SetActive(!doors[i].activeInHierarchy);
             doors[i].GetComponent<Animator>().SetBool("isOpen", !doors[i].GetComponent<Animator>().GetBool("isOpen"));
         }
         if (allDoors.Length > 0)
         {
             foreach (GameObject door in allDoors)
+            {
                 door.GetComponent<Animator>().SetBool("isOpen", true);
+                if (door.GetComponent<Door>() != null)
+                    door.GetComponent<Door>().DoorOpened();
+            }
         }
         if (fireZone.Length > 0)
         {

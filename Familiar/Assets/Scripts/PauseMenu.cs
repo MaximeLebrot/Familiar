@@ -25,6 +25,11 @@ public class PauseMenu : MonoBehaviour
     [SerializeField, Tooltip("All Instances of AudioHandler in this scene")]
     private AudioHandler[] audioSources;
 
+    [SerializeField]
+    private AudioSource narrationSource;
+    //[SerializeField]
+    //private AudioSource musicSource;
+
     [SerializeField, Tooltip("Should be inputed manually")]
     private GameObject playerHandler;
     [SerializeField, Tooltip("Should be inputed manually")]
@@ -40,6 +45,7 @@ public class PauseMenu : MonoBehaviour
             cam = Camera.main.gameObject;
         if (camHandler == null)
             camHandler = cam.GetComponent<CameraHandler>();
+        //musicSource = Sound.Instance.Audio;
     }
 
     void Update()
@@ -63,15 +69,19 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(false);
         optionsMenuUI.SetActive(false);
 
+        narrationSource.UnPause();
+        //musicSource.UnPause();
+
         Time.timeScale = 1;
         GameIsPaused = false;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Confined;
 
         playerHandler.GetComponent<Controller>().enabled = true;
         playerHandler.GetComponent<ShootingScript>().enabled = true;
         playerHandler.GetComponent<AbilitySystem.Player>().enabled = true;
         camHandler.enabled = true;
+
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Confined;
 
         ApplyValueChange();
     }
@@ -82,6 +92,9 @@ public class PauseMenu : MonoBehaviour
         pauseMenuUI.SetActive(true);
         Cursor.visible = true;
         Cursor.lockState = CursorLockMode.None;
+
+        narrationSource.Pause();
+        //musicSource.Pause();
 
         Time.timeScale = 0;
         GameIsPaused = true;

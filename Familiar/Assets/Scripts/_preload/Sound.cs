@@ -38,6 +38,11 @@ public class Sound : MonoBehaviour
         audio.volume = MusicVolume;
     }
 
+    public AudioSource Audio
+    {
+        get => audio;
+    }
+
     public float GlobalVolume
     {
         get => globalVolume;
