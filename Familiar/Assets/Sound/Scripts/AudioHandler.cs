@@ -21,6 +21,8 @@ public class AudioHandler : MonoBehaviour
     public AudioClip[] consoleUseSounds;
     [SerializeField, Tooltip("Array of pressure plate sounds")]
     public AudioClip[] pressurePlateSounds;
+    [SerializeField, Tooltip("Array of moonstone pickup sounds")]
+    public AudioClip[] moonstonePickupSounds;
 
     [SerializeField]
     AudioSource audioSource;
@@ -62,6 +64,10 @@ public class AudioHandler : MonoBehaviour
     public void PlayPressurePlateSound()
     {
         audioSource.PlayOneShot(pressurePlateSounds[Random.Range(0, pressurePlateSounds.Length)], GetVolume());
+    }
+    public void PlayMoonstonePickupSound()
+    {
+        audioSource.PlayOneShot(moonstonePickupSounds[Random.Range(0, moonstonePickupSounds.Length)], GetVolume());
     }
 
     public float GetVolume()

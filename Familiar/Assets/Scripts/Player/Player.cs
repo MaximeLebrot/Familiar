@@ -85,12 +85,6 @@ namespace AbilitySystem
                         Debug.LogWarning("Failed to activate Zap ability");
                     }
                 }
-                if (Input.GetKeyDown(KeyCode.F))
-                {
-                    Debug.Log(Stats.Instance.Difficulty);
-                    Debug.Log(Stats.Instance.MouseSensitivity);
-                    Debug.Log(Stats.Instance.Health);
-                }
             }
         }
 
@@ -101,6 +95,7 @@ namespace AbilitySystem
                 moonstones[stoneCounter].SetActive(true);
                 stoneCounter++;
                 moonstoneDoorCol.CheckStoneCounter();
+                audioHandler.PlayMoonstonePickupSound();
             }
         }
 

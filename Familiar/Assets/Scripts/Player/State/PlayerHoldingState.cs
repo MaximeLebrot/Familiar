@@ -9,8 +9,6 @@ public class PlayerHoldingState : PlayerBaseState
     public override void Enter()
     {
         base.Enter();
-        Debug.Log("Entered Holding State");
-
         if (gos == null)
             gos = player.GetComponent<GrabObjectScript>();
 

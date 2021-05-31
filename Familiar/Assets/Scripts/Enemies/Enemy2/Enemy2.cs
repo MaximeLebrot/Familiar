@@ -85,7 +85,7 @@ public class Enemy2 : MonoBehaviour, IZappable
 
     public void TakeDamage(float damage)
     {
-        Debug.Log("Spider took " + damage + " damage");
+        //Debug.Log("Spider took " + damage + " damage"); 
 
         slider.value -= (damage / maxHealth);
         if (healthbarAnim != null)

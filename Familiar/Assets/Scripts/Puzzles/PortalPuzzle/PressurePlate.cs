@@ -24,8 +24,7 @@ public class PressurePlate : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Moveable"))
         {
-            anim.SetBool("isPressed", true); // Animates the button down
-            // Sound effect here?
+            anim.SetBool("isPressed", true);
             isActive = true;
             parent.UpdatePuzzle();
         }
@@ -34,8 +33,7 @@ public class PressurePlate : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Moveable"))
         {
-            anim.SetBool("isPressed", false); // Animates the button up
-            // Sound effect here?
+            anim.SetBool("isPressed", false);
             isActive = false;
             parent.UpdatePuzzle();
         }
