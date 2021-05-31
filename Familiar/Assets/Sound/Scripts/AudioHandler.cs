@@ -19,7 +19,9 @@ public class AudioHandler : MonoBehaviour
     public AudioClip[] puzzleCompletionSounds;
     [SerializeField, Tooltip("Array of console use sounds")]
     public AudioClip[] consoleUseSounds;
-    
+    [SerializeField, Tooltip("Array of pressure plate sounds")]
+    public AudioClip[] pressurePlateSounds;
+
     [SerializeField]
     AudioSource audioSource;
 
@@ -57,6 +59,11 @@ public class AudioHandler : MonoBehaviour
     {
         audioSource.PlayOneShot(consoleUseSounds[Random.Range(0, consoleUseSounds.Length)], GetVolume());
     }
+    public void PlayPressurePlateSound()
+    {
+        audioSource.PlayOneShot(pressurePlateSounds[Random.Range(0, pressurePlateSounds.Length)], GetVolume());
+    }
+
     public float GetVolume()
     {
         return Sound.Instance.EffectsVolume * volumeMultiplier;

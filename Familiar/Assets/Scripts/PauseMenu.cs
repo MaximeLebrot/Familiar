@@ -160,7 +160,6 @@ public class PauseMenu : MonoBehaviour
     public void SetMouseSensitivity()
     {
         Stats.Instance.MouseSensitivity = mouseSensitivitySlider.value;
-        Debug.Log(Stats.Instance.MouseSensitivity);
     }
 
     public void SaveTheGame()

@@ -9,6 +9,11 @@ public class PressurePlate : MonoBehaviour
     private PressurePlateOneOrBoth parent;
     [SerializeField, Tooltip("A reference to the animator attached to this object. Should be inputed manually")]
     private Animator anim;
+    [SerializeField]
+    private AudioSource audioS;
+    [SerializeField]
+    private AudioClip audioC;
+    private static readonly float volumeMultiplier = 0.2f;
 
     void Start()
     {
@@ -64,6 +69,11 @@ public class PressurePlate : MonoBehaviour
             if (parent == null)
                 Debug.LogError("Could not find pressure plate parent");
         }
+    }
+
+    public void PlayPressurePlateSound()
+    {
+        audioS.PlayOneShot(audioC, Sound.Instance.EffectsVolume * volumeMultiplier);
     }
 
     public bool IsActive
