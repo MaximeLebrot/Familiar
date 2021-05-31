@@ -2,10 +2,14 @@ using UnityEngine;
 
 public class FireZone : MonoBehaviour
 {
-    [SerializeField, Tooltip("The animator component tied to this game object. Should be inputed manually")]
-    private Animator anim;
+    [SerializeField, Tooltip("The particle system component tied to this game object. Should be inputed manually")]
+    private new ParticleSystem particleSystem;
     [SerializeField, Tooltip("A reference to the \"Player\" script tid to the player game object. Should be inputed manually")]
     private AbilitySystem.Player player;
+    [SerializeField, Tooltip("A reference to the audio source component tied to this game object. Should be inputed manually")]
+    private AudioSource audioS;
+
+    private static readonly float volumeMultiplier = 0.3f;
 
     private bool isWorking = true;
     private bool inZone;
@@ -16,10 +20,13 @@ public class FireZone : MonoBehaviour
 
     private void Start()
     {
-        if (anim == null)
-            anim = GetComponent<Animator>();
+        if (particleSystem == null)
+            particleSystem = GetComponent<ParticleSystem>();
         if (player == null)
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilitySystem.Player>();
+        if (audioS == null)
+            audioS = GetComponent<AudioSource>();
+        audioS.volume = Sound.Instance.EffectsVolume * volumeMultiplier;
         timer = time;
     }
 
@@ -31,6 +38,11 @@ public class FireZone : MonoBehaviour
                 inZone = false;
             if (inZone == true)
                 DamagePlayer();
+        }
+        if (audioS != null)
+        {
+            if (audioS.volume != Sound.Instance.EffectsVolume * volumeMultiplier)
+                audioS.volume = Sound.Instance.EffectsVolume * volumeMultiplier;
         }
     }
 
@@ -73,7 +85,11 @@ public class FireZone : MonoBehaviour
 
     public void Deactivate()
     {
-        anim.SetBool("isActive", false);
+        particleSystem.Stop();
+        audioS.Stop();
+        Destroy(audioS);
+
+        //anim.SetBool("isActive", false);
         isWorking = false;
         //andra saker för att medela att det är över
     }
