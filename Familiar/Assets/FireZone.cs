@@ -11,7 +11,7 @@ public class FireZone : MonoBehaviour
     private bool inZone;
     public float damage;
 
-    private static readonly float time = 0.2f;
+    private static readonly float time = 0.1f;
     private float timer;
 
     private void Start()
