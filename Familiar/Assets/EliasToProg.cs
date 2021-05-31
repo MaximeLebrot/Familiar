@@ -16,7 +16,8 @@ public class EliasToProg : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        PlayFromExpToProg();
+        if (other.CompareTag("Player"))
+            PlayFromExpToProg();
     }
 
     private void PlayFromExpToProg()

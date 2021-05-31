@@ -3,8 +3,6 @@ using UnityEngine;
 [RequireComponent(typeof(AudioSource))]
 public class AudioHandler : MonoBehaviour
 {
-    [SerializeField, Tooltip("The volume of this instance of the audio handler")]
-    private float volume;
     private static readonly float volumeMultiplier = 0.1f;
 
     [SerializeField, Tooltip("Array of jumping sounds")]
@@ -17,43 +15,43 @@ public class AudioHandler : MonoBehaviour
     public AudioClip[] movingSounds;
     [SerializeField, Tooltip("Array of zapping sounds")]
     public AudioClip[] zappingSounds;
-
+    [SerializeField, Tooltip("Array of puzzle completion sounds")]
+    public AudioClip[] puzzleCompletionSounds;
+    [SerializeField]
     AudioSource audioSource;
 
     void Start()
     {
-        audioSource = GetComponent<AudioSource>();
-        volume = Sound.Instance.EffectsVolume * volumeMultiplier;
+        if (audioSource == null)
+            audioSource = GetComponent<AudioSource>();
     }
 
     public void PlayJumpSound()
     {
-        audioSource.PlayOneShot(jumpSounds[Random.Range(0, jumpSounds.Length)], volume);
+        audioSource.PlayOneShot(jumpSounds[Random.Range(0, jumpSounds.Length)], GetVolume());
     }
     public void PlayDamageSound()
     {
-        audioSource.PlayOneShot(damageSounds[Random.Range(0, damageSounds.Length)], volume);
+        audioSource.PlayOneShot(damageSounds[Random.Range(0, damageSounds.Length)], GetVolume());
     }
     public void PlayDeathSound()
     {
-        audioSource.PlayOneShot(deathSounds[Random.Range(0, deathSounds.Length)], volume);
+        audioSource.PlayOneShot(deathSounds[Random.Range(0, deathSounds.Length)], GetVolume());
     }
     public void PlayMovingSound()
     {
-        audioSource.PlayOneShot(movingSounds[Random.Range(0, movingSounds.Length)], volume);
+        audioSource.PlayOneShot(movingSounds[Random.Range(0, movingSounds.Length)], GetVolume());
     }
     public void PlayZappingSound()
     {
-        audioSource.PlayOneShot(zappingSounds[Random.Range(0, zappingSounds.Length)], volume);
+        audioSource.PlayOneShot(zappingSounds[Random.Range(0, zappingSounds.Length)], GetVolume());
     }
-    public void UpdateVolume()
+    public void PlayPuzzleCompletionSound()
     {
-        volume = Sound.Instance.EffectsVolume * volumeMultiplier;
+        audioSource.PlayOneShot(puzzleCompletionSounds[Random.Range(0, puzzleCompletionSounds.Length)], GetVolume());
     }
-
-    public float Volume
+    public float GetVolume()
     {
-        get => volume;
-        set => volume = value;
+        return Sound.Instance.EffectsVolume * volumeMultiplier;
     }
 }

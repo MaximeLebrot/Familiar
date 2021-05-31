@@ -286,10 +286,17 @@ namespace AbilitySystem
         {
             anim.ResetTrigger("takeDmg");
         }
+
+        public AudioHandler AudioHandler
+        {
+            get => audioHandler;
+        }
+
         public int StoneCounter
         {
             get => stoneCounter;
         }
+
         public GameplayAbilitySystem AbilitySystem
         {
             get => abilitySystem;

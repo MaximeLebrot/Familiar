@@ -6,6 +6,8 @@ public class Code : MonoBehaviour
 {
     [SerializeField, Tooltip("A reference to the door game object that should open upon puzzle completion. Should be inputed manually")] 
     private GameObject door;
+    [SerializeField]
+    private AbilitySystem.Player player;
     [Tooltip("A list of integers that represent the correct code in the correct order")]
     private List<int> correctCode;
     [Tooltip("The current number that needs to be inputed as part of the correct code")]
@@ -15,6 +17,7 @@ public class Code : MonoBehaviour
     private List<KeyCodeCombination> keyCodeGenerated = new List<KeyCodeCombination>();
     [Tooltip("An iterator of the correct code")]
     private int correctCodeIterator;
+    [SerializeField]
     Animator animator;
 
     private void Awake()
@@ -23,7 +26,10 @@ public class Code : MonoBehaviour
 
         GenerateCorrectCode();
 
-        animator = door.GetComponent<Animator>(); //vild kod
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilitySystem.Player>();
+        if (animator == null)
+            animator = door.GetComponent<Animator>();
     }
 
     public void GenerateCorrectCode()
@@ -114,8 +120,8 @@ public class Code : MonoBehaviour
 
     private void Success()
     {
-        animator.SetBool("open", true); //vild kod
-        //door.SetActive(false);
+        animator.SetBool("open", true);
+        player.AudioHandler.PlayPuzzleCompletionSound();
         foreach (KeyCodeCombination keycode in keyCodeGenerated)
         {
             keycode.setGreen();

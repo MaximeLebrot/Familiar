@@ -13,10 +13,21 @@ public class DoorConsole : MonoBehaviour
 
     [Tooltip("Checks whether the player can use this console or not")]
     private bool canUseConsole;
+
+    bool puzzleComplete;
+
+    [SerializeField]
+    private AbilitySystem.Player player;
    
 
     private void Start()
     {
+        if (allDoors.Length > 0)
+        {
+            if (player == null)
+                player = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilitySystem.Player>();
+        }
+        
         for (int i = 0; i < doors.Length; i++)
         {
             //first element put in is going to be active
@@ -33,7 +44,7 @@ public class DoorConsole : MonoBehaviour
 
     private void Update()
     {
-        if (canUseConsole == true && Input.GetKeyDown(KeyCode.E))
+        if (canUseConsole == true && Input.GetKeyDown(KeyCode.E) && puzzleComplete != true)
             DoorSwap();
     }
 
@@ -62,11 +73,13 @@ public class DoorConsole : MonoBehaviour
         }
         if (allDoors.Length > 0)
         {
+            puzzleComplete = true;
             foreach (GameObject door in allDoors)
             {
                 door.GetComponent<Animator>().SetBool("isOpen", true);
                 if (door.GetComponent<Door>() != null)
                     door.GetComponent<Door>().DoorOpened();
+                player.AudioHandler.PlayPuzzleCompletionSound();
             }
         }
         if (fireZone.Length > 0)

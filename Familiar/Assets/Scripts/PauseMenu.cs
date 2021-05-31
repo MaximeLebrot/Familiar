@@ -172,14 +172,5 @@ public class PauseMenu : MonoBehaviour
     void ApplyValueChange()
     {
         camHandler.MouseSensitivity = Stats.Instance.MouseSensitivity;
-        UpdateAllAudioHandlersVolume();
-    }
-
-    void UpdateAllAudioHandlersVolume()
-    {
-        foreach (AudioHandler audio in audioSources)
-        {
-            audio.UpdateVolume();
-        }
     }
 }

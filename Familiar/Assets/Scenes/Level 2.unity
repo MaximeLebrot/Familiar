@@ -18858,6 +18858,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 85086212}
+  player: {fileID: 809609654}
   keyCodeGenerated:
   - {fileID: 1781680359}
   - {fileID: 329670701}
@@ -18868,6 +18869,7 @@ MonoBehaviour:
   - {fileID: 1553752751}
   - {fileID: 386571532}
   - {fileID: 1442891161}
+  animator: {fileID: 85086213}
 --- !u!1 &498875202
 GameObject:
   m_ObjectHideFlags: 0
@@ -48392,14 +48394,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 2299107766689332594, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
-      propertyPath: damageSounds.Array.size
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2299107766689332594, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
-      propertyPath: damageSounds.Array.data[0]
-      value: 
-      objectReference: {fileID: 8300000, guid: 22fb49af270648a428c165190c4e2a61, type: 3}
     - target: {fileID: 4564970268708309992, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
       propertyPath: m_ConnectedAnchor.x
       value: 51.67
@@ -59407,9 +59401,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   door: {fileID: 95943230}
+  player: {fileID: 809609654}
   childPressurePlates:
   - {fileID: 1620183138}
   - {fileID: 1440845900}
+  animator: {fileID: 95943231}
 --- !u!1 &1237241895
 GameObject:
   m_ObjectHideFlags: 0

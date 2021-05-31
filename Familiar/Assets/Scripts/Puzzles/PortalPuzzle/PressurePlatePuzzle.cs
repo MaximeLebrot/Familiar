@@ -6,14 +6,21 @@ public class PressurePlatePuzzle : MonoBehaviour
     private GameObject door;
     [Tooltip("Checks whether the door should open or not")]
     private bool shouldOpen;
+    [SerializeField]
+    private AbilitySystem.Player player;
     [SerializeField, Tooltip("Array of references to pressure plates that are in play in this puzzle")]
     private MultiplePressurePlates[] childPressurePlates;
-    Animator animator; //vild kod
+    [SerializeField]
+    private Animator animator;
+    bool puzzleDone;
 
     private void Start()
     {
         InitializeSequence();
-        animator = door.GetComponent<Animator>(); //vild kod
+        if (animator == null)
+            animator = door.GetComponent<Animator>();
+        if (player == null)
+            player = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilitySystem.Player>();
     }
 
     public void UpdatePuzzle()
@@ -28,22 +35,23 @@ public class PressurePlatePuzzle : MonoBehaviour
                 return;
             }
         }
-        CheckIfShouldOpen();
+        if (puzzleDone != true)
+            CheckIfShouldOpen();
     }
     private void CheckIfShouldOpen()
     {
         if (shouldOpen == true)
         {
-            animator.SetBool("open", true); //vild kod
-            //door.SetActive(false);
+            puzzleDone = true;
+            animator.SetBool("open", true);
+            player.AudioHandler.PlayPuzzleCompletionSound();
             foreach (MultiplePressurePlates pressurePlate in childPressurePlates)
             {
                 pressurePlate.ChangeMaterial();
             }
             return;
         }
-        animator.SetBool("open", false); //vild kod
-        //door.SetActive(true);
+        animator.SetBool("open", false);
     }
     private void InitializeSequence()
     {
