@@ -8,6 +8,8 @@ public class Door : MonoBehaviour
     [SerializeField, Tooltip("The Animator component tied to this object")]
     private Animator animator;
     [SerializeField]
+    private AbilitySystem.Player player;
+    [SerializeField]
     private GameObject wizard;
     [SerializeField]
     private NavMeshAgent navAgent;
@@ -15,6 +17,9 @@ public class Door : MonoBehaviour
     private GameObject destination;
     [SerializeField]
     private GameObject eliasProgTrigger;
+
+    [SerializeField]
+    private bool shouldPlaySuccessSound;
 
     void Start()
     {
@@ -26,6 +31,8 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Key"))
         {
+            if (shouldPlaySuccessSound)
+                player.AudioHandler.PlayPuzzleCompletionSound();
             open = true;
             animator.SetBool("open", true);
             if (wizard != null)

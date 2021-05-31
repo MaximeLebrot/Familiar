@@ -6985,8 +6985,6 @@ MonoBehaviour:
   missionText: {fileID: 656618147}
   mission: Take the Keychain to the big Locked Door.
   needKey: 1
-  delay: 1
-  delayTime: 4
   anim: {fileID: 1902547973}
 --- !u!1001 &403836639
 PrefabInstance:
@@ -16579,8 +16577,6 @@ MonoBehaviour:
   missionText: {fileID: 656618147}
   mission: Find the Keychain.
   needKey: 0
-  delay: 1
-  delayTime: 5
   anim: {fileID: 1902547973}
 --- !u!4 &602157572 stripped
 Transform:
@@ -20335,10 +20331,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   open: 0
   animator: {fileID: 719570004}
+  player: {fileID: 1687163031}
   wizard: {fileID: 590731604}
   navAgent: {fileID: 590731603}
   destination: {fileID: 461939745}
   eliasProgTrigger: {fileID: 0}
+  shouldPlaySuccessSound: 1
 --- !u!65 &719570006
 BoxCollider:
   m_ObjectHideFlags: 0
@@ -36027,8 +36025,6 @@ MonoBehaviour:
   missionText: {fileID: 656618147}
   mission: Bring the Keychain to the Wizard.
   needKey: 0
-  delay: 0
-  delayTime: 0
   anim: {fileID: 1902547973}
 --- !u!1 &1504842383
 GameObject:
@@ -47454,8 +47450,6 @@ MonoBehaviour:
   missionText: {fileID: 656618147}
   mission: Find the Keychain and avoid being caught by the Guards.
   needKey: 0
-  delay: 1
-  delayTime: 1
   anim: {fileID: 1902547973}
 --- !u!1001 &2082632455
 PrefabInstance:
@@ -48062,10 +48056,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   open: 0
   animator: {fileID: 0}
+  player: {fileID: 0}
   wizard: {fileID: 0}
   navAgent: {fileID: 0}
   destination: {fileID: 0}
   eliasProgTrigger: {fileID: 0}
+  shouldPlaySuccessSound: 0
 --- !u!95 &2100702585
 Animator:
   serializedVersion: 3
