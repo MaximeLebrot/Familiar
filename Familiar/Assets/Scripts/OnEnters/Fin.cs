@@ -33,24 +33,31 @@ public class Fin : MonoBehaviour
     {
         if (other.CompareTag("Player") && player.StoneCounter >= 6)
         {
-            StartCoroutine(Fading());
+            animExit.SetBool("exitOpen", true);
+            StartCoroutine(WaitFading());
         }
     }
 
-    private void OnCollisionEnter(Collision collision)
+    /*private void OnCollisionEnter(Collision collision)
     {
         if (collision.collider.CompareTag("Player") && player.StoneCounter >= 6)
         {
             animExit.SetBool("exitOpen", true);
             StartCoroutine(Fading());
         }
-    }
+    } */
 
     private IEnumerator Fading()
     {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => black.color.a == 1);
         SceneManager.LoadScene("Level 3");
+    }
+
+    private IEnumerator WaitFading()
+    {
+        yield return new WaitForSeconds(0.5f);
+        StartCoroutine(Fading());
     }
 
 }
