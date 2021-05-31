@@ -9,7 +9,7 @@ public class FireZone : MonoBehaviour
     [SerializeField, Tooltip("A reference to the audio source component tied to this game object. Should be inputed manually")]
     private AudioSource audioS;
 
-    private static readonly float volumeMultiplier = 0.3f;
+    private static readonly float volumeMultiplier = 0.2f;
 
     private bool isWorking = true;
     private bool inZone;
@@ -88,9 +88,6 @@ public class FireZone : MonoBehaviour
         particleSystem.Stop();
         audioS.Stop();
         Destroy(audioS);
-
-        //anim.SetBool("isActive", false);
         isWorking = false;
-        //andra saker för att medela att det är över
     }
 }
