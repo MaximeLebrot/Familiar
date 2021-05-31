@@ -12,6 +12,10 @@ public class Fin : MonoBehaviour
     private Image black;
     [SerializeField, Tooltip("The animator componen attached to this game object. Should be inputed manually")]
     private Animator anim;
+    [SerializeField, Tooltip("")]
+    private Animator animExit;
+
+
 
     protected void Awake()
     {
@@ -21,6 +25,8 @@ public class Fin : MonoBehaviour
             anim = GetComponent<Animator>();
         if (black == null)
             Debug.LogError("Input the F2B component in \"Fin\" manually");
+        if (animExit == null)
+            animExit = GetComponent<Animator>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -35,6 +41,7 @@ public class Fin : MonoBehaviour
     {
         if (collision.collider.CompareTag("Player") && player.StoneCounter >= 6)
         {
+            animExit.SetBool("exitOpen", true);
             StartCoroutine(Fading());
         }
     }
