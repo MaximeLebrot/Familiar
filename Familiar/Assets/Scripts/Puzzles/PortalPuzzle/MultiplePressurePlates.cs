@@ -13,6 +13,12 @@ public class MultiplePressurePlates : MonoBehaviour
     [SerializeField, Tooltip("A reference to the animator attached to this game object. Should be inputed manually")]
     private Animator anim;
 
+    [SerializeField]
+    private AudioSource audioS;
+    [SerializeField]
+    private AudioClip audioC;
+    private static readonly float volumeMultiplier = 0.2f;
+
     void Start()
     {
         InitializeSequence();
@@ -98,6 +104,11 @@ public class MultiplePressurePlates : MonoBehaviour
     {
         //audio feedback
         meshRenderer.material = newMat;
+    }
+
+    public void PlayPressurePlateSound()
+    {
+        audioS.PlayOneShot(audioC, Sound.Instance.EffectsVolume * volumeMultiplier);
     }
 
     public bool IsActive
