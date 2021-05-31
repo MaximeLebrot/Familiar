@@ -90,7 +90,6 @@ namespace AbilitySystem
                     Debug.Log(Stats.Instance.Health);
                 }
             }
-            HealthBarUpdate();
         }
 
         private void OnTriggerEnter(Collider other)
@@ -190,6 +189,7 @@ namespace AbilitySystem
         public void TakeDamage(float damage)
         {
             AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, -damage);
+            HealthBarUpdate();
             if (abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) <= 0)
             {
                 Die();
