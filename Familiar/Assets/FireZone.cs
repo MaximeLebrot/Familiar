@@ -17,7 +17,6 @@ public class FireZone : MonoBehaviour
 
     private static readonly float time = 0.1f;
     private float timer;
-
     private void Start()
     {
         if (particleSystem == null)
@@ -39,11 +38,8 @@ public class FireZone : MonoBehaviour
             if (inZone == true)
                 DamagePlayer();
         }
-        if (audioS != null)
-        {
-            if (audioS.volume != Sound.Instance.EffectsVolume * volumeMultiplier)
-                audioS.volume = Sound.Instance.EffectsVolume * volumeMultiplier;
-        }
+        if (audioS.volume != Sound.Instance.EffectsVolume * volumeMultiplier)
+            audioS.volume = Sound.Instance.EffectsVolume * volumeMultiplier;
     }
 
     private void DamagePlayer()
@@ -87,7 +83,6 @@ public class FireZone : MonoBehaviour
     {
         particleSystem.Stop();
         audioS.Stop();
-        Destroy(audioS);
         isWorking = false;
     }
 }
