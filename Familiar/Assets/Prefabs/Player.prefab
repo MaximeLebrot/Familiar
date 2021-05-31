@@ -246,6 +246,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b97dfa33e4b6c4286753f331f3b990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  stoneCounter: 0
   startingAbilities:
   - {fileID: 11400000, guid: 5e8a410668693464692a8a1559dc5371, type: 2}
   startingEffects: []
@@ -270,11 +271,15 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   anim: {fileID: 1271261050}
+  audioHandler: {fileID: 0}
   playerController: {fileID: 8266650046587695661}
   healthBar: {fileID: 0}
+  healthBarNew: {fileID: 0}
+  healthBarAnim: {fileID: 0}
   fadeToBlack: {fileID: 0}
   blackImage: {fileID: 0}
   dustVFX: {fileID: 324139796937865554}
+  moonstoneDoorCol: {fileID: 0}
   PlayerDied:
     m_PersistentCalls:
       m_Calls:
@@ -443,7 +448,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   volume: 0.025
   jumpSounds: []
-  damageSounds: []
+  damageSounds:
+  - {fileID: 8300000, guid: 22fb49af270648a428c165190c4e2a61, type: 3}
   deathSounds:
   - {fileID: 8300000, guid: 2c0ac9daae754ac459729c2dc6a32633, type: 3}
   movingSounds:
@@ -458,6 +464,14 @@ MonoBehaviour:
   - {fileID: 8300000, guid: 7ce7648f10f030c4ea14a84437ae59c9, type: 3}
   - {fileID: 8300000, guid: 4e3a28d6750e23443b1d677310b69880, type: 3}
   - {fileID: 8300000, guid: 8edcbee5ad6cfa74fbed29284098945f, type: 3}
+  puzzleCompletionSounds:
+  - {fileID: 8300000, guid: e27681fcc34b6e947ac214f13239c102, type: 3}
+  - {fileID: 8300000, guid: 1c552307d9c36ba49af7fdb6ff65069d, type: 3}
+  - {fileID: 8300000, guid: b5d990b39fe53b84cbdbf04b1d341ee1, type: 3}
+  - {fileID: 8300000, guid: ad19bdeb1ea1f964b99ed1078741d94e, type: 3}
+  - {fileID: 8300000, guid: 5f4c793e5b36e4b4d85cd29bdcd5f9bd, type: 3}
+  - {fileID: 8300000, guid: 5f01643f86423cd48ba4fa2b406810ab, type: 3}
+  - {fileID: 8300000, guid: b8205eb3614719340b949294e198f0c5, type: 3}
 --- !u!114 &2276491648659785331
 MonoBehaviour:
   m_ObjectHideFlags: 0

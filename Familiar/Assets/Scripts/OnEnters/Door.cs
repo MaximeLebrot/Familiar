@@ -35,12 +35,15 @@ public class Door : MonoBehaviour
 
     public void DoorOpened()
     {
-        eliasProgTrigger.SetActive(true);
-        navAgent.SetDestination(destination.transform.position);
+        if (eliasProgTrigger != null)
+            eliasProgTrigger.SetActive(true);
+        if (navAgent != null && destination != null)
+            navAgent.SetDestination(destination.transform.position);
     }
 
     private void SetWizardDestination()
     {
-        navAgent.SetDestination(destination.transform.position);
+        if (navAgent != null)
+            navAgent.SetDestination(destination.transform.position);
     }
 }
