@@ -29780,8 +29780,8 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 1238429585}
-  - {fileID: 1998305081}
   - {fileID: 1540515981}
+  - {fileID: 1998305081}
   - {fileID: 155060907}
   - {fileID: 1351216345}
   m_Father: {fileID: 0}
@@ -68731,6 +68731,7 @@ GameObject:
   - component: {fileID: 1386540248}
   - component: {fileID: 1386540250}
   - component: {fileID: 1386540249}
+  - component: {fileID: 1386540251}
   m_Layer: 8
   m_Name: Spot Light
   m_TagString: Untagged
@@ -68936,6 +68937,21 @@ Light:
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
   m_ShadowAngle: 0
+--- !u!114 &1386540251
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1386540247}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6657ec17ce6a474aa299f875cb7b7d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  flickerIntensity: 10
+  flickersPerSec: 3
+  speedRandomness: 2
 --- !u!4 &1387544446 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6808287335540403863, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
@@ -76522,7 +76538,7 @@ Transform:
   - {fileID: 400406314}
   - {fileID: 1581581474}
   m_Father: {fileID: 703176510}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &1541204198 stripped
 Transform:
