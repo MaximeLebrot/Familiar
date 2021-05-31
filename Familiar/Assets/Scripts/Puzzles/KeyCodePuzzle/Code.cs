@@ -110,12 +110,12 @@ public class Code : MonoBehaviour
 
     private void ResetInput()
     {
+        player.AudioHandler.PlayCodeErrorSound();
         foreach (KeyCodeCombination keycode in keyCodeGenerated)
         {
             keycode.setRed();
         }
         StartCoroutine(ResetTimer());
-        
     }
 
     private void Success()
