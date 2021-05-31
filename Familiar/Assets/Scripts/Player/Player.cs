@@ -40,6 +40,8 @@ namespace AbilitySystem
         [Header("References")]
         [SerializeField, Tooltip("The animator component attached to this game object. Should be inputed manually")]
         private Animator anim;
+        [SerializeField, Tooltip("The Audio Handler component attached to this game object. Should be inputed manually")]
+        private AudioHandler audioHandler;
         [SerializeField, Tooltip("The \"Controller\" component attached to this game object. Should be inputed manually")]
         private Controller playerController;
         [SerializeField, Tooltip("The player health UI slider. Should be inputed manually")]
@@ -105,6 +107,7 @@ namespace AbilitySystem
         private void InitializeSequence()
         {
             InitializeAnimator();
+            InitializeAudioHandler();
             InitializePlayerController();
             InitializeStateMachine();
             InitializeAbilitySystem();
@@ -120,6 +123,18 @@ namespace AbilitySystem
                 Debug.LogWarning("Animator value should be set in the inspector");
                 if (anim == null)
                     Debug.LogError("Could not find Animator");
+            }
+        }
+
+        private void InitializeAudioHandler()
+        {
+            if (audioHandler == null)
+            {
+                audioHandler = GetComponent<AudioHandler>();
+                Debug.LogWarning("Audio Handler value should be set in the inspector");
+                if (audioHandler == null)
+                    Debug.LogError("Could not find Audio Handler");
+
             }
         }
 
@@ -190,6 +205,7 @@ namespace AbilitySystem
         {
             AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, -damage);
             HealthBarUpdate();
+            audioHandler.PlayDamageSound();
             if (abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) <= 0)
             {
                 Die();
