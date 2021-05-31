@@ -11,8 +11,6 @@ public class MissionTrigger : MonoBehaviour
     public Text missionText;
     public string mission;
     public bool needKey;
-    public bool delay; //If the mission should wait for dialog
-    public float delayTime; // How long before mission should change.
     
     // The mission panels animator
     public Animator anim;
@@ -25,18 +23,9 @@ public class MissionTrigger : MonoBehaviour
                                        //if (delay)
                                        //StartCoroutine(DelayChange());
 
-            StartCoroutine(DelayChange()); // Doesn't seem to work? 
-            // Add SFX here ?
-
             missionText.text = mission; // maybe add typing effect instead?
             gameObject.SetActive(false);
+            // Add SFX here ?
         }
-    }
-
-    // It doesnt seem to enter the coroutine? Why?
-    // Delays the mission text being updated.
-    private IEnumerator DelayChange()
-    {
-        yield return new WaitForSeconds(delayTime);
     }
 }
