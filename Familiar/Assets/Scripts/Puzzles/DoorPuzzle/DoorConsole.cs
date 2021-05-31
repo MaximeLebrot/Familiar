@@ -67,6 +67,7 @@ public class DoorConsole : MonoBehaviour
 
     private void DoorSwap()
     {
+        player.AudioHandler.PlayConsoleUseSound();
         for (int i = 0; i<doors.Length; i++)
         {
             doors[i].GetComponent<Animator>().SetBool("isOpen", !doors[i].GetComponent<Animator>().GetBool("isOpen"));
