@@ -27,7 +27,8 @@ public class FireZone : MonoBehaviour
             player = GameObject.FindGameObjectWithTag("Player").GetComponent<AbilitySystem.Player>();
         if (audioS == null)
             audioS = GetComponent<AudioSource>();
-        audioS.volume = Sound.Instance.EffectsVolume * volumeMultiplier;
+        if (audioS != null)
+            audioS.volume = Sound.Instance.EffectsVolume * volumeMultiplier;
         timer = time;
     }
 
@@ -40,8 +41,11 @@ public class FireZone : MonoBehaviour
             if (inZone == true)
                 DamagePlayer();
         }
-        if (audioS.volume != Sound.Instance.EffectsVolume * volumeMultiplier)
-            audioS.volume = Sound.Instance.EffectsVolume * volumeMultiplier;
+        if (audioS != null)
+        {
+            if (audioS.volume != Sound.Instance.EffectsVolume * volumeMultiplier)
+                audioS.volume = Sound.Instance.EffectsVolume * volumeMultiplier;
+        }
     }
 
     private void DamagePlayer()

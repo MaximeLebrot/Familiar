@@ -52,10 +52,21 @@ public class Code : MonoBehaviour
     private bool RandomBool()
     {
         float random = Random.Range(0.0f, 1.0f);
-        if (random >= 0.5f)
-            return true;
-        else
-            return false;
+        if (Stats.Instance != null)
+        {
+            switch (Stats.Instance.Difficulty)
+            {
+                case 1:
+                    return random <= 0.2f;
+                case 2:
+                    return random <= 0.35f;
+                case 3:
+                    return random <= 0.5f;
+                case 4:
+                    return random <= 0.8f;
+            }
+        }
+        return random >= 0.5f;
     }
     
     private void RandomizeOrder()
