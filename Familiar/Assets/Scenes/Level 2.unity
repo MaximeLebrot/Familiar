@@ -4738,6 +4738,10 @@ PrefabInstance:
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: bd438c52a2bb3d8479a9c194bacbe2df, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bd438c52a2bb3d8479a9c194bacbe2df, type: 3}
 --- !u!4 &95943229 stripped
@@ -22020,7 +22024,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: That must be the code! Let's try it on the code panel.
-  activeTime: 12
+  activeTime: 4
   needKey: 0
   expressionTrigger: excitedKey
   dialogueAudio: {fileID: 1653485807}
@@ -35094,9 +35098,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: It would seem escaping isn't going to be as easy as I'd hoped. I'll lend
-    you some of my powers. Use your tident to zap enemies. Now get us out of this
+    you some of my powers. Use your trident to zap enemies. Now get us out of this
     Castle!
-  activeTime: 10
+  activeTime: 18
   needKey: 0
   expressionTrigger: angry
   dialogueAudio: {fileID: 1653485807}
@@ -50631,7 +50635,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dialogue: Hmm... this panel doesn't seem to be working. We'll also need a code.
     Let's go look for that and come back later.
-  activeTime: 8
+  activeTime: 10
   needKey: 0
   expressionTrigger: suspicious
   dialogueAudio: {fileID: 1653485807}
@@ -53904,8 +53908,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2bb59307752904c48b4a7247f6b3c137, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dialogue: Oh , this is a bit trickier.... three pressure plates, but only one box....
-  activeTime: 6
+  dialogue: Oh, this is a bit trickier.... three pressure plates, but only one box....
+  activeTime: 8
   needKey: 0
   expressionTrigger: suspicious
   dialogueAudio: {fileID: 1653485807}
@@ -66650,7 +66654,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dialogue: I'VE HAD IT WITH THESE MOTHERF*CKING SPIDER IN THIS MOTHERF*CKING CASTLE
-  activeTime: 8
+  activeTime: 6
   needKey: 0
   expressionTrigger: angry
   dialogueAudio: {fileID: 1653485807}
