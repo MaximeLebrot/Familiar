@@ -10,6 +10,10 @@ public class DDOL : MonoBehaviour
 
     private void Start()
     {
+#if UNITY_EDITOR
+        SceneManager.LoadScene(LoadingSceneIntegration.otherScene);
+#else
         SceneManager.LoadScene("Main Menu");
+#endif
     }
 }
