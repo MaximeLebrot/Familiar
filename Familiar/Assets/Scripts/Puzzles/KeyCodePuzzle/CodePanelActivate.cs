@@ -1,5 +1,6 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class CodePanelActivate : MonoBehaviour
 {
@@ -12,6 +13,9 @@ public class CodePanelActivate : MonoBehaviour
     private AbilitySystem.Player playerStats;
     [SerializeField, Tooltip("A reference to the \"Player\" script. Should be inputed manually")]
     private CameraHandler cam;
+
+    [SerializeField]
+    private Button[] buttons;
 
     [SerializeField, Tooltip("A reference to the UICoverPanel game object. Must be inputed manually")]
     private GameObject UICoverPanel;
@@ -61,6 +65,8 @@ public class CodePanelActivate : MonoBehaviour
         }
         else
         {
+            foreach (Button button in buttons)
+                button.interactable = false;
             anim.SetBool("Active", false);
             active = false;
             Cursor.visible = false;
@@ -72,6 +78,8 @@ public class CodePanelActivate : MonoBehaviour
     }
     private void ShowCodePanel()
     {
+        foreach (Button button in buttons)
+            button.interactable = true;
         anim.SetBool("Active", true);
         active = true;
         Cursor.visible = true;
