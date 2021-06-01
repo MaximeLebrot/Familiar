@@ -7,8 +7,9 @@ public class DDOL : MonoBehaviour
     {
         DontDestroyOnLoad(gameObject);
     }
+
     private void Start()
     {
-        SceneManager.LoadScene(LoadingSceneIntegration.otherScene);
+        SceneManager.LoadScene("Main Menu");
     }
 }
