@@ -8,8 +8,10 @@ namespace AbilitySystem
 {
     public class Player : MonoBehaviour, IZappable
     {
-        [SerializeField, Tooltip("A counter of how many stones have been picked up")]
+        [Tooltip("A counter of how many stones have been picked up")]
         private int stoneCounter;
+        [Tooltip("Spawn position information")]
+        private int spawnPosition;
         [Tooltip("A reference to the instance of the ability system tied to the player")]
         private GameplayAbilitySystem abilitySystem;
         [Tooltip("A reference to the instance of the state machine tied to the player")]
@@ -193,6 +195,7 @@ namespace AbilitySystem
                     gameObject.transform.position = Stats.Instance.Position;
                 
                 canZap = true;
+                spawnPosition = 0;
             }
         }
 
@@ -200,16 +203,15 @@ namespace AbilitySystem
         {
             AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, -damage);
             HealthBarUpdate();
-            audioHandler.PlayDamageSound();
             if (abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) <= 0)
             {
                 Die();
-                Debug.Log("Health = " + AbilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth));
             }
             else
             {
                 anim.SetTrigger("takeDmg");
                 healthBarAnim.SetTrigger("Damage");
+                audioHandler.PlayDamageSound();
             }
                 
         }
@@ -224,10 +226,7 @@ namespace AbilitySystem
 
             PlayerDied.Invoke();
             anim.SetTrigger("die");
-            Respawn(GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position, 2.5f);
-            //Debug.Log("ded");
-            //anim.PlayAnim("death");
-            //restart / menu   
+            Respawn(GameObject.FindGameObjectsWithTag("Respawn")[spawnPosition].transform.position, 2.5f);
         }
 
         public void FadeToBlack()
@@ -239,12 +238,18 @@ namespace AbilitySystem
         {
             fadeToBlack.SetBool("Fade", true);
             yield return new WaitUntil(() => blackImage.color.a == 1);
+            StartCoroutine(ChillInDarkness());
+        }
+        IEnumerator ChillInDarkness()
+        {
+            yield return new WaitForSeconds(2.5f);
             StartCoroutine(FadeIn());
         }
-
         IEnumerator FadeIn()
         {
             fadeToBlack.SetBool("Fade", false);
+            PlayerRespawned.Invoke();
+            ded = false;
             yield return new WaitUntil(() => blackImage.color.a == 0);
         }
 
@@ -256,9 +261,7 @@ namespace AbilitySystem
         private IEnumerator WaitForRespawn(Vector3 target, float delay)
         {
             yield return new WaitForSeconds(delay);
-            PlayerRespawned.Invoke();
             gameObject.transform.position = target;
-            ded = false;
             playerController.StopController = false;
             playerController.Camera.CannotMoveCam = false;
             float? refillHealth;
@@ -322,6 +325,12 @@ namespace AbilitySystem
         public Controller PlayerController
         {
             get => playerController;
+        }
+
+        public int SpawnPosition
+        {
+            get => spawnPosition;
+            set => spawnPosition = value;
         }
         public bool CanSeeCodePanel
         {

@@ -4,6 +4,8 @@ public class EliasGameOver : MonoBehaviour
 {
     [SerializeField]
     private static EliasPlayer eliasPlayer;
+
+    private static readonly string preActionPresetName = "From Exp to Prog Fastest";
     private static readonly string actionPresetName = "Game Over";
     [SerializeField]
     private bool allowRequiredThemeMissmatch;
@@ -16,7 +18,7 @@ public class EliasGameOver : MonoBehaviour
     
     public void PlayGameOverTheme()
     {
+        eliasPlayer.RunActionPreset(preActionPresetName, allowRequiredThemeMissmatch);
         eliasPlayer.RunActionPreset(actionPresetName, allowRequiredThemeMissmatch);
-
     }
 }
