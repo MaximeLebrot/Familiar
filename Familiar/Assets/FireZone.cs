@@ -8,6 +8,8 @@ public class FireZone : MonoBehaviour
     private AbilitySystem.Player player;
     [SerializeField, Tooltip("A reference to the audio source component tied to this game object. Should be inputed manually")]
     private AudioSource audioS;
+    [SerializeField, Tooltip("")]
+    public Animator fireLightAnim;
 
     private static readonly float volumeMultiplier = 0.2f;
 
@@ -84,5 +86,6 @@ public class FireZone : MonoBehaviour
         particleSystem.Stop();
         audioS.Stop();
         isWorking = false;
+        fireLightAnim.SetTrigger("FireDisabled");
     }
 }
