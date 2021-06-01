@@ -11027,7 +11027,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: d5d41ef3a2cf9a748b19d624cb71a813, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: d5d41ef3a2cf9a748b19d624cb71a813, type: 3}
@@ -11688,12 +11688,24 @@ PrefabInstance:
       value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 4922564477663445792, guid: 16c4f0c88601d114e922a263e6b8a3a8, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1.0248
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922564477663445792, guid: 16c4f0c88601d114e922a263e6b8a3a8, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1.0248
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922564477663445792, guid: 16c4f0c88601d114e922a263e6b8a3a8, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1.0248
+      objectReference: {fileID: 0}
+    - target: {fileID: 4922564477663445792, guid: 16c4f0c88601d114e922a263e6b8a3a8, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -81.26
+      value: -77.29
       objectReference: {fileID: 0}
     - target: {fileID: 4922564477663445792, guid: 16c4f0c88601d114e922a263e6b8a3a8, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 24.27
+      value: 24.56
       objectReference: {fileID: 0}
     - target: {fileID: 4922564477663445792, guid: 16c4f0c88601d114e922a263e6b8a3a8, type: 3}
       propertyPath: m_LocalPosition.z
@@ -26335,6 +26347,10 @@ PrefabInstance:
       propertyPath: points.Array.data[8]
       value: 
       objectReference: {fileID: 777153251}
+    - target: {fileID: 1149059242747429223, guid: a1aaa5444fe0fe04d9e6133d41e57b53, type: 3}
+      propertyPath: m_BaseOffset
+      value: 0.01
+      objectReference: {fileID: 0}
     - target: {fileID: 1743969387478001279, guid: a1aaa5444fe0fe04d9e6133d41e57b53, type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
@@ -59395,7 +59411,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1386540247}
   m_LocalRotation: {x: -0, y: 0.7071068, z: -0, w: 0.7071068}
-  m_LocalPosition: {x: -5.21, y: -1.53, z: 15.76}
+  m_LocalPosition: {x: -5.21, y: -1.53, z: 17.58}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1238429585}
@@ -59434,7 +59450,7 @@ MonoBehaviour:
   m_AffectDiffuse: 1
   m_AffectSpecular: 1
   m_NonLightmappedOnly: 0
-  m_ShapeWidth: 30
+  m_ShapeWidth: 34.734314
   m_ShapeHeight: 0.5
   m_AspectRatio: 1
   m_ShapeRadius: 0.025
@@ -59549,7 +59565,7 @@ Light:
     m_NormalBias: 0.4
     m_NearPlane: 0.2
     m_CullingMatrixOverride:
-      e00: 0.06666667
+      e00: 0.05757995
       e01: 0
       e02: 0
       e03: 0
@@ -59576,11 +59592,11 @@ Light:
   m_RenderingLayerMask: 1
   m_Lightmapping: 4
   m_LightShadowCasterMode: 2
-  m_AreaSize: {x: 30, y: 0.5}
+  m_AreaSize: {x: 34.734314, y: 0.5}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: 0, z: 5, w: 15.813365}
+  m_BoundingSphereOverride: {x: 0, y: 0, z: 5, w: 18.074308}
   m_UseBoundingSphereOverride: 1
   m_UseViewFrustumForShadowCasterCull: 1
   m_ShadowRadius: 0
