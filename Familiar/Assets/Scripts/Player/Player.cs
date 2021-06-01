@@ -193,7 +193,8 @@ namespace AbilitySystem
                     gameObject.transform.position = GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position;
                 else
                     gameObject.transform.position = Stats.Instance.Position;
-                
+                Debug.Log(Stats.Instance.Rotation);
+                transform.rotation = Quaternion.Euler(0f, Stats.Instance.Rotation.y, 0f);
                 canZap = true;
                 spawnPosition = 0;
             }
@@ -351,7 +352,6 @@ namespace AbilitySystem
          
         private void InitializeValue(var variable, Component<T>)
         {
-
             if (variable == null)
             {
                 Debug.LogWarning(T.name + " value not set in inspector")
@@ -359,9 +359,7 @@ namespace AbilitySystem
                 if (variable == null)
                     Debug.LogError("Error fetching value of " + T.name);
             }
-
         }
-              
         */
     }
 }

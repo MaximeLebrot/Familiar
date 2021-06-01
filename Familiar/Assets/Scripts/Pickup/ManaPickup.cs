@@ -12,7 +12,7 @@ public class ManaPickup : PickupItem
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             Debug.Log("Mana Collected");
             refillMana = -(playerStats.AbilitySystem.GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerMana) - 10);

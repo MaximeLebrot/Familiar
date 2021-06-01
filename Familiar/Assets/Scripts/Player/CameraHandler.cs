@@ -17,6 +17,7 @@ public class CameraHandler : MonoBehaviour
     [Header("References")]
     [SerializeField, Tooltip("A reference to the \"Controller\" scripts attached to the player game object. Should be inputed manually")]
     private Controller playerController;
+    private new Transform transform;
 
     [Tooltip("Controls whether the game is player in first person or not")]
     private bool firstPerson;
@@ -37,8 +38,8 @@ public class CameraHandler : MonoBehaviour
 
     private void Awake()
     {
-        //Debug.Log("player awake");
         InitializeSequence();
+        pos = transform.rotation * cameraOffset;
     }
 
     void LateUpdate()
@@ -85,6 +86,7 @@ public class CameraHandler : MonoBehaviour
         InitializeMouseSensitivity();
         InitializeCameraVector();
         InitializeCursor();
+        InitializeTransform();
     }
 
     private void InitializePlayerController()
@@ -111,6 +113,16 @@ public class CameraHandler : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
+    }
+    private void InitializeTransform()
+    {
+        if (transform == null)
+            transform = gameObject.transform;
+    }
+
+    public Transform Transform
+    {
+        get => transform;
     }
 
     public bool FreezeCamera

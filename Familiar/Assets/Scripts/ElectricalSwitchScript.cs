@@ -11,11 +11,6 @@ public class ElectricalSwitchScript : MonoBehaviour
         private set;
     }
 
-    private void Awake()
-    {
-        
-    }
-
     void Start()
     {
         IsPowered = false;
@@ -27,11 +22,6 @@ public class ElectricalSwitchScript : MonoBehaviour
         {
             IsPowered = false;
         }
-    }
-
-    private void FixedUpdate()
-    {
-        
     }
 
     public void OnZap()

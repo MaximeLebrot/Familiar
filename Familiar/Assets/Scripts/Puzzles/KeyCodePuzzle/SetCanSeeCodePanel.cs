@@ -13,7 +13,7 @@ public class SetCanSeeCodePanel : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player")
+        if (other.CompareTag("Player"))
         {
             playerStats.CanSeeCodePanel = true;
         }

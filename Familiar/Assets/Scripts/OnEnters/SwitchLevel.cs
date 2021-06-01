@@ -18,6 +18,7 @@ public class SwitchLevel : MonoBehaviour
     private Animator animDoor;
 
     private static readonly Vector3 level2StartPosition = new Vector3(51.5f, 1.5f, 33f);
+    private static readonly Vector3 level2StartRotation = new Vector3(0f, 270f, 0f);
     private static readonly float level2StartHealth = 10f;
 
     [Header("Events")]
@@ -61,6 +62,7 @@ public class SwitchLevel : MonoBehaviour
     {
         Stats.Instance.Health = level2StartHealth;
         Stats.Instance.Position = level2StartPosition;
+        Stats.Instance.Rotation = level2StartRotation;
     }
 
 }

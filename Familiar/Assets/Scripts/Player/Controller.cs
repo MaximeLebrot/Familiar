@@ -68,6 +68,8 @@ public class Controller : MonoBehaviour
     [Tooltip("The RaycastHit component set by the ground check")]
     private RaycastHit hit;
 
+    private Vector3 camVector = new Vector3();
+
     private Player player;
     public Player Player
     {
@@ -119,7 +121,10 @@ public class Controller : MonoBehaviour
 
     private void LateUpdate()
     {
-        transform.forward = new Vector3(cam.transform.forward.x, 0.0f, cam.transform.forward.z);
+        camVector.x = cam.Transform.forward.x;
+        camVector.y = 0.0f;
+        camVector.z = cam.Transform.forward.z;
+        transform.forward = camVector;
     }
 
     private RaycastHit GroundCheck()

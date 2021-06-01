@@ -246,7 +246,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 03b97dfa33e4b6c4286753f331f3b990, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stoneCounter: 0
   startingAbilities:
   - {fileID: 11400000, guid: 5e8a410668693464692a8a1559dc5371, type: 2}
   startingEffects: []
@@ -623,6 +622,7 @@ MonoBehaviour:
   cameraAdjustmentOffset: 0
   cameraOffset: {x: 0, y: 1.65, z: -7}
   playerController: {fileID: 8266650046587695661}
+  updateCam: 0
 --- !u!114 &6645680780004362317
 MonoBehaviour:
   m_ObjectHideFlags: 0

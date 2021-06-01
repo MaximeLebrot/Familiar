@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class ElectricitySystemScript : MonoBehaviour
@@ -14,12 +12,6 @@ public class ElectricitySystemScript : MonoBehaviour
             return GetComponentInChildren<ElectricalSwitchScript>().IsPowered;
         } 
         //set;
-    }
-
-    // Start is called before the first frame update
-    void Start()
-    {
-        
     }
 
     // Update is called once per frame

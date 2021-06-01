@@ -19,9 +19,4 @@ public abstract class MoveableBase : MonoBehaviour, IMoveable
         get;
         set;
     }
-
-    private void Awake()
-    {
-        
-    }
 }

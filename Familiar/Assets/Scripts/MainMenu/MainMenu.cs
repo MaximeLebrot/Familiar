@@ -22,7 +22,7 @@ public class MainMenu : MonoBehaviour
     private Dropdown difficultyDropdown;
 
     private Vector3 level1SpawnPosition = new Vector3(-72.5f, 2.5f, -33f);
-    private float level1Health = 10f;
+    private readonly float level1Health = 10f;
 
     public void StartGame()
     {
@@ -92,12 +92,21 @@ public class MainMenu : MonoBehaviour
     private void LoadVariables()
     {
         SaveData data = SaveGame.LoadPlayer();
+
         Stats.Instance.Health = data.health;
+
         Vector3 position = new Vector3();
         position.x = data.position[0];
         position.y = data.position[1];
         position.z = data.position[2];
         Stats.Instance.Position = position;
+
+        Vector3 rotation = new Vector3();
+        rotation.x = data.rotation[0];
+        rotation.y = data.rotation[1];
+        rotation.z = data.rotation[2];
+        Stats.Instance.Rotation = rotation;
+
         SceneManager.LoadScene(data.sceneName);
     }
 

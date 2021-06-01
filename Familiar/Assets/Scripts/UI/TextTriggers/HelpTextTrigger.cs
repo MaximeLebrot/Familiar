@@ -36,7 +36,7 @@ public class HelpTextTrigger : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player" && !needKey)
+        if (other.CompareTag("Player") && !needKey)
         {
             if (useTyping)
             {
@@ -52,7 +52,7 @@ public class HelpTextTrigger : MonoBehaviour
                 StartCoroutine(WaitAndDestroy());
             }
         }
-        else if (other.tag == "Key" && needKey)
+        else if (other.CompareTag("Key") && needKey)
         {
             if (useTyping)
             {
@@ -78,7 +78,7 @@ public class HelpTextTrigger : MonoBehaviour
 
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Player" && !needKey)
+        if (other.CompareTag("Player") && !needKey)
         {
             if (helpText.text == instructions && !permanentText)
             {

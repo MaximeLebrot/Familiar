@@ -11,16 +11,9 @@ public class PressureV2 : MonoBehaviour
     public GameObject door;
     private float count;
 
-    // Start is called before the first frame update
     void Start()
     {
         count = 0f;
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-
     }
 
     private void OnTriggerEnter(Collider other)

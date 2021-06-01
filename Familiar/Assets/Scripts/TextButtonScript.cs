@@ -21,12 +21,6 @@ public class TextButtonScript : MonoBehaviour, IZappable
         keypad = GetComponent<KeyCodeCombination>();
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void OnZap()
     {
         //isPowered = !isPowered;

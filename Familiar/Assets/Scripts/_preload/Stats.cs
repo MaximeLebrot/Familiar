@@ -8,6 +8,8 @@ public class Stats : MonoBehaviour
 
     private Vector3 position;
 
+    private Vector3 rotation;
+
     private float health;
 
     private int difficulty;
@@ -46,5 +48,10 @@ public class Stats : MonoBehaviour
     {
         get => position;
         set => position = value;
+    }
+    public Vector3 Rotation
+    {
+        get => rotation;
+        set => rotation = value;
     }
 }

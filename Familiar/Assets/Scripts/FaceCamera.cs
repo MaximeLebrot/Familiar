@@ -1,15 +1,8 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class FaceCamera : MonoBehaviour
 {
     public Camera cameraToLookAt;
-
-    void Start()
-    {
-        //transform.Rotate( 180,0,0 );
-    }
 
     void Update()
     {
