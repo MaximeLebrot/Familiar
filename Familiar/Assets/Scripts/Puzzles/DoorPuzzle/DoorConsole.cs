@@ -44,7 +44,9 @@ public class DoorConsole : MonoBehaviour
 
     private void Update()
     {
-        if (canUseConsole == true && Input.GetKeyDown(KeyCode.E) && puzzleComplete != true)
+        //if (canUseConsole == true && Input.GetKeyDown(KeyCode.E) && puzzleComplete != true)
+            //DoorSwap(); 
+        if (canUseConsole == true && Input.GetKeyDown(KeyCode.Mouse0) && puzzleComplete != true)
             DoorSwap();
     }
 

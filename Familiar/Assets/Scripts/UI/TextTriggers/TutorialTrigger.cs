@@ -9,7 +9,7 @@ public class TutorialTrigger : MonoBehaviour
     // Is sometimes permanent, hence the bool.
     // Maybe add animation for fade in/ out?
     public Text tutorialText;
-    public string tutorial;
+    public static readonly string tutorial = "Use 'Left Click' to interact with the Mechanism";
     public float activeTime;
     public bool permanent;
 
