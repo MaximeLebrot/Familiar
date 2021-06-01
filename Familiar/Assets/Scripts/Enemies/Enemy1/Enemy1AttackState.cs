@@ -62,6 +62,8 @@ public class Enemy1AttackState : Enemy1BaseState
 
     private void ResetAggro(bool doPatrol)
     {
+        if (owner.IsIdleEnemy == true)
+            stateMachine.Transition<Enemy1PatrolState>();
         hasRan = false;
         if (owner.Light != null)
         {
@@ -126,6 +128,19 @@ public class Enemy1AttackState : Enemy1BaseState
     
     private void GrabPlayer()
     {
+        if (owner.Light != null)
+        {
+            color.r = 1f;
+            color.g = 0f;
+            color.b = 0f;
+            color.a = 1f;
+            owner.Light.color = color;
+
+            color.r = 1f;
+            color.g = 1f;
+            color.b = 0f;
+            color.a = 1f;
+        }
         timer = time;
         grabbingPlayer = true;
         aggroTimer = aggroTime;
@@ -146,6 +161,7 @@ public class Enemy1AttackState : Enemy1BaseState
     {
         owner.Anim.SetBool("discover", true);
         owner.Transform.LookAt(owner.PlayerTransform.position);
+        //owner.Transform.LookAt(owner.VecToPlayer);
         owner.NavAgent.velocity = Vector3.zero;
     }
 
