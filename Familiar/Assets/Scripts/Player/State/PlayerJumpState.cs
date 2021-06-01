@@ -7,7 +7,8 @@ public class PlayerJumpState : PlayerBaseState
     {
         base.Enter();
         Jump();
-        Instantiate(player.Player.DustVFX, player.transform.position, player.Player.DustVFX.transform.rotation);
+        ParticleSystem ps = Instantiate(player.Player.DustVFX, player.transform.position, player.Player.DustVFX.transform.rotation);
+        Destroy(ps.gameObject, ps.main.duration + 0.1f);
         //player.Player.DustVFX.Play();
     }
 
