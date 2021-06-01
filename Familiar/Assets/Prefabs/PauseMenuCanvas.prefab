@@ -35,7 +35,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: -37.6}
+  m_AnchoredPosition: {x: 0, y: -37.600098}
   m_SizeDelta: {x: -1785.1299, y: -1038.2909}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &6562732884267896909
@@ -1825,11 +1825,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cd44c1031e13a943bb63640046fad76, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ReferenceResolution: {x: 1920, y: 1080}
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -1871,8 +1871,10 @@ MonoBehaviour:
   effectsVolumeSlider: {fileID: 2697587070906971031}
   musicVolumeSlider: {fileID: 2932544641087951649}
   mouseSensitivitySlider: {fileID: 4780144783204084575}
+  dialogueAudio: {fileID: 0}
   audioSources:
   - {fileID: 0}
+  narrationSource: {fileID: 0}
   playerHandler: {fileID: 0}
   cam: {fileID: 0}
   camHandler: {fileID: 0}
@@ -4195,7 +4197,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: 0
+  m_Text: 1
 --- !u!114 &4343902313287066504
 MonoBehaviour:
   m_ObjectHideFlags: 0
