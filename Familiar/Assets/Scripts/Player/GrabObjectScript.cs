@@ -11,6 +11,7 @@ public class GrabObjectScript : MonoBehaviour
     [SerializeField] private SpringJoint spring;
 
     [SerializeField] private GameObject carriedObject;
+    private Rigidbody carriedRigidbody;
     [SerializeField] private Transform heldObjectPoint;
 
     public static float GrabRange => grabRange;
@@ -66,12 +67,15 @@ public class GrabObjectScript : MonoBehaviour
             return;
 
         carriedObject = hitArray[hitIndex].collider.gameObject;
+        carriedRigidbody = carriedObject.GetComponent<Rigidbody>();
         carriedObject.transform.parent = transform;
         carriedObject.transform.localPosition = heldObjectPoint.localPosition;
         carriedObject.transform.rotation = carriedObject.transform.parent.rotation;
-        spring.connectedBody = carriedObject.GetComponent<Rigidbody>();
-        spring.spring = carriedObject.GetComponent<Rigidbody>().mass * 1000.0f;
-        carriedObject.GetComponent<Rigidbody>().useGravity = false;
+        spring.connectedBody = carriedRigidbody;
+        spring.spring = carriedRigidbody.mass * 1000.0f;
+        carriedRigidbody.drag = 10.0f;
+        carriedRigidbody.useGravity = false;
+        carriedRigidbody.constraints = RigidbodyConstraints.FreezeRotation;
         try
         {
             carriedObject.GetComponent<IMoveable>().Carrier = gameObject;
@@ -98,7 +102,10 @@ public class GrabObjectScript : MonoBehaviour
     {
         try
         {
-            carriedObject.GetComponent<Rigidbody>().useGravity = true;
+            carriedRigidbody.useGravity = true;
+            carriedRigidbody.drag = 1.0f;
+            carriedRigidbody.constraints = RigidbodyConstraints.None;
+            carriedRigidbody = null;
             carriedObject.transform.parent = null;
             carriedObject = null;
             spring.connectedBody = null;
