@@ -19586,6 +19586,10 @@ PrefabInstance:
       propertyPath: zapVFX
       value: 
       objectReference: {fileID: 698408234}
+    - target: {fileID: 8266650046587695661, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
+      propertyPath: collisionMask.m_Bits
+      value: 640
+      objectReference: {fileID: 0}
     - target: {fileID: 8266650046587695662, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
       propertyPath: m_Name
       value: Player
@@ -51397,6 +51401,14 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 50741021, guid: ab9e1989b03731f4e81c39957864f560, type: 3}
+      propertyPath: m_UseGravity
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 50741021, guid: ab9e1989b03731f4e81c39957864f560, type: 3}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9086083041647490372, guid: ab9e1989b03731f4e81c39957864f560, type: 3}
       propertyPath: m_RootOrder
       value: 1
