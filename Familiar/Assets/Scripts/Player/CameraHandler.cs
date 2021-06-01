@@ -39,7 +39,6 @@ public class CameraHandler : MonoBehaviour
     private void Awake()
     {
         InitializeSequence();
-        pos = transform.rotation * cameraOffset;
     }
 
     void LateUpdate()

@@ -195,6 +195,7 @@ namespace AbilitySystem
                     gameObject.transform.position = Stats.Instance.Position;
                 Debug.Log(Stats.Instance.Rotation);
                 transform.rotation = Quaternion.Euler(0f, Stats.Instance.Rotation.y, 0f);
+
                 canZap = true;
                 spawnPosition = 0;
             }
