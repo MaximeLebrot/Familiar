@@ -18,7 +18,7 @@ public class PlayerJumpState : PlayerBaseState
         if (!Input.GetKey(KeyCode.Space))
             player.IsJumping = false;
 
-        if (player.IsGrounded == true && player.InputVector.magnitude == 0 && player.Velocity.magnitude < 0.1) 
+        if (player.IsGrounded == true && PlayerIdleState.IsPlayerIdle(player)) 
             stateMachine.Transition<PlayerIdleState>();
 
         if (player.IsGrounded == true && player.IsJumping != true)
