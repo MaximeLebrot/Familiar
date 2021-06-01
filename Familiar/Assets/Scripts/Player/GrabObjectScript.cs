@@ -71,7 +71,6 @@ public class GrabObjectScript : MonoBehaviour
         carriedObject.transform.rotation = carriedObject.transform.parent.rotation;
         spring.connectedBody = carriedObject.GetComponent<Rigidbody>();
         spring.spring = carriedObject.GetComponent<Rigidbody>().mass * 1000.0f;
-        carriedObject.GetComponent<Rigidbody>().drag = 10.0f;
         carriedObject.GetComponent<Rigidbody>().useGravity = false;
         try
         {
@@ -100,7 +99,6 @@ public class GrabObjectScript : MonoBehaviour
         try
         {
             carriedObject.GetComponent<Rigidbody>().useGravity = true;
-            carriedObject.GetComponent<Rigidbody>().drag = 1.0f;
             carriedObject.transform.parent = null;
             carriedObject = null;
             spring.connectedBody = null;

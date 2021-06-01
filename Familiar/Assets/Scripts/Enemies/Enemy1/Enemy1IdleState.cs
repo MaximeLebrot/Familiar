@@ -10,16 +10,14 @@ public class Enemy1IdleState : Enemy1BaseState
     [Tooltip("Checks whether this enemy should just idle")]
     private bool shouldJustIdle;
 
+    public GameObject aggroZone;
     static float time = 2f;
     float timer = time;
 
     public override void Enter()
     {
-        if (debug)
-            Debug.Log("entering idle");
         base.Enter();
         shouldJustIdle = owner.IsIdleEnemy;
-        owner.Transform.rotation = Quaternion.Euler(0f, 90f, 0f);
     }
 
     public override void HandleUpdate()
@@ -34,8 +32,8 @@ public class Enemy1IdleState : Enemy1BaseState
             && CheckIfPlayerAlive()
             && CheckIfPlayerInFront())
                 stateMachine.Transition<Enemy1AttackState>();
-        //if (debug)
-            //DebugChecks();
+        if (debug)
+            DebugChecks();
     }
 
     void DebugChecks()
