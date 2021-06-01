@@ -9,6 +9,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField, Tooltip("")]
     private GameObject optionsMenuUI;
     [SerializeField, Tooltip("")]
+    private GameObject controlsMenuUI;
+    [SerializeField, Tooltip("")]
     private Slider globalVolumeSlider;
     [SerializeField, Tooltip("")]
     private Slider effectsVolumeSlider;
@@ -44,6 +46,7 @@ public class MainMenu : MonoBehaviour
     public void BackToMenu()
     {
         optionsMenuUI.SetActive(false);
+        controlsMenuUI.SetActive(false);
         mainMenuUI.SetActive(true);
     }
 
@@ -96,5 +99,11 @@ public class MainMenu : MonoBehaviour
         position.z = data.position[2];
         Stats.Instance.Position = position;
         SceneManager.LoadScene(data.sceneName);
+    }
+
+    public void ShowControls()
+    {
+        controlsMenuUI.SetActive(true);
+        mainMenuUI.SetActive(false);
     }
 }
