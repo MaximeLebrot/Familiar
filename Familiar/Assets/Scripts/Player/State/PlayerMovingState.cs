@@ -22,7 +22,7 @@ public class PlayerMovingState : PlayerBaseState
     }
     public override void Exit()
     {
-        owner.Anim.SetBool("isWalking", false);
+        Debug.Log("exiting move state");
     }
 
     public static bool IsPlayerMoving(Controller controller)
