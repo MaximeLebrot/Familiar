@@ -6,6 +6,8 @@ using UnityEngine.UI;
 
 public class Fin : MonoBehaviour
 {
+    private static EliasPlayer eliasPlayer;
+
     [SerializeField, Tooltip("A reference to the \"Player\" script on the player game object. Should be inputed manually")]
     private Player player;
     [SerializeField, Tooltip("A reference to the F2B game components image component. Must be inputed manually")]
@@ -14,6 +16,8 @@ public class Fin : MonoBehaviour
     private Animator anim;
     [SerializeField, Tooltip("")]
     private Animator animExit;
+
+    private static readonly string actionPresetName = "From Prog to Exp";
 
 
 
@@ -27,6 +31,8 @@ public class Fin : MonoBehaviour
             Debug.LogError("Input the F2B component in \"Fin\" manually");
         if (animExit == null)
             animExit = GetComponent<Animator>();
+        if (Sound.Instance != null)
+            eliasPlayer = Sound.Instance.EliasPlayer;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -34,8 +40,14 @@ public class Fin : MonoBehaviour
         if (other.CompareTag("Player") && player.StoneCounter >= 6)
         {
             animExit.SetBool("exitOpen", true);
+            PlayFromProgToExp();
             StartCoroutine(WaitFading());
         }
+    }
+
+    private void PlayFromProgToExp()
+    {
+        eliasPlayer.RunActionPreset(actionPresetName);
     }
 
     /*private void OnCollisionEnter(Collision collision)
