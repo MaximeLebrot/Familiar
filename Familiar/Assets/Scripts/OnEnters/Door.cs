@@ -76,7 +76,7 @@ public class Door : MonoBehaviour
 
     void CheckForPath()
     {
-        if (destination2 != null)
+        if (navAgent.remainingDistance < 0.2f)
             navAgent.SetDestination(destination2.transform.position);
         
         if (Vector3.Distance(transform.position, destination2.transform.position) < 0.2f)
