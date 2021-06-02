@@ -16,12 +16,17 @@ public class DoorConsole : MonoBehaviour
 
     bool puzzleComplete;
 
+    bool shouldCount;
+    float time = 0.6f;
+    float timer;
+
     [SerializeField]
     private AbilitySystem.Player player;
    
 
     private void Start()
     {
+        timer = time;
         if (allDoors.Length > 0)
         {
             if (player == null)
@@ -44,10 +49,12 @@ public class DoorConsole : MonoBehaviour
 
     private void Update()
     {
+        if (shouldCount == true)
+            DelayOperation();
         //if (canUseConsole == true && Input.GetKeyDown(KeyCode.E) && puzzleComplete != true)
             //DoorSwap(); 
         if (canUseConsole == true && Input.GetKeyDown(KeyCode.Mouse0) && puzzleComplete != true)
-            DoorSwap();
+            shouldCount = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -91,5 +98,17 @@ public class DoorConsole : MonoBehaviour
                 zone.Deactivate();
         }
 
+    }
+
+    private void DelayOperation()
+    {
+        if (timer <= 0)
+        {
+            shouldCount = false;
+            timer = time;
+            DoorSwap();
+        }
+        else
+            timer -= Time.deltaTime;
     }
 }

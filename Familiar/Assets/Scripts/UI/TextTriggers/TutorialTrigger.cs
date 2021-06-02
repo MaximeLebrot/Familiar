@@ -21,6 +21,8 @@ public class TutorialTrigger : MonoBehaviour
     private static readonly string zap2Tutorial = "The zap ability can damage spiders";
     private static readonly string mechanism = "Mechanism";
     private static readonly string mechanismTutorial = "Use 'Left Click' to interact with the Mechanism";
+    private static readonly string empty = "Empty";
+    private static readonly string emptyTutorial = "";
 
     private readonly Dictionary<string, string> tutorialDictionary = new Dictionary<string, string>();
 
@@ -36,6 +38,7 @@ public class TutorialTrigger : MonoBehaviour
         tutorialDictionary.Add(zap1, zap1Tutorial);
         tutorialDictionary.Add(zap2, zap2Tutorial);
         tutorialDictionary.Add(mechanism, mechanismTutorial);
+        tutorialDictionary.Add(empty, emptyTutorial);
     }
 
     private void OnTriggerEnter(Collider other)
