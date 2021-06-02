@@ -4,6 +4,7 @@ public abstract class PickupItem : MonoBehaviour
 {
     protected GameObject player;
     protected AbilitySystem.Player playerStats;
+    private Vector3 offset = new Vector3(0f, 1.3f, 0f);
 
     private void Awake()
     {
@@ -13,6 +14,6 @@ public abstract class PickupItem : MonoBehaviour
 
     public void SetPosition(Vector3 pos)
     {
-        gameObject.transform.position = pos;
+        gameObject.transform.position = pos + offset;
     }
 }

@@ -243,7 +243,7 @@ namespace AbilitySystem
         }
         IEnumerator ChillInDarkness()
         {
-            yield return new WaitForSeconds(2.5f);
+            yield return new WaitForSeconds(3f);
             StartCoroutine(FadeIn());
         }
         IEnumerator FadeIn()
