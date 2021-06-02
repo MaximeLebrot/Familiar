@@ -24,6 +24,11 @@ public class MainMenu : MonoBehaviour
     private Vector3 level1SpawnPosition = new Vector3(-72.5f, 2.5f, -33f);
     private readonly float level1Health = 10f;
 
+    private void Start()
+    {
+        difficultyDropdown.value = 1;    
+    }
+
     public void StartGame()
     {
         InitializeStartStats();
