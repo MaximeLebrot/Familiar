@@ -18,7 +18,7 @@ public class TutorialTrigger : MonoBehaviour
     private static readonly string zap1 = "Zap1";
     private static readonly string zap1Tutorial = "Press 'Left Click' to use your Zap ability.";
     private static readonly string zap2 = "Zap2";
-    private static readonly string zap2Tutorial = "This zap ability can damages spiders.";
+    private static readonly string zap2Tutorial = "The zap ability can damage spiders.";
     private static readonly string mechanism = "Mechanism";
     private static readonly string mechanismTutorial = "Press 'Left Click' to interact with the Mechanism";
     private static readonly string empty = "Empty";
