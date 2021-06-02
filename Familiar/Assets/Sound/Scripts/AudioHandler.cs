@@ -6,27 +6,27 @@ public class AudioHandler : MonoBehaviour
     private static readonly float volumeMultiplier = 0.1f;
 
     [SerializeField, Tooltip("Array of jumping sounds")]
-    public AudioClip[] jumpSounds;
+    private AudioClip[] jumpSounds;
     [SerializeField, Tooltip("Array of damage sounds")]
-    public AudioClip[] damageSounds;
+    private AudioClip[] damageSounds;
     [SerializeField, Tooltip("Array of death sounds")]
-    public AudioClip[] deathSounds;
+    private AudioClip[] deathSounds;
     [SerializeField, Tooltip("Array of moving sounds")]
-    public AudioClip[] movingSounds;
+    private AudioClip[] movingSounds;
     [SerializeField, Tooltip("Array of zapping sounds")]
-    public AudioClip[] zappingSounds;
+    private AudioClip[] zappingSounds;
     [SerializeField, Tooltip("Array of puzzle completion sounds")]
-    public AudioClip[] puzzleCompletionSounds;
+    private AudioClip[] puzzleCompletionSounds;
     [SerializeField, Tooltip("Array of console use sounds")]
-    public AudioClip[] consoleUseSounds;
+    private AudioClip[] consoleUseSounds;
     [SerializeField, Tooltip("Array of pressure plate sounds")]
-    public AudioClip[] pressurePlateSounds;
+    private AudioClip[] pressurePlateSounds;
     [SerializeField, Tooltip("Array of moonstone pickup sounds")]
-    public AudioClip[] moonstonePickupSounds;
+    private AudioClip[] moonstonePickupSounds;
     [SerializeField, Tooltip("Array of UI code input sounds")]
-    public AudioClip[] uICodeInputSounds;
+    private AudioClip[] uICodeInputSounds;
     [SerializeField, Tooltip("Array of code error sounds")]
-    public AudioClip[] codeErrorSounds;
+    private AudioClip[] codeErrorSounds;
 
     [SerializeField]
     AudioSource audioSource;

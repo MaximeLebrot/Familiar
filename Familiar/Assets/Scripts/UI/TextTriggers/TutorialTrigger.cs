@@ -11,18 +11,18 @@ public class TutorialTrigger : MonoBehaviour
     public Text tutorialText;
     [SerializeField] private string input;
 
-    private static string box = "Box";
+    private static readonly string box = "Box";
     private static readonly string boxTutorial = "Press 'Right Click' to pick up boxes";
-    private static string key = "Key";
+    private static readonly string key = "Key";
     private static readonly string keyTutorial = "You can also use 'Right Click' to pick up keys";
-    private static string zap1 = "Zap1";
+    private static readonly string zap1 = "Zap1";
     private static readonly string zap1Tutorial = "Use 'Left Click' to perform a zap";
-    private static string zap2 = "Zap2";
+    private static readonly string zap2 = "Zap2";
     private static readonly string zap2Tutorial = "The zap ability can damage spiders";
-    private static string mechanism = "Mechanism";
+    private static readonly string mechanism = "Mechanism";
     private static readonly string mechanismTutorial = "Use 'Left Click' to interact with the Mechanism";
 
-    private Dictionary<string, string> tutorialDictionary = new Dictionary<string, string>();
+    private readonly Dictionary<string, string> tutorialDictionary = new Dictionary<string, string>();
 
     public float activeTime;
     public bool permanent;

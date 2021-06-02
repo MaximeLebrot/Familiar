@@ -6,10 +6,6 @@ public class ManaPickup : PickupItem
 {
     private float? refillMana;
 
-    public void SetPosition(Vector3 pos)
-    {
-        transform.position = pos;
-    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
