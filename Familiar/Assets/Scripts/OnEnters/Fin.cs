@@ -51,7 +51,7 @@ public class Fin : MonoBehaviour
     {
         anim.SetBool("Fade", true);
         yield return new WaitUntil(() => black.color.a == 1);
-        SceneManager.LoadScene("Level 3");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex+1);
     }
 
     private IEnumerator WaitFading()
