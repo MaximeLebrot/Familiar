@@ -1125,10 +1125,10 @@ CapsuleCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  m_Radius: 0.16513841
+  m_Radius: 0.12514484
   m_Height: 0.4132194
   m_Direction: 0
-  m_Center: {x: 0.001918614, y: 0.06507733, z: -0.0022072396}
+  m_Center: {x: 8.8405083e-10, y: 0.121552795, z: -0.007922402}
 --- !u!195 &906721566836043486
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -1169,15 +1169,16 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 95bff807dd4d5f041b00d9ee4bd4959e, type: 2}
   maxHealth: 2
   drop: {fileID: 0}
-  mana: {fileID: 0}
+  healthPickup: {fileID: 0}
   navAgent: {fileID: 906721566836043486}
   anim: {fileID: 95681433750800818}
   transform: {fileID: 4251409082942358}
   player: {fileID: 0}
   playerStats: {fileID: 0}
   playerTransform: {fileID: 0}
-  vecToPlayer: {x: 0, y: 0, z: 0}
+  idlePosition: {x: 0, y: 0, z: 0}
   slider: {fileID: 0}
+  healthbarAnim: {fileID: 0}
 --- !u!1 &1719841372004032
 GameObject:
   m_ObjectHideFlags: 0
