@@ -221,7 +221,7 @@ namespace AbilitySystem
         {
             ded = true;
             playerController.StopController = true;
-            playerController.Camera.CannotMoveCam = true;
+            playerController.Camera.FreezeCam = true;
             healthBar.value = 0;
             healthBarNew.fillAmount = 0;
 
@@ -241,11 +241,13 @@ namespace AbilitySystem
             yield return new WaitUntil(() => blackImage.color.a == 1);
             StartCoroutine(ChillInDarkness());
         }
+
         IEnumerator ChillInDarkness()
         {
             yield return new WaitForSeconds(3f);
             StartCoroutine(FadeIn());
         }
+
         IEnumerator FadeIn()
         {
             fadeToBlack.SetBool("Fade", false);
@@ -264,7 +266,7 @@ namespace AbilitySystem
             yield return new WaitForSeconds(delay);
             gameObject.transform.position = target;
             playerController.StopController = false;
-            playerController.Camera.CannotMoveCam = false;
+            playerController.Camera.FreezeCam = false;
             float? refillHealth;
             refillHealth = -(AbilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) - 10);
             AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, (float)refillHealth);

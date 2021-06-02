@@ -1,3 +1,4 @@
+using System.Collections;
 using UnityEngine;
 
 public class CameraHandler : MonoBehaviour
@@ -13,6 +14,7 @@ public class CameraHandler : MonoBehaviour
     private float cameraAdjustmentOffset;
     [SerializeField, Tooltip("The starting offset of the camera")]
     private Vector3 cameraOffset;
+    [SerializeField, Tooltip("!!Set this to be equal to the y-value of the parent's rotation!!")] private float startingYRotation;
 
     [Header("References")]
     [SerializeField, Tooltip("A reference to the \"Controller\" scripts attached to the player game object. Should be inputed manually")]
@@ -24,7 +26,7 @@ public class CameraHandler : MonoBehaviour
     [Tooltip("Controls whether the the camera is frozen or not")]
     private bool freezeCamera;
     [Tooltip("Controls whether the player can move the camera")]
-    private bool cannotMoveCam;
+    private bool freezeCam = true;
 
     [Tooltip("The position of the camera in the world")]
     private Vector3 pos;
@@ -38,22 +40,29 @@ public class CameraHandler : MonoBehaviour
 
     private void Awake()
     {
+        StartCoroutine(StopInputAtStart());
         InitializeSequence();
     }
 
     void LateUpdate()
     {
-        if (freezeCamera != true && cannotMoveCam != true)
+        if (freezeCamera != true && freezeCam != true)
         {
             HandleMouseInput();
         }
         HandleCamera();
     }
 
+    IEnumerator StopInputAtStart()
+    {
+        yield return new WaitForSeconds(1.0f);
+        freezeCam = false;
+    }
+
     private void HandleCamera()
     {
         CameraVec.x = Mathf.Clamp(CameraVec.x, maxAngleDown, maxAngleUp);
-        transform.rotation = Quaternion.Euler(CameraVec.x, CameraVec.y, 0);
+        transform.rotation = Quaternion.Euler(CameraVec.x, CameraVec.y, 0.0f);
 
         pos = transform.rotation * cameraOffset;
         pos = CheckCollision() + playerController.transform.position;
@@ -73,10 +82,19 @@ public class CameraHandler : MonoBehaviour
     private Vector3 CheckCollision()
     {
         bool hit = Physics.Raycast(playerController.transform.position, pos.normalized, out hitInfo, pos.magnitude, playerController.CollisionMask);
+
         if (hit)
             return pos.normalized * (hitInfo.distance - cameraAdjustmentOffset);
         else
             return pos;
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.blue;
+        Gizmos.DrawRay(new Ray(playerController.transform.position, transform.forward));
+        Gizmos.color = Color.red;
+        Gizmos.DrawRay(new Ray(playerController.transform.position, -(transform.position - playerController.transform.position)));
     }
 
     private void InitializeSequence()
@@ -105,7 +123,7 @@ public class CameraHandler : MonoBehaviour
 
     private void InitializeCameraVector()
     {
-        CameraVec = new Vector2(0, 0);
+        CameraVec = new Vector2(playerController.transform.eulerAngles.x, startingYRotation);
     }
 
     private void InitializeCursor()
@@ -130,10 +148,10 @@ public class CameraHandler : MonoBehaviour
         set => freezeCamera = value;
     }
 
-    public bool CannotMoveCam
+    public bool FreezeCam
     {
-        get => cannotMoveCam;
-        set => cannotMoveCam = value;
+        get => freezeCam;
+        set => freezeCam = value;
     }
 
     public bool FirstPerson
