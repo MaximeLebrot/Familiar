@@ -122,7 +122,7 @@ NavMeshSettings:
     preserveTilesOutsideBounds: 0
     debug:
       m_Flags: 0
-  m_NavMeshData: {fileID: 23800000, guid: 7d70b5733c1a588479d9090cda353aef, type: 2}
+  m_NavMeshData: {fileID: 23800000, guid: 913175d5ac864a34aac1debf022442a3, type: 2}
 --- !u!1 &566929
 GameObject:
   m_ObjectHideFlags: 0
@@ -10015,7 +10015,7 @@ GameObject:
   m_Component:
   - component: {fileID: 461939746}
   m_Layer: 7
-  m_Name: Wizard Destination
+  m_Name: Wizard Destination1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -10028,12 +10028,12 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 461939745}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.11, y: 0, z: 5.9}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.92, y: 0, z: -0.18}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 719570003}
-  m_RootOrder: 0
+  m_Father: {fileID: 761814430}
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &462185916
 PrefabInstance:
@@ -23649,7 +23649,8 @@ MonoBehaviour:
   player: {fileID: 1687163031}
   wizard: {fileID: 50741018}
   navAgent: {fileID: 50741022}
-  destination: {fileID: 461939745}
+  destination1: {fileID: 461939745}
+  destination2: {fileID: 1338234178}
   eliasProgTrigger: {fileID: 0}
   keyShouldAnimate: 0
   shouldPlaySuccessSound: 1
@@ -23997,7 +23998,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6bc208b0d8735bf40985d2ad489ec1b9, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6bc208b0d8735bf40985d2ad489ec1b9, type: 3}
       propertyPath: m_LocalScale.x
@@ -24329,6 +24330,8 @@ Transform:
   m_LocalScale: {x: -0.93707, y: 0.92526454, z: 1}
   m_Children:
   - {fileID: 719570003}
+  - {fileID: 461939746}
+  - {fileID: 1338234179}
   - {fileID: 1349209095}
   - {fileID: 747844325}
   - {fileID: 468349483}
@@ -24715,7 +24718,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6bc208b0d8735bf40985d2ad489ec1b9, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6bc208b0d8735bf40985d2ad489ec1b9, type: 3}
       propertyPath: m_LocalScale.x
@@ -37024,6 +37027,36 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 795b369e8ef3d444a95a9b77cd8c18c6, type: 3}
+--- !u!1 &1338234178
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1338234179}
+  m_Layer: 7
+  m_Name: Wizard Destination2
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1338234179
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1338234178}
+  m_LocalRotation: {x: -0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -4.61, y: 0, z: 7.18}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 761814430}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1339068767
 GameObject:
   m_ObjectHideFlags: 0
@@ -37303,7 +37336,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: -8679921383154817045, guid: 6bc208b0d8735bf40985d2ad489ec1b9, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 6bc208b0d8735bf40985d2ad489ec1b9, type: 3}
       propertyPath: m_LocalScale.x
@@ -55238,6 +55271,10 @@ PrefabInstance:
       value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 919132149155446097, guid: b204089d436f3314aa85b85d1538a316, type: 3}
+      propertyPath: m_NavMeshLayer
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 919132149155446097, guid: b204089d436f3314aa85b85d1538a316, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 4294967295
       objectReference: {fileID: 0}
@@ -56224,7 +56261,8 @@ MonoBehaviour:
   player: {fileID: 0}
   wizard: {fileID: 0}
   navAgent: {fileID: 0}
-  destination: {fileID: 0}
+  destination1: {fileID: 0}
+  destination2: {fileID: 0}
   eliasProgTrigger: {fileID: 0}
   keyShouldAnimate: 0
   shouldPlaySuccessSound: 0

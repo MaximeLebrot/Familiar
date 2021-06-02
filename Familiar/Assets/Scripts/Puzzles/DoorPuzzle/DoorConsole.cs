@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class DoorConsole : MonoBehaviour
+public class DoorConsole : MonoBehaviour, IZappable
 {
     [SerializeField, Tooltip("Fill array with doors that this console should open. Handles opening in alternating order")]
     private GameObject[] doors;
@@ -22,7 +22,8 @@ public class DoorConsole : MonoBehaviour
 
     [SerializeField]
     private AbilitySystem.Player player;
-   
+
+    public bool IsZapped { get; set; }
 
     private void Start()
     {
@@ -53,8 +54,8 @@ public class DoorConsole : MonoBehaviour
             DelayOperation();
         //if (canUseConsole == true && Input.GetKeyDown(KeyCode.E) && puzzleComplete != true)
             //DoorSwap(); 
-        if (canUseConsole == true && Input.GetKeyDown(KeyCode.Mouse0) && puzzleComplete != true)
-            shouldCount = true;
+        //if (canUseConsole == true && Input.GetKeyDown(KeyCode.Mouse0) && puzzleComplete != true)
+            //shouldCount = true;
     }
 
     private void OnTriggerEnter(Collider other)
@@ -71,6 +72,8 @@ public class DoorConsole : MonoBehaviour
         {
             //remove ui "press e to activate"
             canUseConsole = false;
+            timer = time;
+            shouldCount = false;
         }
     }
 
@@ -110,5 +113,10 @@ public class DoorConsole : MonoBehaviour
         }
         else
             timer -= Time.deltaTime;
+    }
+
+    public void OnZap()
+    {
+        DoorSwap();
     }
 }

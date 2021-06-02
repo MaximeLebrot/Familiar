@@ -14,11 +14,15 @@ public class Door : MonoBehaviour
     [SerializeField]
     private NavMeshAgent navAgent;
     [SerializeField]
-    private GameObject destination;
+    private GameObject destination1;
+    [SerializeField]
+    private GameObject destination2;
     [SerializeField]
     private GameObject eliasProgTrigger;
     [SerializeField]
     private bool keyShouldAnimate;
+
+    private bool pathing;
 
     [SerializeField]
     private bool shouldPlaySuccessSound;
@@ -28,13 +32,21 @@ public class Door : MonoBehaviour
         if (animator == null)
             animator = GetComponent<Animator>(); //vild kod
     }
-    
+    private void Update()
+    {
+        if (pathing)
+            CheckForPath();
+    }
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Key"))
         {
             if (keyShouldAnimate)
+            {
                 other.gameObject.GetComponent<Animator>().SetTrigger("isUsed");
+                player.GetComponent<GrabObjectScript>().DropObject();
+                Destroy(other, 0.5f);
+            }
             if (shouldPlaySuccessSound)
                 player.AudioHandler.PlayPuzzleCompletionSound();
             open = true;
@@ -48,13 +60,26 @@ public class Door : MonoBehaviour
     {
         if (eliasProgTrigger != null)
             eliasProgTrigger.SetActive(true);
-        if (navAgent != null && destination != null)
-            navAgent.SetDestination(destination.transform.position);
+        if (navAgent != null && destination1 != null)
+            navAgent.SetDestination(destination1.transform.position);
     }
 
     private void SetWizardDestination()
     {
         if (navAgent != null)
-            navAgent.SetDestination(destination.transform.position);
+        {
+            if (destination2 != null)
+                pathing = true;
+            navAgent.SetDestination(destination1.transform.position);
+        }
+    }
+
+    void CheckForPath()
+    {
+        if (destination2 != null)
+            navAgent.SetDestination(destination2.transform.position);
+        
+        if (Vector3.Distance(transform.position, destination2.transform.position) < 0.2f)
+            pathing = false;
     }
 }
