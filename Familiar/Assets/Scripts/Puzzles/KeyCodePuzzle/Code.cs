@@ -47,7 +47,7 @@ public class Code : MonoBehaviour
         if (correctCode.Count > 0)
             RandomizeOrder();
         else
-            correctCode[0] = 1;
+            correctCode.Add(1);
 
         currentNumber = correctCode[0];
     }
