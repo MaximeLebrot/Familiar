@@ -9,11 +9,34 @@ public class TutorialTrigger : MonoBehaviour
     // Is sometimes permanent, hence the bool.
     // Maybe add animation for fade in/ out?
     public Text tutorialText;
-    public static readonly string tutorial = "Use 'Left Click' to interact with the Mechanism";
+    [SerializeField] private string input;
+
+    private static string box = "Box";
+    private static readonly string boxTutorial = "Press 'Right Click' to pick up boxes";
+    private static string key = "Key";
+    private static readonly string keyTutorial = "You can also use 'Right Click' to pick up keys";
+    private static string zap1 = "Zap1";
+    private static readonly string zap1Tutorial = "Use 'Left Click' to perform a zap";
+    private static string zap2 = "Zap2";
+    private static readonly string zap2Tutorial = "The zap ability can damage spiders";
+    private static string mechanism = "Mechanism";
+    private static readonly string mechanismTutorial = "Use 'Left Click' to interact with the Mechanism";
+
+    private Dictionary<string, string> tutorialDictionary = new Dictionary<string, string>();
+
     public float activeTime;
     public bool permanent;
 
     public Animator anim; // Tutorialtexts animator.
+
+    private void Start()
+    {
+        tutorialDictionary.Add(box, boxTutorial);
+        tutorialDictionary.Add(key, keyTutorial);
+        tutorialDictionary.Add(zap1, zap1Tutorial);
+        tutorialDictionary.Add(zap2, zap2Tutorial);
+        tutorialDictionary.Add(mechanism, mechanismTutorial);
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -21,7 +44,7 @@ public class TutorialTrigger : MonoBehaviour
         {
             //tutorialText.text = "";
             // SFX here?
-            tutorialText.text = tutorial;
+            tutorialText.text = tutorialDictionary[input];
             anim.SetBool("isActive", true); // Fade in text
             
             if (!permanent)
@@ -36,7 +59,7 @@ public class TutorialTrigger : MonoBehaviour
     private IEnumerator WaitAndDeactivate()
     {
         yield return new WaitForSeconds(activeTime);
-        if (tutorialText.text == tutorial)
+        if (tutorialText.text == tutorialDictionary[input])
         {
             anim.SetBool("isActive", false); // Fade out text
             //tutorialText.text = "";
@@ -47,7 +70,7 @@ public class TutorialTrigger : MonoBehaviour
     // Used to null out the text when player leaves trigger.
     private void OnTriggerExit(Collider other)
     {
-        if (other.CompareTag("Player") && tutorialText.text == tutorial)
+        if (other.CompareTag("Player") && tutorialText.text == tutorialDictionary[input])
         {
             anim.SetBool("isActive", false); // Fade out text
             //tutorialText.text = "";

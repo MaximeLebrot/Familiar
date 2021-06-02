@@ -19,8 +19,8 @@ public class Enemy2 : MonoBehaviour, IZappable
     [Header("Drop")]
     [SerializeField, Tooltip("The gameobject dropped on death. Should be inputed manually")] 
     private GameObject drop;
-    [SerializeField, Tooltip("A reference to the \"ManaPickup\" script on the drop gameobject. Should be inputed manually")]
-    private ManaPickup mana;
+    [SerializeField, Tooltip("A reference to the \"HealthPickup\" script on the drop gameobject. Should be inputed manually")]
+    private HealthPickup healthPickup;
 
     [Header("Self references")]
     [SerializeField, Tooltip("The navigation mesh agent attached to this game object. Should be inputed manually")]
@@ -105,7 +105,7 @@ public class Enemy2 : MonoBehaviour, IZappable
     {
         yield return new WaitForSeconds(1.0f);
         drop.SetActive(true);
-        mana.SetPosition(transform.position);
+        healthPickup.SetPosition(transform.position);
         Destroy(gameObject);
     }
 
@@ -136,8 +136,8 @@ public class Enemy2 : MonoBehaviour, IZappable
     {
         if (drop == null)
             Debug.LogError("Drop game object not set");
-        if (mana == null)
-            mana = GetComponentInParent<Transform>().gameObject.GetComponentInChildren<ManaPickup>();
+        if (healthPickup == null)
+            healthPickup = GetComponentInParent<Transform>().gameObject.GetComponentInChildren<HealthPickup>();
     }
     private void InitializeTransforms() //the transforms are set as variables instead because gameObject.transform performs a GetComponent() which is costly
     {

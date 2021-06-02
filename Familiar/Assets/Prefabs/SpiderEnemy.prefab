@@ -1410,11 +1410,15 @@ PrefabInstance:
     - target: {fileID: 7642603051622920889, guid: 33b828b8f1c31334988de54e3fe47ee6, type: 3}
       propertyPath: mana
       value: 
-      objectReference: {fileID: 6931678091461192593}
+      objectReference: {fileID: 0}
     - target: {fileID: 7642603051622920889, guid: 33b828b8f1c31334988de54e3fe47ee6, type: 3}
       propertyPath: slider
       value: 
       objectReference: {fileID: 4774757955432705973}
+    - target: {fileID: 7642603051622920889, guid: 33b828b8f1c31334988de54e3fe47ee6, type: 3}
+      propertyPath: healthPickup
+      value: 
+      objectReference: {fileID: 5420355039069395556}
     - target: {fileID: 7642603051622920889, guid: 33b828b8f1c31334988de54e3fe47ee6, type: 3}
       propertyPath: healthbarAnim
       value: 
@@ -1450,7 +1454,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 5991362112502768244, guid: f98431f124e09a646a0c7927c142a3db, type: 3}
       propertyPath: m_Name
-      value: Mana Pick-up
+      value: Health Pick-up
       objectReference: {fileID: 0}
     - target: {fileID: 5991362112502768244, guid: f98431f124e09a646a0c7927c142a3db, type: 3}
       propertyPath: m_IsActive
@@ -1504,17 +1508,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 5991362112502768245, guid: f98431f124e09a646a0c7927c142a3db, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: f98431f124e09a646a0c7927c142a3db, type: 3}
---- !u!114 &6931678091461192593 stripped
+--- !u!114 &5420355039069395556 stripped
 MonoBehaviour:
-  m_CorrespondingSourceObject: {fileID: 5991362112502768245, guid: f98431f124e09a646a0c7927c142a3db, type: 3}
+  m_CorrespondingSourceObject: {fileID: 8660180561092547456, guid: f98431f124e09a646a0c7927c142a3db, type: 3}
   m_PrefabInstance: {fileID: 3681653553837951460}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6931678091461192592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 72f9eee4636d7ea45855c4489e9d688b, type: 3}
+  m_Script: {fileID: 11500000, guid: 0d17cb70f2aada047a4eb56029ca85a0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &6931678091461192605 stripped

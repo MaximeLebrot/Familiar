@@ -11,4 +11,9 @@ public abstract class PickupItem : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
         playerStats = (AbilitySystem.Player)player.GetComponent("Player");
     }
+
+    public void SetPosition(Vector3 pos)
+    {
+        gameObject.transform.position = pos;
+    }
 }

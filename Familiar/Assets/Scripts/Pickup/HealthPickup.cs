@@ -1,9 +1,10 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class HealthPickup : PickupItem
 {
+    [SerializeField]
+    private float healAmount;
     private float? refillHealth;
     private Animator anim;
 
@@ -16,13 +17,23 @@ public class HealthPickup : PickupItem
     {
         if (other.CompareTag("Player"))
         {
-            //Debug.Log("Health Collected");
-            //playerStats.attributeSet.Find(AbilitySystem.GameplayAttributes.PlayerHealth);
-            refillHealth = -(playerStats.AbilitySystem.GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) - 10);
-            playerStats.AbilitySystem.TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, (float)refillHealth);
-            anim.SetTrigger("isPickedUp"); // Animates the pickup so its smaller + disabled the light component.
-            StartCoroutine(WaitAndDisable());
-            //Destroy(this.gameObject);
+            if (healAmount > 0)
+            {
+                playerStats.AbilitySystem.TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, healAmount);
+                if (anim != null)
+                    anim.SetTrigger("isPickedUp"); // Animates the pickup so its smaller + disabled the light component.
+                StartCoroutine(WaitAndDisable());
+            }
+            else
+            {
+                //Debug.Log("Health Collected");
+                //playerStats.attributeSet.Find(AbilitySystem.GameplayAttributes.PlayerHealth);
+                refillHealth = -(playerStats.AbilitySystem.GetAttributeValue(AbilitySystem.GameplayAttributes.PlayerHealth) - 10);
+                playerStats.AbilitySystem.TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, (float)refillHealth);
+                anim.SetTrigger("isPickedUp"); // Animates the pickup so its smaller + disabled the light component.
+                StartCoroutine(WaitAndDisable());
+                //Destroy(this.gameObject);
+            }
         }
     }
 
