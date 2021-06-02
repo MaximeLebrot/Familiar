@@ -3149,16 +3149,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
---- !u!1 &57174693 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 1839304754744059133, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
-  m_PrefabInstance: {fileID: 57174692}
-  m_PrefabAsset: {fileID: 0}
---- !u!195 &57174694 stripped
-NavMeshAgent:
-  m_CorrespondingSourceObject: {fileID: 3323552417944794824, guid: cc2904f8420d54e45b80616562ff859c, type: 3}
-  m_PrefabInstance: {fileID: 57174692}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &58692961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -11245,8 +11235,8 @@ MonoBehaviour:
   open: 0
   animator: {fileID: 254394239}
   player: {fileID: 0}
-  wizard: {fileID: 57174693}
-  navAgent: {fileID: 57174694}
+  wizard: {fileID: 403080154}
+  navAgent: {fileID: 403080155}
   destination: {fileID: 1364695348}
   eliasProgTrigger: {fileID: 1841627906}
   shouldPlaySuccessSound: 0
@@ -17829,6 +17819,16 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: b09ffcffc4ba200429a73847b06ffdf5, type: 3}
+--- !u!1 &403080154 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 9086083041647847716, guid: ab9e1989b03731f4e81c39957864f560, type: 3}
+  m_PrefabInstance: {fileID: 2009367249}
+  m_PrefabAsset: {fileID: 0}
+--- !u!195 &403080155 stripped
+NavMeshAgent:
+  m_CorrespondingSourceObject: {fileID: 50741022, guid: ab9e1989b03731f4e81c39957864f560, type: 3}
+  m_PrefabInstance: {fileID: 2009367249}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &403339551
 PrefabInstance:
   m_ObjectHideFlags: 0
