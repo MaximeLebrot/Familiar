@@ -13,6 +13,9 @@ public class Code : MonoBehaviour
     [Tooltip("The current number that needs to be inputed as part of the correct code")]
     private int currentNumber;
 
+    [SerializeField]
+    private GameObject codePanelAreaToDestroy;
+
     [SerializeField, Tooltip("A list of possible key codes. Should be inputed manually")]
     private List<KeyCodeCombination> keyCodeGenerated = new List<KeyCodeCombination>();
     [Tooltip("An iterator of the correct code")]
@@ -137,6 +140,7 @@ public class Code : MonoBehaviour
         {
             keycode.setGreen();
         }
+        Destroy(codePanelAreaToDestroy);
     }
 
     public IEnumerator ResetTimer()
