@@ -18,6 +18,7 @@ public class Enemy1IdleState : Enemy1BaseState
     {
         base.Enter();
         shouldJustIdle = owner.IsIdleEnemy;
+        owner.Transform.rotation = Quaternion.Euler(0f, 90f, 0f);
     }
 
     public override void HandleUpdate()

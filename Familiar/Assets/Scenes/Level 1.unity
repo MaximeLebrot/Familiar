@@ -22711,6 +22711,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1954172571}
     - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
+      propertyPath: PlayerDied.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 1954172571}
+    - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
+      propertyPath: PlayerDied.m_PersistentCalls.m_Calls.Array.data[2].m_MethodName
+      value: PlayDeathVoiceLine
+      objectReference: {fileID: 0}
+    - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
       propertyPath: PlayerRespawned.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 243103609}
@@ -23643,6 +23651,7 @@ MonoBehaviour:
   navAgent: {fileID: 50741022}
   destination: {fileID: 461939745}
   eliasProgTrigger: {fileID: 0}
+  keyShouldAnimate: 0
   shouldPlaySuccessSound: 1
 --- !u!65 &719570006
 BoxCollider:
@@ -32448,6 +32457,19 @@ MeshCollider:
   m_Convex: 0
   m_CookingOptions: 30
   m_Mesh: {fileID: 4336706434927076308, guid: ba39cdb72b209514aa24fc63dcd2be20, type: 3}
+--- !u!65 &1174265002
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1174265000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 13.499998, y: 3.6894693, z: 0.52917826}
+  m_Center: {x: -5.5060897, y: 1.8447347, z: 1.7362924}
 --- !u!4 &1174265003 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: ba39cdb72b209514aa24fc63dcd2be20, type: 3}
@@ -53110,6 +53132,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowRequiredThemeMissmatch: 1
+  wizardAudioS: {fileID: 285592521}
+  wizardDeathVoiceLine: {fileID: 8300000, guid: 559a31bafcba08348ba740f452eba7df, type: 3}
 --- !u!4 &1954612677 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: 203851938e743884baa5d3c8f8567871, type: 3}
@@ -56202,6 +56226,7 @@ MonoBehaviour:
   navAgent: {fileID: 0}
   destination: {fileID: 0}
   eliasProgTrigger: {fileID: 0}
+  keyShouldAnimate: 0
   shouldPlaySuccessSound: 0
 --- !u!95 &2100702585
 Animator:
@@ -56365,6 +56390,19 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 3e0e36f1094f4cc478c8dca692a7ef7a, type: 3}
   m_PrefabInstance: {fileID: 1881780075}
   m_PrefabAsset: {fileID: 0}
+--- !u!65 &2105514886
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2105514885}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 16.91419, y: 9.369038, z: 12.577932}
+  m_Center: {x: 4.259557, y: 0.3263092, z: 2.091426}
 --- !u!64 &2105514889
 MeshCollider:
   m_ObjectHideFlags: 0

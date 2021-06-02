@@ -62,6 +62,8 @@ public class Enemy1AttackState : Enemy1BaseState
 
     private void ResetAggro(bool doPatrol)
     {
+        if (owner.IsIdleEnemy == true)
+            stateMachine.Transition<Enemy1IdleState>();
         hasRan = false;
         if (owner.Light != null)
         {
@@ -145,7 +147,8 @@ public class Enemy1AttackState : Enemy1BaseState
     private void LookAtPlayer()
     {
         owner.Anim.SetBool("discover", true);
-        owner.Transform.LookAt(owner.PlayerTransform.position);
+        //owner.Transform.LookAt(owner.PlayerTransform.position);
+        owner.Transform.forward = owner.PlayerTransform.position;
         owner.NavAgent.velocity = Vector3.zero;
     }
 
