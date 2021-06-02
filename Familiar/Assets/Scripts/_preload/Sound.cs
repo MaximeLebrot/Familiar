@@ -27,7 +27,7 @@ public class Sound : MonoBehaviour
             audio = GetComponent<AudioSource>();
         if (eliasPlayer == null)
             eliasPlayer = GetComponent<EliasPlayer>();
-        Instance.GlobalVolume = 1.0f;
+        Instance.GlobalVolume = 0.5f;
         Instance.EffectsVolume = 1.0f;
         Instance.MusicVolume = 1.0f;
         UpdateMusicVolume();
