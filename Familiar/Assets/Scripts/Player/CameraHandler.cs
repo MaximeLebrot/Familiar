@@ -89,14 +89,6 @@ public class CameraHandler : MonoBehaviour
             return pos;
     }
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.blue;
-        Gizmos.DrawRay(new Ray(playerController.transform.position, transform.forward));
-        Gizmos.color = Color.red;
-        Gizmos.DrawRay(new Ray(playerController.transform.position, -(transform.position - playerController.transform.position)));
-    }
-
     private void InitializeSequence()
     {
         InitializePlayerController();
