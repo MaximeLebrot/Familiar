@@ -32,7 +32,6 @@ public class HealthPickup : PickupItem
                 playerStats.AbilitySystem.TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, (float)refillHealth);
                 anim.SetTrigger("isPickedUp"); // Animates the pickup so its smaller + disabled the light component.
                 StartCoroutine(WaitAndDisable());
-                //Destroy(this.gameObject);
             }
         }
     }
@@ -40,7 +39,7 @@ public class HealthPickup : PickupItem
     // Waits so the pick up animation finishes playing
     private IEnumerator WaitAndDisable()
     {
-        yield return new WaitForSeconds(1.1f); // OBS!!! The number match animation length
-        this.gameObject.SetActive(false);
+        yield return new WaitForSeconds(0.5f); // OBS!!! The number match animation length
+        Destroy(this.gameObject);
     }
 }
