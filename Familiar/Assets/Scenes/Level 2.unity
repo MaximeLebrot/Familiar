@@ -36791,6 +36791,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   allowRequiredThemeMissmatch: 1
+  wizardAudioS: {fileID: 1653485807}
+  wizardDeathVoiceLine: {fileID: 8300000, guid: 559a31bafcba08348ba740f452eba7df, type: 3}
 --- !u!1 &814267770
 GameObject:
   m_ObjectHideFlags: 0
@@ -42483,9 +42485,9 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 813813574}
     - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
-      propertyPath: PlayerDied.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
-      value: PlayGameOverTheme
-      objectReference: {fileID: 0}
+      propertyPath: PlayerDied.m_PersistentCalls.m_Calls.Array.data[2].m_Target
+      value: 
+      objectReference: {fileID: 813813574}
     - target: {fileID: 8266650046587695648, guid: 4e4b60c7872d6664983c48276fbbe39a, type: 3}
       propertyPath: PlayerRespawned.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

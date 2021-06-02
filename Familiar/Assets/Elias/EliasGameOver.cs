@@ -9,6 +9,10 @@ public class EliasGameOver : MonoBehaviour
     private static readonly string actionPresetName = "Game Over";
     [SerializeField]
     private bool allowRequiredThemeMissmatch;
+    [SerializeField]
+    private DialogueAudio wizardAudioS;
+    [SerializeField]
+    private AudioClip wizardDeathVoiceLine;
 
     void Awake()
     {
@@ -20,5 +24,10 @@ public class EliasGameOver : MonoBehaviour
     {
         eliasPlayer.RunActionPreset(preActionPresetName, allowRequiredThemeMissmatch);
         eliasPlayer.RunActionPreset(actionPresetName, allowRequiredThemeMissmatch);
+    }
+
+    public void PlayDeathVoiceLine()
+    {
+        wizardAudioS.PlayAudioClip(wizardDeathVoiceLine);
     }
 }
