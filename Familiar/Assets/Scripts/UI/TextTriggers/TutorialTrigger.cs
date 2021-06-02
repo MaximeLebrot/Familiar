@@ -12,15 +12,15 @@ public class TutorialTrigger : MonoBehaviour
     [SerializeField] private string input;
 
     private static readonly string box = "Box";
-    private static readonly string boxTutorial = "Press 'Right Click' to pick up boxes";
+    private static readonly string boxTutorial = "Press 'Right Click' next to a box to pick it up. Press 'Right Click' again to drop the box.";
     private static readonly string key = "Key";
     private static readonly string keyTutorial = "You can also use 'Right Click' to pick up keys";
     private static readonly string zap1 = "Zap1";
-    private static readonly string zap1Tutorial = "Use 'Left Click' to perform a zap";
+    private static readonly string zap1Tutorial = "Press 'Left Click' to use your Zap ability.";
     private static readonly string zap2 = "Zap2";
-    private static readonly string zap2Tutorial = "The zap ability can damage spiders";
+    private static readonly string zap2Tutorial = "This zap ability can damages spiders.";
     private static readonly string mechanism = "Mechanism";
-    private static readonly string mechanismTutorial = "Use 'Left Click' to interact with the Mechanism";
+    private static readonly string mechanismTutorial = "Press 'Left Click' to interact with the Mechanism";
     private static readonly string empty = "Empty";
     private static readonly string emptyTutorial = "";
 
