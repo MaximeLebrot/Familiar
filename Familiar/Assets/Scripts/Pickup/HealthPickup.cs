@@ -20,6 +20,7 @@ public class HealthPickup : PickupItem
             if (healAmount > 0)
             {
                 playerStats.AbilitySystem.TryApplyAttributeChange(AbilitySystem.GameplayAttributes.PlayerHealth, healAmount);
+                playerStats.HealthBarUpdate();
                 if (anim != null)
                     anim.SetTrigger("isPickedUp"); // Animates the pickup so its smaller + disabled the light component.
                 playerStats.AudioHandler.PlayMoonstonePickupSound();

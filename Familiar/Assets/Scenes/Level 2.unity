@@ -625,6 +625,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4012203669839960244, guid: 70c1e9796d8c3974e89eca3ca0a53048, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -37.600098
+      objectReference: {fileID: 0}
     - target: {fileID: 4780144782919053895, guid: 70c1e9796d8c3974e89eca3ca0a53048, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2114,7 +2118,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1410712124}
-  input: 
+  input: Empty
   activeTime: 0
   permanent: 1
   anim: {fileID: 1410712126}
@@ -11075,6 +11079,7 @@ MonoBehaviour:
   navAgent: {fileID: 599380781}
   destination: {fileID: 1364695348}
   eliasProgTrigger: {fileID: 1841627906}
+  keyShouldAnimate: 0
   shouldPlaySuccessSound: 0
 --- !u!1 &254503451
 GameObject:
@@ -19323,7 +19328,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1410712124}
-  input: 
+  input: Empty
   activeTime: 0
   permanent: 1
   anim: {fileID: 1410712126}
@@ -20836,6 +20841,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   door: {fileID: 85086212}
   player: {fileID: 809609654}
+  codePanelAreaToDestroy: {fileID: 1103266144}
   keyCodeGenerated:
   - {fileID: 1781680359}
   - {fileID: 329670701}
@@ -45116,7 +45122,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1410712124}
-  input: 
+  input: Empty
   activeTime: 0
   permanent: 1
   anim: {fileID: 1410712126}
@@ -47368,12 +47374,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   open: 0
   animator: {fileID: 1081876878}
-  player: {fileID: 0}
+  player: {fileID: 809609654}
   wizard: {fileID: 0}
   navAgent: {fileID: 0}
   destination: {fileID: 0}
   eliasProgTrigger: {fileID: 0}
-  shouldPlaySuccessSound: 0
+  keyShouldAnimate: 1
+  shouldPlaySuccessSound: 1
 --- !u!54 &1081876877
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -48198,7 +48205,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1410712124}
-  input: 
+  input: Empty
   activeTime: 0
   permanent: 1
   anim: {fileID: 1410712126}
@@ -71815,7 +71822,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   tutorialText: {fileID: 1410712124}
-  input: 
+  input: Empty
   activeTime: 0
   permanent: 1
   anim: {fileID: 1410712126}

@@ -277,7 +277,7 @@ namespace AbilitySystem
         {
             Die();
         }
-        private void HealthBarUpdate()
+        public void HealthBarUpdate()
         {
             healthBar.value = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth)/10;
             healthBarNew.fillAmount = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) / 10;

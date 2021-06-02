@@ -17,6 +17,8 @@ public class Door : MonoBehaviour
     private GameObject destination;
     [SerializeField]
     private GameObject eliasProgTrigger;
+    [SerializeField]
+    private bool keyShouldAnimate;
 
     [SerializeField]
     private bool shouldPlaySuccessSound;
@@ -31,6 +33,8 @@ public class Door : MonoBehaviour
     {
         if (other.CompareTag("Key"))
         {
+            if (keyShouldAnimate)
+                other.gameObject.GetComponent<Animator>().SetTrigger("isUsed");
             if (shouldPlaySuccessSound)
                 player.AudioHandler.PlayPuzzleCompletionSound();
             open = true;

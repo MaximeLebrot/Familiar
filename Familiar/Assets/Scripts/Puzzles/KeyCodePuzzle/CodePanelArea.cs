@@ -72,4 +72,9 @@ public class CodePanelArea : MonoBehaviour
 
         helpText.text = "";
     }
+
+    private void OnDestroy()
+    {
+        helpText.text = "";
+    }
 }
