@@ -10,16 +10,16 @@ public class SwitchLevel : MonoBehaviour
     private GameObject prisonDoor;
     [SerializeField, Tooltip("The prison door game objects \"Door\" component.")]
     private Door door;
-    [SerializeField, Tooltip("A reference to the F2B game components image component. Must be inputed manually")]
+    [SerializeField, Tooltip("A reference to the F2B game components image component. Must be inputted manually")]
     private Image black;
     [SerializeField, Tooltip("")]
     private Animator anim;
     [SerializeField, Tooltip("")]
     private Animator animDoor;
 
-    private static readonly Vector3 level2StartPosition = new Vector3(51.5f, 1.5f, 33f);
-    private static readonly Vector3 level2StartRotation = new Vector3(0f, 270f, 0f);
-    private static readonly float level2StartHealth = 10f;
+    private static readonly Vector3 level2StartPosition = new Vector3(51.5f, 1.5f, 33.0f);
+    private static readonly Vector3 level2StartRotation = new Vector3(0.0f, 270.0f, 0.0f);
+    private static readonly float level2StartHealth = 10.0f;
 
     [Header("Events")]
     [SerializeField, Tooltip("The event in which the player goes to level 2")]
@@ -58,6 +58,7 @@ public class SwitchLevel : MonoBehaviour
         InitializeLevel2Stats();
         SceneManager.LoadScene("Level 2");
     }
+
     private void InitializeLevel2Stats()
     {
         Stats.Instance.Health = level2StartHealth;

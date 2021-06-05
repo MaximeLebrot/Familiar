@@ -277,7 +277,7 @@ public class Controller : MonoBehaviour
         InitializeJumpVector();
         InitializeCollider();
         InitializeCamera();
-        InitilizeTransform();
+        InitializeTransform();
     }
 
     private void InitializeJumpVector()
@@ -297,7 +297,7 @@ public class Controller : MonoBehaviour
             cam = GetComponentInChildren<CameraHandler>();
     }
 
-    private void InitilizeTransform()
+    private void InitializeTransform()
     {
         if (transform == null)
             transform = GetComponent<Transform>();

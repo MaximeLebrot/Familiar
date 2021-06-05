@@ -10,7 +10,7 @@ public class LightFlicker : MonoBehaviour
 
     private float time;
     private float startingIntensity;
-    private Light light;
+    private new Light light;
 
 
     void Start()

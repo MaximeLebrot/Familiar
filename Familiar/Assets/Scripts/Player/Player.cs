@@ -167,11 +167,13 @@ namespace AbilitySystem
                 startingEffects.ForEach(e => abilitySystem.ApplyEffectToSelf(e)); 
             }
         }
+
         private void InitializeHealthBarValue()
         {
             healthBar.value = 1;
             healthBarNew.fillAmount = 1;
         }
+
         private float ShockDamageCalculation(float value)
         {
             float? resistance = abilitySystem.GetAttributeValue(GameplayAttributes.ShockResistance);
@@ -182,6 +184,7 @@ namespace AbilitySystem
             }
             return value;
         }
+
         private void InitializeStats()
         {
             if (Stats.Instance != null)
@@ -189,11 +192,13 @@ namespace AbilitySystem
                 float healthDifference = (float)abilitySystem.GetAttributeValue(GameplayAttributes.PlayerHealth) - Stats.Instance.Health;
                 AbilitySystem.TryApplyAttributeChange(GameplayAttributes.PlayerHealth, -healthDifference);
                 HealthBarUpdate();
+
                 if (Stats.Instance.Position == Vector3.zero)
                     gameObject.transform.position = GameObject.FindGameObjectsWithTag("Respawn")[0].transform.position;
                 else
                     gameObject.transform.position = Stats.Instance.Position;
-                transform.rotation = Quaternion.Euler(0f, Stats.Instance.Rotation.y, 0f);
+
+                transform.rotation = Quaternion.Euler(Stats.Instance.Rotation == Vector3.zero ? transform.rotation.eulerAngles : Stats.Instance.Rotation);
 
                 canZap = true;
                 spawnPosition = 0;

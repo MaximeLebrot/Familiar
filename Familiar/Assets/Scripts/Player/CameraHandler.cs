@@ -14,7 +14,6 @@ public class CameraHandler : MonoBehaviour
     private float cameraAdjustmentOffset;
     [SerializeField, Tooltip("The starting offset of the camera")]
     private Vector3 cameraOffset;
-    [SerializeField, Tooltip("!!Set this to be equal to the y-value of the parent's rotation!!")] private float startingYRotation;
 
     [Header("References")]
     [SerializeField, Tooltip("A reference to the \"Controller\" scripts attached to the player game object. Should be inputed manually")]
@@ -40,6 +39,11 @@ public class CameraHandler : MonoBehaviour
 
     private void Awake()
     {
+    }
+
+    private void Start()
+    {
+
         StartCoroutine(StopInputAtStart());
         InitializeSequence();
     }
@@ -115,7 +119,10 @@ public class CameraHandler : MonoBehaviour
 
     private void InitializeCameraVector()
     {
-        CameraVec = new Vector2(playerController.transform.eulerAngles.x, startingYRotation);
+        if (Stats.Instance.Rotation == Vector3.zero)
+            CameraVec = new Vector2(playerController.transform.rotation.eulerAngles.x, playerController.transform.rotation.eulerAngles.y);
+        else
+            CameraVec = new Vector2(Stats.Instance.Rotation.x, Stats.Instance.Rotation.y);
     }
 
     private void InitializeCursor()
@@ -123,16 +130,14 @@ public class CameraHandler : MonoBehaviour
         Cursor.lockState = CursorLockMode.Locked;
         Cursor.visible = false;
     }
+
     private void InitializeTransform()
     {
         if (transform == null)
             transform = gameObject.transform;
     }
 
-    public Transform Transform
-    {
-        get => transform;
-    }
+    public Transform Transform => transform;
 
     public bool FreezeCamera
     {

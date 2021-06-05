@@ -34,21 +34,25 @@ public class Stats : MonoBehaviour
         get => mouseSensitivity;
         set => mouseSensitivity = value;
     }
+
     public int Difficulty
     {
         get => difficulty;
         set => difficulty = value;
     }
+
     public float Health
     {
         get => health;
         set => health = value;
     }
+
     public Vector3 Position
     {
         get => position;
         set => position = value;
     }
+
     public Vector3 Rotation
     {
         get => rotation;
