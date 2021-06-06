@@ -14,6 +14,8 @@ public class Stats : MonoBehaviour
 
     private int difficulty;
 
+    private bool arachnophobiaMode;
+
     void Awake()
     {
         if (Instance == null)
@@ -27,6 +29,7 @@ public class Stats : MonoBehaviour
         Instance.MouseSensitivity = 3.0f;
         Instance.Health = 10f;
         Instance.Difficulty = 2;
+        Instance.ArachnophobiaMode = false;
     }
 
     public float MouseSensitivity
@@ -57,5 +60,11 @@ public class Stats : MonoBehaviour
     {
         get => rotation;
         set => rotation = value;
+    }
+
+    public bool ArachnophobiaMode
+    {
+        get => arachnophobiaMode;
+        set => arachnophobiaMode = value;
     }
 }

@@ -26,11 +26,14 @@ public class ArachnophobeModeScript : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.P))
         {
-            mesh.enabled = !mesh.enabled;
-            notSpider.gameObject.SetActive(!notSpider.gameObject.activeSelf);
-            //mesh.sharedMesh = mesh.sharedMesh == spider ? notSpider : spider;
-            //mesh.sharedMaterial = mesh.sharedMaterial == spiderMaterial ? notSpiderMaterial : spiderMaterial;
-            //mesh.material = mesh.material == spiderMaterial ? notSpiderMaterial : spiderMaterial;
+            Stats.Instance.ArachnophobiaMode = !Stats.Instance.ArachnophobiaMode;
         }
+
+        mesh.enabled = !Stats.Instance.ArachnophobiaMode;
+        notSpider.gameObject.SetActive(Stats.Instance.ArachnophobiaMode);
+        //mesh.sharedMesh = mesh.sharedMesh == spider ? notSpider : spider;
+        //mesh.sharedMaterial = mesh.sharedMaterial == spiderMaterial ? notSpiderMaterial : spiderMaterial;
+        //mesh.material = mesh.material == spiderMaterial ? notSpiderMaterial : spiderMaterial;
     }
 }
+
