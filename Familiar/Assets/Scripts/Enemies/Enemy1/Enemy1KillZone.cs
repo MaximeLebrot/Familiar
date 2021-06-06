@@ -9,18 +9,20 @@ public class Enemy1KillZone : MonoBehaviour
 
     Vector3 rot;
     bool counting;
-    static float time = 2.5f;
+    static readonly float time = 2.5f;
     float timer = time;
 
     private void Start()
     {
         rot = new Vector3(0, 90, 0);
     }
+
     private void Update()
     {
         if (counting)
             Count();
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
@@ -31,6 +33,7 @@ public class Enemy1KillZone : MonoBehaviour
             player.Die();
         }
     }
+
     void Count()
     {
         if (timer <= 0)

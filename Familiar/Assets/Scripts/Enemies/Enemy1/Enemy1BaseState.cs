@@ -39,6 +39,7 @@ public class Enemy1BaseState : State
             animSpeed = moveSpeed / 10;
         owner.Anim.speed = animSpeed;
     }
+
     protected bool CheckIfPlayerInFront()
     {
         directionToPlayer = owner.VecToPlayer.normalized;
@@ -85,8 +86,11 @@ public class Enemy1BaseState : State
 
     protected bool CheckIfPlayerAlive()
     {
-        if (owner.PlayerStats.Dead != true)
-            return true;
-        return false;
+    
+    //{
+    //    if (owner.PlayerStats.Dead != true)
+    //        return true;
+    // return false;
+        return !owner.PlayerStats.Dead;
     }
 }
